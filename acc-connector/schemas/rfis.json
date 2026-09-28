@@ -1,0 +1,968 @@
+{
+   "acc_attachments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the acc attachment",
+         "ordinal_position" : 1
+      },
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 4
+      },
+      "entity_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The entity ID the attachment associated with",
+         "ordinal_position" : 5
+      },
+      "entity_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "rfiResponse",
+            "rfiOfficialResponse"
+         ],
+         "notes" : "The entity type the attachment associated with",
+         "ordinal_position" : 6
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the attachment",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the attachment was created",
+         "ordinal_position" : 8
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who created the attachment.",
+         "ordinal_position" : 9
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the attachment was deleted. This is only relevant for deleted attachments.",
+         "ordinal_position" : 10
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who deleted the attachment. This is only relevant for deleted attachments.",
+         "ordinal_position" : 11
+      }
+   },
+   "attachments" : {
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the attachment.",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the attachment was created",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who created the attachment.",
+         "ordinal_position" : 6
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The last time the attachment attributes were updated",
+         "ordinal_position" : 7
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the attachment was deleted This is only relevant for deleted attachments.",
+         "ordinal_position" : 8
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodek User ID of the user who deleted the attachment. This is only relevant for deleted attachments.",
+         "ordinal_position" : 9
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the attachment.",
+         "ordinal_position" : 10
+      }
+   },
+   "category" : {
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The category to associate with this RFI",
+         "ordinal_position" : 4
+      }
+   },
+   "comments" : {
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the comment.",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the comment was created.",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who created the comment.",
+         "ordinal_position" : 6
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The last time the comment attributes were updated.",
+         "ordinal_position" : 7
+      },
+      "body" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The content of the comment",
+         "ordinal_position" : 8
+      }
+   },
+   "discipline" : {
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "discipline" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The discipline to associate with this RFI",
+         "ordinal_position" : 4
+      }
+   },
+   "project_custom_attributes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the Project Custom Attributes",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the Custom Attribute",
+         "ordinal_position" : 4
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "text",
+            "numeric"
+         ],
+         "notes" : "The type of the Custom Attribute",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the Custom Attribute",
+         "ordinal_position" : 6
+      },
+      "multiple_choice" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "When the value is NULL then the field is not selectable. When the value is false it is a single select. When the value is TRUE then the value is multi select.",
+         "ordinal_position" : 7
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "active",
+            "inactive",
+            "hidden"
+         ],
+         "notes" : "Active: default status when the Custom Attribute is active. Inactive: when the Custom Attribute is not active(reversible). Hidden - when the Custom Attribute is soft deleted(not reversible)",
+         "ordinal_position" : 8
+      }
+   },
+   "project_custom_attributes_enums" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the Project Custom Attributes Enums",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "custom_attribute_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The Custom Attribute ID which has the selectable value",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the enum",
+         "ordinal_position" : 5
+      }
+   },
+   "rfi_assignees" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the assignee.",
+         "ordinal_position" : 1
+      },
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the RFI.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 4
+      },
+      "oxygen_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user assignee.",
+         "ordinal_position" : 5
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "user"
+         ],
+         "notes" : "The assignee type",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time of the assignee assigment",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The last time the assignee attributes were updated",
+         "ordinal_position" : 8
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the assignee was deleted This is only relevant for deleted assignee.",
+         "ordinal_position" : 9
+      }
+   },
+   "rfi_co_reviewers" : {
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "user_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the alternate reviewer",
+         "ordinal_position" : 4
+      }
+   },
+   "rfi_custom_attributes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the Rfi Custom Attribute",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the RFI",
+         "ordinal_position" : 4
+      },
+      "custom_attribute_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The Custom Attribute ID which the value was set for",
+         "ordinal_position" : 5
+      },
+      "value_enum_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "If the custom attribute is selectable (not free text/numbers) then the value will be a UUID in container_custom_attributes_enums which is the selected value. If the Custom Attribute is multi select and more then one selected then more than one value_enum_id will appear for the same custom_attribute_id",
+         "ordinal_position" : 6
+      },
+      "value_float" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The numeric value of a Custom Attribute",
+         "ordinal_position" : 7
+      },
+      "value_str" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The textual value of a Custom Attribute",
+         "ordinal_position" : 8
+      }
+   },
+   "rfi_distribution_list" : {
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "user_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user to be notified of changes to RFI.",
+         "ordinal_position" : 4
+      }
+   },
+   "rfi_location" : {
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "location" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A description of the location of the RFI in the construction project.",
+         "ordinal_position" : 4
+      }
+   },
+   "rfi_responses" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the response.",
+         "ordinal_position" : 1
+      },
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the RFI.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 4
+      },
+      "content" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The content of the response",
+         "ordinal_position" : 5
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who updated the response.",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who created the response.",
+         "ordinal_position" : 7
+      },
+      "on_behalf" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user assignee.",
+         "ordinal_position" : 8
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "answered",
+            "rejected"
+         ],
+         "notes" : "The response status",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the response was created",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The last time the response attributes were updated",
+         "ordinal_position" : 11
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the response was deleted This is only relevant for deleted responses.",
+         "ordinal_position" : 12
+      },
+      "state" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "submitted",
+            "draft"
+         ],
+         "notes" : "The response state",
+         "ordinal_position" : 13
+      }
+   },
+   "rfi_reviewers" : {
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "user_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the reviewer",
+         "ordinal_position" : 4
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "user"
+         ],
+         "notes" : "Reviewer type",
+         "ordinal_position" : 5
+      }
+   },
+   "rfi_transitions" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the transition",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The RFI ID for the transition",
+         "ordinal_position" : 4
+      },
+      "from_status" : {
+         "data_type" : "string: null",
+         "constraints" : [
+            "draft",
+            "submitted",
+            "open",
+            "answered",
+            "openRev1",
+            "answeredRev1",
+            "openRev2",
+            "answeredManager",
+            "closed",
+            "void"
+         ],
+         "notes" : "The status of the RFI before the transition occurred. If the RFI was newly created, the value will be null.",
+         "ordinal_position" : 5
+      },
+      "to_status" : {
+         "data_type" : "string",
+         "constraints" : [
+            "draft",
+            "submitted",
+            "open",
+            "answered",
+            "openRev1",
+            "answeredRev1",
+            "openRev2",
+            "answeredManager",
+            "closed",
+            "void"
+         ],
+         "notes" : "The status of the RFI after the transition.",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the RFI transition was made.",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who made the transition.",
+         "ordinal_position" : 8
+      }
+   },
+   "rfi_types" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the RFI Type",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the RFI Type",
+         "ordinal_position" : 4
+      },
+      "wf_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "reviewer_only",
+            "reviewer_and_coordinator",
+            "unknown"
+         ],
+         "notes" : "The workflow type of the RFI Type",
+         "ordinal_position" : 5
+      }
+   },
+   "rfis" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the RFI.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of RFI data",
+         "ordinal_position" : 3
+      },
+      "custom_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Custom identifier for the RFI",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title for the RFI",
+         "ordinal_position" : 5
+      },
+      "question" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Question for the RFI",
+         "ordinal_position" : 6
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "draft",
+            "submitted",
+            "open",
+            "answered",
+            "openRev1",
+            "answeredRev1",
+            "openRev2",
+            "answeredManager",
+            "closed",
+            "void"
+         ],
+         "notes" : "The current status of the RFI.",
+         "ordinal_position" : 7
+      },
+      "due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the due date for the RFI.",
+         "ordinal_position" : 8
+      },
+      "linked_document" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The URN of the document",
+         "ordinal_position" : 9
+      },
+      "linked_document_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The document's version when the RFI was assigned to it",
+         "ordinal_position" : 10
+      },
+      "linked_document_close_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The document's version when the RFI, that assigned to it,  was closed",
+         "ordinal_position" : 11
+      },
+      "official_response" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Official response of the RFI",
+         "ordinal_position" : 12
+      },
+      "official_response_status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "answered",
+            "rejected"
+         ],
+         "notes" : "The RFI official response status of approval (if exists)",
+         "ordinal_position" : 13
+      },
+      "responded_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the RFI was responded to",
+         "ordinal_position" : 14
+      },
+      "responded_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the RFI",
+         "ordinal_position" : 15
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who created the RFI.",
+         "ordinal_position" : 16
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the RFI was created.",
+         "ordinal_position" : 17
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who updated the RFI",
+         "ordinal_position" : 18
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the RFI was updated",
+         "ordinal_position" : 19
+      },
+      "closed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the ID of the user who closed the RFI",
+         "ordinal_position" : 20
+      },
+      "closed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the date and time the RFI was closed",
+         "ordinal_position" : 21
+      },
+      "suggested_answer" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The suggested answer for the RFI.",
+         "ordinal_position" : 22
+      },
+      "manager_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Manager for the RFI",
+         "ordinal_position" : 23
+      },
+      "answered_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The last time the RFI answer attribute was updated.",
+         "ordinal_position" : 24
+      },
+      "answered_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk User ID of the user who updated the RFI answer attribute",
+         "ordinal_position" : 25
+      },
+      "cost_impact" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Yes",
+            "No",
+            "Unknown"
+         ],
+         "notes" : "Is the cost impact of this RFI known?",
+         "ordinal_position" : 26
+      },
+      "schedule_impact" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Yes",
+            "No",
+            "Unknown"
+         ],
+         "notes" : "Is the schedule impact of this RFI known?",
+         "ordinal_position" : 27
+      },
+      "priority" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The priority of he RFI",
+         "ordinal_position" : 28
+      },
+      "reference" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The reference of the RFI",
+         "ordinal_position" : 29
+      },
+      "opened_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the RFI submition or in review date",
+         "ordinal_position" : 30
+      },
+      "location_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The associated Location object ids",
+         "ordinal_position" : 31
+      },
+      "rfi_type" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The type of the RFI",
+         "ordinal_position" : 32
+      },
+      "bridged_source" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the RFI was a source of a bridge action",
+         "ordinal_position" : 33
+      },
+      "bridged_target" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the RFI was a target of a bridge action",
+         "ordinal_position" : 34
+      }
+   }
+}

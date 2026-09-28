@@ -1,0 +1,579 @@
+{
+   "assignees" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Item id which this assignment refer to",
+         "ordinal_position" : 4
+      },
+      "participant_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Assigned participant id",
+         "ordinal_position" : 5
+      },
+      "non_member_participant_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Assigned non-membmer-participant id",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time",
+         "ordinal_position" : 8
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time",
+         "ordinal_position" : 9
+      }
+   },
+   "attachments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Item id",
+         "ordinal_position" : 4
+      },
+      "meeting_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "meeting id",
+         "ordinal_position" : 5
+      },
+      "uri" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "uri of the attachment",
+         "ordinal_position" : 6
+      },
+      "origin" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "docs"
+         ],
+         "notes" : "origin of the attachent (docs, photos, google photos, etc..)",
+         "ordinal_position" : 7
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "attachment's name",
+         "ordinal_position" : 8
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which created this resource",
+         "ordinal_position" : 9
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which last updated this resource",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 11
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time",
+         "ordinal_position" : 12
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time",
+         "ordinal_position" : 13
+      }
+   },
+   "items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "topic_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "topic id",
+         "ordinal_position" : 4
+      },
+      "order_index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "order index of the item in its topic",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Item's content",
+         "ordinal_position" : 6
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "open",
+            "closed"
+         ],
+         "notes" : "item's status",
+         "ordinal_position" : 7
+      },
+      "cross_series_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "item's series id, all followup items have same series id",
+         "ordinal_position" : 8
+      },
+      "due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "item's due date",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which created this resource",
+         "ordinal_position" : 10
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which last updated this resource",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time",
+         "ordinal_position" : 13
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time",
+         "ordinal_position" : 14
+      }
+   },
+   "meetings" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "series_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "meeting's series id, all followup meetings have same series id",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "meeting's title",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "meeting's description/agenda",
+         "ordinal_position" : 6
+      },
+      "summary" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "meeting's summary",
+         "ordinal_position" : 7
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "open",
+            "minutes"
+         ],
+         "notes" : "meeting's status",
+         "ordinal_position" : 8
+      },
+      "num_in_series" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "meeting's index in the series",
+         "ordinal_position" : 9
+      },
+      "meeting_location" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "meetings location, free text",
+         "ordinal_position" : 10
+      },
+      "starts_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "meeting's beginning time",
+         "ordinal_position" : 11
+      },
+      "duration" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "meeting's duration",
+         "ordinal_position" : 12
+      },
+      "video_conference_link" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "link for the video conference",
+         "ordinal_position" : 13
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which created this resource",
+         "ordinal_position" : 14
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which last updated this resource",
+         "ordinal_position" : 15
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 16
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time",
+         "ordinal_position" : 17
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time",
+         "ordinal_position" : 18
+      }
+   },
+   "non_member_participants" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "meeting_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "meeting id",
+         "ordinal_position" : 4
+      },
+      "first_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "participant's first name",
+         "ordinal_position" : 5
+      },
+      "last_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "participant's last name",
+         "ordinal_position" : 6
+      },
+      "company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "participant's company name",
+         "ordinal_position" : 7
+      },
+      "email" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "participant's email",
+         "ordinal_position" : 8
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "present",
+            "missing"
+         ],
+         "notes" : "participant's status",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which created this resource",
+         "ordinal_position" : 10
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which last updated this resource",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time",
+         "ordinal_position" : 13
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time",
+         "ordinal_position" : 14
+      }
+   },
+   "participants" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "meeting_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "meeting id",
+         "ordinal_position" : 4
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user autodesk(oxygen) id",
+         "ordinal_position" : 5
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "organizer",
+            "invitee"
+         ],
+         "notes" : "indicate if user is meeitng's organizer or invitee",
+         "ordinal_position" : 6
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "present",
+            "missing"
+         ],
+         "notes" : "participant's status",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which created this resource",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which last updated this resource",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time",
+         "ordinal_position" : 11
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time",
+         "ordinal_position" : 12
+      }
+   },
+   "topics" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "meeting_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "meeting id",
+         "ordinal_position" : 4
+      },
+      "order_index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "order index of the item in its meeting",
+         "ordinal_position" : 5
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "topic's title/description",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which created this resource",
+         "ordinal_position" : 7
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "user id which last updated this resource",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time",
+         "ordinal_position" : 10
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time",
+         "ordinal_position" : 11
+      }
+   }
+}

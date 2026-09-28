@@ -1,0 +1,1318 @@
+{
+   "asset_custom_attribute_values" : {
+      "asset_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Asset this value is for",
+         "ordinal_position" : 1
+      },
+      "custom_attribute_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Custom Attribute that defines the context of this value",
+         "ordinal_position" : 2
+      },
+      "value_boolean" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "The value of the Custom Attribute for 'boolean' Custom Attribute data_types. One, and only one, of value_boolean or value_string will be populated.",
+         "ordinal_position" : 3
+      },
+      "value_string" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The value of the Custom Attribute for 'text', 'numeric', 'date', 'select' and 'multi_select' Custom Attribute data_types. One, and only one, of value_boolean or value_string will be populated.\n\nFor 'numeric' data_types, the value will be a string that parses to a floating point number, e.g. \"46.2\"\n\nFor 'date' data_types, the value will be an ISO8601 date string with no time, e.g. \"2020-04-10\"\n\nFor 'select' and 'multi_select` data_types, the value will be a FOREIGN_KEY: custom_attribute_selection_values,id. The custom_attribute_selection_values,id key will be one of the custom_attribute_selection_values for the Custom Attribute described by custom_attribute_id.\n\nNote: 'multi_select' data_types can have more than one value per Asset. All other types have a maximum of a single value per Asset.",
+         "ordinal_position" : 4
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 6
+      }
+   },
+   "asset_model_sync_records" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "asset_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the Asset the model object has been synced to",
+         "ordinal_position" : 5
+      },
+      "model_lineage_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The URN of the model file's versioned lineage",
+         "ordinal_position" : 6
+      },
+      "model_object_guid" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A globally unique identifier for a model object set by ACS Assets service",
+         "ordinal_position" : 7
+      },
+      "model_external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "An ID for externally identifying a model object that comes directly from the model file. This is ofen a GUID (e.g. for Revit files), but not always.",
+         "ordinal_position" : 8
+      },
+      "synced_model_version_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The versioned URN of the model file's lineage that was actually synced to the Asset",
+         "ordinal_position" : 9
+      },
+      "synced_model_version_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The version of the URN of the model file's lineage that was actually synced to the Asset",
+         "ordinal_position" : 10
+      },
+      "model_svf2_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "An integer ID commonly used internally in model files that is stable across versions of the model file",
+         "ordinal_position" : 11
+      },
+      "model_lmv_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "An integer ID commonly used internally in model files for older file types that do not support SVF2",
+         "ordinal_position" : 12
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 13
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 14
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 15
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 16
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 17
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 18
+      }
+   },
+   "asset_permissions" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "permission_policy_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The type of the permission assigned to the subject and resource",
+         "ordinal_position" : 5
+      },
+      "subject_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Indicates the type of the subject to which the permission applies",
+         "ordinal_position" : 6
+      },
+      "subject_oxygen_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Oxygen ID of the user or user group to which the permission applies",
+         "ordinal_position" : 7
+      },
+      "subject_acs_admin_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The UUID identifier of a user or user group, as defined in the ACC Admin APIs,  to which the permission applies",
+         "ordinal_position" : 8
+      },
+      "resource_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The type of the resource associated with a permission",
+         "ordinal_position" : 9
+      },
+      "resource_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The identifier of the resource to which this permission is assigned",
+         "ordinal_position" : 10
+      },
+      "effect" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The effect of the permission",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 12
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 13
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 14
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 15
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 16
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 17
+      }
+   },
+   "asset_stages" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "asset_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the Asset this Asset Stage belongs to",
+         "ordinal_position" : 3
+      },
+      "bound_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The type of joined object this stage belongs to",
+         "ordinal_position" : 4
+      },
+      "bound_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The joined object this stage belongs to",
+         "ordinal_position" : 5
+      },
+      "completed_work" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The completed amount of work",
+         "ordinal_position" : 6
+      },
+      "max_work" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total amount of work to be completed",
+         "ordinal_position" : 7
+      },
+      "unit_of_work" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The unit of work",
+         "ordinal_position" : 8
+      },
+      "started_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Start time",
+         "ordinal_position" : 9
+      },
+      "started_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the start actor",
+         "ordinal_position" : 10
+      },
+      "completed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Completion time",
+         "ordinal_position" : 11
+      },
+      "completed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the complete actor",
+         "ordinal_position" : 12
+      },
+      "completion_status" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Completion status of the asset stages",
+         "ordinal_position" : 13
+      },
+      "is_current" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Whether this stage is the current",
+         "ordinal_position" : 14
+      },
+      "category_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The category id of the stage",
+         "ordinal_position" : 15
+      },
+      "location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 Locations ID of the Location of this Asset Stage",
+         "ordinal_position" : 16
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 17
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 18
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 19
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 20
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 21
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 22
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 23
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 24
+      }
+   },
+   "asset_statuses" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "label" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Displayable name",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Description of the asset status",
+         "ordinal_position" : 6
+      },
+      "status_set_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Status Set the Asset Status is assigned to",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 8
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 10
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 11
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 12
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 13
+      },
+      "sort_order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sort order of the Asset Status within the Status Set",
+         "ordinal_position" : 14
+      }
+   },
+   "assets" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "client_asset_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Client generated Identifier",
+         "ordinal_position" : 3
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Description of the asset",
+         "ordinal_position" : 4
+      },
+      "category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Identifier of the Category this Asset is assigned to",
+         "ordinal_position" : 5
+      },
+      "status_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Assets Status this Asset is assigned to",
+         "ordinal_position" : 6
+      },
+      "location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 Locations ID or the Location this Asset is assigned",
+         "ordinal_position" : 7
+      },
+      "company_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Company Identifier",
+         "ordinal_position" : 8
+      },
+      "barcode" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Barcode for the asset",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 10
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 11
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 12
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 13
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 14
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 15
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 16
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 17
+      }
+   },
+   "categories" : {
+      "id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Internal Identifier (Legacy)",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Displayable name",
+         "ordinal_position" : 3
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Description of the category",
+         "ordinal_position" : 4
+      },
+      "parent_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Identifier (Legacy) of the Parent Category. If not present, Category is ROOT.",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 9
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 10
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 11
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 12
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 13
+      },
+      "uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal identifier (Globally Unique)",
+         "ordinal_position" : 14
+      },
+      "category_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Type of category. Systems and assets have distinct category trees.",
+         "ordinal_position" : 15
+      },
+      "parent_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier (Globally Unique) of the Parent Category. If not present, Category is ROOT.",
+         "ordinal_position" : 16
+      }
+   },
+   "category_custom_attribute_assignments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Identifier of the Category the Custom Attribute is being assigned to",
+         "ordinal_position" : 5
+      },
+      "custom_attribute_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Custom Attribute being assigned to a Category",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 9
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 10
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 11
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 12
+      }
+   },
+   "category_status_set_assignments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Identifier (Legacy) of the Category the Status Set is being assigned to",
+         "ordinal_position" : 5
+      },
+      "status_set_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Status Set being assigned to a Category",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 9
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 10
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 11
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 12
+      },
+      "category_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Type of category. Systems and assets have distinct category trees.",
+         "ordinal_position" : 13
+      },
+      "category_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier (Globally Unique) of the Category the Status Set is being assigned to",
+         "ordinal_position" : 14
+      }
+   },
+   "custom_attribute_default_values" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "custom_attribute_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 3
+      },
+      "default_value_boolean" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Default value for the Custom Attribute for an Asset for 'boolean' data_types. One, and only one, of default_value_boolean or default_value_string will be populated.",
+         "ordinal_position" : 4
+      },
+      "default_value_string" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Default value for the Custom Attribute for an Asset for 'text', 'numeric', 'date', 'select', and 'multi_select' data_types. One, and only one, of default_value_boolean or default_value_string will be populated.\n\nFor 'select' and 'multi_select` data_types, the value will be a FOREIGN_KEY: custom_attribute_selection_values,id. The custom_attribute_selection_values,id key will be one of the custom_attribute_selection_values for the Custom Attribute described by custom_attribute_id.\n\nNote: 'multi_select' data_types can have more than one default value per Custom Attribute. All other types have a maximum of a single default value per Custom Attribute.",
+         "ordinal_position" : 5
+      }
+   },
+   "custom_attribute_selection_values" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Displayable name",
+         "ordinal_position" : 5
+      },
+      "custom_attribute_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 9
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 10
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 11
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 12
+      }
+   },
+   "custom_attributes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Internal name of the Custom Attribute",
+         "ordinal_position" : 5
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Displayable name",
+         "ordinal_position" : 6
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Description of the custom attribute",
+         "ordinal_position" : 7
+      },
+      "data_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The Data Type of the Custom Attribute. Used to determine which additional columns will be applicable, and what their data_type will be for the Custom Attribute. Used to determine the populated value field of the value for this Custom Attribute on an Asset (i.e. value_boolean, value_string, or value_array)",
+         "ordinal_position" : 8
+      },
+      "required_on_ingress" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Does NOT guarantee the presence of a value for the Custom Attribute on an Asset if True",
+         "ordinal_position" : 9
+      },
+      "max_length_on_ingress" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Defines a max length that can be set for the Custom Attribute when editing an Asset. Does not guarantee that all existing Assets values for the Custom Attribute will meet this max length.",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 11
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 13
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 14
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 15
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 16
+      }
+   },
+   "model_sync_containers" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "model_lineage_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The URN of the model file's versioned lineage",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 9
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 10
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 11
+      }
+   },
+   "status_sets" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Displayable name",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Description of the status set",
+         "ordinal_position" : 6
+      },
+      "is_default" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A Project will always have a single \"Default\" Status Set created for the Project upon initialization. All other Status Sets will be user created and is_default = false",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 8
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 10
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 11
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 12
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 13
+      }
+   },
+   "system_memberships" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 2
+      },
+      "system_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Parent System",
+         "ordinal_position" : 3
+      },
+      "member_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Type of the System member. Systems can contain Assets or other Systems.",
+         "ordinal_position" : 4
+      },
+      "member_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Member System",
+         "ordinal_position" : 5
+      }
+   },
+   "systems" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Internal Identifier",
+         "ordinal_position" : 1
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential version. Incremented each time the item is modified in any way.",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of Assets data",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Displayable name",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Description of the system",
+         "ordinal_position" : 6
+      },
+      "category_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier (Globally Unique) of the Category this System is assigned to",
+         "ordinal_position" : 7
+      },
+      "status_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the Assets Status this System is assigned to",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the create actor",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Most recent update time",
+         "ordinal_position" : 11
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the most recent update actor",
+         "ordinal_position" : 12
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time. If deleted_at === null, the entity is considered active.",
+         "ordinal_position" : 13
+      },
+      "deleted_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "User (Oxygen) ID of the delete actor",
+         "ordinal_position" : 14
+      }
+   }
+}

@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>meetingminutes: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>meetingminutes Schema Description</h1>
+<b>Documentation Updated: </b>2023-12-04<br/>
+<ul><li><a href="#assignees">assignees</a></li>
+<li><a href="#attachments">attachments</a></li>
+<li><a href="#items">items</a></li>
+<li><a href="#meetings">meetings</a></li>
+<li><a href="#non_member_participants">non_member_participants</a></li>
+<li><a href="#participants">participants</a></li>
+<li><a href="#topics">topics</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="assignees">assignees</a></h2>Item Assignments<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Item id which this assignment refer to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>participant_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Assigned participant id<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> participants<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>6</td><td>non_member_participant_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Assigned non-membmer-participant id<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> non_member_participants<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time</td></tr>
+<tr><td>9</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Deletion time</td></tr>
+</tbody></table><h2><a name="attachments">attachments</a></h2>BIM 360 only - Meeting/item Attachments<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Item id<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>meeting_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">meeting id<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> meetings<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>6</td><td>uri</td><td>string</td><td></td><td>uri of the attachment</td></tr>
+<tr><td>7</td><td>origin</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>docs</li></ul></td><td>origin of the attachent (docs, photos, google photos, etc..)</td></tr>
+<tr><td>8</td><td>name</td><td>string</td><td></td><td>attachment's name</td></tr>
+<tr><td>9</td><td>created_by</td><td>string</td><td></td><td>user id which created this resource</td></tr>
+<tr><td>10</td><td>updated_by</td><td>string</td><td></td><td>user id which last updated this resource</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>12</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time</td></tr>
+<tr><td>13</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Deletion time</td></tr>
+</tbody></table><h2><a name="items">items</a></h2>Meeting items<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>4</td><td>topic_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">topic id<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> topics<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>order_index</td><td>number</td><td></td><td>order index of the item in its topic</td></tr>
+<tr><td>6</td><td>description</td><td>string</td><td></td><td>Item's content</td></tr>
+<tr><td>7</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>open</li>
+<li>closed</li></ul></td><td>item's status</td></tr>
+<tr><td>8</td><td>cross_series_id</td><td>string: UUID</td><td></td><td>item's series id, all followup items have same series id</td></tr>
+<tr><td>9</td><td>due_date</td><td>timestamp: SQL</td><td></td><td>item's due date</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>user id which created this resource</td></tr>
+<tr><td>11</td><td>updated_by</td><td>string</td><td></td><td>user id which last updated this resource</td></tr>
+<tr><td>12</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time</td></tr>
+<tr><td>14</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Deletion time</td></tr>
+</tbody></table><h2><a name="meetings">meetings</a></h2>Meetings<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>4</td><td>series_id</td><td>string: UUID</td><td></td><td>meeting's series id, all followup meetings have same series id</td></tr>
+<tr><td>5</td><td>title</td><td>string</td><td></td><td>meeting's title</td></tr>
+<tr><td>6</td><td>description</td><td>string</td><td></td><td>meeting's description/agenda</td></tr>
+<tr><td>7</td><td>summary</td><td>string</td><td></td><td>meeting's summary</td></tr>
+<tr><td>8</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>open</li>
+<li>minutes</li></ul></td><td>meeting's status</td></tr>
+<tr><td>9</td><td>num_in_series</td><td>number</td><td></td><td>meeting's index in the series</td></tr>
+<tr><td>10</td><td>meeting_location</td><td>string</td><td></td><td>meetings location, free text</td></tr>
+<tr><td>11</td><td>starts_at</td><td>timestamp: SQL</td><td></td><td>meeting's beginning time</td></tr>
+<tr><td>12</td><td>duration</td><td>number</td><td></td><td>meeting's duration</td></tr>
+<tr><td>13</td><td>video_conference_link</td><td>string</td><td></td><td>link for the video conference</td></tr>
+<tr><td>14</td><td>created_by</td><td>string</td><td></td><td>user id which created this resource</td></tr>
+<tr><td>15</td><td>updated_by</td><td>string</td><td></td><td>user id which last updated this resource</td></tr>
+<tr><td>16</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>17</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time</td></tr>
+<tr><td>18</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Deletion time</td></tr>
+</tbody></table><h2><a name="non_member_participants">non_member_participants</a></h2>Meeting non-membmer-participants - participants that doen't have oxygen id<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>4</td><td>meeting_id</td><td>string: UUID</td><td>multi-column unquie</td><td><span style="color: #1A59A8;">meeting id<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> meetings<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>first_name</td><td>string</td><td></td><td>participant's first name</td></tr>
+<tr><td>6</td><td>last_name</td><td>string</td><td></td><td>participant's last name</td></tr>
+<tr><td>7</td><td>company</td><td>string</td><td></td><td>participant's company name</td></tr>
+<tr><td>8</td><td>email</td><td>string</td><td></td><td>participant's email</td></tr>
+<tr><td>9</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>present</li>
+<li>missing</li></ul></td><td>participant's status</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>user id which created this resource</td></tr>
+<tr><td>11</td><td>updated_by</td><td>string</td><td></td><td>user id which last updated this resource</td></tr>
+<tr><td>12</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time</td></tr>
+<tr><td>14</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Deletion time</td></tr>
+</tbody></table><h2><a name="participants">participants</a></h2>Meeting participants<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>4</td><td>meeting_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">meeting id<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> meetings<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>autodesk_id</td><td>string</td><td></td><td>user autodesk(oxygen) id</td></tr>
+<tr><td>6</td><td>type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>organizer</li>
+<li>invitee</li></ul></td><td>indicate if user is meeitng's organizer or invitee</td></tr>
+<tr><td>7</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>present</li>
+<li>missing</li></ul></td><td>participant's status</td></tr>
+<tr><td>8</td><td>created_by</td><td>string</td><td></td><td>user id which created this resource</td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>user id which last updated this resource</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time</td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Deletion time</td></tr>
+</tbody></table><h2><a name="topics">topics</a></h2>Meeting topics<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>4</td><td>meeting_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">meeting id<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> meetings<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>order_index</td><td>number</td><td></td><td>order index of the item in its meeting</td></tr>
+<tr><td>6</td><td>name</td><td>string</td><td></td><td>topic's title/description</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>user id which created this resource</td></tr>
+<tr><td>8</td><td>updated_by</td><td>string</td><td></td><td>user id which last updated this resource</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Deletion time</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

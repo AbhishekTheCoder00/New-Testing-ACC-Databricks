@@ -1,0 +1,406 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>rfis: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>rfis Schema Description</h1>
+<b>Documentation Updated: </b>2025-01-29<br/>
+<ul><li><a href="#acc_attachments">acc_attachments</a></li>
+<li><a href="#attachments">attachments</a></li>
+<li><a href="#category">category</a></li>
+<li><a href="#comments">comments</a></li>
+<li><a href="#discipline">discipline</a></li>
+<li><a href="#project_custom_attributes">project_custom_attributes</a></li>
+<li><a href="#project_custom_attributes_enums">project_custom_attributes_enums</a></li>
+<li><a href="#rfi_assignees">rfi_assignees</a></li>
+<li><a href="#rfi_co_reviewers">rfi_co_reviewers</a></li>
+<li><a href="#rfi_custom_attributes">rfi_custom_attributes</a></li>
+<li><a href="#rfi_distribution_list">rfi_distribution_list</a></li>
+<li><a href="#rfi_location">rfi_location</a></li>
+<li><a href="#rfi_responses">rfi_responses</a></li>
+<li><a href="#rfi_reviewers">rfi_reviewers</a></li>
+<li><a href="#rfi_transitions">rfi_transitions</a></li>
+<li><a href="#rfi_types">rfi_types</a></li>
+<li><a href="#rfis">rfis</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="acc_attachments">acc_attachments</a></h2>The attachments associated with ACC RFIs<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID for the acc attachment</td></tr>
+<tr><td>2</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis.id The ID for the RFI<br/><strong>Column: </strong> </span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>5</td><td>entity_id</td><td>string: UUID</td><td></td><td>The entity ID the attachment associated with</td></tr>
+<tr><td>6</td><td>entity_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>rfiResponse</li>
+<li>rfiOfficialResponse</li></ul></td><td>The entity type the attachment associated with</td></tr>
+<tr><td>7</td><td>display_name</td><td>string</td><td></td><td>The name of the attachment</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the attachment was created</td></tr>
+<tr><td>9</td><td>created_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who created the attachment.</td></tr>
+<tr><td>10</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the attachment was deleted. This is only relevant for deleted attachments.</td></tr>
+<tr><td>11</td><td>deleted_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who deleted the attachment. This is only relevant for deleted attachments.</td></tr>
+</tbody></table><h2><a name="attachments">attachments</a></h2>The attachments associated with BIM 360 Project Management RFIs.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the attachment.</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the attachment was created</td></tr>
+<tr><td>6</td><td>created_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who created the attachment.</td></tr>
+<tr><td>7</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The last time the attachment attributes were updated</td></tr>
+<tr><td>8</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the attachment was deleted This is only relevant for deleted attachments.</td></tr>
+<tr><td>9</td><td>deleted_by</td><td>string</td><td></td><td>The Autodek User ID of the user who deleted the attachment. This is only relevant for deleted attachments.</td></tr>
+<tr><td>10</td><td>name</td><td>string</td><td></td><td>The name of the attachment.</td></tr>
+</tbody></table><h2><a name="category">category</a></h2>Alternative reviewers for RFIs<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>category</td><td>string</td><td></td><td>The category to associate with this RFI</td></tr>
+</tbody></table><h2><a name="comments">comments</a></h2>Comments associated with BIM 360 Project Management RFIs.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the comment.</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the comment was created.</td></tr>
+<tr><td>6</td><td>created_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who created the comment.</td></tr>
+<tr><td>7</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The last time the comment attributes were updated.</td></tr>
+<tr><td>8</td><td>body</td><td>string</td><td></td><td>The content of the comment</td></tr>
+</tbody></table><h2><a name="discipline">discipline</a></h2>Alternative reviewers for RFIs<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>discipline</td><td>string</td><td></td><td>The discipline to associate with this RFI</td></tr>
+</tbody></table><h2><a name="project_custom_attributes">project_custom_attributes</a></h2>The Custom Attributes per project<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the Project Custom Attributes</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>The name of the Custom Attribute</td></tr>
+<tr><td>5</td><td>type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>text</li>
+<li>numeric</li></ul></td><td>The type of the Custom Attribute</td></tr>
+<tr><td>6</td><td>description</td><td>string</td><td></td><td>Description of the Custom Attribute</td></tr>
+<tr><td>7</td><td>multiple_choice</td><td>boolean</td><td></td><td>When the value is NULL then the field is not selectable. When the value is false it is a single select. When the value is TRUE then the value is multi select.</td></tr>
+<tr><td>8</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>active</li>
+<li>inactive</li>
+<li>hidden</li></ul></td><td>Active: default status when the Custom Attribute is active. Inactive: when the Custom Attribute is not active(reversible). Hidden - when the Custom Attribute is soft deleted(not reversible)</td></tr>
+</tbody></table><h2><a name="project_custom_attributes_enums">project_custom_attributes_enums</a></h2>The Custom Attributes Enums options for the selectable Custom Attributes per container<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the Project Custom Attributes Enums</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>custom_attribute_id</td><td>string: UUID</td><td></td><td>The Custom Attribute ID which has the selectable value</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td></td><td>The value of the enum</td></tr>
+</tbody></table><h2><a name="rfi_assignees">rfi_assignees</a></h2>The assignees associated with the RFIs.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the assignee.</td></tr>
+<tr><td>2</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>5</td><td>oxygen_id</td><td>string</td><td></td><td>The Autodesk User ID of the user assignee.</td></tr>
+<tr><td>6</td><td>type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>user</li></ul></td><td>The assignee type</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time of the assignee assigment</td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The last time the assignee attributes were updated</td></tr>
+<tr><td>9</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the assignee was deleted This is only relevant for deleted assignee.</td></tr>
+</tbody></table><h2><a name="rfi_co_reviewers">rfi_co_reviewers</a></h2>Alternative reviewers for RFIs<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>user_id</td><td>string</td><td></td><td>The Autodesk User ID of the alternate reviewer</td></tr>
+</tbody></table><h2><a name="rfi_custom_attributes">rfi_custom_attributes</a></h2>The table that indicates which custom attribute value related to a specific RFI<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the Rfi Custom Attribute</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>rfi_id</td><td>string: UUID</td><td></td><td>The ID for the RFI</td></tr>
+<tr><td>5</td><td>custom_attribute_id</td><td>string: UUID</td><td></td><td>The Custom Attribute ID which the value was set for</td></tr>
+<tr><td>6</td><td>value_enum_id</td><td>string: UUID</td><td></td><td>If the custom attribute is selectable (not free text/numbers) then the value will be a UUID in container_custom_attributes_enums which is the selected value. If the Custom Attribute is multi select and more then one selected then more than one value_enum_id will appear for the same custom_attribute_id</td></tr>
+<tr><td>7</td><td>value_float</td><td>number</td><td></td><td>The numeric value of a Custom Attribute</td></tr>
+<tr><td>8</td><td>value_str</td><td>string</td><td></td><td>The textual value of a Custom Attribute</td></tr>
+</tbody></table><h2><a name="rfi_distribution_list">rfi_distribution_list</a></h2>List of users who will be notified of changes to the RFI.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>user_id</td><td>string</td><td></td><td>The Autodesk User ID of the user to be notified of changes to RFI.</td></tr>
+</tbody></table><h2><a name="rfi_location">rfi_location</a></h2>The location details for an RFI<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>location</td><td>string</td><td></td><td>A description of the location of the RFI in the construction project.</td></tr>
+</tbody></table><h2><a name="rfi_responses">rfi_responses</a></h2>The responses associated with the RFIs.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the response.</td></tr>
+<tr><td>2</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>5</td><td>content</td><td>string</td><td></td><td>The content of the response</td></tr>
+<tr><td>6</td><td>updated_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who updated the response.</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who created the response.</td></tr>
+<tr><td>8</td><td>on_behalf</td><td>string</td><td></td><td>The Autodesk User ID of the user assignee.</td></tr>
+<tr><td>9</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>answered</li>
+<li>rejected</li></ul></td><td>The response status</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the response was created</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The last time the response attributes were updated</td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the response was deleted This is only relevant for deleted responses.</td></tr>
+<tr><td>13</td><td>state</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>submitted</li>
+<li>draft</li></ul></td><td>The response state</td></tr>
+</tbody></table><h2><a name="rfi_reviewers">rfi_reviewers</a></h2>Reviewers for RFIs<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>rfi_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the RFI.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> rfis<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>user_id</td><td>string</td><td></td><td>The Autodesk User ID of the reviewer</td></tr>
+<tr><td>5</td><td>type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>user</li></ul></td><td>Reviewer type</td></tr>
+</tbody></table><h2><a name="rfi_transitions">rfi_transitions</a></h2>The lifecycle of the RFI - each row represents a transition of the RFI from one status to another<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the transition</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>rfi_id</td><td>string: UUID</td><td></td><td>The RFI ID for the transition</td></tr>
+<tr><td>5</td><td>from_status</td><td>string: null</td><td><strong>Possible Values:</strong><br/><ul><li>draft</li>
+<li>submitted</li>
+<li>open</li>
+<li>answered</li>
+<li>openRev1</li>
+<li>answeredRev1</li>
+<li>openRev2</li>
+<li>answeredManager</li>
+<li>closed</li>
+<li>void</li></ul></td><td>The status of the RFI before the transition occurred. If the RFI was newly created, the value will be null.</td></tr>
+<tr><td>6</td><td>to_status</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>draft</li>
+<li>submitted</li>
+<li>open</li>
+<li>answered</li>
+<li>openRev1</li>
+<li>answeredRev1</li>
+<li>openRev2</li>
+<li>answeredManager</li>
+<li>closed</li>
+<li>void</li></ul></td><td>The status of the RFI after the transition.</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the RFI transition was made.</td></tr>
+<tr><td>8</td><td>created_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who made the transition.</td></tr>
+</tbody></table><h2><a name="rfi_types">rfi_types</a></h2>The type of the RFI<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the RFI Type</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>The name of the RFI Type</td></tr>
+<tr><td>5</td><td>wf_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>reviewer_only</li>
+<li>reviewer_and_coordinator</li>
+<li>unknown</li></ul></td><td>The workflow type of the RFI Type</td></tr>
+</tbody></table><h2><a name="rfis">rfis</a></h2>Information about all the BIM 360 RFIs (requests for information) in a project, including details about their associated comments and attachments.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID for the RFI.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of RFI data</td></tr>
+<tr><td>4</td><td>custom_identifier</td><td>string</td><td>Max length: 15 + Unique per container</td><td>Custom identifier for the RFI</td></tr>
+<tr><td>5</td><td>title</td><td>string</td><td></td><td>Title for the RFI</td></tr>
+<tr><td>6</td><td>question</td><td>string</td><td></td><td>Question for the RFI</td></tr>
+<tr><td>7</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>draft</li>
+<li>submitted</li>
+<li>open</li>
+<li>answered</li>
+<li>openRev1</li>
+<li>answeredRev1</li>
+<li>openRev2</li>
+<li>answeredManager</li>
+<li>closed</li>
+<li>void</li></ul></td><td>The current status of the RFI.</td></tr>
+<tr><td>8</td><td>due_date</td><td>timestamp: SQL</td><td></td><td>The timestamp of the due date for the RFI.</td></tr>
+<tr><td>9</td><td>linked_document</td><td>string</td><td></td><td>The URN of the document</td></tr>
+<tr><td>10</td><td>linked_document_version</td><td>number</td><td></td><td>The document's version when the RFI was assigned to it</td></tr>
+<tr><td>11</td><td>linked_document_close_version</td><td>number</td><td></td><td>The document's version when the RFI, that assigned to it,  was closed</td></tr>
+<tr><td>12</td><td>official_response</td><td>string</td><td></td><td>Official response of the RFI</td></tr>
+<tr><td>13</td><td>official_response_status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>answered</li>
+<li>rejected</li></ul></td><td>The RFI official response status of approval (if exists)</td></tr>
+<tr><td>14</td><td>responded_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the RFI was responded to</td></tr>
+<tr><td>15</td><td>responded_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the RFI</td></tr>
+<tr><td>16</td><td>created_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who created the RFI.</td></tr>
+<tr><td>17</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the RFI was created.</td></tr>
+<tr><td>18</td><td>updated_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who updated the RFI</td></tr>
+<tr><td>19</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the RFI was updated</td></tr>
+<tr><td>20</td><td>closed_by</td><td>string</td><td></td><td>The Autodesk User ID of the ID of the user who closed the RFI</td></tr>
+<tr><td>21</td><td>closed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the date and time the RFI was closed</td></tr>
+<tr><td>22</td><td>suggested_answer</td><td>string</td><td></td><td>The suggested answer for the RFI.</td></tr>
+<tr><td>23</td><td>manager_id</td><td>string</td><td></td><td>Manager for the RFI</td></tr>
+<tr><td>24</td><td>answered_at</td><td>timestamp: SQL</td><td></td><td>The last time the RFI answer attribute was updated.</td></tr>
+<tr><td>25</td><td>answered_by</td><td>string</td><td></td><td>The Autodesk User ID of the user who updated the RFI answer attribute</td></tr>
+<tr><td>26</td><td>cost_impact</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>Yes</li>
+<li>No</li>
+<li>Unknown</li></ul></td><td>Is the cost impact of this RFI known?</td></tr>
+<tr><td>27</td><td>schedule_impact</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>Yes</li>
+<li>No</li>
+<li>Unknown</li></ul></td><td>Is the schedule impact of this RFI known?</td></tr>
+<tr><td>28</td><td>priority</td><td>string</td><td></td><td>The priority of he RFI</td></tr>
+<tr><td>29</td><td>reference</td><td>string</td><td>Max length: 20</td><td>The reference of the RFI</td></tr>
+<tr><td>30</td><td>opened_at</td><td>timestamp: SQL</td><td></td><td>The timestamp of the RFI submition or in review date</td></tr>
+<tr><td>31</td><td>location_id</td><td>string</td><td></td><td>The associated Location object ids</td></tr>
+<tr><td>32</td><td>rfi_type</td><td>string: UUID</td><td></td><td>The type of the RFI</td></tr>
+<tr><td>33</td><td>bridged_source</td><td>boolean</td><td></td><td>Is the RFI was a source of a bridge action</td></tr>
+<tr><td>34</td><td>bridged_target</td><td>boolean</td><td></td><td>Is the RFI was a target of a bridge action</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

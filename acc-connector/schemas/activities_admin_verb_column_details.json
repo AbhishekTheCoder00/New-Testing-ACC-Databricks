@@ -1,0 +1,469 @@
+{
+   "assign-admin" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_access_change_list",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_services_list",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "assign-member" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_access_change_list",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "change-forge-app-status" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_status",
+         "object_status_was"
+      ]
+   },
+   "change-project-status" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_status",
+         "object_status_was"
+      ]
+   },
+   "change-user-status" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_size",
+         "object_status",
+         "object_status_was"
+      ]
+   },
+   "create-account-role" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "create-company" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "create-forge-app" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "create-project" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "create-project-company" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "create-user" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "delete-company" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "delete-forge-app" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "delete-project-company" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "delete-user" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "disable-company-creation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "disable-project-creation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "edit-account" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_allow_edit_company",
+         "object_display_name",
+         "object_id",
+         "object_name",
+         "object_name_was",
+         "object_object_type",
+         "object_update_image"
+      ]
+   },
+   "edit-bu" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "edit-company" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_name",
+         "object_name_was",
+         "object_object_type",
+         "object_update_image",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "edit-project" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_name",
+         "object_name_was",
+         "object_object_type",
+         "object_update_image"
+      ]
+   },
+   "edit-user" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_access_change_list",
+         "object_added_services",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_removed_services",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "enable-company-creation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "enable-project-creation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "export-users" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "import-users" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_id",
+         "object_object_type",
+         "object_size"
+      ]
+   },
+   "invite-developer-to-app" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "remove-admin" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_access_change_list",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "remove-member" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_access_change_list",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "resend-invitation-to-developer" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "resend-invitations" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_id",
+         "object_object_type",
+         "object_size"
+      ]
+   },
+   "update-account-role" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_default_access_level",
+         "object_display_name",
+         "object_id",
+         "object_name",
+         "object_object_type",
+         "object_service_name",
+         "object_status",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   }
+}

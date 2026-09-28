@@ -1,0 +1,4023 @@
+{
+   "approval_workflows" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The uniq ID of the approval workflow.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of. the approval worflow.",
+         "ordinal_position" : 4
+      },
+      "association_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the entity the approval workflow is associated to.",
+         "ordinal_position" : 5
+      },
+      "association_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the entity the approval workflow is associated to.",
+         "ordinal_position" : 6
+      },
+      "current_step_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the current review step.",
+         "ordinal_position" : 7
+      },
+      "current_assigned_users" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk IDs of the users that are assgined to in current step.",
+         "ordinal_position" : 8
+      },
+      "current_assigned_groups" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk IDs of the companies or roles that are assgined to in current step.",
+         "ordinal_position" : 9
+      },
+      "reviewed_users" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The IDs of the users that have completed the review.",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is created.",
+         "ordinal_position" : 11
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is last modified.",
+         "ordinal_position" : 12
+      },
+      "current_due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The due date of the current review step.",
+         "ordinal_position" : 13
+      }
+   },
+   "budget_code_segment_codes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the code in the budget code segment.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "parent_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The parent ID of the code.",
+         "ordinal_position" : 4
+      },
+      "segment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The segment ID of the code.",
+         "ordinal_position" : 5
+      },
+      "code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display code, with appended # if the segment is fixed length.",
+         "ordinal_position" : 6
+      },
+      "original_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The original code when it's imported from Excel.",
+         "ordinal_position" : 7
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The description of the code.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the code is created.",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the code is last modified.",
+         "ordinal_position" : 10
+      }
+   },
+   "budget_code_segments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the budget code segment.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the budget code segment.",
+         "ordinal_position" : 4
+      },
+      "length" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The length of the code in the segment.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The position of the segment in the template.",
+         "ordinal_position" : 6
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the segment. Possible values: code, info, column",
+         "ordinal_position" : 7
+      },
+      "delimiter" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The delimiter of the code of this segment to the code of the next segment.",
+         "ordinal_position" : 8
+      },
+      "sample_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The sample code of the segment.",
+         "ordinal_position" : 9
+      },
+      "is_variable_length" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "The flag to indicate whether the code of this segment is fixed or variable length.",
+         "ordinal_position" : 10
+      },
+      "is_locked" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "The flag to indicate whether the segment is locked to disable editing or adding new codes.",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the segment is created.",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the segment is last modified.",
+         "ordinal_position" : 13
+      }
+   },
+   "budget_payment_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of a budget payment item - auto generated.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "payment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the payment that the item is in.",
+         "ordinal_position" : 4
+      },
+      "parent_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The parend item ID if current item is a child.",
+         "ordinal_position" : 5
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Number of an budget payment item.",
+         "ordinal_position" : 6
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of a budget payment item.",
+         "ordinal_position" : 7
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of a budget payment item.",
+         "ordinal_position" : 8
+      },
+      "unit" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The unit of measure of the payment item.",
+         "ordinal_position" : 9
+      },
+      "original_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the scheduled of value.",
+         "ordinal_position" : 10
+      },
+      "original_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity of the scheduled of value.",
+         "ordinal_position" : 11
+      },
+      "original_unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price of the scheduled of value.",
+         "ordinal_position" : 12
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of work completed for this scheduled of value.",
+         "ordinal_position" : 13
+      },
+      "unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price of work completed for this scheduled of value.",
+         "ordinal_position" : 14
+      },
+      "qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity of work completed for this scheduled of value.",
+         "ordinal_position" : 15
+      },
+      "materials_on_store" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount on store quanity for this schedule of value.",
+         "ordinal_position" : 16
+      },
+      "materials_on_store_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity on store quanity for this schedule of value.",
+         "ordinal_position" : 17
+      },
+      "materials_on_store_unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price on store quanity for this schedule of value.",
+         "ordinal_position" : 18
+      },
+      "previous_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The previous amount of work completed.",
+         "ordinal_position" : 19
+      },
+      "previous_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The previous quantity of work completed.",
+         "ordinal_position" : 20
+      },
+      "previous_unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price of previous work complete.",
+         "ordinal_position" : 21
+      },
+      "previous_materials_on_store" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The material on store of previus period.",
+         "ordinal_position" : 22
+      },
+      "completed_work_retention_percent" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The retention % of work complete.",
+         "ordinal_position" : 23
+      },
+      "materials_on_store_retention_percent" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The retention % of material on store.",
+         "ordinal_position" : 24
+      },
+      "completed_work_released" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The released amount for work completed in this period.",
+         "ordinal_position" : 25
+      },
+      "materials_on_store_released" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The released amount for material on store in this period.",
+         "ordinal_position" : 26
+      },
+      "net_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The net amount: work completed + material on store - retention + release.",
+         "ordinal_position" : 27
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of the the payment item.",
+         "ordinal_position" : 28
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 29
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 30
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment item is created.",
+         "ordinal_position" : 31
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment item is last modified.",
+         "ordinal_position" : 32
+      }
+   },
+   "budget_payment_properties" : {
+      "budget_payment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The budget payment ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "budget_payments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the budget payment.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "main_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the main contract the payment is pursuant to.",
+         "ordinal_position" : 4
+      },
+      "start_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The start date of the payment billing period.",
+         "ordinal_position" : 5
+      },
+      "end_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The end date of the payment billing period.",
+         "ordinal_position" : 6
+      },
+      "due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The due date of the payment.",
+         "ordinal_position" : 7
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Number of an budget payment.",
+         "ordinal_position" : 8
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of a budget payment.",
+         "ordinal_position" : 9
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of a budget payment.",
+         "ordinal_position" : 10
+      },
+      "original_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The origianl contracted amount of th",
+         "ordinal_position" : 11
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Work completed of this period of the payment.",
+         "ordinal_position" : 12
+      },
+      "previous_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Work completed in previous payment.",
+         "ordinal_position" : 13
+      },
+      "materials_on_store" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Materials on site of this billing period.",
+         "ordinal_position" : 14
+      },
+      "previous_materials_on_store" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Materials on site of previous billing period.",
+         "ordinal_position" : 15
+      },
+      "approved_change_orders" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total of approved change orders.",
+         "ordinal_position" : 16
+      },
+      "contract_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The current total of the contracted amount: orginal_amount + approved_change_orders",
+         "ordinal_position" : 17
+      },
+      "completed_work_retention" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of the retention for total work complete.",
+         "ordinal_position" : 18
+      },
+      "materials_on_store_retention" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of the retention for material on site",
+         "ordinal_position" : 19
+      },
+      "net_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Net amount of current work completed + material on site - retentions.",
+         "ordinal_position" : 20
+      },
+      "paid_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount paid by owner.",
+         "ordinal_position" : 21
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of the budget payment.",
+         "ordinal_position" : 22
+      },
+      "company_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk ID of the owner company.",
+         "ordinal_position" : 23
+      },
+      "payment_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "How is the expense paid, e.g. Cash,  Check, Electronic Transfer",
+         "ordinal_position" : 24
+      },
+      "payment_reference" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The reference info how the expense is paid.",
+         "ordinal_position" : 25
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 26
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 27
+      },
+      "contact_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 28
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is created.",
+         "ordinal_position" : 29
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is last modified.",
+         "ordinal_position" : 30
+      },
+      "approved_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is approved.",
+         "ordinal_position" : 31
+      },
+      "paid_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is paid.",
+         "ordinal_position" : 32
+      },
+      "submitted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is submitted.",
+         "ordinal_position" : 33
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The additional note.",
+         "ordinal_position" : 34
+      },
+      "materials_billed" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the materials billed in this period.",
+         "ordinal_position" : 35
+      },
+      "materials_retention" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The percentage of the retention for the materials billed.",
+         "ordinal_position" : 36
+      },
+      "integration_state" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A field indicate the record integration status, possible values: \"integrated\", \"locked\", \"failed\", null",
+         "ordinal_position" : 37
+      },
+      "integration_state_changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The integration user who changed the integration state",
+         "ordinal_position" : 38
+      },
+      "integration_state_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the integration state changed",
+         "ordinal_position" : 39
+      },
+      "external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the entity in external system.",
+         "ordinal_position" : 40
+      },
+      "external_system" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the external system.",
+         "ordinal_position" : 41
+      },
+      "message" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment added by the integration.",
+         "ordinal_position" : 42
+      },
+      "last_sync_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of last time when the sync happened between cost management and external system",
+         "ordinal_position" : 43
+      }
+   },
+   "budget_properties" : {
+      "budget_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The budget ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "budget_transfers" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The Id of the budget transfer.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data.",
+         "ordinal_position" : 3
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The number of the budget transfer.",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the budget transfer.",
+         "ordinal_position" : 5
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Notes about the budget transfer.",
+         "ordinal_position" : 6
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of the budget transfer. Possible values are \"open\", \"inReview\", \"approved\", \"reviseAndResubmit\", \"rejected\"",
+         "ordinal_position" : 7
+      },
+      "approved_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the budget transfer approved",
+         "ordinal_position" : 8
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID for the user who created the main contract - referring to an id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 9
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID for the user who made the last change - referring to an id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the budget transfer is created.",
+         "ordinal_position" : 11
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the budget transfer is updated.",
+         "ordinal_position" : 12
+      },
+      "integration_state" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A field indicate the record integration status, possible values: \"integrated\", \"locked\", \"failed\", null",
+         "ordinal_position" : 13
+      },
+      "integration_state_changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The integration user who changed the integration state",
+         "ordinal_position" : 14
+      },
+      "integration_state_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the integration state changed",
+         "ordinal_position" : 15
+      },
+      "external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the entity in external system.",
+         "ordinal_position" : 16
+      },
+      "external_system" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the external system.",
+         "ordinal_position" : 17
+      },
+      "message" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment added by the integration.",
+         "ordinal_position" : 18
+      },
+      "last_sync_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of last time when the sync happened between cost management and external system",
+         "ordinal_position" : 19
+      }
+   },
+   "budgets" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of budget item.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "parent_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of a parent budget item - null for root items.",
+         "ordinal_position" : 4
+      },
+      "code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique code compliant to the Budget Code Template defined by the Project Admin.",
+         "ordinal_position" : 5
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the Budget.",
+         "ordinal_position" : 6
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of the Budget.",
+         "ordinal_position" : 7
+      },
+      "quantity" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Quantity of a Budget.",
+         "ordinal_position" : 8
+      },
+      "unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Unit price of a Budget.",
+         "ordinal_position" : 9
+      },
+      "unit" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unit of measures of the Budget.",
+         "ordinal_position" : 10
+      },
+      "original_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Original amount of the Budget - equals quantity * unitPrice",
+         "ordinal_position" : 11
+      },
+      "internal_adjustment" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Internal transfers between budgets",
+         "ordinal_position" : 12
+      },
+      "approved_owner_changes" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of changes approved by Owner",
+         "ordinal_position" : 13
+      },
+      "pending_owner_changes" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of changes waiting for the approval of Owner",
+         "ordinal_position" : 14
+      },
+      "original_commitment" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The original amount committed to the supplier contract.",
+         "ordinal_position" : 15
+      },
+      "approved_change_orders" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of changes committed to Supplier.",
+         "ordinal_position" : 16
+      },
+      "approved_in_scope_change_orders" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of in-scope changes committed to Supplier.",
+         "ordinal_position" : 17
+      },
+      "pending_change_orders" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of changes not committed.",
+         "ordinal_position" : 18
+      },
+      "reserves" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of changes under estimation.",
+         "ordinal_position" : 19
+      },
+      "actual_cost" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of actual cost.",
+         "ordinal_position" : 20
+      },
+      "main_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of the Main Contract that the budget belongs to.",
+         "ordinal_position" : 21
+      },
+      "contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the Contract that the budget is awarded to.",
+         "ordinal_position" : 22
+      },
+      "adjustments_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of all the actual cost adjustments.",
+         "ordinal_position" : 23
+      },
+      "uncommitted" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount that has been approved by owner but not committed to Supplier: approvedOwnerChanges - (approvedChangeOrders - approvedInScopeChangeOrders)",
+         "ordinal_position" : 24
+      },
+      "revised" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of the approved budget from owner - equals originalAmount + internalAdjustment + approvedOwnerChanges",
+         "ordinal_position" : 25
+      },
+      "projected_cost" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "For budget  - it is equal to originalCommitment + approvedChangeOrders + pendingChangeOrders + reserves. For contract  - it is equal to awarded + approvedChangeOrders + pendingChangeOrders + reserves",
+         "ordinal_position" : 26
+      },
+      "projected_budget" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "revised + pending_owner_changes",
+         "ordinal_position" : 27
+      },
+      "forecast_final_cost" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "projectedCost + adjustmentsTotal",
+         "ordinal_position" : 28
+      },
+      "forecast_variance" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "projectedBudget - forecastFinalCost",
+         "ordinal_position" : 29
+      },
+      "forecast_cost_complete" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "forecastFinalCost - actualCost",
+         "ordinal_position" : 30
+      },
+      "variance_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Variance of a budget - equals projectedBudget - projectedCost",
+         "ordinal_position" : 31
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was created.",
+         "ordinal_position" : 32
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was last updated.",
+         "ordinal_position" : 33
+      },
+      "original_contracted" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The original amount contracted to the supplier.",
+         "ordinal_position" : 34
+      },
+      "compounded" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A JSON string contains a collection of customized column values.",
+         "ordinal_position" : 35
+      },
+      "integration_state" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A field indicate the record integration status, possible values: \"integrated\", \"locked\", \"failed\", null",
+         "ordinal_position" : 36
+      },
+      "integration_state_changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The integration user who changed the integration state",
+         "ordinal_position" : 37
+      },
+      "integration_state_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the integration state changed",
+         "ordinal_position" : 38
+      },
+      "external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the entity in external system.",
+         "ordinal_position" : 39
+      },
+      "external_system" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the external system.",
+         "ordinal_position" : 40
+      },
+      "message" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment added by the integration.",
+         "ordinal_position" : 41
+      },
+      "last_sync_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of last time when the sync happened between cost management and external system",
+         "ordinal_position" : 42
+      },
+      "pending_internal_budget_transfer" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the budget transfers that are not approved yet.",
+         "ordinal_position" : 43
+      },
+      "pending_internal_budget_transfer_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity of the budget transfers that are not approved yet.",
+         "ordinal_position" : 44
+      },
+      "pending_internal_budget_transfer_input_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The input quantity(hours) of the budget transfers that are not approved yet.",
+         "ordinal_position" : 45
+      },
+      "code_segment_values" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The composition of the code of the budget.",
+         "ordinal_position" : 46
+      },
+      "main_contract_item_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total amount of associated main contract items",
+         "ordinal_position" : 47
+      },
+      "approved_cost_payment_application" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total net amount of approved or paid cost payment applications",
+         "ordinal_position" : 48
+      },
+      "approved_budget_payment_application" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total net amount of approved or paid budget payment applications",
+         "ordinal_position" : 49
+      },
+      "locations" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Locations assigned to the budget",
+         "ordinal_position" : 50
+      },
+      "forecast_adjustment_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Cost Forecast Adjustments Qty of the budget",
+         "ordinal_position" : 51
+      }
+   },
+   "change_order_cost_items" : {
+      "change_order_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The change order ID for this cost item",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "cost_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "System ID of a Cost Item",
+         "ordinal_position" : 4
+      }
+   },
+   "change_order_properties" : {
+      "change_order_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The change order ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "change_orders" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of a Change Order - auto generated.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "System generated sequence.",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of a Change Order",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of a Change Order.",
+         "ordinal_position" : 6
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 7
+      },
+      "owner_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 8
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 9
+      },
+      "contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the Contract that the budget is awarded to.",
+         "ordinal_position" : 10
+      },
+      "form_type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "pco",
+            "rfq",
+            "rco",
+            "oco",
+            "sco"
+         ],
+         "notes" : "Type of this change order: pco, rfq, rco, oco, sco",
+         "ordinal_position" : 11
+      },
+      "markup_formula_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of Markup formula applied to this Change Order.",
+         "ordinal_position" : 12
+      },
+      "applied_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user id who applied markups to this Change Order. The id is a project user from BIM 360 Admin",
+         "ordinal_position" : 13
+      },
+      "applied_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the markup is applied.",
+         "ordinal_position" : 14
+      },
+      "budget_status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of a PCO - RCO and OCO: PCO: [draft - open - submitted - accepted - approved - executed - rejected] RCO: [draft - open - submitted - accepted - rejected] - OCO: [draft - open - submitted - approved - executed - rejected]. Empty for RFQ - SCO The status of the change order should not be updated directly - but triggered by the action that will perform on it.",
+         "ordinal_position" : 15
+      },
+      "cost_status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The cost status of a PCO - RCO and OCO: PCO: [draft - open - pricing - proposed - approved - executed - rejected] RFQ: [draft - open - pricing - proposed - rejected] SCO: [draft - open - sent - executed] Empty for RCO - OCO The status of the change order should not be updated directly - but triggered by the action that will perform on it.",
+         "ordinal_position" : 16
+      },
+      "scope_of_work" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Draftjs formatted rich text(https://draftjs.org/)",
+         "ordinal_position" : 17
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Draftjs formatted rich text(https://draftjs.org/)",
+         "ordinal_position" : 18
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was created.",
+         "ordinal_position" : 19
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was last updated.",
+         "ordinal_position" : 20
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Customized type of the change order, e.g. Back Change, Budget Transfer, Owner Change Order, Owner Directive...",
+         "ordinal_position" : 21
+      },
+      "schedule_change" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The schedule change of this change order.",
+         "ordinal_position" : 22
+      },
+      "integration_state" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A field indicate the record integration status, possible values: \"integrated\", \"locked\", \"failed\", null",
+         "ordinal_position" : 23
+      },
+      "integration_state_changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The integration user who changed the integration state",
+         "ordinal_position" : 24
+      },
+      "integration_state_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the integration state changed",
+         "ordinal_position" : 25
+      },
+      "external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the entity in external system.",
+         "ordinal_position" : 26
+      },
+      "external_system" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the external system.",
+         "ordinal_position" : 27
+      },
+      "message" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment added by the integration.",
+         "ordinal_position" : 28
+      },
+      "last_sync_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of last time when the sync happened between cost management and external system",
+         "ordinal_position" : 29
+      },
+      "proposed_revised_completion_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "the proposed revised completion date",
+         "ordinal_position" : 30
+      },
+      "source_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "the source type of change order",
+         "ordinal_position" : 31
+      },
+      "approved_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "the approved date",
+         "ordinal_position" : 32
+      },
+      "status_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "the status change date",
+         "ordinal_position" : 33
+      },
+      "main_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "the main contract id",
+         "ordinal_position" : 34
+      },
+      "quantity" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "the quantity of change order",
+         "ordinal_position" : 35
+      },
+      "unit" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "the unit of change order",
+         "ordinal_position" : 36
+      },
+      "estimated" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "the estimated of change order",
+         "ordinal_position" : 37
+      },
+      "proposed" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "the proposed of change order",
+         "ordinal_position" : 38
+      },
+      "submitted" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "the submitted of change order",
+         "ordinal_position" : 39
+      },
+      "approved" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "the approved of change order",
+         "ordinal_position" : 40
+      },
+      "committed" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "the committed of change order",
+         "ordinal_position" : 41
+      },
+      "compliance_status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "compliant",
+            "notApplicable",
+            "notRequired",
+            "pending"
+         ],
+         "notes" : "The compliance status of the change order",
+         "ordinal_position" : 42
+      }
+   },
+   "contract_properties" : {
+      "contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The contract ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "contracts" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the Contract.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable code of the Contract.",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the Contract.",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of a Contract",
+         "ordinal_position" : 6
+      },
+      "company_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of a supplier company managed by BIM 360 Admin",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type of the contract - e.g. consultant - purchase order - which is customizable by Project Admin.",
+         "ordinal_position" : 8
+      },
+      "contact_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID for the default contact of the supplier - referring to an id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 9
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 10
+      },
+      "signed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 11
+      },
+      "owner_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 12
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 13
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of this contract - status includes [draft - closed - open - executed - sent].",
+         "ordinal_position" : 14
+      },
+      "awarded" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Amount of the original Contract",
+         "ordinal_position" : 15
+      },
+      "original_budget" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Original amount of budgets associated to this Contract.",
+         "ordinal_position" : 16
+      },
+      "internal_adjustment" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Internal transfers of budgets associated to this Contract.",
+         "ordinal_position" : 17
+      },
+      "approved_owner_changes" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Changes approved by Owner.",
+         "ordinal_position" : 18
+      },
+      "pending_owner_changes" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Changes pending approval from Owner.",
+         "ordinal_position" : 19
+      },
+      "approved_change_orders" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of changes committed to Supplier.",
+         "ordinal_position" : 20
+      },
+      "approved_in_scope_change_orders" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of in-scope changes committed to Supplier.",
+         "ordinal_position" : 21
+      },
+      "pending_change_orders" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of changes not committed.",
+         "ordinal_position" : 22
+      },
+      "reserves" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of changes under estimating.",
+         "ordinal_position" : 23
+      },
+      "actual_cost" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of actual cost.",
+         "ordinal_position" : 24
+      },
+      "uncommitted" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount that has been approved by owner but not committed to Supplier: approvedOwnerChanges - (approvedChangeOrders - approvedInScopeChangeOrders)",
+         "ordinal_position" : 25
+      },
+      "revised" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of the approved budget from owner - equals originalAmount + internalAdjustment + approvedOwnerChanges",
+         "ordinal_position" : 26
+      },
+      "projected_cost" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "For budget  - it is equal to originalCommitment + approvedChangeOrders + pendingChangeOrders + reserves. For contract  - it is equal to awarded + approvedChangeOrders + pendingChangeOrders + reserves",
+         "ordinal_position" : 27
+      },
+      "projected_budget" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "revised + pending_owner_changes",
+         "ordinal_position" : 28
+      },
+      "forecast_final_cost" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "projectedCost + adjustmentsTotal",
+         "ordinal_position" : 29
+      },
+      "forecast_variance" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "projectedBudget - forecastFinalCost",
+         "ordinal_position" : 30
+      },
+      "forecast_cost_complete" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "forecastFinalCost - actualCost",
+         "ordinal_position" : 31
+      },
+      "variance_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Variance of a budget - equals projectedBudget - projectedCost",
+         "ordinal_position" : 32
+      },
+      "awarded_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the Contract is awarded.",
+         "ordinal_position" : 33
+      },
+      "status_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The last time when the status is updated.",
+         "ordinal_position" : 34
+      },
+      "sent_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the Contract is sent to the Supplier.",
+         "ordinal_position" : 35
+      },
+      "responded_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the Supplier responds.",
+         "ordinal_position" : 36
+      },
+      "returned_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the Contract is signed and returned.",
+         "ordinal_position" : 37
+      },
+      "onsite_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the Supplier on-site to the job.",
+         "ordinal_position" : 38
+      },
+      "offsite_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the Supplier completes the job.",
+         "ordinal_position" : 39
+      },
+      "procured_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time for Purchase Order.",
+         "ordinal_position" : 40
+      },
+      "approved_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the Contract is approved.",
+         "ordinal_position" : 41
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was created.",
+         "ordinal_position" : 42
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was last updated.",
+         "ordinal_position" : 43
+      },
+      "scope_of_work" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Draftjs formatted rich text(https://draftjs.org/)",
+         "ordinal_position" : 44
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Draftjs formatted rich text(https://draftjs.org/)",
+         "ordinal_position" : 45
+      },
+      "adjustments_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of all the actual cost adjustments.",
+         "ordinal_position" : 46
+      },
+      "executed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was executed.",
+         "ordinal_position" : 47
+      },
+      "currency" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The code of the currency specified for the contract if it's awarded in a foreign currency.",
+         "ordinal_position" : 48
+      },
+      "exchange_rate" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The exchange rate for the specified currency, applied as a multiplier of the contract's base currency. For example, 1 base currency = 0.7455 foreign currency.",
+         "ordinal_position" : 49
+      },
+      "integration_state" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A field indicate the record integration status, possible values: \"integrated\", \"locked\", \"failed\", null",
+         "ordinal_position" : 50
+      },
+      "integration_state_changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The integration user who changed the integration state",
+         "ordinal_position" : 51
+      },
+      "integration_state_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the integration state changed",
+         "ordinal_position" : 52
+      },
+      "external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the entity in external system.",
+         "ordinal_position" : 53
+      },
+      "external_system" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the external system.",
+         "ordinal_position" : 54
+      },
+      "message" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment added by the integration.",
+         "ordinal_position" : 55
+      },
+      "last_sync_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of last time when the sync happened between cost management and external system",
+         "ordinal_position" : 56
+      },
+      "pending_internal_budget_transfer" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the budget transfers that are not approved yet.",
+         "ordinal_position" : 57
+      },
+      "compliance_status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "compliant",
+            "notApplicable",
+            "notRequired",
+            "pending"
+         ],
+         "notes" : "The compliance status of the contract",
+         "ordinal_position" : 58
+      },
+      "awarded_tax_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Tax Amount of the original Contract",
+         "ordinal_position" : 59
+      },
+      "response_due" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time when the response is due",
+         "ordinal_position" : 60
+      }
+   },
+   "cost_item_properties" : {
+      "cost_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The cost_item ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "cost_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of a Cost Item.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "System generated sequence number.",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of a Cost Item.",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of a Cost Item.",
+         "ordinal_position" : 6
+      },
+      "budget_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The contract ID for this adjustment entry",
+         "ordinal_position" : 7
+      },
+      "budget_status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The budget status of a Cost Item: [draft - open - submitted - accepted - approved - executed - rejected]. The status of the cost item should not be updated directly - but controlled by the change order containing it.",
+         "ordinal_position" : 8
+      },
+      "cost_status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The cost status of a Cost Item: [draft - open - pricing - proposed - approved - executed - rejected]. The status of the cost item should not be updated directly - but controlled by the change order containing it.",
+         "ordinal_position" : 9
+      },
+      "scope" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Scope of a Cost Item. Possible values: out - in - tbd",
+         "ordinal_position" : 10
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Cost item type",
+         "ordinal_position" : 11
+      },
+      "estimated" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Rough estimation of this item without quotation.",
+         "ordinal_position" : 12
+      },
+      "proposed" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Quotated cost of the item.",
+         "ordinal_position" : 13
+      },
+      "submitted" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Amount sent to Owner for approval.",
+         "ordinal_position" : 14
+      },
+      "approved" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Amount approved by Owner.",
+         "ordinal_position" : 15
+      },
+      "committed" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Amount committed to the Supplier.",
+         "ordinal_position" : 16
+      },
+      "scope_of_work" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Draftjs formatted rich text(https://draftjs.org/)",
+         "ordinal_position" : 17
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Draftjs formatted rich text(https://draftjs.org/)",
+         "ordinal_position" : 18
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was created.",
+         "ordinal_position" : 19
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the item was last updated.",
+         "ordinal_position" : 20
+      },
+      "schedule_change" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The schedule change days",
+         "ordinal_position" : 21
+      },
+      "approved_tax_summary" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A JSON string which contains oco tax of the cost item",
+         "ordinal_position" : 22
+      },
+      "committed_tax_summary" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A JSON string which contains sco tax of the cost item",
+         "ordinal_position" : 23
+      },
+      "estimated_tax_summary" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A JSON string which contains pco tax of the cost item",
+         "ordinal_position" : 24
+      },
+      "proposed_tax_summary" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A JSON string which contains rfq tax of the cost item",
+         "ordinal_position" : 25
+      },
+      "submitted_tax_summary" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A JSON string which contains cor tax of the cost item",
+         "ordinal_position" : 26
+      },
+      "is_markup" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is markup cost item or not",
+         "ordinal_position" : 27
+      },
+      "quantity" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity for the cost item",
+         "ordinal_position" : 28
+      },
+      "unit" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The unit for the cost item",
+         "ordinal_position" : 29
+      }
+   },
+   "cost_payment_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of a payment item - auto generated.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "payment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the payment that the item is in.",
+         "ordinal_position" : 4
+      },
+      "parent_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The parend item ID if current item is a child.",
+         "ordinal_position" : 5
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Number of an budget payment item.",
+         "ordinal_position" : 6
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of a budget payment item.",
+         "ordinal_position" : 7
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of a budget payment item.",
+         "ordinal_position" : 8
+      },
+      "unit" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The unit of measure of the payment item.",
+         "ordinal_position" : 9
+      },
+      "original_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the scheduled of value.",
+         "ordinal_position" : 10
+      },
+      "original_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity of the scheduled of value.",
+         "ordinal_position" : 11
+      },
+      "original_unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price of the scheduled of value.",
+         "ordinal_position" : 12
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of work completed for this scheduled of value.",
+         "ordinal_position" : 13
+      },
+      "unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price of work completed for this scheduled of value.",
+         "ordinal_position" : 14
+      },
+      "qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity of work completed for this scheduled of value.",
+         "ordinal_position" : 15
+      },
+      "materials_on_store" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount on store quanity for this schedule of value.",
+         "ordinal_position" : 16
+      },
+      "materials_on_store_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity on store quanity for this schedule of value.",
+         "ordinal_position" : 17
+      },
+      "materials_on_store_unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price on store quanity for this schedule of value.",
+         "ordinal_position" : 18
+      },
+      "previous_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The previous amount of work completed.",
+         "ordinal_position" : 19
+      },
+      "previous_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The previous quantity of work completed.",
+         "ordinal_position" : 20
+      },
+      "previous_unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price of previous work complete.",
+         "ordinal_position" : 21
+      },
+      "previous_materials_on_store" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The material on store of previus period.",
+         "ordinal_position" : 22
+      },
+      "completed_work_retention_percent" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The retention % of work complete.",
+         "ordinal_position" : 23
+      },
+      "materials_on_store_retention_percent" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The retention % of material on store.",
+         "ordinal_position" : 24
+      },
+      "completed_work_released" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The released amount for work completed in this period.",
+         "ordinal_position" : 25
+      },
+      "materials_on_store_released" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The released amount for material on store in this period.",
+         "ordinal_position" : 26
+      },
+      "net_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The net amount: work completed + material on store - retention + release.",
+         "ordinal_position" : 27
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of the the payment item.",
+         "ordinal_position" : 28
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 29
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 30
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment item is created.",
+         "ordinal_position" : 31
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment item is last modified.",
+         "ordinal_position" : 32
+      },
+      "tax_summary" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A JSON string which contains tax on the payment item",
+         "ordinal_position" : 33
+      }
+   },
+   "cost_payment_properties" : {
+      "cost_payment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The cost ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "cost_payments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of a budget payment - auto generated.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the supplier contract the payment is pursuant to.",
+         "ordinal_position" : 4
+      },
+      "start_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The start date of the payment billing period.",
+         "ordinal_position" : 5
+      },
+      "end_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The end date of the payment billing period.",
+         "ordinal_position" : 6
+      },
+      "due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The due date of the payment.",
+         "ordinal_position" : 7
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Number of a payment.",
+         "ordinal_position" : 8
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of a payment.",
+         "ordinal_position" : 9
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of a payment.",
+         "ordinal_position" : 10
+      },
+      "original_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The origianl contracted amount of th",
+         "ordinal_position" : 11
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Work completed of this period of the payment.",
+         "ordinal_position" : 12
+      },
+      "previous_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of work completed of before this billing period.",
+         "ordinal_position" : 13
+      },
+      "materials_on_store" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Material on site of this billing period.",
+         "ordinal_position" : 14
+      },
+      "previous_materials_on_store" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Material on site of the previous billing period.",
+         "ordinal_position" : 15
+      },
+      "approved_change_orders" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total of approved change orders.",
+         "ordinal_position" : 16
+      },
+      "contract_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The current total of the contracted amount: orginal_amount + approved_change_orders",
+         "ordinal_position" : 17
+      },
+      "completed_work_retention" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of the retention for total work complete.",
+         "ordinal_position" : 18
+      },
+      "materials_on_store_retention" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total of the retention for material on site",
+         "ordinal_position" : 19
+      },
+      "net_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Net amount of current work completed + material on site - retentions.",
+         "ordinal_position" : 20
+      },
+      "paid_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount paid by owner.",
+         "ordinal_position" : 21
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of the budget payment.",
+         "ordinal_position" : 22
+      },
+      "company_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk ID of the supplier company.",
+         "ordinal_position" : 23
+      },
+      "payment_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "How is the expense paid, e.g. Cash,  Check, Electronic Transfer",
+         "ordinal_position" : 24
+      },
+      "payment_reference" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The reference info how the expense is paid.",
+         "ordinal_position" : 25
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 26
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 27
+      },
+      "contact_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 28
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is created.",
+         "ordinal_position" : 29
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is last modified.",
+         "ordinal_position" : 30
+      },
+      "approved_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is approved.",
+         "ordinal_position" : 31
+      },
+      "paid_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is paid.",
+         "ordinal_position" : 32
+      },
+      "submitted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the payment is submitted.",
+         "ordinal_position" : 33
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The additinal note of the payment.",
+         "ordinal_position" : 34
+      },
+      "materials_billed" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the materials billed in this period.",
+         "ordinal_position" : 35
+      },
+      "materials_retention" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The percentage of the retention for the materials billed.",
+         "ordinal_position" : 36
+      },
+      "integration_state" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A field indicate the record integration status, possible values: \"integrated\", \"locked\", \"failed\", null",
+         "ordinal_position" : 37
+      },
+      "integration_state_changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The integration user who changed the integration state",
+         "ordinal_position" : 38
+      },
+      "integration_state_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the integration state changed",
+         "ordinal_position" : 39
+      },
+      "external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the entity in external system.",
+         "ordinal_position" : 40
+      },
+      "external_system" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the external system.",
+         "ordinal_position" : 41
+      },
+      "message" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment added by the integration.",
+         "ordinal_position" : 42
+      },
+      "last_sync_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of last time when the sync happened between cost management and external system",
+         "ordinal_position" : 43
+      },
+      "tax_summary" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A JSON string which contains tax on the payment",
+         "ordinal_position" : 44
+      },
+      "compliance_status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "compliant",
+            "notApplicable",
+            "notRequired",
+            "pending"
+         ],
+         "notes" : "The compliance status of the payment",
+         "ordinal_position" : 45
+      }
+   },
+   "distribution_item_curves" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the distribution item curve - auto generated.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data.",
+         "ordinal_position" : 3
+      },
+      "distribution_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the distribution item.",
+         "ordinal_position" : 4
+      },
+      "actual_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The actual total amount for this distribution curve.",
+         "ordinal_position" : 5
+      },
+      "distribution_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total distributed amount for this distribution curve.",
+         "ordinal_position" : 6
+      },
+      "curve" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Distribution curve. Possible values are \"revisedBudget\", \"workCompleted\", \"actualCost\", \"forecastFinalCost\", \"projectedBudget\", \"revisedCost\".",
+         "ordinal_position" : 7
+      },
+      "periods" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The JSON object that contains the periods of the distribution item curve. The key is period, value is amount.",
+         "ordinal_position" : 8
+      },
+      "actual_total_input_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The actual total input quantity for this distribution curve.",
+         "ordinal_position" : 9
+      },
+      "distribution_total_input_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total distributed input quantity for this distribution curve.",
+         "ordinal_position" : 10
+      },
+      "periods_input_qty" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The JSON object that contains the periods of the distribution item curve. The key is period, value is input quantity.",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the distribution curve is created.",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the distribution item is last updated.",
+         "ordinal_position" : 13
+      }
+   },
+   "distribution_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the distribution item - auto generated.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data.",
+         "ordinal_position" : 3
+      },
+      "budget_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of budgets associated with this distribution item.",
+         "ordinal_position" : 4
+      },
+      "association_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the entity which the distribution item is associated to.",
+         "ordinal_position" : 5
+      },
+      "association_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the entity which the distribution item is associated to.",
+         "ordinal_position" : 6
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The number of the distribution item.",
+         "ordinal_position" : 7
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the distribution item.",
+         "ordinal_position" : 8
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of the distribution item.",
+         "ordinal_position" : 9
+      },
+      "due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The due date of the distribution item.",
+         "ordinal_position" : 10
+      },
+      "company_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The Autodesk ID of the owner company.",
+         "ordinal_position" : 11
+      },
+      "contact_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin.",
+         "ordinal_position" : 12
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin.",
+         "ordinal_position" : 13
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin.",
+         "ordinal_position" : 14
+      },
+      "submitted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the distribution item is submitted.",
+         "ordinal_position" : 15
+      },
+      "accepted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the distribution item is accepted.",
+         "ordinal_position" : 16
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the distribution item is created.",
+         "ordinal_position" : 17
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the distribution item is updated.",
+         "ordinal_position" : 18
+      }
+   },
+   "expense_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of an expense detail item - auto generated.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "expense_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the expense the item is in.",
+         "ordinal_position" : 4
+      },
+      "budget_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the budget.",
+         "ordinal_position" : 5
+      },
+      "contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the contract.",
+         "ordinal_position" : 6
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "System generated sequence.",
+         "ordinal_position" : 7
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of an Expense",
+         "ordinal_position" : 8
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of an expense",
+         "ordinal_position" : 9
+      },
+      "unit" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The unit of measure of the expense item.",
+         "ordinal_position" : 10
+      },
+      "unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The price of the item.",
+         "ordinal_position" : 11
+      },
+      "quantity" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity of the item.",
+         "ordinal_position" : 12
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the item.",
+         "ordinal_position" : 13
+      },
+      "tax" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The tax amount of the item.",
+         "ordinal_position" : 14
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the expens item is created.",
+         "ordinal_position" : 15
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the expens item is last modified.",
+         "ordinal_position" : 16
+      }
+   },
+   "expense_properties" : {
+      "expense_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The expense ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "expenses" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of an Expense - auto generated.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "System generated sequence.",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of an Expense",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Detail description of an expense",
+         "ordinal_position" : 6
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 7
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of a user managed by BIM 360 Admin",
+         "ordinal_position" : 8
+      },
+      "supplier_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk group ID of the supplier company",
+         "ordinal_position" : 9
+      },
+      "supplier_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the supplier company.",
+         "ordinal_position" : 10
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total amount of the expense.",
+         "ordinal_position" : 11
+      },
+      "paid_amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total paid amount of the expense.",
+         "ordinal_position" : 12
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The stauts of the expense.",
+         "ordinal_position" : 13
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the expense.",
+         "ordinal_position" : 14
+      },
+      "payment_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "How is the expense paid, e.g. Cash,  Check, Electronic Transfer",
+         "ordinal_position" : 15
+      },
+      "payment_reference" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The reference info how the expense is paid.",
+         "ordinal_position" : 16
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the expense is created.",
+         "ordinal_position" : 17
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the expense is last modified.",
+         "ordinal_position" : 18
+      },
+      "issued_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the expense is issued.",
+         "ordinal_position" : 19
+      },
+      "received_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the expense is recieved.",
+         "ordinal_position" : 20
+      },
+      "approved_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the expense is approved.",
+         "ordinal_position" : 21
+      },
+      "paid_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the expense is paid.",
+         "ordinal_position" : 22
+      },
+      "reference_number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The references to the expense, e.g. the invoice number.",
+         "ordinal_position" : 23
+      },
+      "integration_state" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "A field indicate the record integration status, possible values: \"integrated\", \"locked\", \"failed\", null",
+         "ordinal_position" : 24
+      },
+      "integration_state_changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The integration user who changed the integration state",
+         "ordinal_position" : 25
+      },
+      "integration_state_changed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the integration state changed",
+         "ordinal_position" : 26
+      },
+      "external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the entity in external system.",
+         "ordinal_position" : 27
+      },
+      "external_system" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the external system.",
+         "ordinal_position" : 28
+      },
+      "message" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment added by the integration.",
+         "ordinal_position" : 29
+      },
+      "last_sync_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of last time when the sync happened between cost management and external system",
+         "ordinal_position" : 30
+      },
+      "payment_due" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp of the payment of the expense is due",
+         "ordinal_position" : 31
+      }
+   },
+   "main_contract_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of a main contract item",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "main_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the main contract the item belongs",
+         "ordinal_position" : 4
+      },
+      "budget_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the budget",
+         "ordinal_position" : 5
+      },
+      "parent_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the parent of the item",
+         "ordinal_position" : 6
+      },
+      "code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The code of the item",
+         "ordinal_position" : 7
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the item",
+         "ordinal_position" : 8
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The description of the item",
+         "ordinal_position" : 9
+      },
+      "qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The quantity of the item",
+         "ordinal_position" : 10
+      },
+      "unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price of the item",
+         "ordinal_position" : 11
+      },
+      "unit" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The unit of the item",
+         "ordinal_position" : 12
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the item",
+         "ordinal_position" : 13
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the one changed the item",
+         "ordinal_position" : 14
+      },
+      "is_private" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "The flag to indicate whether the item is hidden to owners.",
+         "ordinal_position" : 15
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is created",
+         "ordinal_position" : 16
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is last modified",
+         "ordinal_position" : 17
+      }
+   },
+   "main_contract_properties" : {
+      "main_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The main contract ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "main_contracts" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The uniq ID of the approval workflow.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The code of the main contract.",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the main contract.",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The description of the main contract.",
+         "ordinal_position" : 6
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the main contract.",
+         "ordinal_position" : 7
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The status of the main contract.",
+         "ordinal_position" : 8
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total amount of the main contract.",
+         "ordinal_position" : 9
+      },
+      "retention_cap" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The max retention of % of main contract sum to date.",
+         "ordinal_position" : 10
+      },
+      "contact_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID for the default contact of the main contract - referring to an id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 11
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID for the user who created the main contract - referring to an id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 12
+      },
+      "owner_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID for the user who will pay the main contract - referring to an id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 13
+      },
+      "changed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID for the user who made the last change - referring to an id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 14
+      },
+      "scope_of_work" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The scope of the work of the main contract.",
+         "ordinal_position" : 15
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The note of the work of the main contract.",
+         "ordinal_position" : 16
+      },
+      "start_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The start date of the main contract.",
+         "ordinal_position" : 17
+      },
+      "executed_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The execute date of the main contract.",
+         "ordinal_position" : 18
+      },
+      "planned_completion_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The planned completion date of the main contract.",
+         "ordinal_position" : 19
+      },
+      "actual_completion_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The actual completion date of the main contract.",
+         "ordinal_position" : 20
+      },
+      "close_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The closed date of the main contract.",
+         "ordinal_position" : 21
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is created.",
+         "ordinal_position" : 22
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is last modified.",
+         "ordinal_position" : 23
+      },
+      "revised_completion_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The revised completion date",
+         "ordinal_position" : 24
+      },
+      "schedule_change" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The days that the schedule was impacted by changes.",
+         "ordinal_position" : 25
+      }
+   },
+   "payment_references" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the payment reference.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount being paid.",
+         "ordinal_position" : 4
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The payment method, e.g. cash, check.",
+         "ordinal_position" : 5
+      },
+      "reference" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The reference/note to the payment, e.g. check NO.",
+         "ordinal_position" : 6
+      },
+      "paid_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the Payment or Expense is paid.",
+         "ordinal_position" : 7
+      },
+      "association_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the Payment or Expense the payment reference associated to.",
+         "ordinal_position" : 8
+      },
+      "association_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the payment reference is associated to: Expense or Payment.",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is created.",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is last modified.",
+         "ordinal_position" : 11
+      }
+   },
+   "permissions" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the permission.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "policy_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The related policy in ACM.",
+         "ordinal_position" : 4
+      },
+      "subject_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID for the user or user group who will be applied this permission - referring to an id of a user or user group managed by BIM 360 Admin",
+         "ordinal_position" : 5
+      },
+      "subject_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the subject, possible values: User, Company, Role.",
+         "ordinal_position" : 6
+      },
+      "permission_level" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The permission level, possible values:fullControl, viewAll, collaborate, collaborateCreate, noAccess.",
+         "ordinal_position" : 7
+      },
+      "resource_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The resource of permission.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is created.",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the item is last modified.",
+         "ordinal_position" : 10
+      }
+   },
+   "schedule_of_values_properties" : {
+      "schedule_of_value_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The schedule of value ID for this custom property",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 4
+      },
+      "built_in" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.",
+         "ordinal_position" : 5
+      },
+      "position" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.",
+         "ordinal_position" : 6
+      },
+      "property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute definition.",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the custom attribute. Inherited from the custom attribute definition.",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of the custom attribute.",
+         "ordinal_position" : 9
+      }
+   },
+   "sub_distribution_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of this sub distribution item.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data.",
+         "ordinal_position" : 3
+      },
+      "distribution_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of distribution item.",
+         "ordinal_position" : 4
+      },
+      "association_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The ID of the entity which the sub distribution item is associated to.",
+         "ordinal_position" : 5
+      },
+      "association_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the entity which the sub distribution item is associated to.",
+         "ordinal_position" : 6
+      },
+      "number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The number of the sub distribution item.",
+         "ordinal_position" : 7
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the sub distribution item.",
+         "ordinal_position" : 8
+      },
+      "start_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "The planned start day of this sub distribution item.",
+         "ordinal_position" : 9
+      },
+      "end_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "The planned end day of this sub distribution item.",
+         "ordinal_position" : 10
+      },
+      "actual_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The actual total amount to be distributed.",
+         "ordinal_position" : 11
+      },
+      "distribution_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total distributed amount for this sub distribution item.",
+         "ordinal_position" : 12
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of this sub distribution item.",
+         "ordinal_position" : 13
+      },
+      "curve" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Distribution curve. Possible values are \"revisedBudget\", \"workCompleted\", \"actualCost\", \"forecastFinalCost\", \"projectedBudget\", \"revisedCost\".",
+         "ordinal_position" : 14
+      },
+      "periods" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The JSON object that contains the periods of this sub distribution items. The key is period, value is amount.",
+         "ordinal_position" : 15
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the sub distribution item is created.",
+         "ordinal_position" : 16
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the sub distribution item is deleted.",
+         "ordinal_position" : 17
+      },
+      "actual_total_input_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The actual total input quantity to be distributed.",
+         "ordinal_position" : 18
+      },
+      "distribution_total_input_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total distributed input quantity for this sub distribution item.",
+         "ordinal_position" : 19
+      },
+      "periods_input_qty" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The JSON object that contains the periods of this sub distribution items. The key is period, value is input quantity.",
+         "ordinal_position" : 20
+      }
+   },
+   "transferences" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The Id of the budget transfer details.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data.",
+         "ordinal_position" : 3
+      },
+      "budget_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The budget id where it transfers from",
+         "ordinal_position" : 4
+      },
+      "relating_budget_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The relating budget id where it transfers to",
+         "ordinal_position" : 5
+      },
+      "contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The contract id of the budget where it transfers from",
+         "ordinal_position" : 6
+      },
+      "relating_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The relating contract id of the budget where it transfers to",
+         "ordinal_position" : 7
+      },
+      "transaction_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The transaction Id of the transference",
+         "ordinal_position" : 8
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount of the budget transfer",
+         "ordinal_position" : 9
+      },
+      "unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unit price of the budget transfer",
+         "ordinal_position" : 10
+      },
+      "qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The QTY of the budget transfer",
+         "ordinal_position" : 11
+      },
+      "input_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The input QTY of the budget transfer",
+         "ordinal_position" : 12
+      },
+      "relating_unit_price" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The relating unit price of the budget transfer",
+         "ordinal_position" : 13
+      },
+      "relating_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The relating QTY of the budget transfer",
+         "ordinal_position" : 14
+      },
+      "relating_input_qty" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The relating input QTY of the budget transfer",
+         "ordinal_position" : 15
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID for the user who created the main contract - referring to an id of a user managed by BIM 360 Admin",
+         "ordinal_position" : 16
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The notes about the budget transfer when creating",
+         "ordinal_position" : 17
+      },
+      "main_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The main contract Id that the budget associated where it transfer out",
+         "ordinal_position" : 18
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the budget transfer is created.",
+         "ordinal_position" : 19
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date/time the budget transfer is updated.",
+         "ordinal_position" : 20
+      }
+   }
+}

@@ -1,0 +1,684 @@
+{
+   "review_candidates" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The UUID of the review the step belongs to.",
+         "ordinal_position" : 1
+      },
+      "sequence_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The sequence id of the review the step belongs to.",
+         "ordinal_position" : 2
+      },
+      "instance_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The instance id in the workflow service.",
+         "ordinal_position" : 3
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 4
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 5
+      },
+      "step_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The step id(every step in a review has a fixed id).",
+         "ordinal_position" : 6
+      },
+      "step_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The step name.",
+         "ordinal_position" : 7
+      },
+      "candidate_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "user",
+            "role",
+            "company"
+         ],
+         "notes" : "The candidate type. Could be a user, role or company.",
+         "ordinal_position" : 8
+      },
+      "candidate_oxygen_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The oxygen id of the candidate.",
+         "ordinal_position" : 9
+      }
+   },
+   "review_comments" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "PK: UUID of a review comment.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "review_document_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the review document the comment belongs to",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of the user who created comment.",
+         "ordinal_position" : 5
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "draft",
+            "submitted"
+         ],
+         "notes" : "The current status of the comment.",
+         "ordinal_position" : 6
+      },
+      "text" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment text.",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the comment.",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the comment.",
+         "ordinal_position" : 9
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time of the comment.",
+         "ordinal_position" : 10
+      },
+      "round_num" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Which round the comment belongs to",
+         "ordinal_position" : 11
+      }
+   },
+   "review_documents" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "PK: UUID of a review document.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "review_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the review the document belongs to",
+         "ordinal_position" : 4
+      },
+      "versioned_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The version urn of the document.",
+         "ordinal_position" : 5
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "approved",
+            "rejected"
+         ],
+         "notes" : "The review status of the document.",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the document.",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the document.",
+         "ordinal_position" : 8
+      },
+      "round_num" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Which round the document version belongs to",
+         "ordinal_position" : 9
+      }
+   },
+   "review_steps" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The UUID of the review the step belongs to.",
+         "ordinal_position" : 1
+      },
+      "sequence_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The sequence id of the review the step belongs to.",
+         "ordinal_position" : 2
+      },
+      "instance_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The instance id in the workflow service.",
+         "ordinal_position" : 3
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 4
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 5
+      },
+      "workflow_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The workflow id of a review.",
+         "ordinal_position" : 6
+      },
+      "step_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The step id(every step in a review has a fixed id).",
+         "ordinal_position" : 7
+      },
+      "step_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The step default name (deprecated).",
+         "ordinal_position" : 8
+      },
+      "step_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The step name which is shown for users.",
+         "ordinal_position" : 9
+      }
+   },
+   "review_tasks" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "PK: UUID of a review task.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "review_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the review the task belongs to",
+         "ordinal_position" : 4
+      },
+      "task_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of the task in the workflow service.",
+         "ordinal_position" : 5
+      },
+      "task_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Key of the task in the workflow service.",
+         "ordinal_position" : 6
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the task in the workflow service.",
+         "ordinal_position" : 7
+      },
+      "assignee" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of the current task assignee",
+         "ordinal_position" : 8
+      },
+      "next_task_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The next task key in the workflow service.",
+         "ordinal_position" : 9
+      },
+      "state" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "claimed",
+            "unclaimed",
+            "submitted",
+            "viod"
+         ],
+         "notes" : "The current state of the task.",
+         "ordinal_position" : 10
+      },
+      "due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The due date of the task.",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the task.",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the task.",
+         "ordinal_position" : 13
+      },
+      "step_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id for the step the task belongs to",
+         "ordinal_position" : 14
+      }
+   },
+   "review_workflow_templates" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "PK: UUID of a workflow template",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "template_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id to identify the template in the workflow service.",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the template.",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the template.",
+         "ordinal_position" : 6
+      }
+   },
+   "review_workflows" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "PK: UUID of a review workflow",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "workflow_template_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of the workflow template.",
+         "ordinal_position" : 4
+      },
+      "form_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The form id in the workflow service.",
+         "ordinal_position" : 5
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the workflow.",
+         "ordinal_position" : 6
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The description of the workflow.",
+         "ordinal_position" : 7
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "initiating",
+            "active",
+            "archived",
+            "locked"
+         ],
+         "notes" : "The status of the workflow.",
+         "ordinal_position" : 8
+      },
+      "bpmn_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The urn of bpmn in the workflow serivce.",
+         "ordinal_position" : 9
+      },
+      "memo" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The note of the workflow.",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the workflow.",
+         "ordinal_position" : 11
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the workflow.",
+         "ordinal_position" : 12
+      }
+   },
+   "reviews" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "PK: UUID of a review.",
+         "ordinal_position" : 1
+      },
+      "sequence_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The sequence id of a review.",
+         "ordinal_position" : 2
+      },
+      "instance_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The instance id in the workflow service.",
+         "ordinal_position" : 3
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 4
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 5
+      },
+      "workflow_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The workflow id of a review.",
+         "ordinal_position" : 6
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "initiating",
+            "open",
+            "closed",
+            "void",
+            "failed",
+            "closing",
+            "processing"
+         ],
+         "notes" : "The status of a review.",
+         "ordinal_position" : 7
+      },
+      "review_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of a review.",
+         "ordinal_position" : 8
+      },
+      "memo" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The note of a review.",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who create the review",
+         "ordinal_position" : 10
+      },
+      "next_due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The next due date of a review.",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the reivew.",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the review.",
+         "ordinal_position" : 13
+      },
+      "docs_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The count of reviewing documents of a review.",
+         "ordinal_position" : 14
+      },
+      "approved_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The count of approved documents of a review.",
+         "ordinal_position" : 15
+      },
+      "rejected_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The count of rejected documents of a review.",
+         "ordinal_position" : 16
+      },
+      "workflow_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of a workflow.",
+         "ordinal_position" : 17
+      },
+      "started_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time of the review started.",
+         "ordinal_position" : 18
+      },
+      "finished_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The time of the review finished.",
+         "ordinal_position" : 19
+      },
+      "next_action_candidates_users" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "List of candidate users in the next action.",
+         "ordinal_position" : 20
+      },
+      "next_action_candidates_roles" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "List of candidate roles in the next action.",
+         "ordinal_position" : 21
+      },
+      "next_action_candidates_companies" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "List of candidate companies in the next action.",
+         "ordinal_position" : 22
+      },
+      "next_action_claimed_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "List of users claimed the next action.",
+         "ordinal_position" : 23
+      },
+      "current_round_num" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The current round number of this review",
+         "ordinal_position" : 24
+      },
+      "current_step" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The current step of this review",
+         "ordinal_position" : 25
+      },
+      "total_steps" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total step of this review",
+         "ordinal_position" : 26
+      },
+      "is_archived" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "The archive status of the review",
+         "ordinal_position" : 27
+      }
+   },
+   "workflow_notes" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "PK: UUID of a review note.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "review_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the review the note belongs to",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of the user who created comment.",
+         "ordinal_position" : 5
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment text.",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the comment.",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the comment.",
+         "ordinal_position" : 8
+      },
+      "round_num" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Which round the note belongs to",
+         "ordinal_position" : 9
+      }
+   }
+}

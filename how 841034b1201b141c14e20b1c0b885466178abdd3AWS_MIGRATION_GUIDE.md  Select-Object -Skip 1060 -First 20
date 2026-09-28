@@ -1,0 +1,126 @@
+[33mcommit 841034b1201b141c14e20b1c0b885466178abdd3[m
+Author: singhp8 <prabal.singh@autodesk.com>
+Date:   Mon Jun 8 15:29:31 2026 +0530
+
+    Initial commit
+
+[1mdiff --git a/AWS_MIGRATION_GUIDE.md b/AWS_MIGRATION_GUIDE.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ea1cf43[m
+[1m--- /dev/null[m
+[1m+++ b/AWS_MIGRATION_GUIDE.md[m
+[36m@@ -0,0 +1,1408 @@[m
+[32m+[m[32m# AWS Migration Guide — ACC → Databricks Connector[m
+[32m+[m
+[32m+[m[32m> **Context:** This project was originally built for **Azure Databricks** (workspace URL format: `adb-XXXX.N.azuredatabricks.net`, authentication via Azure AD / Microsoft Identity). You have already provisioned **Databricks on AWS** via the AWS Marketplace. This document explains every project file, what it does, and exactly what you must change to run the same connector against your AWS Databricks workspace.[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## Table of Contents[m
+[32m+[m
+[32m+[m[32m1. [Project Architecture Overview](#1-project-architecture-overview)[m
+[32m+[m[32m2. [File-by-File Explanation](#2-file-by-file-explanation)[m
+[32m+[m[32m   - [app.py](#21-acc-connectorapppy)[m
+[32m+[m[32m   - [backend/acc_client.py](#22-acc-connectorbackendacc_clientpy)[m
+[32m+[m[32m   - [backend/databricks_client.py](#23-acc-connectorbackenddatabricks_clientpy)[m
+[32m+[m[32m   - [backend/bootstrap.py](#24-acc-connectorbackendbootstrappy)[m
+[32m+[m[32m   - [backend/state_store.py](#25-acc-connectorbackendstate_storepy)[m
+[32m+[m[32m   - [backend/sync_service.py](#26-acc-connectorbackendsync_servicepy)[m
+[32m+[m[32m   - [notebooks/bronze_ingestion.py](#27-acc-connectornotebooksbronze_ingestionpy)[m
+[32m+[m[32m   - [notebooks/silver_transform.py](#28-acc-connectornotebookssilver_transformpy)[m
+[32m+[m[32m   - [config/endpoints.json](#29-acc-connectorconfigendpointsjson)[m
+[32m+[m[32m   - [config/job_templates.json](#210-acc-connectorconfigjob_templatesjson)[m
+[32m+[m[32m   - [.env.example](#211-acc-connectorenvexample)[m
+[32m+[m[32m   - [requirements.txt](#212-acc-connectorrequirementstxt)[m
+[32m+[m[32m   - [startup.txt](#213-acc-connectorstartuptxt)[m
+[32m+[m[32m   - [connector.db](#214-acc-connectorconnectordb)[m
+[32m+[m[32m   - [test_data.csv](#215-acc-connectortest_datacsv)[m
+[32m+[m[32m3. [Root Documentation Files](#3-root-documentation-files)[m
+[32m+[m[32m4. [Azure vs AWS — Key Differences Summary](#4-azure-vs-aws--key-differences-summary)[m
+[32m+[m[32m5. [AWS Migration Changes — File by File](#5-aws-migration-changes--file-by-file)[m
+[32m+[m[32m   - [app.py changes](#51-apppy-changes)[m
+[32m+[m[32m   - [databricks_client.py changes](#52-databricks_clientpy-changes)[m
+[32m+[m[32m   - [.env.example changes](#53-envexample-changes)[m
+[32m+[m[32m   - [requirements.txt changes](#54-requirementstxt-changes)[m
+[32m+[m[32m   - [config/job_templates.json changes](#55-configjob_templatesjson-changes)[m
+[32m+[m[32m   - [startup.txt / hosting changes](#56-startuptxt--hosting-changes)[m
+[32m+[m[32m6. [New AWS .env Variables Reference](#6-new-aws-env-variables-reference)[m
+[32m+[m[32m7. [AWS Databricks OAuth Setup Steps](#7-aws-databricks-oauth-setup-steps)[m
+[32m+[m[32m8. [AWS Hosting Options](#8-aws-hosting-options)[m
+[32m+[m[32m9. [Unity Catalog on AWS — What Changes](#9-unity-catalog-on-aws--what-changes)[m
+[32m+[m[32m10. [Unchanged Files — No Modifications Needed](#10-unchanged-files--no-modifications-needed)[m
+[32m+[m[32m11. [Complete Change Checklist](#11-complete-change-checklist)[m
+[32m+[m[32m12. [Step-by-Step: How to Get Every AWS Databricks Value](#12-step-by-step-how-to-get-every-aws-databricks-value)[m
+[32m+[m[32m13. [ACC / Autodesk Side — No Changes Needed](#13-acc--autodesk-side--no-changes-needed)[m
+[32m+[m[32m14. [PAT-Only Path (APPLIED) — What Changed in the Code](#14-pat-only-path-applied--what-changed-in-the-code)[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## 1. Project Architecture Overview[m
+[32m+[m
+[32m+[m[32m```[m
+[32m+[m[32mAutodesk ACC API[m
+[32m+[m[32m  │  (3-legged OAuth via APS)[m
+[32m+[m[32m  ▼[m
+[32m+[m[32mFlask Web App (acc-connector/app.py)[m
+[32m+[m[32m  │  ① User authenticates ACC[m
+[32m+[m[32m  │  ② User authenticates Databricks[m
+[32m+[m[32m  │  ③ 10-step bootstrap (catalog, schema, volume, notebooks, jobs)[m
+[32m+[m[32m  │  ④ Sync: ACC fetch → UC Volume JSON → Bronze job → Silver job[m
+[32m+[m[32m  ▼[m
+[32m+[m[32mDatabricks Workspace (Unity Catalog)[m
+[32m+[m[32m  ├── acc_catalog.bronze.issues_raw    (Delta table)[m
+[32m+[m[32m  ├── acc_catalog.bronze.rfis_raw      (Delta table)[m
+[32m+[m[32m  ├── acc_catalog.bronze.cost_raw      (Delta table)[m
+[32m+[m[32m  ├── acc_catalog.silver.issues        (Delta table — deduplicated, typed)[m
+[32m+[m[32m  ├── acc_catalog.silver.rfis          (Delta table)[m
+[32m+[m[32m  └── acc_catalog.silver.cost          (Delta table)[m
+[32m+[m
+[32m+[m[32mState stored in: SQLite (connector.db) — tokens, bootstrap state, sync history[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m### Data Flow[m
+[32m+[m
+[32m+[m[32m```[m
+[32m+[m[32mStep 3 Sync:[m
+[32m+[m[32mACC Issues/RFIs/Cost API[m
+[32m+[m[32m   └──(watermark-filtered fetch)──► in-memory JSON[m
+[32m+[m[32m                                       └──(Files API PUT)──► UC Volume path[m
+[32m+[m[32m                                                               └──► Bronze job (notebook)[m
+[32m+[m[32m                                                                       └──► Silver job (notebook)[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m## 2. File-by-File Explanation[m
+[32m+[m
+[32m+[m[32m### 2.1 `acc-connector/app.py`[m
+[32m+[m
+[32m+[m[32m**What it is:** The main Flask web application — the entry point for everything.[m
+[32m+[m
+[32m+[m[32m**What it does:**[m
+[32m+[m[32m- Serves the entire 4-step wizard UI as an embedded HTML string (no separate template files)[m
+[32m+[m[32m- Handles all HTTP routes (`/`, `/connect/acc`, `/callback`, `/hubs`, `/projects`, `/folders`, `/sync`, `/dashboard/data`, etc.)[m
+[32m+[m[32m- Manages the Autodesk APS 3-legged OAuth flow (redirects user to Autodesk login, handles the callback, saves tokens)[m
+[32m+[m[32m- Manages the Databricks OAuth flow — **currently Azure AD only** (redirects to `login.microsoftonline.com`, exchanges code for token, triggers bootstrap)[m
+[32m+[m[32m- Runs bootstrap and sync in background threads so the UI can poll for progress[m
+[32m+[m[32m- Implements an in-memory hourly auto-sync scheduler using `threading.Timer`[m
+[32m+[m
+[32m+[m[32m**Azure-specific code in this file:**[m
+[32m+[m[32m| Line | Code | What it is |[m
+[32m+[m[32m|------|------|-----------|[m
+[32m+[m[32m| 1366 | `DBX_SCOPE = '2ff814a6-3304-4ab8-85cb-cd0e6f879c1d/user_impersonation ...'` | Azure Databricks AAD resource ID scope |[m
+[32m+[m[32m| 1367 | `DBX_WORKSPACE_URL = os.getenv('DATABRICKS_WORKSPACE_URL', 'https://adb-7405610461940025.5.azuredatabricks.net')` | Azure workspace URL default |[m
+[32m+[m[32m| 1375 | `tenant_id = os.getenv('DATABRICKS_TENANT_ID', '')` | Azure AD tenant — does not exist on AWS |[m
+[32m+[m[32m| 1382-1390 | Auth URL: `login.microsoftonline.com/{tenant_id}/oauth2/v2.0/authorize` | Azure AD authorize endpoint |[m
+[32m+[m[32m| 1406-1424 | Token URL: `login.microsoftonline.com/{tenant_id}/oauth2/v2.0/token` | Azure AD token endpoint |[m
+[32m+[m[32m| 362 | `"Autodesk Construction Cloud → Azure Databricks"` | UI label |[m
+[32m+[m[32m| 493 | `"Connect to Azure Databricks"` | UI label |[m
+[32m+[m
+[32m+[m[32m---[m
+[32m+[m
+[32m+[m[32m### 2.2 `acc-connector/backend/acc_client.py`[m
+[32m+[m
+[32m+[m[32m**What it is:** The Autodesk Platform Services (APS) OAuth and REST API client.[m
+[32m+[m
+[32m+[m[32m**What it does:

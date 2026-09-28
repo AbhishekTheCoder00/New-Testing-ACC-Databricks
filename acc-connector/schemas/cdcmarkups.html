@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cdcmarkups: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>cdcmarkups Schema Description</h1>
+<b>Documentation Updated: </b>2025-11-23<br/>
+<ul><li><a href="#layer">layer</a></li>
+<li><a href="#link">link</a></li>
+<li><a href="#markup">markup</a></li>
+<li><a href="#placement">placement</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+
+        	<div class="message_highlight_note"><b>Beta Release</b><br>
+        		This is a Beta release of the cdcmarkups data set and schema definitions are subject to change or even possibly be removed from the final data set release. Thank you for your understanding with any future schema updates.
+          </div>
+<h2><a name="layer">layer</a></h2>Markups are placed on layers. which are placed on surfaces. - This is the Change Data Capture (CDC) enabled version of the markups.layer table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>3</td><td>uid</td><td>string: UUID</td><td></td><td>Unique identifier for the layer.</td></tr>
+<tr><td>4</td><td>surface_uid</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Parent Surface ID for this Layer.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> surface<br/><strong>Column: </strong> uid</span></td></tr>
+<tr><td>5</td><td>name</td><td>string: null</td><td></td><td>Name of layer, null is default layer.</td></tr>
+<tr><td>6</td><td>promotable</td><td>boolean</td><td></td><td>Indicates whether or not this layer's markups are copied when a new version of a sheet is uploaded.</td></tr>
+<tr><td>7</td><td>surface_type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>document</li>
+<li>sheet</li>
+<li>photo</li>
+<li>job_output</li>
+<li>acc_sheet</li>
+<li>acc_document</li>
+<li>acc_model</li></ul></td><td>The type of surface</td></tr>
+<tr><td>8</td><td>base_entity_urn</td><td>string</td><td></td><td>The document version urn</td></tr>
+<tr><td>9</td><td>base_entity_uid</td><td>string: UUID</td><td></td><td>The UUID of the root entity of the surface (sheet id, doc id, etc)</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the row was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the row was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the row was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="link">link</a></h2>Indicates if a markup is linked to another feature entity. - This is the Change Data Capture (CDC) enabled version of the markups.link table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>3</td><td>uid</td><td>string: UUID</td><td></td><td>The unique identifier for this link.</td></tr>
+<tr><td>4</td><td>markup_id</td><td>number</td><td></td><td><span style="color: #1A59A8;">markup ID associated with this placement.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> markup<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>document</li>
+<li>sheet</li>
+<li>acc_document</li>
+<li>acc_sheet</li>
+<li>acc_sheet_history</li>
+<li>photo</li>
+<li>rfi</li>
+<li>progress-tracking</li>
+<li>form</li>
+<li>submittal</li></ul></td><td>Type of link</td></tr>
+<tr><td>6</td><td>destination</td><td>string: UUID</td><td></td><td>The unique identifier of the entity linked to.  Mutually exclusive with uri.</td></tr>
+<tr><td>7</td><td>uri</td><td>string: null</td><td></td><td>The uniform resource identifier being linked to.  Mutually exclusive with destination.</td></tr>
+<tr><td>8</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the link.</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the link was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>deleted</td><td>boolean</td><td></td><td>Indicates if the link has been deleted</td></tr>
+<tr><td>11</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted the link.</td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the link was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the row was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>14</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="markup">markup</a></h2>Main table for all our markup data. - This is the Change Data Capture (CDC) enabled version of the markups.markup table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>number</td><td></td><td>Unique identifier of markup.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>uid</td><td>string: UUID</td><td></td><td>Unique identifier of markup.</td></tr>
+<tr><td>5</td><td>feature_bound_uid</td><td>string: UUID</td><td></td><td>Unique identifier of feature entity this markup is linked to.</td></tr>
+<tr><td>6</td><td>feature_bound_type</td><td>string: null</td><td><strong>Possible Values:</strong><br/><ul><li>issue</li>
+<li>progress-tracking</li>
+<li>photo</li>
+<li>calibration</li></ul></td><td>Type of feature entity this markup is linked to.</td></tr>
+<tr><td>7</td><td>type</td><td>string: null</td><td></td><td>Stencil schema used for markup</td></tr>
+<tr><td>8</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the markup.</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the markup was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the markup.</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the markup was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>deleted</td><td>boolean</td><td></td><td>Indicates if the markup has been deleted</td></tr>
+<tr><td>13</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted the markup.</td></tr>
+<tr><td>14</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the markup was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>15</td><td>markup_text</td><td>string</td><td></td><td>Text content for the given markup.  This is the initial text that the markup was created with, THIS MAY BE OVERRIDDEN BY TEXT ON THE PLACEMENT OF THIS MARKUP.  Merge with the "placement" table and check "placement_text" to identify the text of a given placement of this markup.  if "placement_text" is blank, then "markup_text" holds the current text content.  NOTE: if the markup is a feature bound markup (feature_bound_type is present), the text here is inaccurate and should be ignored.</td></tr>
+<tr><td>16</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="placement">placement</a></h2>Combined with markup table to place markups on layers and surfaces. - This is the Change Data Capture (CDC) enabled version of the markups.placement table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>3</td><td>markup_uid</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">markup ID associated with this placement.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> markup<br/><strong>Column: </strong> uid</span></td></tr>
+<tr><td>4</td><td>surface_uid</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Surface ID this markup is placed on.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> surface<br/><strong>Column: </strong> uid</span></td></tr>
+<tr><td>5</td><td>published</td><td>boolean</td><td></td><td>Indicates if the markup is visible to all users or not.</td></tr>
+<tr><td>6</td><td>layer_uid</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Layer ID this markup is placed on.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> layer<br/><strong>Column: </strong> uid</span></td></tr>
+<tr><td>7</td><td>id</td><td>number</td><td></td><td>Unique identifier for the placement.</td></tr>
+<tr><td>8</td><td>uid</td><td>string: UUID</td><td></td><td>Unique identifier for the placement.</td></tr>
+<tr><td>9</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the placement.</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the placement was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the placement.</td></tr>
+<tr><td>12</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the placement was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>deleted</td><td>boolean</td><td></td><td>Indicates if the placement has been deleted</td></tr>
+<tr><td>14</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted the placement.</td></tr>
+<tr><td>15</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the placement was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>16</td><td>placement_text</td><td>string</td><td></td><td>Text content for the given markup-placement.  THIS WILL OVERRIDE TEXT IN MARKUP.MARKUP_TEXT.  If there is text present in this column, it is the current text of the given placement.  If this field is blank, check the "markup_text" column by merging with the "markup" table to get text (if there is any for this placement).  NOTE: if the markup is a feature bound markup (feature_bound_type is present), the text here is inaccurate and should be ignored.</td></tr>
+<tr><td>17</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

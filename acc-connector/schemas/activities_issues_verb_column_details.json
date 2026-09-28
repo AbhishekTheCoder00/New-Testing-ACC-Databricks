@@ -1,0 +1,738 @@
+{
+   "issue-answered" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-assign" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-attach" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_attachment_attachment_type",
+         "object_attachment_display_name",
+         "object_attachment_id",
+         "object_attachment_name",
+         "object_attachment_urn",
+         "object_attachment_urn_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-attachment-add" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_attachment_display_name",
+         "object_attachment_id",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-attachment-remove" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_attachment_display_name",
+         "object_attachment_id",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-closed" : {
+      "related_tables" : [
+         "issues_changes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-comment" : {
+      "related_tables" : [
+         "issues_changes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_comment_id",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-completed" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-copy" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-create" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-deleted" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-detach" : {
+      "related_tables" : [
+         "issues_changes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_attachment_attachment_type",
+         "object_attachment_display_name",
+         "object_attachment_id",
+         "object_attachment_name",
+         "object_attachment_urn",
+         "object_attachment_urn_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-draft" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-due-date" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-edit" : {
+      "related_tables" : [
+         "issues_changes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-import-create" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-import-edit" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-in-dispute" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-in-progress" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-in-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-link-added" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-link-removed" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-not-approved" : {
+      "related_tables" : [
+         "issues_changes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-open" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-pending" : {
+      "related_tables" : [
+         "issues_changes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-placement-add" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-placement-remove" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-placement-reposition" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-ready-to-inspect" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-respond" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-restored" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-snapshot-edit" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-suggestion-generated" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-view" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   },
+   "issue-void" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ],
+      "related_tables" : [
+         "issues_changes"
+      ]
+   },
+   "issue-work-completed" : {
+      "related_tables" : [
+         "issues_changes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_answer",
+         "object_assigned_to",
+         "object_assigned_to_type",
+         "object_created_at",
+         "object_display_name",
+         "object_id",
+         "object_status",
+         "object_title",
+         "object_updated_at"
+      ]
+   }
+}

@@ -1,0 +1,706 @@
+{
+   "company_daily_quality_risk_changes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id",
+         "ordinal_position" : 1
+      },
+      "company_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Company Id",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 4
+      },
+      "start_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Start Time",
+         "ordinal_position" : 5
+      },
+      "daily_risk" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Daily Risk",
+         "ordinal_position" : 6
+      },
+      "daily_risk_indicator" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Daily Risk Indicator",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Created At",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 9
+      }
+   },
+   "company_daily_safety_risk_changes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id",
+         "ordinal_position" : 1
+      },
+      "company_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Company Id",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 4
+      },
+      "start_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Start Date",
+         "ordinal_position" : 5
+      },
+      "daily_safety_risk" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Daily Safety Risk",
+         "ordinal_position" : 6
+      },
+      "daily_safety_risk_indicator" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Daily Safety Risk Indicator",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Created At",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 9
+      }
+   },
+   "cost_impact_issues" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "cost_impact" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Cost Impact: High Medium Low",
+         "ordinal_position" : 4
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 6
+      }
+   },
+   "design_issues_building_components" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "building_component" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Building Components",
+         "ordinal_position" : 4
+      },
+      "user_building_component" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Building Components ser by user",
+         "ordinal_position" : 5
+      },
+      "building_component_keyword" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Building Components Keywords",
+         "ordinal_position" : 6
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 7
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 8
+      }
+   },
+   "design_issues_root_cause" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "root_cause" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Root Causes",
+         "ordinal_position" : 4
+      },
+      "user_root_cause" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Root Causes set by user",
+         "ordinal_position" : 5
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 6
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 7
+      }
+   },
+   "inspection_risk_issues" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "inspection_risk" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Inspection Risk",
+         "ordinal_position" : 4
+      },
+      "user_category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Categories set by user",
+         "ordinal_position" : 5
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 6
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 7
+      }
+   },
+   "issues_quality_categories" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 2
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 3
+      },
+      "category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Categories",
+         "ordinal_position" : 4
+      },
+      "user_category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Categories set by user",
+         "ordinal_position" : 5
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 6
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 7
+      }
+   },
+   "issues_quality_risks" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 2
+      },
+      "risk" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Risk",
+         "ordinal_position" : 3
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 4
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 6
+      },
+      "user_risk" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User Risk",
+         "ordinal_position" : 7
+      }
+   },
+   "issues_safety_hazard" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "safety_hazard_category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Safety Hazard Categories",
+         "ordinal_position" : 4
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 6
+      }
+   },
+   "issues_safety_observations" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "safety_observation_category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Safety Observation Category",
+         "ordinal_position" : 4
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 6
+      }
+   },
+   "issues_safety_risk" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "safety_risk_category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Safety Risk Category: Fall, Electrocution, Struck by, caught in between, fire, other",
+         "ordinal_position" : 4
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 6
+      }
+   },
+   "project_daily_quality_risk_changes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 3
+      },
+      "start_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Project Start Time",
+         "ordinal_position" : 4
+      },
+      "daily_risk" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Daily Risk: Low, Medium, High",
+         "ordinal_position" : 5
+      },
+      "daily_risk_indicator" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Daily Risk Indicator",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Created At",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 8
+      }
+   },
+   "rfis_building_components" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "RFI Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "building_component" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Building Components",
+         "ordinal_position" : 4
+      },
+      "building_component_keyword" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Building Components Keywords",
+         "ordinal_position" : 5
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 6
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 7
+      }
+   },
+   "rfis_disciplines" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "RFI Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "discipline" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Disciplines",
+         "ordinal_position" : 4
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 6
+      }
+   },
+   "rfis_high_risk" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "RFI Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "risk" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Risk",
+         "ordinal_position" : 4
+      },
+      "score" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Score",
+         "ordinal_position" : 5
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 6
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 7
+      }
+   },
+   "rfis_root_cause" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "RFI Id",
+         "ordinal_position" : 1
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated At",
+         "ordinal_position" : 2
+      },
+      "predicted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Predicted At",
+         "ordinal_position" : 3
+      },
+      "root_cause" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Root Causes",
+         "ordinal_position" : 4
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Id",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Id",
+         "ordinal_position" : 6
+      }
+   }
+}

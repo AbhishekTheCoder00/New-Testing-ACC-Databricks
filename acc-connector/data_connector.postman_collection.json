@@ -1,0 +1,199 @@
+{
+  "info": {
+    "name": "ACC Data Connector",
+    "_postman_id": "acc-data-connector-v1",
+    "description": "All 6 steps of the ACC Data Connector API flow.\n\nSetup:\n1. Start the Flask app (start.bat) and sign in at http://localhost:8000\n2. Run the [Helper] request, copy bearer_token / account_id / project_id into the Variables tab\n3. Run requests 1 to 6 in order",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "ACCOUNT_ID",
+      "value": "",
+      "description": "Paste account_id from /debug/acc",
+      "type": "string"
+    },
+    {
+      "key": "PROJECT_ID",
+      "value": "",
+      "description": "Paste project_id from /debug/acc",
+      "type": "string"
+    },
+    {
+      "key": "TOKEN",
+      "value": "",
+      "description": "Paste bearer_token from /debug/acc",
+      "type": "string"
+    },
+    {
+      "key": "REQUEST_ID",
+      "value": "",
+      "description": "Auto-filled by step 1 test script",
+      "type": "string"
+    },
+    {
+      "key": "JOB_ID",
+      "value": "",
+      "description": "Auto-filled by step 2 test script",
+      "type": "string"
+    },
+    {
+      "key": "FILE_NAME",
+      "value": "admin_users.csv",
+      "description": "Pick any filename from step 4 response",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "[Helper] Get token + config from Flask app",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/debug/acc",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["debug", "acc"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "1 - Create export request",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var json = pm.response.json();",
+              "if (json.id) {",
+              "    pm.collectionVariables.set('REQUEST_ID', json.id);",
+              "    console.log('REQUEST_ID set:', json.id);",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{TOKEN}}" },
+          { "key": "Content-Type",  "value": "application/json" },
+          { "key": "region",        "value": "US" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"projectId\": \"{{PROJECT_ID}}\",\n  \"description\": \"Postman test export\",\n  \"isActive\": true,\n  \"scheduleInterval\": \"ONE_TIME\",\n  \"effectiveFrom\": \"{{$isoTimestamp}}\",\n  \"serviceGroups\": [\n    \"admin\", \"assets\", \"checklists\", \"clashes\", \"iq\", \"cost\",\n    \"dailylogs\", \"estimates\", \"forms\", \"issues\", \"issuesbim360\",\n    \"locations\", \"markups\", \"meetingminutes\", \"packages\", \"photos\",\n    \"relationships\", \"reviews\", \"rfis\", \"schedule\", \"sheets\",\n    \"submittals\", \"submittalsacc\", \"takeoff\", \"transmittals\"\n  ],\n  \"sendEmail\": false\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "https://developer.api.autodesk.com/data-connector/v1/accounts/{{ACCOUNT_ID}}/requests",
+          "protocol": "https",
+          "host": ["developer", "api", "autodesk", "com"],
+          "path": ["data-connector", "v1", "accounts", "{{ACCOUNT_ID}}", "requests"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2 - Poll: wait for job to appear",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "var json = pm.response.json();",
+              "var results = json.results || [];",
+              "if (results.length > 0) {",
+              "    pm.collectionVariables.set('JOB_ID', results[0].id);",
+              "    console.log('JOB_ID set:', results[0].id);",
+              "} else {",
+              "    console.log('No job yet - wait 10s and resend');",
+              "}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{TOKEN}}" },
+          { "key": "region",        "value": "US" }
+        ],
+        "url": {
+          "raw": "https://developer.api.autodesk.com/data-connector/v1/accounts/{{ACCOUNT_ID}}/requests/{{REQUEST_ID}}/jobs",
+          "protocol": "https",
+          "host": ["developer", "api", "autodesk", "com"],
+          "path": ["data-connector", "v1", "accounts", "{{ACCOUNT_ID}}", "requests", "{{REQUEST_ID}}", "jobs"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3 - Poll: job status",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{TOKEN}}" },
+          { "key": "region",        "value": "US" }
+        ],
+        "url": {
+          "raw": "https://developer.api.autodesk.com/data-connector/v1/accounts/{{ACCOUNT_ID}}/jobs/{{JOB_ID}}",
+          "protocol": "https",
+          "host": ["developer", "api", "autodesk", "com"],
+          "path": ["data-connector", "v1", "accounts", "{{ACCOUNT_ID}}", "jobs", "{{JOB_ID}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4 - List exported files",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{TOKEN}}" },
+          { "key": "region",        "value": "US" }
+        ],
+        "url": {
+          "raw": "https://developer.api.autodesk.com/data-connector/v1/accounts/{{ACCOUNT_ID}}/jobs/{{JOB_ID}}/data-listing",
+          "protocol": "https",
+          "host": ["developer", "api", "autodesk", "com"],
+          "path": ["data-connector", "v1", "accounts", "{{ACCOUNT_ID}}", "jobs", "{{JOB_ID}}", "data-listing"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5 - Get signed URL for a file",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{TOKEN}}" },
+          { "key": "region",        "value": "US" }
+        ],
+        "url": {
+          "raw": "https://developer.api.autodesk.com/data-connector/v1/accounts/{{ACCOUNT_ID}}/jobs/{{JOB_ID}}/data/{{FILE_NAME}}",
+          "protocol": "https",
+          "host": ["developer", "api", "autodesk", "com"],
+          "path": ["data-connector", "v1", "accounts", "{{ACCOUNT_ID}}", "jobs", "{{JOB_ID}}", "data", "{{FILE_NAME}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6 - Download file (no auth needed)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "PASTE_SIGNED_URL_FROM_STEP_5_HERE"
+        },
+        "description": "Replace the URL with the signedUrl value from the step 5 response. No Authorization header needed."
+      },
+      "response": []
+    }
+  ]
+}

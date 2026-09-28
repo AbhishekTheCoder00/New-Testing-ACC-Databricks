@@ -1,0 +1,2711 @@
+{
+   "activate-approval-workflow" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "add-attribute-to-namingstandard" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_naming_standards"
+      ]
+   },
+   "add-doc-comment-for-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_task_name",
+         "target_display_name",
+         "target_folder_display_name",
+         "target_folder_id",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "add-docs-to-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_project_account_id",
+         "target_project_id",
+         "target_sequence_id"
+      ]
+   },
+   "add-entity-by-automation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "add-folder-naming-standard" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "add-member" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "add-recipients-to-transmittal" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_sequence_id"
+      ]
+   },
+   "add-resources-to-package" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "add-version-to-set" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "apply-naming-standard" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_naming_standards"
+      ]
+   },
+   "archive-approval-workflow" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "archive-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id"
+      ]
+   },
+   "assign-permission" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ],
+      "related_tables" : [
+         "docs_permissions"
+      ]
+   },
+   "assign-smart-control-permission" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "attach-custom-attribute" : {
+      "related_tables" : [
+         "docs_custom_attributes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "bridge-approval-status" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_folder_display_name",
+         "target_folder_id",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "bridge-custom-attributes" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "bridge-file-properties" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_folder_display_name",
+         "target_folder_id",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "calibrate-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_revision_number",
+         "object_version"
+      ]
+   },
+   "change-public-link-expiration" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "claim-review-task" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "continue-project-copy" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "copy-file" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_folder_display_name",
+         "target_folder_id",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "copy-file-from-project-template" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_folder_display_name",
+         "target_folder_id",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "copy-file-to-another-project" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_folder_display_name",
+         "target_folder_id",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "copy-review-docs-to-folder" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_pending_name",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_source_display_name",
+         "object_source_id",
+         "object_source_object_type",
+         "object_source_parent_folder_urn",
+         "object_source_version",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_project_account_id",
+         "target_project_id"
+      ]
+   },
+   "create-custom-attribute" : {
+      "related_tables" : [
+         "docs_custom_attributes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "create-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "create-hyperlink" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_file_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_hyperlink_display_name",
+         "object_hyperlink_hyperlink_id",
+         "object_hyperlink_id",
+         "object_hyperlink_object_type",
+         "object_hyperlink_parent_folder_urn",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "create-public-link-for-documents" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "object_version_urn"
+      ]
+   },
+   "create-public-link-for-folders" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "create-set" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_issuance_date",
+         "object_object_type"
+      ]
+   },
+   "create-smart-control" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "create-transmittal" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_version"
+      ]
+   },
+   "create-transmittal-attribute-group" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "delegate-review-task" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "delete-custom-attribute" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_custom_attributes"
+      ]
+   },
+   "delete-doc-comment-for-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_task_name",
+         "target_display_name",
+         "target_folder_display_name",
+         "target_folder_id",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "delete-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_file_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "delete-entity-by-automation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "delete-hyperlink" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_file_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_hyperlink_display_name",
+         "object_hyperlink_hyperlink_id",
+         "object_hyperlink_id",
+         "object_hyperlink_object_type",
+         "object_hyperlink_parent_folder_urn",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "delete-permission" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "delete-public-link-for-documents" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "object_version_urn"
+      ]
+   },
+   "delete-public-link-for-folders" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "delete-set" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "delete-smart-control" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "delete-smart-control-permission" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "delete-transmittal-attribute-group" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "detach-custom-attribute" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_custom_attributes"
+      ]
+   },
+   "download-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "object_version_urn"
+      ]
+   },
+   "edit-description" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_new_description",
+         "object_object_type",
+         "object_old_description",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "edit-entity" : {
+      "related_tables" : [
+         "docs_custom_attributes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "edit-naming-standard" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_naming_standards"
+      ]
+   },
+   "edit-office-file" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "edit-set" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_new_issuance_date",
+         "object_object_type",
+         "object_old_issuance_date"
+      ]
+   },
+   "edit-smart-control" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "enable-public-link" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_status"
+      ]
+   },
+   "enable-upload-rule" : {
+      "related_tables" : [
+         "docs_naming_standards"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "enable-uploader-edit-attribute-values" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_status"
+      ]
+   },
+   "export-document-log" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "export-file" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_revision_number",
+         "object_version"
+      ]
+   },
+   "export-file-report" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "export-folder-permission-report" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "export-non-member-transmittal" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id"
+      ]
+   },
+   "export-project-report" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "export-transmittal" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id"
+      ]
+   },
+   "ignore-project-copy" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "initiate-review-process" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status"
+      ]
+   },
+   "lock-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "move-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_file_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "move-version-to-set" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_id",
+         "object_from_set_display_name",
+         "object_from_set_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "notify-final-members" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id"
+      ]
+   },
+   "notify-observers" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_observer_id",
+         "object_observer_name",
+         "object_observer_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "notify-reviewers" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_reviewer_id",
+         "object_reviewer_name",
+         "object_reviewer_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "ns-download-template" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "ns-export" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "ns-import-merge" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "ns-import-replace" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_old_name"
+      ]
+   },
+   "prepare-download-package" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id"
+      ]
+   },
+   "print-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_version",
+         "object_version_urn"
+      ]
+   },
+   "process-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "publish-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_version"
+      ]
+   },
+   "recall-public-link-for-documents" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "object_version_urn"
+      ]
+   },
+   "recall-public-link-for-folders" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "receive-entity-from-project" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_project_account_id",
+         "target_project_id"
+      ]
+   },
+   "receive-entity-from-project-with-automation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_project_account_id",
+         "target_project_id"
+      ]
+   },
+   "remove-attribute-from-namingstandard" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_naming_standards"
+      ]
+   },
+   "remove-docs-from-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_project_account_id",
+         "target_project_id",
+         "target_sequence_id"
+      ]
+   },
+   "remove-folder-naming-standard" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "remove-naming-standard" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "remove-resources-from-package" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "remove-resources-from-takeoff" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "remove-shared-search" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ]
+   },
+   "remove-version-from-set" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "rename-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_old_name",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "rename-set" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_old_name"
+      ]
+   },
+   "restore-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_file_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "restore-version" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "review-attach-folder-attributes" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id"
+      ],
+      "related_tables" : [
+         "docs_standard_attributes"
+      ]
+   },
+   "review-back-to-initiator" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status"
+      ]
+   },
+   "review-create-transmittal" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_project_account_id",
+         "target_project_id",
+         "target_sequence_id"
+      ]
+   },
+   "review-delete-draft-workflow" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "review-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_file_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "review-export-files" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_version"
+      ]
+   },
+   "review-increase-doc-attributes" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_version"
+      ],
+      "related_tables" : [
+         "docs_standard_attributes"
+      ]
+   },
+   "review-push-approval-status" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_approval_status",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_version"
+      ]
+   },
+   "review-push-doc-attributes" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_version"
+      ],
+      "related_tables" : [
+         "docs_standard_attributes"
+      ]
+   },
+   "review-rename" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status"
+      ]
+   },
+   "review-rename-doc" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_pending_name",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_version"
+      ]
+   },
+   "review-save-as-draft" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "review-set-attached-attributes" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_standard_attributes"
+      ]
+   },
+   "review-skip-step" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "review-step-back" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "review-submit-as-workflow" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "review-update-candidates" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "review-update-doc-attributes" : {
+      "related_tables" : [
+         "docs_standard_attributes"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_pending_name",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_version"
+      ]
+   },
+   "review-update-duration" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "save-approval-workflow" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "scan-duplicate-files" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "send-entity-to-project" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_project_account_id",
+         "target_project_id"
+      ]
+   },
+   "send-entity-to-project-with-automation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_project_account_id",
+         "target_project_id"
+      ]
+   },
+   "sequence-naming-standard" : {
+      "related_tables" : [
+         "docs_naming_standards"
+      ],
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "set-approval-status" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_approval_status",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_task_name",
+         "object_version"
+      ]
+   },
+   "shared-with-recipients-for-documents" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "object_version_urn",
+         "target_display_name",
+         "target_id"
+      ]
+   },
+   "shared-with-recipients-for-folders" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "target_display_name",
+         "target_id"
+      ]
+   },
+   "show-folder-full-path" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_status"
+      ]
+   },
+   "smart-control-set-attributes" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "submit-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status",
+         "object_task_name"
+      ]
+   },
+   "terminate-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status"
+      ]
+   },
+   "unlock-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "update-custom-attribute" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_custom_attributes"
+      ]
+   },
+   "update-doc-comment-for-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_review_display_name",
+         "object_review_id",
+         "object_review_sequence_id",
+         "object_task_name",
+         "target_display_name",
+         "target_folder_display_name",
+         "target_folder_id",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_project_account_id",
+         "target_project_id",
+         "target_version"
+      ]
+   },
+   "update-folder-properties" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_old_description"
+      ]
+   },
+   "update-shared-search" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ]
+   },
+   "update-transmittal-attribute-group" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "update-transmittal-non-members-setting" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   },
+   "update-transmittal-setting" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id"
+      ]
+   },
+   "upgrade-version" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "object_version_urn",
+         "target_display_name",
+         "target_id",
+         "target_object_type",
+         "target_parent_folder_urn",
+         "target_version"
+      ]
+   },
+   "upload-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_object_type"
+      ]
+   },
+   "upsert-custom-attribute-constraint" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_custom_attribute_constraints"
+      ]
+   },
+   "view-entity" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_file_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   },
+   "view-existing-review" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id",
+         "object_status"
+      ]
+   },
+   "view-in-autocad-web" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_revision_number",
+         "object_version"
+      ]
+   },
+   "view-non-member-transmittal" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id"
+      ]
+   },
+   "view-public-link" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_collection_id",
+         "object_collection_instance_index",
+         "object_collection_size",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version",
+         "target_display_name",
+         "target_id",
+         "target_viewer_display_name",
+         "target_viewer_id"
+      ]
+   },
+   "view-transmittal" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type",
+         "object_sequence_id"
+      ]
+   },
+   "view-version" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_folder_display_name",
+         "object_folder_id",
+         "object_id",
+         "object_object_type",
+         "object_parent_folder_urn",
+         "object_version"
+      ]
+   }
+}

@@ -1,0 +1,322 @@
+{
+   "transmittal_documents" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the transmittal document",
+         "ordinal_position" : 1
+      },
+      "workflow_transmittal_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the transmittal the document belongs to",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 4
+      },
+      "urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The URN of the document",
+         "ordinal_position" : 5
+      },
+      "file_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "File name of the document",
+         "ordinal_position" : 6
+      },
+      "version_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The specific version of the document",
+         "ordinal_position" : 7
+      },
+      "revision_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The specific revision of the document",
+         "ordinal_position" : 8
+      },
+      "parent_folder_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The URN of the folder that the document belongs to",
+         "ordinal_position" : 9
+      },
+      "last_modified_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last modified time of the document",
+         "ordinal_position" : 10
+      },
+      "last_modified_user_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of the last modified user",
+         "ordinal_position" : 11
+      },
+      "last_modified_user_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the last modified user",
+         "ordinal_position" : 12
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the transmittal document",
+         "ordinal_position" : 13
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the transmittal document",
+         "ordinal_position" : 14
+      }
+   },
+   "transmittal_non_members" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the transmittal external recipient",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "email" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "External user inputed email.",
+         "ordinal_position" : 4
+      },
+      "first_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "External user inputed first name.",
+         "ordinal_position" : 5
+      },
+      "last_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "External user inputed last name.",
+         "ordinal_position" : 6
+      },
+      "company_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "External user inputed company name.",
+         "ordinal_position" : 7
+      },
+      "role" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "External user inputed role name.",
+         "ordinal_position" : 8
+      },
+      "workflow_transmittal_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the transmittal the recipient belongs to",
+         "ordinal_position" : 9
+      },
+      "viewed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The first time of when the recipient is viewed this transmittal",
+         "ordinal_position" : 10
+      },
+      "downloaded_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The first time of when the recipient is downloaded this transmittal",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the transmittal non member",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the transmittal non member",
+         "ordinal_position" : 13
+      }
+   },
+   "transmittal_recipients" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the transmittal recipient",
+         "ordinal_position" : 1
+      },
+      "workflow_transmittal_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the transmittal the recipient belongs to",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 4
+      },
+      "user_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of user who owns the document",
+         "ordinal_position" : 5
+      },
+      "user_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of user who owns the document",
+         "ordinal_position" : 6
+      },
+      "email" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Email of user who owns the document",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the transmittal recipient",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the transmittal recipient",
+         "ordinal_position" : 9
+      },
+      "company_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of recipient's company",
+         "ordinal_position" : 10
+      },
+      "viewed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The first time of when the recipient is viewed this transmittal",
+         "ordinal_position" : 11
+      },
+      "downloaded_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The first time of when the recipient is downloaded this transmittal",
+         "ordinal_position" : 12
+      }
+   },
+   "workflow_transmittals" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the transmittal",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "sequence_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The sequence id of the transmittal",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the transmittal",
+         "ordinal_position" : 5
+      },
+      "status" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Status of the transmittal, 1 =&gt; SENDING, 2 =&gt; COMPLETED, 3 =&gt; FAILED",
+         "ordinal_position" : 6
+      },
+      "create_user_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of user who create the transmittal",
+         "ordinal_position" : 7
+      },
+      "create_user_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of user who create the transmittal",
+         "ordinal_position" : 8
+      },
+      "docs_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The count of documents that belong to the transmittal",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the transmittal",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the transmittal",
+         "ordinal_position" : 11
+      },
+      "create_user_company_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Company id of the user who create the transmittal",
+         "ordinal_position" : 12
+      },
+      "create_user_company_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Company name of the user who create the transmittal",
+         "ordinal_position" : 13
+      }
+   }
+}

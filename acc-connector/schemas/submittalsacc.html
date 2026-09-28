@@ -1,0 +1,446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>submittalsacc: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>submittalsacc Schema Description</h1>
+<b>Documentation Updated: </b>2025-12-01<br/>
+<ul><li><a href="#attachments">attachments</a></li>
+<li><a href="#comments">comments</a></li>
+<li><a href="#custom_identifier_settings">custom_identifier_settings</a></li>
+<li><a href="#item_custom_attribute_value">item_custom_attribute_value</a></li>
+<li><a href="#item_revision">item_revision</a></li>
+<li><a href="#item_watchers">item_watchers</a></li>
+<li><a href="#items">items</a></li>
+<li><a href="#itemtype">itemtype</a></li>
+<li><a href="#packages">packages</a></li>
+<li><a href="#parameters_collections">parameters_collections</a></li>
+<li><a href="#specs">specs</a></li>
+<li><a href="#steps">steps</a></li>
+<li><a href="#tasks">tasks</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="attachments">attachments</a></h2>Attachments for ACC Build Submittal items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the Attachment</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the parent Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td></td><td>Name of the file</td></tr>
+<tr><td>6</td><td>revision</td><td>number</td><td></td><td>Revision of the item when the attachment was added</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the attachment</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the attachment created</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the attachment last updated</td></tr>
+<tr><td>10</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the attachment</td></tr>
+<tr><td>11</td><td>upload_urn</td><td>string</td><td></td><td>storage URN where attachments are uploaded</td></tr>
+<tr><td>12</td><td>category_id</td><td>string</td><td></td><td>ID of the attachment category</td></tr>
+<tr><td>13</td><td>category_value</td><td>string</td><td></td><td>value of the category_id</td></tr>
+<tr><td>14</td><td>task_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the parent Task<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> tasks.id<br/><strong>Column: </strong> </span></td></tr>
+<tr><td>15</td><td>is_file_uploaded</td><td>boolean</td><td></td><td>Was the upload process completed successfully</td></tr>
+<tr><td>16</td><td>urn</td><td>string</td><td></td><td>ID of the version of the file</td></tr>
+</tbody></table><h2><a name="comments">comments</a></h2>Comments for ACC Build Submittal items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the Comment</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the parent Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the comment</td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the comment updated</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the comment</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the comment was created</td></tr>
+<tr><td>9</td><td>body</td><td>string</td><td></td><td>Body of the comment</td></tr>
+</tbody></table><h2><a name="custom_identifier_settings">custom_identifier_settings</a></h2>Submittal custom identifier settings for the ACC Build system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the custom identifier settings</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the task</td></tr>
+<tr><td>5</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the task was updated</td></tr>
+<tr><td>6</td><td>can_switch_type</td><td>boolean</td><td></td><td>Defaults to 'True', after one usage the value will be set to 'False' permanently.</td></tr>
+<tr><td>7</td><td>sequence_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - global</li>
+<li>2 - spec</li></ul></td><td>Project current sequence type</td></tr>
+</tbody></table><h2><a name="item_custom_attribute_value">item_custom_attribute_value</a></h2>Custom fields values for ACC Build Submittal items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the task</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items.id (The ID for the parent item)<br/><strong>Column: </strong> </span></td></tr>
+<tr><td>5</td><td>parameter_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> parameters.id (The ID for related parameter)<br/><strong>Column: </strong> </span></td></tr>
+<tr><td>6</td><td>parameter_name</td><td>string</td><td></td><td>The name of related parameter.</td></tr>
+<tr><td>7</td><td>parameter_type</td><td>string</td><td></td><td>The type of related parameter.</td></tr>
+<tr><td>8</td><td>value</td><td>string</td><td></td><td>The value of item custom field. Value is saved as string, actual value type is based on related parameter type</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the custom attribute value was added</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that added the custom attribute value</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the custom attribute value updated</td></tr>
+<tr><td>12</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the custom attribute value</td></tr>
+<tr><td>13</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the custom attribute value got deleted</td></tr>
+<tr><td>14</td><td>select_value</td><td>string</td><td></td><td>Display field for single / multi select parameter type values.</td></tr>
+</tbody></table><h2><a name="item_revision">item_revision</a></h2>Submittal item revision for the ACC Build system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>id</td><td>string: UUID</td><td></td><td>The ID for the Submittal revision.</td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td>The ID of related Submittal.</td></tr>
+<tr><td>5</td><td>manager</td><td>string</td><td></td><td>Autodesk User ID / Role member group ID / Company member group ID of the manager</td></tr>
+<tr><td>6</td><td>manager_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - user</li>
+<li>2 - company</li>
+<li>3 - role</li></ul></td><td>Indication for manager id type</td></tr>
+<tr><td>7</td><td>subcontractor</td><td>string</td><td></td><td>Autodesk User ID / Role member group ID / Company member group ID of the subcontractor</td></tr>
+<tr><td>8</td><td>subcontractor_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - user</li>
+<li>2 - company</li>
+<li>3 - role</li></ul></td><td>Indication for subcontractor id type</td></tr>
+<tr><td>9</td><td>revision</td><td>number</td><td></td><td>Revision of the item</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>when was the item created</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>last time the item was updated</td></tr>
+<tr><td>12</td><td>sent_to_submitter</td><td>timestamp: SQL</td><td></td><td>when the submitter received the item</td></tr>
+<tr><td>13</td><td>submitter_due_date</td><td>date: string</td><td></td><td>When the responsible contractor submission is due</td></tr>
+<tr><td>14</td><td>received_from_submitter</td><td>timestamp: SQL</td><td></td><td>When the submitter moved the item forward</td></tr>
+<tr><td>15</td><td>submitted_by</td><td>string</td><td></td><td>Autodesk User ID of the user that submitted the item to the manager</td></tr>
+<tr class="yellow_highlight"><td>16</td><td>sent_to_review</td><td>timestamp: SQL</td><td></td><td>When the first review step started <br/><br/><b>Schema Change:</b><br/> formerly sent_to_reviewer (now we have multiple reviewers)</td></tr>
+<tr><td>17</td><td>manager_due_date</td><td>date: string</td><td></td><td>When the manager review is due</td></tr>
+<tr><td>18</td><td>sent_to_review_by</td><td>string</td><td></td><td>Autodesk User ID of the user that submitted the item to review</td></tr>
+<tr class="yellow_highlight"><td>19</td><td>received_from_review</td><td>timestamp: SQL</td><td></td><td>When the review finished <br/><br/><b>Schema Change:</b><br/> formerly received_from_reviewer</td></tr>
+<tr><td>20</td><td>response_id</td><td>string</td><td></td><td><span style="color: #1A59A8;">ID of the response, if was added.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> response<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>21</td><td>response_comment</td><td>string</td><td></td><td>Response comment of the item (in addition to response id)</td></tr>
+<tr><td>22</td><td>responded_at</td><td>timestamp: SQL</td><td></td><td>Date and time when response was added</td></tr>
+<tr><td>23</td><td>responded_by</td><td>string</td><td></td><td>Autodesk User ID of the user that responded</td></tr>
+<tr><td>24</td><td>published_date</td><td>timestamp: SQL</td><td></td><td>When the item was closed and distributed</td></tr>
+<tr><td>25</td><td>published_by</td><td>string</td><td></td><td>Autodesk User ID of the user that published the item</td></tr>
+</tbody></table><h2><a name="item_watchers">item_watchers</a></h2>List of Autodesk User IDs of distribution_list users and their type<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>user_id</td><td>string</td><td></td><td>Autodesk User IDs of cc'ed user/role/company</td></tr>
+<tr><td>5</td><td>user_type_id</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - user</li>
+<li>2 - company</li>
+<li>3 - role</li></ul></td><td>if of the distribution_list member user_type (user/role/company)</td></tr>
+<tr><td>6</td><td>user_type_value</td><td>string</td><td></td><td>value of the user_type_id</td></tr>
+</tbody></table><h2><a name="items">items</a></h2>Submittal items for the ACC Build system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID for the Submittal.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>spec_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the associated Spec<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> specs<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>spec_identifier</td><td>string</td><td></td><td>Identifier of the spec this item related to</td></tr>
+<tr><td>6</td><td>title</td><td>string</td><td></td><td>Title (name) of the item</td></tr>
+<tr><td>7</td><td>type_id</td><td>string</td><td></td><td><span style="color: #1A59A8;">ID for the item type<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> item type<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>8</td><td>type_value</td><td>string</td><td></td><td>value of the item type_id</td></tr>
+<tr><td>9</td><td>response_comment</td><td>string</td><td></td><td>Response comment of the item (in addition to response id)</td></tr>
+<tr class="yellow_highlight"><td>10</td><td>ball_in_court</td><td>string</td><td></td><td>Array of Autodesk User IDs of the users that are ball in court for the item workflow <br/><br/><b>Schema Change:</b><br/> formerly assigned_to (now we have multiple reviewers) <br/><br/><b>Schema Change:</b><br/> Deprecated field</td></tr>
+<tr><td>11</td><td>revision</td><td>number</td><td></td><td>Revision of the item</td></tr>
+<tr><td>12</td><td>responded_by</td><td>string</td><td></td><td>Autodesk User ID of the user that responded</td></tr>
+<tr><td>13</td><td>description</td><td>string</td><td></td><td>Description of the item</td></tr>
+<tr><td>14</td><td>responded_at</td><td>timestamp: SQL</td><td></td><td>Date and time when response was added</td></tr>
+<tr><td>15</td><td>due_date</td><td>date: string</td><td></td><td>Date and time for the item to be done with current state</td></tr>
+<tr><td>16</td><td>required_on_job_date</td><td>date: string</td><td></td><td>Date and time for the item to be done on site</td></tr>
+<tr><td>17</td><td>manager</td><td>string</td><td></td><td>Autodesk User ID / Role member group ID / Company member group ID of the manager</td></tr>
+<tr><td>18</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the item</td></tr>
+<tr><td>19</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>when was the item created</td></tr>
+<tr><td>20</td><td>state_id</td><td>string</td><td></td><td>State of the item</td></tr>
+<tr><td>21</td><td>response_id</td><td>string</td><td></td><td><span style="color: #1A59A8;">ID of the response, if was added.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> response<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>22</td><td>response_value</td><td>string</td><td></td><td>value of the response_id</td></tr>
+<tr><td>23</td><td>subsection</td><td>string</td><td></td><td>Sub spec section</td></tr>
+<tr><td>24</td><td>subcontractor</td><td>string</td><td></td><td>Autodesk User ID / Role member group ID / Company member group ID of the subcontractor</td></tr>
+<tr><td>25</td><td>identifier</td><td>number</td><td></td><td>Identifier of the item. Created automatically</td></tr>
+<tr><td>26</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user the last updated the item</td></tr>
+<tr><td>27</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>last time the item was updated</td></tr>
+<tr><td>28</td><td>status_id</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Required</li>
+<li>2 - Open</li>
+<li>3 - Closed</li>
+<li>4 - Void</li>
+<li>5 - Empty</li>
+<li>6 - Draft</li></ul></td><td>Status ID</td></tr>
+<tr><td>29</td><td>status_value</td><td>string</td><td></td><td>value of the status_id</td></tr>
+<tr><td>30</td><td>package_title</td><td>string</td><td></td><td>Title of the package the item is related to (if any)</td></tr>
+<tr><td>31</td><td>package</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the associated Package<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> packages.id<br/><strong>Column: </strong> </span></td></tr>
+<tr><td>32</td><td>package_identifier</td><td>number</td><td></td><td>Identifier of the package the item is related to (if any)</td></tr>
+<tr><td>33</td><td>priority_id</td><td>number</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Low</li>
+<li>2- Normal</li>
+<li>3 - High</li></ul></td><td>id of the priority the item is related to (if any)</td></tr>
+<tr><td>34</td><td>priority_value</td><td>string</td><td></td><td>value of the priority_id</td></tr>
+<tr><td>35</td><td>required_date</td><td>date: string</td><td></td><td>item's required date</td></tr>
+<tr><td>36</td><td>required_approval_date</td><td>date: string</td><td></td><td>item's required approval date</td></tr>
+<tr><td>37</td><td>lead_time</td><td>number</td><td></td><td>item's lead time</td></tr>
+<tr><td>38</td><td>sent_to_submitter</td><td>timestamp: SQL</td><td></td><td>when the submitter received the item</td></tr>
+<tr><td>39</td><td>received_from_submitter</td><td>timestamp: SQL</td><td></td><td>When the submitter moved the item forward</td></tr>
+<tr><td>40</td><td>submitted_by</td><td>string</td><td></td><td>Autodesk User ID of the user that submitted the item to the manager</td></tr>
+<tr class="yellow_highlight"><td>41</td><td>sent_to_review</td><td>timestamp: SQL</td><td></td><td>When the first review step started <br/><br/><b>Schema Change:</b><br/> formerly sent_to_reviewer (now we have multiple reviewers)</td></tr>
+<tr><td>42</td><td>sent_to_review_by</td><td>string</td><td></td><td>Autodesk User ID of the user that submitted the item to review</td></tr>
+<tr class="yellow_highlight"><td>43</td><td>received_from_review</td><td>timestamp: SQL</td><td></td><td>When the review finished <br/><br/><b>Schema Change:</b><br/> formerly received_from_reviewer</td></tr>
+<tr><td>44</td><td>published_date</td><td>timestamp: SQL</td><td></td><td>When the item was closed and distributed</td></tr>
+<tr><td>45</td><td>published_by</td><td>string</td><td></td><td>Autodesk User ID of the user that published the item</td></tr>
+<tr><td>46</td><td>submitter_due_date</td><td>date: string</td><td></td><td>When the responsible contractor submission is due</td></tr>
+<tr><td>47</td><td>manager_due_date</td><td>date: string</td><td></td><td>When the manager review is due</td></tr>
+<tr><td>48</td><td>ball_in_court_users</td><td>string</td><td></td><td>Array of Autodesk User IDs of the users that are ball in court for the item workflow</td></tr>
+<tr><td>49</td><td>ball_in_court_roles</td><td>string</td><td></td><td>Array of Role member group IDs of the roles that are ball in court for the item workflow</td></tr>
+<tr><td>50</td><td>ball_in_court_companies</td><td>string</td><td></td><td>Array of Company member group IDs of the companies that are ball in court for the item workflow</td></tr>
+<tr><td>51</td><td>manager_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - user</li>
+<li>2 - company</li>
+<li>3 - role</li></ul></td><td>Indication for manager id type</td></tr>
+<tr><td>52</td><td>subcontractor_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - user</li>
+<li>2 - company</li>
+<li>3 - role</li></ul></td><td>Indication for subcontractor id type</td></tr>
+<tr><td>53</td><td>custom_identifier</td><td>string</td><td></td><td>The custom identifier of the item.</td></tr>
+<tr><td>54</td><td>custom_identifier_sort</td><td>string</td><td></td><td>Same value as 'custom_identifier' but this column has db collation in order to enable sorting by the custom identifier value.</td></tr>
+<tr><td>55</td><td>custom_identifier_human_readable</td><td>string</td><td></td><td>Ingested custom identifier of the item. May include the item spec identifier along with the custom identifier value.</td></tr>
+<tr><td>56</td><td>pending_actions_from</td><td>string</td><td></td><td>Array of Autodesk User, Roles and Companies that have yet to respond</td></tr>
+</tbody></table><h2><a name="itemtype">itemtype</a></h2>Submittal types for ACC Build Submittal items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the type</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the typye created</td></tr>
+<tr><td>5</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the typye</td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the type last updated</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the type</td></tr>
+<tr><td>8</td><td>value</td><td>string</td><td></td><td>Value of the type</td></tr>
+<tr><td>9</td><td>platform_id</td><td>string</td><td></td><td>For default types</td></tr>
+<tr><td>10</td><td>is_active</td><td>boolean</td><td></td><td>Is the type active</td></tr>
+</tbody></table><h2><a name="packages">packages</a></h2>Submittal Packages for the ACC Build system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the Package</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>spec_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the associated Spec<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> specs<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>title</td><td>string</td><td></td><td>Title of the package</td></tr>
+<tr><td>6</td><td>identifier</td><td>number</td><td></td><td>Identifier of the package. Created Automatically</td></tr>
+<tr><td>7</td><td>description</td><td>string</td><td></td><td>Description for the package</td></tr>
+<tr><td>8</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the package</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the spec was created</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the package</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when spec was last updated</td></tr>
+<tr><td>12</td><td>spec_identifier</td><td>string</td><td></td><td>Identifier of the spec this package related to</td></tr>
+</tbody></table><h2><a name="parameters_collections">parameters_collections</a></h2>Project custom fields of ACC Build Submittals.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the task</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>parameter_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> parameters.id (The ID for related parameter)<br/><strong>Column: </strong> </span></td></tr>
+<tr><td>5</td><td>parameter_external_id</td><td>string</td><td></td><td>The external_id of related parameter.</td></tr>
+<tr><td>6</td><td>parameter_name</td><td>string</td><td></td><td>The name of related parameter.</td></tr>
+<tr><td>7</td><td>parameter_description</td><td>string</td><td></td><td>The description of related parameter.</td></tr>
+<tr><td>8</td><td>parameter_type</td><td>string</td><td></td><td>The type of related parameter.</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the parameter was detached from collection</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that detached that parameter</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the parameter was attached/detached to/from collection</td></tr>
+<tr><td>12</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the parameter for collection</td></tr>
+<tr><td>13</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the parameter was attached/detached to/from collection</td></tr>
+<tr><td>14</td><td>parameter_select_options</td><td>string</td><td></td><td>Available select options for single / multi select parameter type.</td></tr>
+</tbody></table><h2><a name="specs">specs</a></h2>Submittal Spec Sections for the ACC Build system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>id</td><td>string: UUID</td><td></td><td>ID for the Spec Section</td></tr>
+<tr><td>4</td><td>identifier</td><td>string</td><td></td><td>Spec identifier. Created by the user</td></tr>
+<tr><td>5</td><td>title</td><td>string</td><td></td><td>Title of the spec</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the spec was created</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the spec</td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the spec was updated</td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the spec</td></tr>
+</tbody></table><h2><a name="steps">steps</a></h2>Review steps for ACC Build Submittal items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the step</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the step</td></tr>
+<tr><td>5</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the step was updated</td></tr>
+<tr><td>6</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the step</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the step was created</td></tr>
+<tr><td>8</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>not-started / in-progress / completed</li></ul></td><td>The status of the step</td></tr>
+<tr><td>9</td><td>step_number</td><td>number</td><td></td><td>The order of the step in the review workflow</td></tr>
+<tr><td>10</td><td>days_to_respond</td><td>number</td><td></td><td>Number of days that the reviewers have to respond</td></tr>
+<tr><td>11</td><td>due_date</td><td>date: string</td><td></td><td>Date for the item to be done with current state</td></tr>
+<tr><td>12</td><td>started_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the step started</td></tr>
+<tr><td>13</td><td>completed_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the step finished</td></tr>
+<tr><td>14</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the parent Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+</tbody></table><h2><a name="tasks">tasks</a></h2>Review tasks for ACC Build Submittal items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the task</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the task</td></tr>
+<tr><td>5</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the task was updated</td></tr>
+<tr><td>6</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the task</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the task was created</td></tr>
+<tr><td>8</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>not-started / in-progress / completed</li></ul></td><td>The status of the task</td></tr>
+<tr><td>9</td><td>assigned_to</td><td>string</td><td></td><td>Autodesk User ID / Role member group ID / Company member group ID that the task is assigned to</td></tr>
+<tr><td>10</td><td>is_required</td><td>boolean</td><td></td><td>Is the task a required task in the review step</td></tr>
+<tr><td>11</td><td>response_comment</td><td>string</td><td></td><td>Response comment of the task (in addition to response id)</td></tr>
+<tr><td>12</td><td>responded_at</td><td>timestamp: SQL</td><td></td><td>Date and time when response was added</td></tr>
+<tr><td>13</td><td>responded_by</td><td>string</td><td></td><td>Autodesk User ID of the user that responded</td></tr>
+<tr><td>14</td><td>started_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the task started</td></tr>
+<tr><td>15</td><td>completed_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the task finished</td></tr>
+<tr><td>16</td><td>completed_by</td><td>string</td><td></td><td>Autodesk User ID of the user that closed the task</td></tr>
+<tr><td>17</td><td>response_value</td><td>string</td><td></td><td>value of the response_id</td></tr>
+<tr><td>18</td><td>response_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID of the response, if was added.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> response.id<br/><strong>Column: </strong> </span></td></tr>
+<tr><td>19</td><td>step_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID of the parent step<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> steps.id<br/><strong>Column: </strong> </span></td></tr>
+<tr><td>20</td><td>assigned_to_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - user</li>
+<li>2 - company</li>
+<li>3 - role</li></ul></td><td>Indication for assigned_to id type</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

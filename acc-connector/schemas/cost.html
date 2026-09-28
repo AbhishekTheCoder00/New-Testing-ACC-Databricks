@@ -1,0 +1,921 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cost: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>cost Schema Description</h1>
+<b>Documentation Updated: </b>2026-01-29<br/>
+<ul><li><a href="#approval_workflows">approval_workflows</a></li>
+<li><a href="#budget_code_segment_codes">budget_code_segment_codes</a></li>
+<li><a href="#budget_code_segments">budget_code_segments</a></li>
+<li><a href="#budget_payment_items">budget_payment_items</a></li>
+<li><a href="#budget_payment_properties">budget_payment_properties</a></li>
+<li><a href="#budget_payments">budget_payments</a></li>
+<li><a href="#budget_properties">budget_properties</a></li>
+<li><a href="#budget_transfers">budget_transfers</a></li>
+<li><a href="#budgets">budgets</a></li>
+<li><a href="#change_order_cost_items">change_order_cost_items</a></li>
+<li><a href="#change_order_properties">change_order_properties</a></li>
+<li><a href="#change_orders">change_orders</a></li>
+<li><a href="#contract_properties">contract_properties</a></li>
+<li><a href="#contracts">contracts</a></li>
+<li><a href="#cost_item_properties">cost_item_properties</a></li>
+<li><a href="#cost_items">cost_items</a></li>
+<li><a href="#cost_payment_items">cost_payment_items</a></li>
+<li><a href="#cost_payment_properties">cost_payment_properties</a></li>
+<li><a href="#cost_payments">cost_payments</a></li>
+<li><a href="#distribution_item_curves">distribution_item_curves</a></li>
+<li><a href="#distribution_items">distribution_items</a></li>
+<li><a href="#expense_items">expense_items</a></li>
+<li><a href="#expense_properties">expense_properties</a></li>
+<li><a href="#expenses">expenses</a></li>
+<li><a href="#main_contract_items">main_contract_items</a></li>
+<li><a href="#main_contract_properties">main_contract_properties</a></li>
+<li><a href="#main_contracts">main_contracts</a></li>
+<li><a href="#payment_references">payment_references</a></li>
+<li><a href="#permissions">permissions</a></li>
+<li><a href="#schedule_of_values_properties">schedule_of_values_properties</a></li>
+<li><a href="#sub_distribution_items">sub_distribution_items</a></li>
+<li><a href="#transferences">transferences</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="approval_workflows">approval_workflows</a></h2>The in-progress approval workflows.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The uniq ID of the approval workflow.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>The name of. the approval worflow.</td></tr>
+<tr><td>5</td><td>association_id</td><td>string: UUID</td><td></td><td>The ID of the entity the approval workflow is associated to.</td></tr>
+<tr><td>6</td><td>association_type</td><td>string</td><td></td><td>The type of the entity the approval workflow is associated to.</td></tr>
+<tr><td>7</td><td>current_step_name</td><td>string</td><td></td><td>The name of the current review step.</td></tr>
+<tr><td>8</td><td>current_assigned_users</td><td>string</td><td></td><td>The Autodesk IDs of the users that are assgined to in current step.</td></tr>
+<tr><td>9</td><td>current_assigned_groups</td><td>string</td><td></td><td>The Autodesk IDs of the companies or roles that are assgined to in current step.</td></tr>
+<tr><td>10</td><td>reviewed_users</td><td>string</td><td></td><td>The IDs of the users that have completed the review.</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is created.</td></tr>
+<tr><td>12</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is last modified.</td></tr>
+<tr><td>13</td><td>current_due_date</td><td>timestamp: SQL</td><td></td><td>The due date of the current review step.</td></tr>
+</tbody></table><h2><a name="budget_code_segment_codes">budget_code_segment_codes</a></h2>Segment codes of the budget code template in Cost Management<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the code in the budget code segment.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>parent_id</td><td>string: UUID</td><td></td><td>The parent ID of the code.</td></tr>
+<tr><td>5</td><td>segment_id</td><td>string: UUID</td><td></td><td>The segment ID of the code.</td></tr>
+<tr><td>6</td><td>code</td><td>string</td><td></td><td>The display code, with appended # if the segment is fixed length.</td></tr>
+<tr><td>7</td><td>original_code</td><td>string</td><td></td><td>The original code when it's imported from Excel.</td></tr>
+<tr><td>8</td><td>description</td><td>string</td><td></td><td>The description of the code.</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the code is created.</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the code is last modified.</td></tr>
+</tbody></table><h2><a name="budget_code_segments">budget_code_segments</a></h2>Segments of the budget code template in Cost Management<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the budget code segment.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>The name of the budget code segment.</td></tr>
+<tr><td>5</td><td>length</td><td>number</td><td></td><td>The length of the code in the segment.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The position of the segment in the template.</td></tr>
+<tr><td>7</td><td>type</td><td>string</td><td></td><td>The type of the segment. Possible values: code, info, column</td></tr>
+<tr><td>8</td><td>delimiter</td><td>string</td><td></td><td>The delimiter of the code of this segment to the code of the next segment.</td></tr>
+<tr><td>9</td><td>sample_code</td><td>string</td><td></td><td>The sample code of the segment.</td></tr>
+<tr><td>10</td><td>is_variable_length</td><td>boolean</td><td></td><td>The flag to indicate whether the code of this segment is fixed or variable length.</td></tr>
+<tr><td>11</td><td>is_locked</td><td>boolean</td><td></td><td>The flag to indicate whether the segment is locked to disable editing or adding new codes.</td></tr>
+<tr><td>12</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the segment is created.</td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the segment is last modified.</td></tr>
+</tbody></table><h2><a name="budget_payment_items">budget_payment_items</a></h2>Budget Payment Item as defined in BIM 360<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of a budget payment item - auto generated.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>payment_id</td><td>string: UUID</td><td></td><td>The ID of the payment that the item is in.</td></tr>
+<tr><td>5</td><td>parent_id</td><td>string: UUID</td><td></td><td>The parend item ID if current item is a child.</td></tr>
+<tr><td>6</td><td>number</td><td>string</td><td>Max length: 1024</td><td>Number of an budget payment item.</td></tr>
+<tr><td>7</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of a budget payment item.</td></tr>
+<tr><td>8</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of a budget payment item.</td></tr>
+<tr><td>9</td><td>unit</td><td>string</td><td></td><td>The unit of measure of the payment item.</td></tr>
+<tr><td>10</td><td>original_amount</td><td>number</td><td></td><td>The amount of the scheduled of value.</td></tr>
+<tr><td>11</td><td>original_qty</td><td>number</td><td></td><td>The quantity of the scheduled of value.</td></tr>
+<tr><td>12</td><td>original_unit_price</td><td>number</td><td></td><td>The unit price of the scheduled of value.</td></tr>
+<tr><td>13</td><td>amount</td><td>number</td><td></td><td>The amount of work completed for this scheduled of value.</td></tr>
+<tr><td>14</td><td>unit_price</td><td>number</td><td></td><td>The unit price of work completed for this scheduled of value.</td></tr>
+<tr><td>15</td><td>qty</td><td>number</td><td></td><td>The quantity of work completed for this scheduled of value.</td></tr>
+<tr><td>16</td><td>materials_on_store</td><td>number</td><td></td><td>The amount on store quanity for this schedule of value.</td></tr>
+<tr><td>17</td><td>materials_on_store_qty</td><td>number</td><td></td><td>The quantity on store quanity for this schedule of value.</td></tr>
+<tr><td>18</td><td>materials_on_store_unit_price</td><td>number</td><td></td><td>The unit price on store quanity for this schedule of value.</td></tr>
+<tr><td>19</td><td>previous_amount</td><td>number</td><td></td><td>The previous amount of work completed.</td></tr>
+<tr><td>20</td><td>previous_qty</td><td>number</td><td></td><td>The previous quantity of work completed.</td></tr>
+<tr><td>21</td><td>previous_unit_price</td><td>number</td><td></td><td>The unit price of previous work complete.</td></tr>
+<tr><td>22</td><td>previous_materials_on_store</td><td>number</td><td></td><td>The material on store of previus period.</td></tr>
+<tr><td>23</td><td>completed_work_retention_percent</td><td>number</td><td></td><td>The retention % of work complete.</td></tr>
+<tr><td>24</td><td>materials_on_store_retention_percent</td><td>number</td><td></td><td>The retention % of material on store.</td></tr>
+<tr><td>25</td><td>completed_work_released</td><td>number</td><td></td><td>The released amount for work completed in this period.</td></tr>
+<tr><td>26</td><td>materials_on_store_released</td><td>number</td><td></td><td>The released amount for material on store in this period.</td></tr>
+<tr><td>27</td><td>net_amount</td><td>number</td><td></td><td>The net amount: work completed + material on store - retention + release.</td></tr>
+<tr><td>28</td><td>status</td><td>string</td><td></td><td>The status of the the payment item.</td></tr>
+<tr><td>29</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>30</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>31</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment item is created.</td></tr>
+<tr><td>32</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment item is last modified.</td></tr>
+</tbody></table><h2><a name="budget_payment_properties">budget_payment_properties</a></h2>Custom properties for Budget Payment<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>budget_payment_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The budget payment ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> budget_payments<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>The name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="budget_payments">budget_payments</a></h2>Budget Payment as defined in BIM 360<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of the budget payment.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>main_contract_id</td><td>string: UUID</td><td></td><td>The ID of the main contract the payment is pursuant to.</td></tr>
+<tr><td>5</td><td>start_date</td><td>timestamp: SQL</td><td></td><td>The start date of the payment billing period.</td></tr>
+<tr><td>6</td><td>end_date</td><td>timestamp: SQL</td><td></td><td>The end date of the payment billing period.</td></tr>
+<tr><td>7</td><td>due_date</td><td>timestamp: SQL</td><td>Max length: 255</td><td>The due date of the payment.</td></tr>
+<tr><td>8</td><td>number</td><td>string</td><td>Max length: 1024</td><td>Number of an budget payment.</td></tr>
+<tr><td>9</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of a budget payment.</td></tr>
+<tr><td>10</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of a budget payment.</td></tr>
+<tr><td>11</td><td>original_amount</td><td>number</td><td></td><td>The origianl contracted amount of th</td></tr>
+<tr><td>12</td><td>amount</td><td>number</td><td></td><td>Work completed of this period of the payment.</td></tr>
+<tr><td>13</td><td>previous_amount</td><td>number</td><td></td><td>Work completed in previous payment.</td></tr>
+<tr><td>14</td><td>materials_on_store</td><td>number</td><td></td><td>Materials on site of this billing period.</td></tr>
+<tr><td>15</td><td>previous_materials_on_store</td><td>number</td><td></td><td>Materials on site of previous billing period.</td></tr>
+<tr><td>16</td><td>approved_change_orders</td><td>number</td><td></td><td>The total of approved change orders.</td></tr>
+<tr><td>17</td><td>contract_amount</td><td>number</td><td></td><td>The current total of the contracted amount: orginal_amount + approved_change_orders</td></tr>
+<tr><td>18</td><td>completed_work_retention</td><td>number</td><td></td><td>Total of the retention for total work complete.</td></tr>
+<tr><td>19</td><td>materials_on_store_retention</td><td>number</td><td></td><td>Total of the retention for material on site</td></tr>
+<tr><td>20</td><td>net_amount</td><td>number</td><td></td><td>Net amount of current work completed + material on site - retentions.</td></tr>
+<tr><td>21</td><td>paid_amount</td><td>number</td><td></td><td>The amount paid by owner.</td></tr>
+<tr><td>22</td><td>status</td><td>string</td><td></td><td>The status of the budget payment.</td></tr>
+<tr><td>23</td><td>company_id</td><td>string</td><td></td><td>The Autodesk ID of the owner company.</td></tr>
+<tr><td>24</td><td>payment_type</td><td>string</td><td></td><td>How is the expense paid, e.g. Cash,  Check, Electronic Transfer</td></tr>
+<tr><td>25</td><td>payment_reference</td><td>string</td><td></td><td>The reference info how the expense is paid.</td></tr>
+<tr><td>26</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>27</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>28</td><td>contact_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>29</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is created.</td></tr>
+<tr><td>30</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is last modified.</td></tr>
+<tr><td>31</td><td>approved_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is approved.</td></tr>
+<tr><td>32</td><td>paid_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is paid.</td></tr>
+<tr><td>33</td><td>submitted_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is submitted.</td></tr>
+<tr><td>34</td><td>note</td><td>string</td><td></td><td>The additional note.</td></tr>
+<tr><td>35</td><td>materials_billed</td><td>number</td><td></td><td>The amount of the materials billed in this period.</td></tr>
+<tr><td>36</td><td>materials_retention</td><td>number</td><td></td><td>The percentage of the retention for the materials billed.</td></tr>
+<tr><td>37</td><td>integration_state</td><td>string</td><td></td><td>A field indicate the record integration status, possible values: "integrated", "locked", "failed", null</td></tr>
+<tr><td>38</td><td>integration_state_changed_by</td><td>string</td><td></td><td>The integration user who changed the integration state</td></tr>
+<tr><td>39</td><td>integration_state_changed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the integration state changed</td></tr>
+<tr><td>40</td><td>external_id</td><td>string</td><td></td><td>The ID of the entity in external system.</td></tr>
+<tr><td>41</td><td>external_system</td><td>string</td><td></td><td>The name of the external system.</td></tr>
+<tr><td>42</td><td>message</td><td>string</td><td></td><td>The comment added by the integration.</td></tr>
+<tr><td>43</td><td>last_sync_time</td><td>timestamp: SQL</td><td></td><td>The timestamp of last time when the sync happened between cost management and external system</td></tr>
+</tbody></table><h2><a name="budget_properties">budget_properties</a></h2>Custom properties for a Budget<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>budget_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The budget ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> budgets<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="budget_transfers">budget_transfers</a></h2>Transfers between budgets in cost management<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The Id of the budget transfer.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data.</td></tr>
+<tr><td>4</td><td>number</td><td>string</td><td></td><td>The number of the budget transfer.</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td></td><td>The name of the budget transfer.</td></tr>
+<tr><td>6</td><td>note</td><td>string</td><td></td><td>Notes about the budget transfer.</td></tr>
+<tr><td>7</td><td>status</td><td>string</td><td></td><td>The status of the budget transfer. Possible values are "open", "inReview", "approved", "reviseAndResubmit", "rejected"</td></tr>
+<tr><td>8</td><td>approved_at</td><td>timestamp: SQL</td><td></td><td>The time when the budget transfer approved</td></tr>
+<tr><td>9</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID for the user who created the main contract - referring to an id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>10</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID for the user who made the last change - referring to an id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the budget transfer is created.</td></tr>
+<tr><td>12</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the budget transfer is updated.</td></tr>
+<tr><td>13</td><td>integration_state</td><td>string</td><td></td><td>A field indicate the record integration status, possible values: "integrated", "locked", "failed", null</td></tr>
+<tr><td>14</td><td>integration_state_changed_by</td><td>string</td><td></td><td>The integration user who changed the integration state</td></tr>
+<tr><td>15</td><td>integration_state_changed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the integration state changed</td></tr>
+<tr><td>16</td><td>external_id</td><td>string</td><td></td><td>The ID of the entity in external system.</td></tr>
+<tr><td>17</td><td>external_system</td><td>string</td><td></td><td>The name of the external system.</td></tr>
+<tr><td>18</td><td>message</td><td>string</td><td></td><td>The comment added by the integration.</td></tr>
+<tr><td>19</td><td>last_sync_time</td><td>timestamp: SQL</td><td></td><td>The timestamp of last time when the sync happened between cost management and external system</td></tr>
+</tbody></table><h2><a name="budgets">budgets</a></h2>Budgets defined in a BIM 360 Project.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of budget item.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>parent_id</td><td>string: UUID</td><td></td><td>Id of a parent budget item - null for root items.</td></tr>
+<tr><td>5</td><td>code</td><td>string</td><td>Max length: 255</td><td>Unique code compliant to the Budget Code Template defined by the Project Admin.</td></tr>
+<tr><td>6</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of the Budget.</td></tr>
+<tr><td>7</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of the Budget.</td></tr>
+<tr><td>8</td><td>quantity</td><td>number</td><td></td><td>Quantity of a Budget.</td></tr>
+<tr><td>9</td><td>unit_price</td><td>number</td><td></td><td>Unit price of a Budget.</td></tr>
+<tr><td>10</td><td>unit</td><td>string</td><td></td><td>Unit of measures of the Budget.</td></tr>
+<tr><td>11</td><td>original_amount</td><td>number</td><td></td><td>Original amount of the Budget - equals quantity * unitPrice</td></tr>
+<tr><td>12</td><td>internal_adjustment</td><td>number</td><td></td><td>Internal transfers between budgets</td></tr>
+<tr><td>13</td><td>approved_owner_changes</td><td>number</td><td></td><td>Total of changes approved by Owner</td></tr>
+<tr><td>14</td><td>pending_owner_changes</td><td>number</td><td></td><td>Total of changes waiting for the approval of Owner</td></tr>
+<tr><td>15</td><td>original_commitment</td><td>number</td><td></td><td>The original amount committed to the supplier contract.</td></tr>
+<tr><td>16</td><td>approved_change_orders</td><td>number</td><td></td><td>Total of changes committed to Supplier.</td></tr>
+<tr><td>17</td><td>approved_in_scope_change_orders</td><td>number</td><td></td><td>Total of in-scope changes committed to Supplier.</td></tr>
+<tr><td>18</td><td>pending_change_orders</td><td>number</td><td></td><td>Total of changes not committed.</td></tr>
+<tr><td>19</td><td>reserves</td><td>number</td><td></td><td>Total of changes under estimation.</td></tr>
+<tr><td>20</td><td>actual_cost</td><td>number</td><td></td><td>Total of actual cost.</td></tr>
+<tr><td>21</td><td>main_contract_id</td><td>string: UUID</td><td></td><td>Id of the Main Contract that the budget belongs to.</td></tr>
+<tr><td>22</td><td>contract_id</td><td>string: UUID</td><td></td><td>ID of the Contract that the budget is awarded to.</td></tr>
+<tr><td>23</td><td>adjustments_total</td><td>number</td><td></td><td>Total of all the actual cost adjustments.</td></tr>
+<tr><td>24</td><td>uncommitted</td><td>number</td><td></td><td>The amount that has been approved by owner but not committed to Supplier: approvedOwnerChanges - (approvedChangeOrders - approvedInScopeChangeOrders)</td></tr>
+<tr><td>25</td><td>revised</td><td>number</td><td></td><td>Total of the approved budget from owner - equals originalAmount + internalAdjustment + approvedOwnerChanges</td></tr>
+<tr><td>26</td><td>projected_cost</td><td>number</td><td></td><td>For budget  - it is equal to originalCommitment + approvedChangeOrders + pendingChangeOrders + reserves. For contract  - it is equal to awarded + approvedChangeOrders + pendingChangeOrders + reserves</td></tr>
+<tr><td>27</td><td>projected_budget</td><td>number</td><td></td><td>revised + pending_owner_changes</td></tr>
+<tr><td>28</td><td>forecast_final_cost</td><td>number</td><td></td><td>projectedCost + adjustmentsTotal</td></tr>
+<tr><td>29</td><td>forecast_variance</td><td>number</td><td></td><td>projectedBudget - forecastFinalCost</td></tr>
+<tr><td>30</td><td>forecast_cost_complete</td><td>number</td><td></td><td>forecastFinalCost - actualCost</td></tr>
+<tr><td>31</td><td>variance_total</td><td>number</td><td></td><td>Variance of a budget - equals projectedBudget - projectedCost</td></tr>
+<tr><td>32</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was created.</td></tr>
+<tr><td>33</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was last updated.</td></tr>
+<tr><td>34</td><td>original_contracted</td><td>number</td><td></td><td>The original amount contracted to the supplier.</td></tr>
+<tr><td>35</td><td>compounded</td><td>string</td><td></td><td>A JSON string contains a collection of customized column values.</td></tr>
+<tr><td>36</td><td>integration_state</td><td>string</td><td></td><td>A field indicate the record integration status, possible values: "integrated", "locked", "failed", null</td></tr>
+<tr><td>37</td><td>integration_state_changed_by</td><td>string</td><td></td><td>The integration user who changed the integration state</td></tr>
+<tr><td>38</td><td>integration_state_changed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the integration state changed</td></tr>
+<tr><td>39</td><td>external_id</td><td>string</td><td></td><td>The ID of the entity in external system.</td></tr>
+<tr><td>40</td><td>external_system</td><td>string</td><td></td><td>The name of the external system.</td></tr>
+<tr><td>41</td><td>message</td><td>string</td><td></td><td>The comment added by the integration.</td></tr>
+<tr><td>42</td><td>last_sync_time</td><td>timestamp: SQL</td><td></td><td>The timestamp of last time when the sync happened between cost management and external system</td></tr>
+<tr><td>43</td><td>pending_internal_budget_transfer</td><td>number</td><td></td><td>The amount of the budget transfers that are not approved yet.</td></tr>
+<tr><td>44</td><td>pending_internal_budget_transfer_qty</td><td>number</td><td></td><td>The quantity of the budget transfers that are not approved yet.</td></tr>
+<tr><td>45</td><td>pending_internal_budget_transfer_input_qty</td><td>number</td><td></td><td>The input quantity(hours) of the budget transfers that are not approved yet.</td></tr>
+<tr><td>46</td><td>code_segment_values</td><td>string</td><td></td><td>The composition of the code of the budget.</td></tr>
+<tr><td>47</td><td>main_contract_item_amount</td><td>number</td><td></td><td>Total amount of associated main contract items</td></tr>
+<tr><td>48</td><td>approved_cost_payment_application</td><td>number</td><td></td><td>Total net amount of approved or paid cost payment applications</td></tr>
+<tr><td>49</td><td>approved_budget_payment_application</td><td>number</td><td></td><td>Total net amount of approved or paid budget payment applications</td></tr>
+<tr><td>50</td><td>locations</td><td>string</td><td></td><td>Locations assigned to the budget</td></tr>
+<tr><td>51</td><td>forecast_adjustment_qty</td><td>number</td><td></td><td>Cost Forecast Adjustments Qty of the budget</td></tr>
+</tbody></table><h2><a name="change_order_cost_items">change_order_cost_items</a></h2>Relationship between Change Orders and Cost Items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>change_order_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The change order ID for this cost item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> change_orders<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>cost_item_id</td><td>string: UUID</td><td></td><td>System ID of a Cost Item</td></tr>
+</tbody></table><h2><a name="change_order_properties">change_order_properties</a></h2>Custom properties for a Change Order<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>change_order_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The change order ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> change_orders<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="change_orders">change_orders</a></h2>Change Orders as defined in BIM 360<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of a Change Order - auto generated.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>number</td><td>string</td><td>Max length: 255</td><td>System generated sequence.</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of a Change Order</td></tr>
+<tr><td>6</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of a Change Order.</td></tr>
+<tr><td>7</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>8</td><td>owner_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>9</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>10</td><td>contract_id</td><td>string: UUID</td><td></td><td>ID of the Contract that the budget is awarded to.</td></tr>
+<tr><td>11</td><td>form_type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>pco</li>
+<li>rfq</li>
+<li>rco</li>
+<li>oco</li>
+<li>sco</li></ul></td><td>Type of this change order: pco, rfq, rco, oco, sco</td></tr>
+<tr><td>12</td><td>markup_formula_id</td><td>string: UUID</td><td></td><td>ID of Markup formula applied to this Change Order.</td></tr>
+<tr><td>13</td><td>applied_by</td><td>string</td><td></td><td>The user id who applied markups to this Change Order. The id is a project user from BIM 360 Admin</td></tr>
+<tr><td>14</td><td>applied_at</td><td>timestamp: SQL</td><td></td><td>The time when the markup is applied.</td></tr>
+<tr><td>15</td><td>budget_status</td><td>string</td><td></td><td>The status of a PCO - RCO and OCO: PCO: [draft - open - submitted - accepted - approved - executed - rejected] RCO: [draft - open - submitted - accepted - rejected] - OCO: [draft - open - submitted - approved - executed - rejected]. Empty for RFQ - SCO The status of the change order should not be updated directly - but triggered by the action that will perform on it.</td></tr>
+<tr><td>16</td><td>cost_status</td><td>string</td><td></td><td>The cost status of a PCO - RCO and OCO: PCO: [draft - open - pricing - proposed - approved - executed - rejected] RFQ: [draft - open - pricing - proposed - rejected] SCO: [draft - open - sent - executed] Empty for RCO - OCO The status of the change order should not be updated directly - but triggered by the action that will perform on it.</td></tr>
+<tr><td>17</td><td>scope_of_work</td><td>string</td><td></td><td>Draftjs formatted rich text(https://draftjs.org/)</td></tr>
+<tr><td>18</td><td>note</td><td>string</td><td></td><td>Draftjs formatted rich text(https://draftjs.org/)</td></tr>
+<tr><td>19</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was created.</td></tr>
+<tr><td>20</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was last updated.</td></tr>
+<tr><td>21</td><td>type</td><td>string</td><td></td><td>Customized type of the change order, e.g. Back Change, Budget Transfer, Owner Change Order, Owner Directive...</td></tr>
+<tr><td>22</td><td>schedule_change</td><td>number</td><td></td><td>The schedule change of this change order.</td></tr>
+<tr><td>23</td><td>integration_state</td><td>string</td><td></td><td>A field indicate the record integration status, possible values: "integrated", "locked", "failed", null</td></tr>
+<tr><td>24</td><td>integration_state_changed_by</td><td>string</td><td></td><td>The integration user who changed the integration state</td></tr>
+<tr><td>25</td><td>integration_state_changed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the integration state changed</td></tr>
+<tr><td>26</td><td>external_id</td><td>string</td><td></td><td>The ID of the entity in external system.</td></tr>
+<tr><td>27</td><td>external_system</td><td>string</td><td></td><td>The name of the external system.</td></tr>
+<tr><td>28</td><td>message</td><td>string</td><td></td><td>The comment added by the integration.</td></tr>
+<tr><td>29</td><td>last_sync_time</td><td>timestamp: SQL</td><td></td><td>The timestamp of last time when the sync happened between cost management and external system</td></tr>
+<tr><td>30</td><td>proposed_revised_completion_date</td><td>timestamp: SQL</td><td></td><td>the proposed revised completion date</td></tr>
+<tr><td>31</td><td>source_type</td><td>string</td><td></td><td>the source type of change order</td></tr>
+<tr><td>32</td><td>approved_at</td><td>timestamp: SQL</td><td></td><td>the approved date</td></tr>
+<tr><td>33</td><td>status_changed_at</td><td>timestamp: SQL</td><td></td><td>the status change date</td></tr>
+<tr><td>34</td><td>main_contract_id</td><td>string: UUID</td><td></td><td>the main contract id</td></tr>
+<tr><td>35</td><td>quantity</td><td>number</td><td></td><td>the quantity of change order</td></tr>
+<tr><td>36</td><td>unit</td><td>string</td><td></td><td>the unit of change order</td></tr>
+<tr><td>37</td><td>estimated</td><td>number</td><td></td><td>the estimated of change order</td></tr>
+<tr><td>38</td><td>proposed</td><td>number</td><td></td><td>the proposed of change order</td></tr>
+<tr><td>39</td><td>submitted</td><td>number</td><td></td><td>the submitted of change order</td></tr>
+<tr><td>40</td><td>approved</td><td>number</td><td></td><td>the approved of change order</td></tr>
+<tr><td>41</td><td>committed</td><td>number</td><td></td><td>the committed of change order</td></tr>
+<tr><td>42</td><td>compliance_status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>compliant</li>
+<li>notApplicable</li>
+<li>notRequired</li>
+<li>pending</li></ul></td><td>The compliance status of the change order</td></tr>
+</tbody></table><h2><a name="contract_properties">contract_properties</a></h2>Custom properties for a Contract<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>contract_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The contract ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> contracts<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="contracts">contracts</a></h2>Supplier Contract defined in the project.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of the Contract.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>code</td><td>string</td><td>Max length: 255</td><td>Human readable code of the Contract.</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of the Contract.</td></tr>
+<tr><td>6</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of a Contract</td></tr>
+<tr><td>7</td><td>company_id</td><td>string</td><td></td><td>Id of a supplier company managed by BIM 360 Admin</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>Type of the contract - e.g. consultant - purchase order - which is customizable by Project Admin.</td></tr>
+<tr><td>9</td><td>contact_id</td><td>string</td><td></td><td>Autodesk User ID for the default contact of the supplier - referring to an id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>10</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>11</td><td>signed_by</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>12</td><td>owner_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>13</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>14</td><td>status</td><td>string</td><td></td><td>The status of this contract - status includes [draft - closed - open - executed - sent].</td></tr>
+<tr><td>15</td><td>awarded</td><td>number</td><td></td><td>Amount of the original Contract</td></tr>
+<tr><td>16</td><td>original_budget</td><td>number</td><td></td><td>Original amount of budgets associated to this Contract.</td></tr>
+<tr><td>17</td><td>internal_adjustment</td><td>number</td><td></td><td>Internal transfers of budgets associated to this Contract.</td></tr>
+<tr><td>18</td><td>approved_owner_changes</td><td>number</td><td></td><td>Changes approved by Owner.</td></tr>
+<tr><td>19</td><td>pending_owner_changes</td><td>number</td><td></td><td>Changes pending approval from Owner.</td></tr>
+<tr><td>20</td><td>approved_change_orders</td><td>number</td><td></td><td>Total of changes committed to Supplier.</td></tr>
+<tr><td>21</td><td>approved_in_scope_change_orders</td><td>number</td><td></td><td>Total of in-scope changes committed to Supplier.</td></tr>
+<tr><td>22</td><td>pending_change_orders</td><td>number</td><td></td><td>Total of changes not committed.</td></tr>
+<tr><td>23</td><td>reserves</td><td>number</td><td></td><td>Total of changes under estimating.</td></tr>
+<tr><td>24</td><td>actual_cost</td><td>number</td><td></td><td>Total of actual cost.</td></tr>
+<tr><td>25</td><td>uncommitted</td><td>number</td><td></td><td>The amount that has been approved by owner but not committed to Supplier: approvedOwnerChanges - (approvedChangeOrders - approvedInScopeChangeOrders)</td></tr>
+<tr><td>26</td><td>revised</td><td>number</td><td></td><td>Total of the approved budget from owner - equals originalAmount + internalAdjustment + approvedOwnerChanges</td></tr>
+<tr><td>27</td><td>projected_cost</td><td>number</td><td></td><td>For budget  - it is equal to originalCommitment + approvedChangeOrders + pendingChangeOrders + reserves. For contract  - it is equal to awarded + approvedChangeOrders + pendingChangeOrders + reserves</td></tr>
+<tr><td>28</td><td>projected_budget</td><td>number</td><td></td><td>revised + pending_owner_changes</td></tr>
+<tr><td>29</td><td>forecast_final_cost</td><td>number</td><td></td><td>projectedCost + adjustmentsTotal</td></tr>
+<tr><td>30</td><td>forecast_variance</td><td>number</td><td></td><td>projectedBudget - forecastFinalCost</td></tr>
+<tr><td>31</td><td>forecast_cost_complete</td><td>number</td><td></td><td>forecastFinalCost - actualCost</td></tr>
+<tr><td>32</td><td>variance_total</td><td>number</td><td></td><td>Variance of a budget - equals projectedBudget - projectedCost</td></tr>
+<tr><td>33</td><td>awarded_at</td><td>timestamp: SQL</td><td></td><td>The time when the Contract is awarded.</td></tr>
+<tr><td>34</td><td>status_changed_at</td><td>timestamp: SQL</td><td></td><td>The last time when the status is updated.</td></tr>
+<tr><td>35</td><td>sent_at</td><td>timestamp: SQL</td><td></td><td>The time when the Contract is sent to the Supplier.</td></tr>
+<tr><td>36</td><td>responded_at</td><td>timestamp: SQL</td><td></td><td>The time when the Supplier responds.</td></tr>
+<tr><td>37</td><td>returned_at</td><td>timestamp: SQL</td><td></td><td>The time when the Contract is signed and returned.</td></tr>
+<tr><td>38</td><td>onsite_at</td><td>timestamp: SQL</td><td></td><td>The time when the Supplier on-site to the job.</td></tr>
+<tr><td>39</td><td>offsite_at</td><td>timestamp: SQL</td><td></td><td>The time when the Supplier completes the job.</td></tr>
+<tr><td>40</td><td>procured_at</td><td>timestamp: SQL</td><td></td><td>The time for Purchase Order.</td></tr>
+<tr><td>41</td><td>approved_at</td><td>timestamp: SQL</td><td></td><td>The time when the Contract is approved.</td></tr>
+<tr><td>42</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was created.</td></tr>
+<tr><td>43</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was last updated.</td></tr>
+<tr><td>44</td><td>scope_of_work</td><td>string</td><td></td><td>Draftjs formatted rich text(https://draftjs.org/)</td></tr>
+<tr><td>45</td><td>note</td><td>string</td><td></td><td>Draftjs formatted rich text(https://draftjs.org/)</td></tr>
+<tr><td>46</td><td>adjustments_total</td><td>number</td><td></td><td>Total of all the actual cost adjustments.</td></tr>
+<tr><td>47</td><td>executed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was executed.</td></tr>
+<tr><td>48</td><td>currency</td><td>string</td><td></td><td>The code of the currency specified for the contract if it's awarded in a foreign currency.</td></tr>
+<tr><td>49</td><td>exchange_rate</td><td>number</td><td></td><td>The exchange rate for the specified currency, applied as a multiplier of the contract's base currency. For example, 1 base currency = 0.7455 foreign currency.</td></tr>
+<tr><td>50</td><td>integration_state</td><td>string</td><td></td><td>A field indicate the record integration status, possible values: "integrated", "locked", "failed", null</td></tr>
+<tr><td>51</td><td>integration_state_changed_by</td><td>string</td><td></td><td>The integration user who changed the integration state</td></tr>
+<tr><td>52</td><td>integration_state_changed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the integration state changed</td></tr>
+<tr><td>53</td><td>external_id</td><td>string</td><td></td><td>The ID of the entity in external system.</td></tr>
+<tr><td>54</td><td>external_system</td><td>string</td><td></td><td>The name of the external system.</td></tr>
+<tr><td>55</td><td>message</td><td>string</td><td></td><td>The comment added by the integration.</td></tr>
+<tr><td>56</td><td>last_sync_time</td><td>timestamp: SQL</td><td></td><td>The timestamp of last time when the sync happened between cost management and external system</td></tr>
+<tr><td>57</td><td>pending_internal_budget_transfer</td><td>number</td><td></td><td>The amount of the budget transfers that are not approved yet.</td></tr>
+<tr><td>58</td><td>compliance_status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>compliant</li>
+<li>notApplicable</li>
+<li>notRequired</li>
+<li>pending</li></ul></td><td>The compliance status of the contract</td></tr>
+<tr><td>59</td><td>awarded_tax_total</td><td>number</td><td></td><td>Tax Amount of the original Contract</td></tr>
+<tr><td>60</td><td>response_due</td><td>timestamp: SQL</td><td></td><td>The time when the response is due</td></tr>
+</tbody></table><h2><a name="cost_item_properties">cost_item_properties</a></h2>Custom properties for a Cost Item<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>cost_item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The cost_item ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> cost_items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="cost_items">cost_items</a></h2>Cost items<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of a Cost Item.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>number</td><td>string</td><td></td><td>System generated sequence number.</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td>Max length: 255</td><td>Name of a Cost Item.</td></tr>
+<tr><td>6</td><td>description</td><td>string</td><td></td><td>Detail description of a Cost Item.</td></tr>
+<tr><td>7</td><td>budget_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The contract ID for this adjustment entry<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> budgets<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>8</td><td>budget_status</td><td>string</td><td></td><td>The budget status of a Cost Item: [draft - open - submitted - accepted - approved - executed - rejected]. The status of the cost item should not be updated directly - but controlled by the change order containing it.</td></tr>
+<tr><td>9</td><td>cost_status</td><td>string</td><td></td><td>The cost status of a Cost Item: [draft - open - pricing - proposed - approved - executed - rejected]. The status of the cost item should not be updated directly - but controlled by the change order containing it.</td></tr>
+<tr><td>10</td><td>scope</td><td>enum: string</td><td></td><td>Scope of a Cost Item. Possible values: out - in - tbd</td></tr>
+<tr><td>11</td><td>type</td><td>enum: string</td><td></td><td>Cost item type</td></tr>
+<tr><td>12</td><td>estimated</td><td>number</td><td></td><td>Rough estimation of this item without quotation.</td></tr>
+<tr><td>13</td><td>proposed</td><td>number</td><td></td><td>Quotated cost of the item.</td></tr>
+<tr><td>14</td><td>submitted</td><td>number</td><td></td><td>Amount sent to Owner for approval.</td></tr>
+<tr><td>15</td><td>approved</td><td>number</td><td></td><td>Amount approved by Owner.</td></tr>
+<tr><td>16</td><td>committed</td><td>number</td><td></td><td>Amount committed to the Supplier.</td></tr>
+<tr><td>17</td><td>scope_of_work</td><td>string</td><td></td><td>Draftjs formatted rich text(https://draftjs.org/)</td></tr>
+<tr><td>18</td><td>note</td><td>string</td><td></td><td>Draftjs formatted rich text(https://draftjs.org/)</td></tr>
+<tr><td>19</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was created.</td></tr>
+<tr><td>20</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the item was last updated.</td></tr>
+<tr><td>21</td><td>schedule_change</td><td>number</td><td></td><td>The schedule change days</td></tr>
+<tr><td>22</td><td>approved_tax_summary</td><td>string</td><td></td><td>A JSON string which contains oco tax of the cost item</td></tr>
+<tr><td>23</td><td>committed_tax_summary</td><td>string</td><td></td><td>A JSON string which contains sco tax of the cost item</td></tr>
+<tr><td>24</td><td>estimated_tax_summary</td><td>string</td><td></td><td>A JSON string which contains pco tax of the cost item</td></tr>
+<tr><td>25</td><td>proposed_tax_summary</td><td>string</td><td></td><td>A JSON string which contains rfq tax of the cost item</td></tr>
+<tr><td>26</td><td>submitted_tax_summary</td><td>string</td><td></td><td>A JSON string which contains cor tax of the cost item</td></tr>
+<tr><td>27</td><td>is_markup</td><td>boolean</td><td></td><td>Is markup cost item or not</td></tr>
+<tr><td>28</td><td>quantity</td><td>number</td><td></td><td>The quantity for the cost item</td></tr>
+<tr><td>29</td><td>unit</td><td>enum: string</td><td></td><td>The unit for the cost item</td></tr>
+</tbody></table><h2><a name="cost_payment_items">cost_payment_items</a></h2>Budget Payment Items as defined in BIM 360<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of a payment item - auto generated.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>payment_id</td><td>string: UUID</td><td></td><td>The ID of the payment that the item is in.</td></tr>
+<tr><td>5</td><td>parent_id</td><td>string: UUID</td><td></td><td>The parend item ID if current item is a child.</td></tr>
+<tr><td>6</td><td>number</td><td>string</td><td>Max length: 1024</td><td>Number of an budget payment item.</td></tr>
+<tr><td>7</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of a budget payment item.</td></tr>
+<tr><td>8</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of a budget payment item.</td></tr>
+<tr><td>9</td><td>unit</td><td>string</td><td></td><td>The unit of measure of the payment item.</td></tr>
+<tr><td>10</td><td>original_amount</td><td>number</td><td></td><td>The amount of the scheduled of value.</td></tr>
+<tr><td>11</td><td>original_qty</td><td>number</td><td></td><td>The quantity of the scheduled of value.</td></tr>
+<tr><td>12</td><td>original_unit_price</td><td>number</td><td></td><td>The unit price of the scheduled of value.</td></tr>
+<tr><td>13</td><td>amount</td><td>number</td><td></td><td>The amount of work completed for this scheduled of value.</td></tr>
+<tr><td>14</td><td>unit_price</td><td>number</td><td></td><td>The unit price of work completed for this scheduled of value.</td></tr>
+<tr><td>15</td><td>qty</td><td>number</td><td></td><td>The quantity of work completed for this scheduled of value.</td></tr>
+<tr><td>16</td><td>materials_on_store</td><td>number</td><td></td><td>The amount on store quanity for this schedule of value.</td></tr>
+<tr><td>17</td><td>materials_on_store_qty</td><td>number</td><td></td><td>The quantity on store quanity for this schedule of value.</td></tr>
+<tr><td>18</td><td>materials_on_store_unit_price</td><td>number</td><td></td><td>The unit price on store quanity for this schedule of value.</td></tr>
+<tr><td>19</td><td>previous_amount</td><td>number</td><td></td><td>The previous amount of work completed.</td></tr>
+<tr><td>20</td><td>previous_qty</td><td>number</td><td></td><td>The previous quantity of work completed.</td></tr>
+<tr><td>21</td><td>previous_unit_price</td><td>number</td><td></td><td>The unit price of previous work complete.</td></tr>
+<tr><td>22</td><td>previous_materials_on_store</td><td>number</td><td></td><td>The material on store of previus period.</td></tr>
+<tr><td>23</td><td>completed_work_retention_percent</td><td>number</td><td></td><td>The retention % of work complete.</td></tr>
+<tr><td>24</td><td>materials_on_store_retention_percent</td><td>number</td><td></td><td>The retention % of material on store.</td></tr>
+<tr><td>25</td><td>completed_work_released</td><td>number</td><td></td><td>The released amount for work completed in this period.</td></tr>
+<tr><td>26</td><td>materials_on_store_released</td><td>number</td><td></td><td>The released amount for material on store in this period.</td></tr>
+<tr><td>27</td><td>net_amount</td><td>number</td><td></td><td>The net amount: work completed + material on store - retention + release.</td></tr>
+<tr><td>28</td><td>status</td><td>string</td><td></td><td>The status of the the payment item.</td></tr>
+<tr><td>29</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>30</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>31</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment item is created.</td></tr>
+<tr><td>32</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment item is last modified.</td></tr>
+<tr><td>33</td><td>tax_summary</td><td>string</td><td></td><td>A JSON string which contains tax on the payment item</td></tr>
+</tbody></table><h2><a name="cost_payment_properties">cost_payment_properties</a></h2>Custom properties for a Cost Payment<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>cost_payment_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The cost ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> cost_payments<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="cost_payments">cost_payments</a></h2>Cost Payment as defined in BIM 360<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of a budget payment - auto generated.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>contract_id</td><td>string: UUID</td><td></td><td>The ID of the supplier contract the payment is pursuant to.</td></tr>
+<tr><td>5</td><td>start_date</td><td>timestamp: SQL</td><td></td><td>The start date of the payment billing period.</td></tr>
+<tr><td>6</td><td>end_date</td><td>timestamp: SQL</td><td></td><td>The end date of the payment billing period.</td></tr>
+<tr><td>7</td><td>due_date</td><td>timestamp: SQL</td><td>Max length: 255</td><td>The due date of the payment.</td></tr>
+<tr><td>8</td><td>number</td><td>string</td><td>Max length: 1024</td><td>Number of a payment.</td></tr>
+<tr><td>9</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of a payment.</td></tr>
+<tr><td>10</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of a payment.</td></tr>
+<tr><td>11</td><td>original_amount</td><td>number</td><td></td><td>The origianl contracted amount of th</td></tr>
+<tr><td>12</td><td>amount</td><td>number</td><td></td><td>Work completed of this period of the payment.</td></tr>
+<tr><td>13</td><td>previous_amount</td><td>number</td><td></td><td>Total of work completed of before this billing period.</td></tr>
+<tr><td>14</td><td>materials_on_store</td><td>number</td><td></td><td>Material on site of this billing period.</td></tr>
+<tr><td>15</td><td>previous_materials_on_store</td><td>number</td><td></td><td>Material on site of the previous billing period.</td></tr>
+<tr><td>16</td><td>approved_change_orders</td><td>number</td><td></td><td>The total of approved change orders.</td></tr>
+<tr><td>17</td><td>contract_amount</td><td>number</td><td></td><td>The current total of the contracted amount: orginal_amount + approved_change_orders</td></tr>
+<tr><td>18</td><td>completed_work_retention</td><td>number</td><td></td><td>Total of the retention for total work complete.</td></tr>
+<tr><td>19</td><td>materials_on_store_retention</td><td>number</td><td></td><td>Total of the retention for material on site</td></tr>
+<tr><td>20</td><td>net_amount</td><td>number</td><td></td><td>Net amount of current work completed + material on site - retentions.</td></tr>
+<tr><td>21</td><td>paid_amount</td><td>number</td><td></td><td>The amount paid by owner.</td></tr>
+<tr><td>22</td><td>status</td><td>string</td><td></td><td>The status of the budget payment.</td></tr>
+<tr><td>23</td><td>company_id</td><td>string</td><td></td><td>The Autodesk ID of the supplier company.</td></tr>
+<tr><td>24</td><td>payment_type</td><td>string</td><td></td><td>How is the expense paid, e.g. Cash,  Check, Electronic Transfer</td></tr>
+<tr><td>25</td><td>payment_reference</td><td>string</td><td></td><td>The reference info how the expense is paid.</td></tr>
+<tr><td>26</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>27</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>28</td><td>contact_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>29</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is created.</td></tr>
+<tr><td>30</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is last modified.</td></tr>
+<tr><td>31</td><td>approved_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is approved.</td></tr>
+<tr><td>32</td><td>paid_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is paid.</td></tr>
+<tr><td>33</td><td>submitted_at</td><td>timestamp: SQL</td><td></td><td>The date/time the payment is submitted.</td></tr>
+<tr><td>34</td><td>note</td><td>string</td><td></td><td>The additinal note of the payment.</td></tr>
+<tr><td>35</td><td>materials_billed</td><td>number</td><td></td><td>The amount of the materials billed in this period.</td></tr>
+<tr><td>36</td><td>materials_retention</td><td>number</td><td></td><td>The percentage of the retention for the materials billed.</td></tr>
+<tr><td>37</td><td>integration_state</td><td>string</td><td></td><td>A field indicate the record integration status, possible values: "integrated", "locked", "failed", null</td></tr>
+<tr><td>38</td><td>integration_state_changed_by</td><td>string</td><td></td><td>The integration user who changed the integration state</td></tr>
+<tr><td>39</td><td>integration_state_changed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the integration state changed</td></tr>
+<tr><td>40</td><td>external_id</td><td>string</td><td></td><td>The ID of the entity in external system.</td></tr>
+<tr><td>41</td><td>external_system</td><td>string</td><td></td><td>The name of the external system.</td></tr>
+<tr><td>42</td><td>message</td><td>string</td><td></td><td>The comment added by the integration.</td></tr>
+<tr><td>43</td><td>last_sync_time</td><td>timestamp: SQL</td><td></td><td>The timestamp of last time when the sync happened between cost management and external system</td></tr>
+<tr><td>44</td><td>tax_summary</td><td>string</td><td></td><td>A JSON string which contains tax on the payment</td></tr>
+<tr><td>45</td><td>compliance_status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>compliant</li>
+<li>notApplicable</li>
+<li>notRequired</li>
+<li>pending</li></ul></td><td>The compliance status of the payment</td></tr>
+</tbody></table><h2><a name="distribution_item_curves">distribution_item_curves</a></h2>The period data for a distribution item's curve<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of the distribution item curve - auto generated.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data.</td></tr>
+<tr><td>4</td><td>distribution_item_id</td><td>string: UUID</td><td></td><td>The ID of the distribution item.</td></tr>
+<tr><td>5</td><td>actual_total</td><td>number</td><td></td><td>The actual total amount for this distribution curve.</td></tr>
+<tr><td>6</td><td>distribution_total</td><td>number</td><td></td><td>The total distributed amount for this distribution curve.</td></tr>
+<tr><td>7</td><td>curve</td><td>string</td><td>Max length: 255</td><td>Distribution curve. Possible values are "revisedBudget", "workCompleted", "actualCost", "forecastFinalCost", "projectedBudget", "revisedCost".</td></tr>
+<tr><td>8</td><td>periods</td><td>string</td><td></td><td>The JSON object that contains the periods of the distribution item curve. The key is period, value is amount.</td></tr>
+<tr><td>9</td><td>actual_total_input_qty</td><td>number</td><td></td><td>The actual total input quantity for this distribution curve.</td></tr>
+<tr><td>10</td><td>distribution_total_input_qty</td><td>number</td><td></td><td>The total distributed input quantity for this distribution curve.</td></tr>
+<tr><td>11</td><td>periods_input_qty</td><td>string</td><td></td><td>The JSON object that contains the periods of the distribution item curve. The key is period, value is input quantity.</td></tr>
+<tr><td>12</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the distribution curve is created.</td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the distribution item is last updated.</td></tr>
+</tbody></table><h2><a name="distribution_items">distribution_items</a></h2>Distribution items as defined in BIM 360<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of the distribution item - auto generated.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data.</td></tr>
+<tr><td>4</td><td>budget_id</td><td>string</td><td></td><td>The ID of budgets associated with this distribution item.</td></tr>
+<tr><td>5</td><td>association_id</td><td>string: UUID</td><td></td><td>The ID of the entity which the distribution item is associated to.</td></tr>
+<tr><td>6</td><td>association_type</td><td>string</td><td>Max length: 255</td><td>The type of the entity which the distribution item is associated to.</td></tr>
+<tr><td>7</td><td>number</td><td>string</td><td>Max length: 1024</td><td>The number of the distribution item.</td></tr>
+<tr><td>8</td><td>name</td><td>string</td><td>Max length: 1024</td><td>The name of the distribution item.</td></tr>
+<tr><td>9</td><td>status</td><td>string</td><td>Max length: 64</td><td>The status of the distribution item.</td></tr>
+<tr><td>10</td><td>due_date</td><td>timestamp: SQL</td><td></td><td>The due date of the distribution item.</td></tr>
+<tr><td>11</td><td>company_id</td><td>string: UUID</td><td></td><td>The Autodesk ID of the owner company.</td></tr>
+<tr><td>12</td><td>contact_id</td><td>string</td><td>Max length: 128</td><td>Autodesk User ID of a user managed by BIM 360 Admin.</td></tr>
+<tr><td>13</td><td>creator_id</td><td>string</td><td>Max length: 128</td><td>Autodesk User ID of a user managed by BIM 360 Admin.</td></tr>
+<tr><td>14</td><td>changed_by</td><td>string</td><td>Max length: 128</td><td>Autodesk User ID of a user managed by BIM 360 Admin.</td></tr>
+<tr><td>15</td><td>submitted_at</td><td>timestamp: SQL</td><td></td><td>The date/time the distribution item is submitted.</td></tr>
+<tr><td>16</td><td>accepted_at</td><td>timestamp: SQL</td><td></td><td>The date/time the distribution item is accepted.</td></tr>
+<tr><td>17</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the distribution item is created.</td></tr>
+<tr><td>18</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the distribution item is updated.</td></tr>
+</tbody></table><h2><a name="expense_items">expense_items</a></h2>Expense items as defined in BIM 360<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of an expense detail item - auto generated.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>expense_id</td><td>string: UUID</td><td></td><td>The ID of the expense the item is in.</td></tr>
+<tr><td>5</td><td>budget_id</td><td>string: UUID</td><td></td><td>The ID of the budget.</td></tr>
+<tr><td>6</td><td>contract_id</td><td>string: UUID</td><td></td><td>The ID of the contract.</td></tr>
+<tr><td>7</td><td>number</td><td>string</td><td>Max length: 255</td><td>System generated sequence.</td></tr>
+<tr><td>8</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of an Expense</td></tr>
+<tr><td>9</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of an expense</td></tr>
+<tr><td>10</td><td>unit</td><td>string</td><td></td><td>The unit of measure of the expense item.</td></tr>
+<tr><td>11</td><td>unit_price</td><td>number</td><td></td><td>The price of the item.</td></tr>
+<tr><td>12</td><td>quantity</td><td>number</td><td></td><td>The quantity of the item.</td></tr>
+<tr><td>13</td><td>amount</td><td>number</td><td></td><td>The amount of the item.</td></tr>
+<tr><td>14</td><td>tax</td><td>number</td><td></td><td>The tax amount of the item.</td></tr>
+<tr><td>15</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the expens item is created.</td></tr>
+<tr><td>16</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the expens item is last modified.</td></tr>
+</tbody></table><h2><a name="expense_properties">expense_properties</a></h2>Custom properties for an Expense<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>expense_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The expense ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> expenses<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="expenses">expenses</a></h2>Expenses as defined in BIM 360<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of an Expense - auto generated.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>number</td><td>string</td><td>Max length: 255</td><td>System generated sequence.</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td>Max length: 1024</td><td>Name of an Expense</td></tr>
+<tr><td>6</td><td>description</td><td>string</td><td>Max length: 2048</td><td>Detail description of an expense</td></tr>
+<tr><td>7</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>8</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID of a user managed by BIM 360 Admin</td></tr>
+<tr><td>9</td><td>supplier_id</td><td>string</td><td></td><td>Autodesk group ID of the supplier company</td></tr>
+<tr><td>10</td><td>supplier_name</td><td>string</td><td></td><td>The name of the supplier company.</td></tr>
+<tr><td>11</td><td>amount</td><td>number</td><td></td><td>The total amount of the expense.</td></tr>
+<tr><td>12</td><td>paid_amount</td><td>number</td><td></td><td>The total paid amount of the expense.</td></tr>
+<tr><td>13</td><td>status</td><td>string</td><td></td><td>The stauts of the expense.</td></tr>
+<tr><td>14</td><td>type</td><td>string</td><td></td><td>The type of the expense.</td></tr>
+<tr><td>15</td><td>payment_type</td><td>string</td><td></td><td>How is the expense paid, e.g. Cash,  Check, Electronic Transfer</td></tr>
+<tr><td>16</td><td>payment_reference</td><td>string</td><td></td><td>The reference info how the expense is paid.</td></tr>
+<tr><td>17</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the expense is created.</td></tr>
+<tr><td>18</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the expense is last modified.</td></tr>
+<tr><td>19</td><td>issued_at</td><td>timestamp: SQL</td><td></td><td>The date/time the expense is issued.</td></tr>
+<tr><td>20</td><td>received_at</td><td>timestamp: SQL</td><td></td><td>The date/time the expense is recieved.</td></tr>
+<tr><td>21</td><td>approved_at</td><td>timestamp: SQL</td><td></td><td>The date/time the expense is approved.</td></tr>
+<tr><td>22</td><td>paid_at</td><td>timestamp: SQL</td><td></td><td>The date/time the expense is paid.</td></tr>
+<tr><td>23</td><td>reference_number</td><td>string</td><td></td><td>The references to the expense, e.g. the invoice number.</td></tr>
+<tr><td>24</td><td>integration_state</td><td>string</td><td></td><td>A field indicate the record integration status, possible values: "integrated", "locked", "failed", null</td></tr>
+<tr><td>25</td><td>integration_state_changed_by</td><td>string</td><td></td><td>The integration user who changed the integration state</td></tr>
+<tr><td>26</td><td>integration_state_changed_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the integration state changed</td></tr>
+<tr><td>27</td><td>external_id</td><td>string</td><td></td><td>The ID of the entity in external system.</td></tr>
+<tr><td>28</td><td>external_system</td><td>string</td><td></td><td>The name of the external system.</td></tr>
+<tr><td>29</td><td>message</td><td>string</td><td></td><td>The comment added by the integration.</td></tr>
+<tr><td>30</td><td>last_sync_time</td><td>timestamp: SQL</td><td></td><td>The timestamp of last time when the sync happened between cost management and external system</td></tr>
+<tr><td>31</td><td>payment_due</td><td>timestamp: SQL</td><td></td><td>The timestamp of the payment of the expense is due</td></tr>
+</tbody></table><h2><a name="main_contract_items">main_contract_items</a></h2>Main contract items in cost management<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of a main contract item</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>main_contract_id</td><td>string: UUID</td><td></td><td>The ID of the main contract the item belongs</td></tr>
+<tr><td>5</td><td>budget_id</td><td>string: UUID</td><td></td><td>The ID of the budget</td></tr>
+<tr><td>6</td><td>parent_id</td><td>string: UUID</td><td></td><td>The ID of the parent of the item</td></tr>
+<tr><td>7</td><td>code</td><td>string</td><td></td><td>The code of the item</td></tr>
+<tr><td>8</td><td>name</td><td>string</td><td></td><td>The name of the item</td></tr>
+<tr><td>9</td><td>description</td><td>string</td><td></td><td>The description of the item</td></tr>
+<tr><td>10</td><td>qty</td><td>number</td><td></td><td>The quantity of the item</td></tr>
+<tr><td>11</td><td>unit_price</td><td>number</td><td></td><td>The unit price of the item</td></tr>
+<tr><td>12</td><td>unit</td><td>string</td><td></td><td>The unit of the item</td></tr>
+<tr><td>13</td><td>amount</td><td>number</td><td></td><td>The amount of the item</td></tr>
+<tr><td>14</td><td>changed_by</td><td>string</td><td></td><td>The ID of the one changed the item</td></tr>
+<tr><td>15</td><td>is_private</td><td>boolean</td><td></td><td>The flag to indicate whether the item is hidden to owners.</td></tr>
+<tr><td>16</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is created</td></tr>
+<tr><td>17</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is last modified</td></tr>
+</tbody></table><h2><a name="main_contract_properties">main_contract_properties</a></h2>Custom properties for a Main Contract<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>main_contract_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The main contract ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> main_contracts<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="main_contracts">main_contracts</a></h2>The main or owner contracts of the project.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The uniq ID of the approval workflow.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>code</td><td>string</td><td></td><td>The code of the main contract.</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td></td><td>The name of the main contract.</td></tr>
+<tr><td>6</td><td>description</td><td>string</td><td></td><td>The description of the main contract.</td></tr>
+<tr><td>7</td><td>type</td><td>string</td><td></td><td>The type of the main contract.</td></tr>
+<tr><td>8</td><td>status</td><td>string</td><td></td><td>The status of the main contract.</td></tr>
+<tr><td>9</td><td>amount</td><td>number</td><td></td><td>The total amount of the main contract.</td></tr>
+<tr><td>10</td><td>retention_cap</td><td>number</td><td></td><td>The max retention of % of main contract sum to date.</td></tr>
+<tr><td>11</td><td>contact_id</td><td>string</td><td></td><td>Autodesk User ID for the default contact of the main contract - referring to an id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>12</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID for the user who created the main contract - referring to an id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>13</td><td>owner_id</td><td>string</td><td></td><td>Autodesk User ID for the user who will pay the main contract - referring to an id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>14</td><td>changed_by</td><td>string</td><td></td><td>Autodesk User ID for the user who made the last change - referring to an id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>15</td><td>scope_of_work</td><td>string</td><td></td><td>The scope of the work of the main contract.</td></tr>
+<tr><td>16</td><td>note</td><td>string</td><td></td><td>The note of the work of the main contract.</td></tr>
+<tr><td>17</td><td>start_date</td><td>timestamp: SQL</td><td></td><td>The start date of the main contract.</td></tr>
+<tr><td>18</td><td>executed_date</td><td>timestamp: SQL</td><td></td><td>The execute date of the main contract.</td></tr>
+<tr><td>19</td><td>planned_completion_date</td><td>timestamp: SQL</td><td></td><td>The planned completion date of the main contract.</td></tr>
+<tr><td>20</td><td>actual_completion_date</td><td>timestamp: SQL</td><td></td><td>The actual completion date of the main contract.</td></tr>
+<tr><td>21</td><td>close_date</td><td>timestamp: SQL</td><td></td><td>The closed date of the main contract.</td></tr>
+<tr><td>22</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is created.</td></tr>
+<tr><td>23</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is last modified.</td></tr>
+<tr><td>24</td><td>revised_completion_date</td><td>timestamp: SQL</td><td></td><td>The revised completion date</td></tr>
+<tr><td>25</td><td>schedule_change</td><td>number</td><td></td><td>The days that the schedule was impacted by changes.</td></tr>
+</tbody></table><h2><a name="payment_references">payment_references</a></h2>Payment references used by Budget Payment, Cost Payment and Expense in Cost Management<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the payment reference.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>amount</td><td>number</td><td></td><td>The amount being paid.</td></tr>
+<tr><td>5</td><td>type</td><td>string</td><td></td><td>The payment method, e.g. cash, check.</td></tr>
+<tr><td>6</td><td>reference</td><td>string</td><td></td><td>The reference/note to the payment, e.g. check NO.</td></tr>
+<tr><td>7</td><td>paid_at</td><td>timestamp: SQL</td><td></td><td>The date/time the Payment or Expense is paid.</td></tr>
+<tr><td>8</td><td>association_id</td><td>string: UUID</td><td></td><td>The ID of the Payment or Expense the payment reference associated to.</td></tr>
+<tr><td>9</td><td>association_type</td><td>string</td><td></td><td>The type of the payment reference is associated to: Expense or Payment.</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is created.</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is last modified.</td></tr>
+</tbody></table><h2><a name="permissions">permissions</a></h2>Permission in cost management<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the permission.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>policy_id</td><td>string: UUID</td><td></td><td>The related policy in ACM.</td></tr>
+<tr><td>5</td><td>subject_id</td><td>string</td><td></td><td>Autodesk ID for the user or user group who will be applied this permission - referring to an id of a user or user group managed by BIM 360 Admin</td></tr>
+<tr><td>6</td><td>subject_type</td><td>string</td><td></td><td>The type of the subject, possible values: User, Company, Role.</td></tr>
+<tr><td>7</td><td>permission_level</td><td>string</td><td></td><td>The permission level, possible values:fullControl, viewAll, collaborate, collaborateCreate, noAccess.</td></tr>
+<tr><td>8</td><td>resource_type</td><td>string</td><td></td><td>The resource of permission.</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is created.</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the item is last modified.</td></tr>
+</tbody></table><h2><a name="schedule_of_values_properties">schedule_of_values_properties</a></h2>Custom properties for a Schedule of Value<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>schedule_of_value_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The schedule of value ID for this custom property<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> schedule_of_values<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>5</td><td>built_in</td><td>boolean</td><td></td><td>A flag to indicate whether this is a pre-defined attribute or not. Inherited from the custom attribute definition.</td></tr>
+<tr><td>6</td><td>position</td><td>number</td><td></td><td>The order of the custom attribute displayed in the BIM 360 Cost Management. Inherited from the custom attribute definition.</td></tr>
+<tr><td>7</td><td>property_definition_id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute definition.</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>The type of the custom attribute. Inherited from the custom attribute definition.</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>The value of the custom attribute.</td></tr>
+</tbody></table><h2><a name="sub_distribution_items">sub_distribution_items</a></h2>Sub distribution items in cost management<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique identifier of this sub distribution item.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data.</td></tr>
+<tr><td>4</td><td>distribution_item_id</td><td>string: UUID</td><td></td><td>The ID of distribution item.</td></tr>
+<tr><td>5</td><td>association_id</td><td>string</td><td></td><td>The ID of the entity which the sub distribution item is associated to.</td></tr>
+<tr><td>6</td><td>association_type</td><td>string</td><td>Max length: 255</td><td>The type of the entity which the sub distribution item is associated to.</td></tr>
+<tr><td>7</td><td>number</td><td>string</td><td>Max length: 1024</td><td>The number of the sub distribution item.</td></tr>
+<tr><td>8</td><td>name</td><td>string</td><td>Max length: 1024</td><td>The name of the sub distribution item.</td></tr>
+<tr><td>9</td><td>start_date</td><td>date: string</td><td></td><td>The planned start day of this sub distribution item.</td></tr>
+<tr><td>10</td><td>end_date</td><td>date: string</td><td></td><td>The planned end day of this sub distribution item.</td></tr>
+<tr><td>11</td><td>actual_total</td><td>number</td><td></td><td>The actual total amount to be distributed.</td></tr>
+<tr><td>12</td><td>distribution_total</td><td>number</td><td></td><td>The total distributed amount for this sub distribution item.</td></tr>
+<tr><td>13</td><td>type</td><td>string</td><td>Max length: 255</td><td>The type of this sub distribution item.</td></tr>
+<tr><td>14</td><td>curve</td><td>string</td><td>Max length: 255</td><td>Distribution curve. Possible values are "revisedBudget", "workCompleted", "actualCost", "forecastFinalCost", "projectedBudget", "revisedCost".</td></tr>
+<tr><td>15</td><td>periods</td><td>string</td><td></td><td>The JSON object that contains the periods of this sub distribution items. The key is period, value is amount.</td></tr>
+<tr><td>16</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the sub distribution item is created.</td></tr>
+<tr><td>17</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the sub distribution item is deleted.</td></tr>
+<tr><td>18</td><td>actual_total_input_qty</td><td>number</td><td></td><td>The actual total input quantity to be distributed.</td></tr>
+<tr><td>19</td><td>distribution_total_input_qty</td><td>number</td><td></td><td>The total distributed input quantity for this sub distribution item.</td></tr>
+<tr><td>20</td><td>periods_input_qty</td><td>string</td><td></td><td>The JSON object that contains the periods of this sub distribution items. The key is period, value is input quantity.</td></tr>
+</tbody></table><h2><a name="transferences">transferences</a></h2>Budget transference details in cost management<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The Id of the budget transfer details.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data.</td></tr>
+<tr><td>4</td><td>budget_id</td><td>string: UUID</td><td></td><td>The budget id where it transfers from</td></tr>
+<tr><td>5</td><td>relating_budget_id</td><td>string: UUID</td><td></td><td>The relating budget id where it transfers to</td></tr>
+<tr><td>6</td><td>contract_id</td><td>string: UUID</td><td></td><td>The contract id of the budget where it transfers from</td></tr>
+<tr><td>7</td><td>relating_contract_id</td><td>string: UUID</td><td></td><td>The relating contract id of the budget where it transfers to</td></tr>
+<tr><td>8</td><td>transaction_id</td><td>string: UUID</td><td></td><td>The transaction Id of the transference</td></tr>
+<tr><td>9</td><td>amount</td><td>number</td><td></td><td>The amount of the budget transfer</td></tr>
+<tr><td>10</td><td>unit_price</td><td>number</td><td></td><td>The unit price of the budget transfer</td></tr>
+<tr><td>11</td><td>qty</td><td>number</td><td></td><td>The QTY of the budget transfer</td></tr>
+<tr><td>12</td><td>input_qty</td><td>number</td><td></td><td>The input QTY of the budget transfer</td></tr>
+<tr><td>13</td><td>relating_unit_price</td><td>number</td><td></td><td>The relating unit price of the budget transfer</td></tr>
+<tr><td>14</td><td>relating_qty</td><td>number</td><td></td><td>The relating QTY of the budget transfer</td></tr>
+<tr><td>15</td><td>relating_input_qty</td><td>number</td><td></td><td>The relating input QTY of the budget transfer</td></tr>
+<tr><td>16</td><td>creator_id</td><td>string</td><td></td><td>Autodesk User ID for the user who created the main contract - referring to an id of a user managed by BIM 360 Admin</td></tr>
+<tr><td>17</td><td>note</td><td>string</td><td></td><td>The notes about the budget transfer when creating</td></tr>
+<tr><td>18</td><td>main_contract_id</td><td>string: UUID</td><td></td><td>The main contract Id that the budget associated where it transfer out</td></tr>
+<tr><td>19</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date/time the budget transfer is created.</td></tr>
+<tr><td>20</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The date/time the budget transfer is updated.</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

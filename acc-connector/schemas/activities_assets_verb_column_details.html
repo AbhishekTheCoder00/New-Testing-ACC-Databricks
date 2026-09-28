@@ -1,0 +1,648 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Activities Data Set Verb Descriptions: Assets</title>
+  	<style>
+    	body
+    	{
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left;
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+
+      #content
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+
+      #copyright p {
+      	color: #444;
+      	margin: 0px;
+      	padding: 0px;
+      	}
+
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>Activities Data Set Verb Descriptions: Assets</h1>
+The Activities data set is more complex than the average Forma Data Schema data set due to the variable nature of payloads associated with the various "Activity Verbs" which define the particular activity
+taken in the system. For the Activities schema, there are several tables defined (one for each service) and for each of these table definitions, there are common columns
+and then many unique columns based on the particular service. The common columns included for all tables are:
+
+<ul>
+<li><b>activity_id:</b> Activity ID for this event</li>
+<li><b>bim360_account_id:</b> BIM 360 HQ Account ID</li>
+<li><b>bim360_project_id:</b> BIM 360 HQ Project ID</li>
+<li><b>activity_verb:</b> Activity performed by the user</li>
+<li><b>created_by:</b> Autodesk ID of the user performing the activity action</li>
+<li><b>created_at:</b> The timestamp when the activity created</li>
+</ul>
+
+After these standard columns there are many service specific columns for the table definition. Columns may or many not contain data depending on the Activity Verb
+in question. The following summary details the particular columns applicable for an Activity Verb. Also, for certain Activity Verbs there are Related Tables (in a SQL relational sense) that can be associated with the verb. These tables use the <b>activity_id</b> as
+the foreign key for lookups and when there is an applicable foreign table, they are noted in the details below.
+<p/>
+This description information is also made available programatically in the format of JSON files (one for each Activities table) in the <b>"schemas"</b> directory as part of every
+extract archive. The naming convention for this file is:
+
+<ul>
+<li><pre><b>activities_</b>&lt;service_group&gt;<b>_verb_column_details.json</b><pre></li>
+</ul>
+
+The description file is an array of JSON objects with two primary fields:
+
+<ul>
+<li><b>columns:</b> Relevant columns for the verb</li>
+<li><b>related_tables:</b> any tables with additional information on the verb in question</li>
+</ul>
+
+The following is an example JSON snippet from the Docs description file.
+<pre style="margin-left: 48px;font-size:10px;">
+ &lcub;
+   "activate-approval-workflow" : &lcub;
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   &rcub;,
+   "add-attribute-to-namingstandard" : &lcub;
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_naming_standards"
+      ]
+   &rcub;,
+   ...
+</pre>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li><h2>Activity Verbs</h2>Now that we have reviewed the data description for Activities data, the following is a detailed summary of 11 Activity Verbs for
+ the Assets Schema along with their relevant columns and any related tables.
+<table>
+		<tr style="border:0;background-color:white;">
+
+			<td valign="top" style="border:0;background-color:white;">
+  			<ul>
+          <li><a href="#asset-create">asset-create</a></li><li><a href="#asset-delete">asset-delete</a></li><li><a href="#asset-update">asset-update</a></li>
+  			</ul>
+			</td>
+
+			<td valign="top" style="border:0;background-color:white;">
+  			<ul>
+          <li><a href="#system-create">system-create</a></li><li><a href="#system-delete">system-delete</a></li><li><a href="#system-membership-asset-parent-system-add">system-membership-asset-parent-system-add</a></li>
+  			</ul>
+			</td>
+
+			<td valign="top" style="border:0;background-color:white;">
+  			<ul>
+          <li><a href="#system-membership-asset-parent-system-remove">system-membership-asset-parent-system-remove</a></li><li><a href="#system-membership-system-child-entities-modify">system-membership-system-child-entities-modify</a></li><li><a href="#system-membership-system-parent-system-add">system-membership-system-parent-system-add</a></li>
+  			</ul>
+			</td>
+
+			<td valign="top" style="border:0;background-color:white;">
+  			<ul>
+          <li><a href="#system-membership-system-parent-system-remove">system-membership-system-parent-system-remove</a></li><li><a href="#system-update">system-update</a></li>
+  			</ul>
+			</td>
+
+		<tr>
+</table>
+<table><colgroup><col /><col /><col /></colgroup><tbody><tr id="header"><th>activity_verb</th><th>relevant_columns</th><th>related_tables</th></tr>
+<tr style="background-color: white;"><td valign="top"><a name="asset-create">asset-create</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_created_entity_category_id</td><td>Object Created Entity Category Id</td></tr>
+<tr><td style="width: 25%;">object_created_entity_client_asset_id</td><td>Object Created Entity Client Asset Id</td></tr>
+<tr><td style="width: 25%;">object_created_entity_created_at</td><td>Object Created Entity Created At</td></tr>
+<tr><td style="width: 25%;">object_created_entity_created_by</td><td>Object Created Entity Created By</td></tr>
+<tr><td style="width: 25%;">object_created_entity_id</td><td>Object Created Entity Id</td></tr>
+<tr><td style="width: 25%;">object_created_entity_is_active</td><td>Object Created Entity Is Active</td></tr>
+<tr><td style="width: 25%;">object_created_entity_status_id</td><td>Object Created Entity Status Id</td></tr>
+<tr><td style="width: 25%;">object_created_entity_updated_at</td><td>Object Created Entity Updated At</td></tr>
+<tr><td style="width: 25%;">object_created_entity_updated_by</td><td>Object Created Entity Updated By</td></tr>
+<tr><td style="width: 25%;">object_created_entity_version</td><td>Object Created Entity Version</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+<tr><td style="width: 25%;">object_location_display_name</td><td>Object Location Display Name</td></tr>
+<tr><td style="width: 25%;">object_location_entity_type</td><td>Object Location Entity Type [e.g.: location_summary]</td></tr>
+<tr><td style="width: 25%;">object_location_id</td><td>Object Location Id</td></tr>
+<tr><td style="width: 25%;">object_location_is_active</td><td>Object Location Is Active</td></tr>
+<tr><td style="width: 25%;">object_location_is_missing</td><td>Object Location Is Missing</td></tr>
+<tr><td style="width: 25%;">object_location_is_valid</td><td>Object Location Is Valid</td></tr>
+<tr><td style="width: 25%;">object_location_path</td><td>Object Location Path</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="asset-delete">asset-delete</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_category_id</td><td>Object Deleted Entity Category Id</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_client_asset_id</td><td>Object Deleted Entity Client Asset Id</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_created_at</td><td>Object Deleted Entity Created At</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_created_by</td><td>Object Deleted Entity Created By</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_deleted_at</td><td>Object Deleted Entity Deleted At</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_deleted_by</td><td>Object Deleted Entity Deleted By</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_id</td><td>Object Deleted Entity Id</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_is_active</td><td>Object Deleted Entity Is Active</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_location_id</td><td>Object Deleted Entity Location Id</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_status_id</td><td>Object Deleted Entity Status Id</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_updated_at</td><td>Object Deleted Entity Updated At</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_updated_by</td><td>Object Deleted Entity Updated By</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_version</td><td>Object Deleted Entity Version</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+<tr><td style="width: 25%;">object_location_display_name</td><td>Object Location Display Name</td></tr>
+<tr><td style="width: 25%;">object_location_entity_type</td><td>Object Location Entity Type [e.g.: location_summary]</td></tr>
+<tr><td style="width: 25%;">object_location_id</td><td>Object Location Id</td></tr>
+<tr><td style="width: 25%;">object_location_is_active</td><td>Object Location Is Active</td></tr>
+<tr><td style="width: 25%;">object_location_is_missing</td><td>Object Location Is Missing</td></tr>
+<tr><td style="width: 25%;">object_location_is_valid</td><td>Object Location Is Valid</td></tr>
+<tr><td style="width: 25%;">object_location_path</td><td>Object Location Path</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="asset-update">asset-update</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_color</td><td>Object After Asset Status Color</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_display_name</td><td>Object After Asset Status Display Name</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_entity_type</td><td>Object After Asset Status Entity Type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_id</td><td>Object After Asset Status ID</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_is_active</td><td>Object After Status Is Active</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_is_missing</td><td>Object After Asset Status is Missing</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_is_valid</td><td>Object After Asset Status is Valid</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_color</td><td>Object before asset status color</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_display_name</td><td>Object before asset status display name</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_entity_type</td><td>Object before asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_id</td><td>Object before asset status id</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_is_active</td><td>Object before asset status is active</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_is_missing</td><td>Object before asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_is_valid</td><td>Object before asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_before_category_display_name</td><td>Object before category display name</td></tr>
+<tr><td style="width: 25%;">object_before_category_entity_type</td><td>Object before category entity type [e.g.: category_summary]</td></tr>
+<tr><td style="width: 25%;">object_before_category_id</td><td>Object before category id</td></tr>
+<tr><td style="width: 25%;">object_before_category_is_active</td><td>Object before category is active</td></tr>
+<tr><td style="width: 25%;">object_before_category_is_missing</td><td>Object before category is missing</td></tr>
+<tr><td style="width: 25%;">object_before_category_is_valid</td><td>Object before category is valid</td></tr>
+<tr><td style="width: 25%;">object_before_category_path</td><td>Object before category path</td></tr>
+<tr><td style="width: 25%;">object_before_entity_category_id</td><td>Object Before Entity Category Id</td></tr>
+<tr><td style="width: 25%;">object_before_entity_client_asset_id</td><td>Object Before Entity Client Asset Id</td></tr>
+<tr><td style="width: 25%;">object_before_entity_created_at</td><td>Object Before Entity Created At</td></tr>
+<tr><td style="width: 25%;">object_before_entity_created_by</td><td>Object Before Entity Created By</td></tr>
+<tr><td style="width: 25%;">object_before_entity_custom_attributes</td><td>Object Before Entity Custom Attributes</td></tr>
+<tr><td style="width: 25%;">object_before_entity_id</td><td>Object Before Entity Id</td></tr>
+<tr><td style="width: 25%;">object_before_entity_is_active</td><td>Object Before Entity Is Active</td></tr>
+<tr><td style="width: 25%;">object_before_entity_location_id</td><td>Object Before Entity Location Id</td></tr>
+<tr><td style="width: 25%;">object_before_entity_status_id</td><td>Object Before Entity Status Id</td></tr>
+<tr><td style="width: 25%;">object_before_entity_updated_at</td><td>Object Before Entity Updated At</td></tr>
+<tr><td style="width: 25%;">object_before_entity_updated_by</td><td>Object Before Entity Updated By</td></tr>
+<tr><td style="width: 25%;">object_before_entity_version</td><td>Object Before Entity Version</td></tr>
+<tr><td style="width: 25%;">object_before_location_display_name</td><td>Object Before Location Display Name</td></tr>
+<tr><td style="width: 25%;">object_before_location_entity_type</td><td>Object Before Location Entity Type [e.g.: location_summary]</td></tr>
+<tr><td style="width: 25%;">object_before_location_id</td><td>Object Before Location Id</td></tr>
+<tr><td style="width: 25%;">object_before_location_is_active</td><td>Object Before Location Is Active</td></tr>
+<tr><td style="width: 25%;">object_before_location_is_missing</td><td>Object Before Location Is Missing</td></tr>
+<tr><td style="width: 25%;">object_before_location_is_valid</td><td>Object Before Location Is Valid</td></tr>
+<tr><td style="width: 25%;">object_before_location_path</td><td>Object Before Location Path</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+<tr><td style="width: 25%;">object_patch_entity_custom_attributes</td><td>Object Patch Entity Custom Attributes</td></tr>
+<tr><td style="width: 25%;">object_patch_entity_updated_at</td><td>Object Patch Entity Updated At</td></tr>
+<tr><td style="width: 25%;">object_patch_entity_updated_by</td><td>Object Patch Entity Updated By</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="system-create">system-create</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_created_entity_category_id</td><td>Object Created Entity Category Id</td></tr>
+<tr><td style="width: 25%;">object_created_entity_created_at</td><td>Object Created Entity Created At</td></tr>
+<tr><td style="width: 25%;">object_created_entity_created_by</td><td>Object Created Entity Created By</td></tr>
+<tr><td style="width: 25%;">object_created_entity_id</td><td>Object Created Entity Id</td></tr>
+<tr><td style="width: 25%;">object_created_entity_is_active</td><td>Object Created Entity Is Active</td></tr>
+<tr><td style="width: 25%;">object_created_entity_status_id</td><td>Object Created Entity Status Id</td></tr>
+<tr><td style="width: 25%;">object_created_entity_updated_at</td><td>Object Created Entity Updated At</td></tr>
+<tr><td style="width: 25%;">object_created_entity_updated_by</td><td>Object Created Entity Updated By</td></tr>
+<tr><td style="width: 25%;">object_created_entity_version</td><td>Object Created Entity Version</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="system-delete">system-delete</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_category_id</td><td>Object Deleted Entity Category Id</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_created_at</td><td>Object Deleted Entity Created At</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_created_by</td><td>Object Deleted Entity Created By</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_deleted_at</td><td>Object Deleted Entity Deleted At</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_deleted_by</td><td>Object Deleted Entity Deleted By</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_id</td><td>Object Deleted Entity Id</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_is_active</td><td>Object Deleted Entity Is Active</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_status_id</td><td>Object Deleted Entity Status Id</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_updated_at</td><td>Object Deleted Entity Updated At</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_updated_by</td><td>Object Deleted Entity Updated By</td></tr>
+<tr><td style="width: 25%;">object_deleted_entity_version</td><td>Object Deleted Entity Version</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="system-membership-asset-parent-system-add">system-membership-asset-parent-system-add</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="system-membership-asset-parent-system-remove">system-membership-asset-parent-system-remove</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="system-membership-system-child-entities-modify">system-membership-system-child-entities-modify</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="system-membership-system-parent-system-add">system-membership-system-parent-system-add</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="system-membership-system-parent-system-remove">system-membership-system-parent-system-remove</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_asset_status_color</td><td>Object asset status color</td></tr>
+<tr><td style="width: 25%;">object_asset_status_display_name</td><td>Object asset status display name</td></tr>
+<tr><td style="width: 25%;">object_asset_status_entity_type</td><td>Object asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_asset_status_id</td><td>Object asset status ID</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_active</td><td>Object asset status is active</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_missing</td><td>Object asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_asset_status_is_valid</td><td>Object asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_category_display_name</td><td>Object Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_category_entity_type</td><td>Object Category Entity Type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_category_id</td><td>Object Category Id</td></tr>
+<tr><td style="width: 25%;">object_category_is_active</td><td>Object Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_category_is_missing</td><td>Object Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_category_is_valid</td><td>Object Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_category_path</td><td>Object Category Path</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="system-update">system-update</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_activity_source</td><td>Object Activity Source</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_color</td><td>Object After Asset Status Color</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_display_name</td><td>Object After Asset Status Display Name</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_entity_type</td><td>Object After Asset Status Entity Type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_id</td><td>Object After Asset Status ID</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_is_active</td><td>Object After Status Is Active</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_is_missing</td><td>Object After Asset Status is Missing</td></tr>
+<tr><td style="width: 25%;">object_after_asset_status_is_valid</td><td>Object After Asset Status is Valid</td></tr>
+<tr><td style="width: 25%;">object_after_category_display_name</td><td>Object After Category Display Name</td></tr>
+<tr><td style="width: 25%;">object_after_category_entity_type</td><td>Object After Category Entity Type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_after_category_id</td><td>Object After Category ID</td></tr>
+<tr><td style="width: 25%;">object_after_category_is_active</td><td>Object After Category Is Active</td></tr>
+<tr><td style="width: 25%;">object_after_category_is_missing</td><td>Object After Category Is Missing</td></tr>
+<tr><td style="width: 25%;">object_after_category_is_valid</td><td>Object After Category Is Valid</td></tr>
+<tr><td style="width: 25%;">object_after_category_path</td><td>Object After Category Path</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_color</td><td>Object before asset status color</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_display_name</td><td>Object before asset status display name</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_entity_type</td><td>Object before asset status entity type [e.g.: asset_status_summary]</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_id</td><td>Object before asset status id</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_is_active</td><td>Object before asset status is active</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_is_missing</td><td>Object before asset status is missing</td></tr>
+<tr><td style="width: 25%;">object_before_asset_status_is_valid</td><td>Object before asset status is valid</td></tr>
+<tr><td style="width: 25%;">object_before_category_display_name</td><td>Object before category display name</td></tr>
+<tr><td style="width: 25%;">object_before_category_entity_type</td><td>Object before category entity type [e.g.: category_v3_summary]</td></tr>
+<tr><td style="width: 25%;">object_before_category_id</td><td>Object before category id</td></tr>
+<tr><td style="width: 25%;">object_before_category_is_active</td><td>Object before category is active</td></tr>
+<tr><td style="width: 25%;">object_before_category_is_missing</td><td>Object before category is missing</td></tr>
+<tr><td style="width: 25%;">object_before_category_is_valid</td><td>Object before category is valid</td></tr>
+<tr><td style="width: 25%;">object_before_category_path</td><td>Object before category path</td></tr>
+<tr><td style="width: 25%;">object_before_entity_category_id</td><td>Object Before Entity Category Id</td></tr>
+<tr><td style="width: 25%;">object_before_entity_created_at</td><td>Object Before Entity Created At</td></tr>
+<tr><td style="width: 25%;">object_before_entity_created_by</td><td>Object Before Entity Created By</td></tr>
+<tr><td style="width: 25%;">object_before_entity_id</td><td>Object Before Entity Id</td></tr>
+<tr><td style="width: 25%;">object_before_entity_is_active</td><td>Object Before Entity Is Active</td></tr>
+<tr><td style="width: 25%;">object_before_entity_status_id</td><td>Object Before Entity Status Id</td></tr>
+<tr><td style="width: 25%;">object_before_entity_updated_at</td><td>Object Before Entity Updated At</td></tr>
+<tr><td style="width: 25%;">object_before_entity_updated_by</td><td>Object Before Entity Updated By</td></tr>
+<tr><td style="width: 25%;">object_before_entity_version</td><td>Object Before Entity Version</td></tr>
+<tr><td style="width: 25%;">object_display_name</td><td>Object Display Name</td></tr>
+<tr><td style="width: 25%;">object_id</td><td>Object Id</td></tr>
+<tr><td style="width: 25%;">object_patch_entity_updated_at</td><td>Object Patch Entity Updated At</td></tr>
+<tr><td style="width: 25%;">object_patch_entity_updated_by</td><td>Object Patch Entity Updated By</td></tr>
+</table></td><td valign="top"></td></tr></tbody></table>
+
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. |
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> |
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+
+  </body>
+</html>

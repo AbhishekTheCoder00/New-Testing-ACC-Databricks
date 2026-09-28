@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>assets: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>assets Schema Description</h1>
+<b>Documentation Updated: </b>2024-07-23<br/>
+<ul><li><a href="#asset_custom_attribute_values">asset_custom_attribute_values</a></li>
+<li><a href="#asset_model_sync_records">asset_model_sync_records</a></li>
+<li><a href="#asset_permissions">asset_permissions</a></li>
+<li><a href="#asset_stages">asset_stages</a></li>
+<li><a href="#asset_statuses">asset_statuses</a></li>
+<li><a href="#assets">assets</a></li>
+<li><a href="#categories">categories</a></li>
+<li><a href="#category_custom_attribute_assignments">category_custom_attribute_assignments</a></li>
+<li><a href="#category_status_set_assignments">category_status_set_assignments</a></li>
+<li><a href="#custom_attribute_default_values">custom_attribute_default_values</a></li>
+<li><a href="#custom_attribute_selection_values">custom_attribute_selection_values</a></li>
+<li><a href="#custom_attributes">custom_attributes</a></li>
+<li><a href="#model_sync_containers">model_sync_containers</a></li>
+<li><a href="#status_sets">status_sets</a></li>
+<li><a href="#system_memberships">system_memberships</a></li>
+<li><a href="#systems">systems</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="asset_custom_attribute_values">asset_custom_attribute_values</a></h2>The value of a Custom Attribute for a given Asset<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>asset_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Asset this value is for<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> assets<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>2</td><td>custom_attribute_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Custom Attribute that defines the context of this value<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> custom_attributes<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>3</td><td>value_boolean</td><td>boolean</td><td>Nullable</td><td>The value of the Custom Attribute for 'boolean' Custom Attribute data_types. One, and only one, of value_boolean or value_string will be populated.</td></tr>
+<tr><td>4</td><td>value_string</td><td>string: null</td><td></td><td>The value of the Custom Attribute for 'text', 'numeric', 'date', 'select' and 'multi_select' Custom Attribute data_types. One, and only one, of value_boolean or value_string will be populated.<br/><br/>For 'numeric' data_types, the value will be a string that parses to a floating point number, e.g. "46.2"<br/><br/>For 'date' data_types, the value will be an ISO8601 date string with no time, e.g. "2020-04-10"<br/><br/>For 'select' and 'multi_select` data_types, the value will be a FOREIGN_KEY: custom_attribute_selection_values,id. The custom_attribute_selection_values,id key will be one of the custom_attribute_selection_values for the Custom Attribute described by custom_attribute_id.<br/><br/>Note: 'multi_select' data_types can have more than one value per Asset. All other types have a maximum of a single value per Asset.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+</tbody></table><h2><a name="asset_model_sync_records">asset_model_sync_records</a></h2>Record of syncing a model object to an asset<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>asset_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID of the Asset the model object has been synced to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> assets<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>model_lineage_urn</td><td>string</td><td></td><td>The URN of the model file's versioned lineage</td></tr>
+<tr><td>7</td><td>model_object_guid</td><td>string</td><td></td><td>A globally unique identifier for a model object set by ACS Assets service</td></tr>
+<tr><td>8</td><td>model_external_id</td><td>string</td><td></td><td>An ID for externally identifying a model object that comes directly from the model file. This is ofen a GUID (e.g. for Revit files), but not always.</td></tr>
+<tr><td>9</td><td>synced_model_version_urn</td><td>string</td><td></td><td>The versioned URN of the model file's lineage that was actually synced to the Asset</td></tr>
+<tr><td>10</td><td>synced_model_version_number</td><td>number</td><td></td><td>The version of the URN of the model file's lineage that was actually synced to the Asset</td></tr>
+<tr><td>11</td><td>model_svf2_id</td><td>number</td><td></td><td>An integer ID commonly used internally in model files that is stable across versions of the model file</td></tr>
+<tr><td>12</td><td>model_lmv_id</td><td>number</td><td></td><td>An integer ID commonly used internally in model files for older file types that do not support SVF2</td></tr>
+<tr><td>13</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>14</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>15</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>16</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>17</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>18</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+</tbody></table><h2><a name="asset_permissions">asset_permissions</a></h2>Permission Definitions for V3 Permissions API<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>permission_policy_type</td><td>enum: string</td><td>view, edit, create, create_only, manage, inherited_permissions</td><td>The type of the permission assigned to the subject and resource</td></tr>
+<tr><td>6</td><td>subject_type</td><td>enum: string</td><td>user, company, role, project_admins</td><td>Indicates the type of the subject to which the permission applies</td></tr>
+<tr><td>7</td><td>subject_oxygen_id</td><td>string</td><td></td><td>The Oxygen ID of the user or user group to which the permission applies</td></tr>
+<tr><td>8</td><td>subject_acs_admin_id</td><td>string: UUID</td><td></td><td>The UUID identifier of a user or user group, as defined in the ACC Admin APIs,  to which the permission applies</td></tr>
+<tr><td>9</td><td>resource_type</td><td>enum: string</td><td>project, category, system_category</td><td>The type of the resource associated with a permission</td></tr>
+<tr><td>10</td><td>resource_id</td><td>string: UUID</td><td></td><td>The identifier of the resource to which this permission is assigned</td></tr>
+<tr><td>11</td><td>effect</td><td>enum: string</td><td>allow, deny</td><td>The effect of the permission</td></tr>
+<tr><td>12</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>13</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>14</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>15</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>16</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>17</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+</tbody></table><h2><a name="asset_stages">asset_stages</a></h2>Asset Stage Definitions<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td>3</td><td>asset_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID of the Asset this Asset Stage belongs to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> assets<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>4</td><td>bound_type</td><td>enum: string</td><td>asset_status</td><td>The type of joined object this stage belongs to</td></tr>
+<tr><td>5</td><td>bound_id</td><td>string: UUID</td><td></td><td>The joined object this stage belongs to</td></tr>
+<tr><td>6</td><td>completed_work</td><td>number</td><td></td><td>The completed amount of work</td></tr>
+<tr><td>7</td><td>max_work</td><td>number</td><td></td><td>The total amount of work to be completed</td></tr>
+<tr><td>8</td><td>unit_of_work</td><td>enum: string</td><td>SF, LF, SM, LM, N/A</td><td>The unit of work</td></tr>
+<tr><td>9</td><td>started_at</td><td>timestamp: SQL</td><td></td><td>Start time</td></tr>
+<tr><td>10</td><td>started_by</td><td>string</td><td></td><td>User (Oxygen) ID of the start actor</td></tr>
+<tr><td>11</td><td>completed_at</td><td>timestamp: SQL</td><td></td><td>Completion time</td></tr>
+<tr><td>12</td><td>completed_by</td><td>string</td><td></td><td>User (Oxygen) ID of the complete actor</td></tr>
+<tr><td>13</td><td>completion_status</td><td>enum: string</td><td>in_progress, completed, skipped</td><td>Completion status of the asset stages</td></tr>
+<tr><td>14</td><td>is_current</td><td>boolean</td><td></td><td>Whether this stage is the current</td></tr>
+<tr><td>15</td><td>category_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The category id of the stage<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> categories<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>16</td><td>location_id</td><td>string: UUID</td><td></td><td>BIM 360 Locations ID of the Location of this Asset Stage</td></tr>
+<tr><td>17</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>18</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>19</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>20</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>21</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>22</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">23</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">24</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+</tbody></table><h2><a name="asset_statuses">asset_statuses</a></h2>Statuses available for Assets<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>label</td><td>string</td><td>Max length: 100</td><td>Displayable name</td></tr>
+<tr><td>6</td><td>description</td><td>string: null</td><td>Max length: 500</td><td>Description of the asset status</td></tr>
+<tr><td>7</td><td>status_set_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Status Set the Asset Status is assigned to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> status_sets<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>9</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>11</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>13</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+<tr><td>14</td><td>sort_order</td><td>number</td><td></td><td>Sort order of the Asset Status within the Status Set</td></tr>
+</tbody></table><h2><a name="assets">assets</a></h2>A Physical Asset<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td>3</td><td>client_asset_id</td><td>string</td><td>Max length: 100</td><td>Client generated Identifier</td></tr>
+<tr><td>4</td><td>description</td><td>string: null</td><td>Max length: 1000</td><td>Description of the asset</td></tr>
+<tr><td>5</td><td>category_id</td><td>string</td><td></td><td><span style="color: #1A59A8;">Identifier of the Category this Asset is assigned to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> categories<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>status_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Assets Status this Asset is assigned to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> asset_statuses<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>7</td><td>location_id</td><td>string: UUID</td><td>Nullable</td><td>BIM 360 Locations ID or the Location this Asset is assigned</td></tr>
+<tr><td>8</td><td>company_id</td><td>string: UUID</td><td></td><td>BIM 360 HQ Company Identifier</td></tr>
+<tr><td>9</td><td>barcode</td><td>string: null</td><td>Max length: 100</td><td>Barcode for the asset</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>11</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>12</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>13</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>14</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>15</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">16</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">17</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+</tbody></table><h2><a name="categories">categories</a></h2>Hierarchical Tree for Categorizing Systems and Assets<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string</td><td></td><td>Internal Identifier (Legacy)</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td>3</td><td>name</td><td>string</td><td>Max length: 100</td><td>Displayable name</td></tr>
+<tr><td>4</td><td>description</td><td>string: null</td><td>Max length: 1000</td><td>Description of the category</td></tr>
+<tr><td>5</td><td>parent_id</td><td>string</td><td>Nullable</td><td><span style="color: #1A59A8;">Identifier (Legacy) of the Parent Category. If not present, Category is ROOT.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> categories<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>10</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>11</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">12</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">13</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>14</td><td>uid</td><td>string: UUID</td><td></td><td>Internal identifier (Globally Unique)</td></tr>
+<tr><td>15</td><td>category_type</td><td>enum: string</td><td>asset, system</td><td>Type of category. Systems and assets have distinct category trees.</td></tr>
+<tr><td>16</td><td>parent_uid</td><td>string: UUID</td><td>Nullable</td><td><span style="color: #1A59A8;">Identifier (Globally Unique) of the Parent Category. If not present, Category is ROOT.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> categories<br/><strong>Column: </strong> uid</span></td></tr>
+</tbody></table><h2><a name="category_custom_attribute_assignments">category_custom_attribute_assignments</a></h2>Assignments of Custom Attributes to Categories<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>category_id</td><td>string</td><td></td><td><span style="color: #1A59A8;">Identifier of the Category the Custom Attribute is being assigned to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> categories<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>custom_attribute_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Custom Attribute being assigned to a Category<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> custom_attributes<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>8</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>10</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>12</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+</tbody></table><h2><a name="category_status_set_assignments">category_status_set_assignments</a></h2>Assignments of Status Sets to Categories<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>category_id</td><td>string</td><td></td><td><span style="color: #1A59A8;">Identifier (Legacy) of the Category the Status Set is being assigned to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> categories<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>status_set_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Status Set being assigned to a Category<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> status_sets<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>8</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>10</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>12</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+<tr><td>13</td><td>category_type</td><td>enum: string</td><td>asset, system</td><td>Type of category. Systems and assets have distinct category trees.</td></tr>
+<tr><td>14</td><td>category_uid</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier (Globally Unique) of the Category the Status Set is being assigned to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> categories<br/><strong>Column: </strong> uid</span></td></tr>
+</tbody></table><h2><a name="custom_attribute_default_values">custom_attribute_default_values</a></h2>Default Values for the Custom Attributes<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>3</td><td>custom_attribute_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> custom_attributes<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>4</td><td>default_value_boolean</td><td>boolean</td><td>Nullable</td><td>Default value for the Custom Attribute for an Asset for 'boolean' data_types. One, and only one, of default_value_boolean or default_value_string will be populated.</td></tr>
+<tr><td>5</td><td>default_value_string</td><td>string: null</td><td></td><td>Default value for the Custom Attribute for an Asset for 'text', 'numeric', 'date', 'select', and 'multi_select' data_types. One, and only one, of default_value_boolean or default_value_string will be populated.<br/><br/>For 'select' and 'multi_select` data_types, the value will be a FOREIGN_KEY: custom_attribute_selection_values,id. The custom_attribute_selection_values,id key will be one of the custom_attribute_selection_values for the Custom Attribute described by custom_attribute_id.<br/><br/>Note: 'multi_select' data_types can have more than one default value per Custom Attribute. All other types have a maximum of a single default value per Custom Attribute.</td></tr>
+</tbody></table><h2><a name="custom_attribute_selection_values">custom_attribute_selection_values</a></h2>Available Selection values for 'select' and 'multi_select' data_type Custom Attributes<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>display_name</td><td>string</td><td>Max length: 100</td><td>Displayable name</td></tr>
+<tr><td>6</td><td>custom_attribute_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> custom_attributes<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>8</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>10</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>12</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+</tbody></table><h2><a name="custom_attributes">custom_attributes</a></h2>User-Defined Attributes for available for Assets in a given Category<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td></td><td>Internal name of the Custom Attribute</td></tr>
+<tr><td>6</td><td>display_name</td><td>string</td><td>Max length: 100</td><td>Displayable name</td></tr>
+<tr><td>7</td><td>description</td><td>string: null</td><td>Max length: 1000</td><td>Description of the custom attribute</td></tr>
+<tr><td>8</td><td>data_type</td><td>enum: string</td><td>boolean, text, numeric, date, select, multi_select</td><td>The Data Type of the Custom Attribute. Used to determine which additional columns will be applicable, and what their data_type will be for the Custom Attribute. Used to determine the populated value field of the value for this Custom Attribute on an Asset (i.e. value_boolean, value_string, or value_array)</td></tr>
+<tr><td>9</td><td>required_on_ingress</td><td>boolean</td><td></td><td>Does NOT guarantee the presence of a value for the Custom Attribute on an Asset if True</td></tr>
+<tr><td>10</td><td>max_length_on_ingress</td><td>number</td><td>Only present for 'text' data_type</td><td>Defines a max length that can be set for the Custom Attribute when editing an Asset. Does not guarantee that all existing Assets values for the Custom Attribute will meet this max length.</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>12</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>14</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>15</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>16</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+</tbody></table><h2><a name="model_sync_containers">model_sync_containers</a></h2>Container for a model file to extract assets from<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>model_lineage_urn</td><td>string</td><td></td><td>The URN of the model file's versioned lineage</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>10</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>11</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+</tbody></table><h2><a name="status_sets">status_sets</a></h2>Set of Statuses available for Assets in a given Category<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td>Max length: 100</td><td>Displayable name</td></tr>
+<tr><td>6</td><td>description</td><td>string: null</td><td>Max length: 500</td><td>Description of the status set</td></tr>
+<tr><td>7</td><td>is_default</td><td>boolean</td><td></td><td>A Project will always have a single "Default" Status Set created for the Project upon initialization. All other Status Sets will be user created and is_default = false</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>9</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>11</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>13</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+</tbody></table><h2><a name="system_memberships">system_memberships</a></h2>Membership of a System<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>3</td><td>system_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Parent System<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> systems<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>4</td><td>member_type</td><td>enum: string</td><td>asset, system</td><td>Type of the System member. Systems can contain Assets or other Systems.</td></tr>
+<tr><td>5</td><td>member_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Member System<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> systems<br/><strong>Column: </strong> id</span></td></tr>
+</tbody></table><h2><a name="systems">systems</a></h2>System Definitions<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Internal Identifier</td></tr>
+<tr><td>2</td><td>version</td><td>number</td><td></td><td>Sequential version. Incremented each time the item is modified in any way.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of Assets data</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td>Max length: 500</td><td>Displayable name</td></tr>
+<tr><td>6</td><td>description</td><td>string: null</td><td>Max length: 1000</td><td>Description of the system</td></tr>
+<tr><td>7</td><td>category_uid</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier (Globally Unique) of the Category this System is assigned to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> categories<br/><strong>Column: </strong> uid</span></td></tr>
+<tr><td>8</td><td>status_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Identifier of the Assets Status this System is assigned to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> asset_statuses<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>User (Oxygen) ID of the create actor</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Most recent update time</td></tr>
+<tr><td>12</td><td>updated_by</td><td>string</td><td></td><td>User (Oxygen) ID of the most recent update actor</td></tr>
+<tr><td>13</td><td>deleted_at</td><td>timestamp: SQL</td><td>Nullable</td><td>Deletion time. If deleted_at === null, the entity is considered active.</td></tr>
+<tr><td>14</td><td>deleted_by</td><td>string: null</td><td></td><td>User (Oxygen) ID of the delete actor</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

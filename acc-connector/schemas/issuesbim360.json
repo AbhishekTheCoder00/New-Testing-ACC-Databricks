@@ -1,0 +1,867 @@
+{
+   "attachments" : {
+      "attachment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the attachment",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "issue_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 ID of the issue associated with the attachment.",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the attachment.",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp of the date and time the attachment was created",
+         "ordinal_position" : 6
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the attachment was updated in ISO8601 format",
+         "ordinal_position" : 7
+      },
+      "attachment_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "document",
+            "photo"
+         ],
+         "notes" : "Type of attachment; will always be document.",
+         "ordinal_position" : 8
+      },
+      "attachment_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the attachment.",
+         "ordinal_position" : 9
+      }
+   },
+   "checklist_mappings" : {
+      "issue_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the issue",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "checklist_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Checklist ID",
+         "ordinal_position" : 4
+      },
+      "checklist_item" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Checklist Item",
+         "ordinal_position" : 5
+      },
+      "checklist_section" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Checklist Section",
+         "ordinal_position" : 6
+      }
+   },
+   "comments" : {
+      "comment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the comment",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "issue_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 ID of the issue associated with this comment.",
+         "ordinal_position" : 4
+      },
+      "comment_body" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Content of the comment.",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the comment",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp of the date and time the comment was created",
+         "ordinal_position" : 7
+      }
+   },
+   "custom_attribute_list_values" : {
+      "attribute_mappings_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute mapping definition",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "list_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the customer attribute list value",
+         "ordinal_position" : 4
+      },
+      "list_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Display name of the custom attribute list value",
+         "ordinal_position" : 5
+      }
+   },
+   "custom_attributes" : {
+      "issue_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the issue",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "mapped_item_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "container",
+            "issueType",
+            "issueSubtype"
+         ],
+         "notes" : "The type of item the custom attribute is mapped to. Possible values: container (all types and subtypes inherit the mapping), issueType (subtypes inherit the mapping), issueSubtype",
+         "ordinal_position" : 4
+      },
+      "attribute_mapping_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute mapping definition",
+         "ordinal_position" : 5
+      },
+      "attribute_title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The title of the custom attribute.",
+         "ordinal_position" : 6
+      },
+      "attribute_description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The description of the custom attribute.",
+         "ordinal_position" : 7
+      },
+      "attribute_data_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "list",
+            "text",
+            "paragraph",
+            "numeric"
+         ],
+         "notes" : "The type of custom attribute.",
+         "ordinal_position" : 8
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "true if the custom attribute is required false if the custom attribute is not required",
+         "ordinal_position" : 9
+      },
+      "attribute_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Custom attribute value. In the case of a list option, the id of the selected option, otherwise the value will the actual value",
+         "ordinal_position" : 10
+      }
+   },
+   "custom_attributes_mappings" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the custom attribute mapping.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "mapped_item_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "container",
+            "issueType",
+            "issueSubtype"
+         ],
+         "notes" : "The type of item the custom attribute is mapped to. Possible values: container (all types and subtypes inherit the mapping) issueType (subtypes inherit the mapping) issueSubtype.",
+         "ordinal_position" : 4
+      },
+      "mapped_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the item (container - type - or subtype) the custom attribute is mapped to.",
+         "ordinal_position" : 5
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The title of the custom attribute.",
+         "ordinal_position" : 6
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The description of the custom attribute.",
+         "ordinal_position" : 7
+      },
+      "data_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "list",
+            "text",
+            "paragraph",
+            "numeric"
+         ],
+         "notes" : "The type of custom attribute.",
+         "ordinal_position" : 8
+      },
+      "order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order that the custom attributes were mapped to the item (container - type - subtype). This is only relevant to non-inherited mappings.",
+         "ordinal_position" : 9
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "true if the custom attribute is required false if the custom attribute is not required",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date and time the custom attribute mapping was created - in the following format: YYYY-MM-DDThh:mm:ss.sz.",
+         "ordinal_position" : 11
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The BIM 360 ID of the user who created the custom attribute mapping. To verify the actual name of the user - call GET users and find the BIM 360 ID (uid). Note that you need to use a 2-legged token to call GET users.",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The last date and time the custom attribute was updated - in the following format: YYYY-MM-DDThh:mm:ss.sz.",
+         "ordinal_position" : 13
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The BIM 360 ID of the user who last updated the custom attribute mapping. To verify the actual name of the user - call GET users and find the BIM 360 ID (uid). Note that you need to use a 2-legged token to call GET users.",
+         "ordinal_position" : 14
+      }
+   },
+   "issue_subtypes" : {
+      "issue_subtype_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the Issue Subtype",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "issue_type_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Parent Issue Type ID for this Subtype",
+         "ordinal_position" : 4
+      },
+      "issue_subtype" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the Issue Subtype",
+         "ordinal_position" : 5
+      },
+      "is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the Issue Subtype Active",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the issue type",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was created in ISO8601 format",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who updated the issue type",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was updated in ISO8601 format",
+         "ordinal_position" : 10
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who deleted  the issue type",
+         "ordinal_position" : 11
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was deleted in ISO8601 format",
+         "ordinal_position" : 12
+      }
+   },
+   "issue_types" : {
+      "issue_type_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the Issue Type",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "issue_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the Issue Type",
+         "ordinal_position" : 4
+      },
+      "is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the Issue Type active",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the issue type",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was created in ISO8601 format",
+         "ordinal_position" : 7
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who updated the issue type",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was updated in ISO8601 format",
+         "ordinal_position" : 9
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who deleted  the issue type",
+         "ordinal_position" : 10
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was deleted in ISO8601 format",
+         "ordinal_position" : 11
+      }
+   },
+   "issues" : {
+      "issue_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the issue",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "display_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Chronological user-friendly identifier of the issue",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Name of the issue",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Description of the purpose of the issue",
+         "ordinal_position" : 6
+      },
+      "type_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the type of the issue",
+         "ordinal_position" : 7
+      },
+      "subtype_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the subtype of the issue",
+         "ordinal_position" : 8
+      },
+      "status" : {
+         "data_type" : "string: null",
+         "constraints" : [
+            "open",
+            "work_completed",
+            "ready_to_inspect",
+            "not_approved",
+            "in_dispute",
+            "closed",
+            "void",
+            "answered",
+            "draft",
+            "pending",
+            "in_progress",
+            "completed",
+            "in_review"
+         ],
+         "notes" : "Unique identifier of the current status of the issue",
+         "ordinal_position" : 9
+      },
+      "assignee_id" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the current assignee of this issue",
+         "ordinal_position" : 10
+      },
+      "assignee_type" : {
+         "data_type" : "string: null",
+         "constraints" : [
+            "user",
+            "company",
+            "role"
+         ],
+         "notes" : "Type of the current assignee of this issue",
+         "ordinal_position" : 11
+      },
+      "due_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Due date of the issue in ISO8601 format",
+         "ordinal_position" : 12
+      },
+      "location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique LBS (Location Breakdown Structure) identifier that relates to the issue",
+         "ordinal_position" : 13
+      },
+      "location_details" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Location as plain text that relates to the issue",
+         "ordinal_position" : 14
+      },
+      "linked_document_urn" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Linked document URN",
+         "ordinal_position" : 15
+      },
+      "owner_id" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who owns this issue. Used in case this issue was created on-behalf of another person",
+         "ordinal_position" : 16
+      },
+      "root_cause_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the type of root cause for the issue",
+         "ordinal_position" : 17
+      },
+      "root_cause_category_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of the category for the root cause",
+         "ordinal_position" : 18
+      },
+      "response" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Official response of the user for the issue",
+         "ordinal_position" : 19
+      },
+      "response_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Who responded to the issue",
+         "ordinal_position" : 20
+      },
+      "response_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When was the response made",
+         "ordinal_position" : 21
+      },
+      "opened_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who opened the issue",
+         "ordinal_position" : 22
+      },
+      "opened_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue was opened in ISO8601 format",
+         "ordinal_position" : 23
+      },
+      "closed_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who closed the issue",
+         "ordinal_position" : 24
+      },
+      "closed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue was closed in ISO8601 format",
+         "ordinal_position" : 25
+      },
+      "created_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the issue",
+         "ordinal_position" : 26
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue was created in ISO8601 format",
+         "ordinal_position" : 27
+      },
+      "updated_by" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who updated the issue",
+         "ordinal_position" : 28
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue was updated in ISO8601 format",
+         "ordinal_position" : 29
+      },
+      "start_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Start date of the issue in ISO8601 format",
+         "ordinal_position" : 30
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "deleted_at. If set the issue is 'soft deleted'",
+         "ordinal_position" : 31
+      },
+      "snapshot_urn" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Snapshot URN",
+         "ordinal_position" : 32
+      },
+      "published" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "published: shows if the issues is published or not.",
+         "ordinal_position" : 33
+      },
+      "gps_coordinates" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "GPS location of the issues in (latitude, longitude) format",
+         "ordinal_position" : 34
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who deleted  the issue",
+         "ordinal_position" : 35
+      }
+   },
+   "root_cause_categories" : {
+      "root_cause_category_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of Root Cause Category",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "root_cause_category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the root cause category",
+         "ordinal_position" : 4
+      },
+      "is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Always returns TRUE, regardless of the real value. Will be deprecated in the future.",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the issue type",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was created in ISO8601 format",
+         "ordinal_position" : 7
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who updated the issue type",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was updated in ISO8601 format",
+         "ordinal_position" : 9
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who deleted  the issue type",
+         "ordinal_position" : 10
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was deleted in ISO8601 format",
+         "ordinal_position" : 11
+      },
+      "is_system" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is this a system level root cause category?",
+         "ordinal_position" : 12
+      }
+   },
+   "root_causes" : {
+      "root_cause_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the root cause",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "root_cause_category_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 ID of the root cause category associated with this root cause",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the root cause",
+         "ordinal_position" : 5
+      },
+      "is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Always returns TRUE, regardless of the real value. Will be deprecated in the future.",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the issue type",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was created in ISO8601 format",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who updated the issue type",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was updated in ISO8601 format",
+         "ordinal_position" : 10
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who deleted  the issue type",
+         "ordinal_position" : 11
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the issue type was deleted in ISO8601 format",
+         "ordinal_position" : 12
+      },
+      "is_system" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is this a system level root cause?",
+         "ordinal_position" : 13
+      }
+   }
+}

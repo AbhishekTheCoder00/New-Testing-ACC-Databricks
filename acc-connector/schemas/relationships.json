@@ -1,0 +1,82 @@
+{
+   "entity_relationship" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "relationship_guid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "External GUID for relationship (served by API)",
+         "ordinal_position" : 3
+      },
+      "item1_domain" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Associated domain for Item 1",
+         "ordinal_position" : 4
+      },
+      "item1_entitytype" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Associated entity type for Item 1",
+         "ordinal_position" : 5
+      },
+      "item1_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Associated ID for Item 1",
+         "ordinal_position" : 6
+      },
+      "item2_domain" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Associated domain for Item 2",
+         "ordinal_position" : 7
+      },
+      "item2_entitytype" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Associated entity type for Item 2",
+         "ordinal_position" : 8
+      },
+      "item2_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Associated ID for Item 2",
+         "ordinal_position" : 9
+      },
+      "created_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time for relationship",
+         "ordinal_position" : 10
+      },
+      "deleted_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time for relationship",
+         "ordinal_position" : 11
+      },
+      "is_deleted" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Describes whether this relationship is deleted",
+         "ordinal_position" : 12
+      },
+      "is_service_owned" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the relationships created by a ACC service",
+         "ordinal_position" : 13
+      }
+   }
+}

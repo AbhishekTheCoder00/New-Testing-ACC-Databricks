@@ -1,0 +1,346 @@
+{
+   "layer" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier for the layer.",
+         "ordinal_position" : 3
+      },
+      "surface_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Parent Surface ID for this Layer.",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Name of layer, null is default layer.",
+         "ordinal_position" : 5
+      },
+      "promotable" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicates whether or not this layer's markups are copied when a new version of a sheet is uploaded.",
+         "ordinal_position" : 6
+      },
+      "surface_type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "document",
+            "sheet",
+            "photo",
+            "job_output",
+            "acc_sheet",
+            "acc_document",
+            "acc_model"
+         ],
+         "notes" : "The type of surface",
+         "ordinal_position" : 7
+      },
+      "base_entity_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The document version urn",
+         "ordinal_position" : 8
+      },
+      "base_entity_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The UUID of the root entity of the surface (sheet id, doc id, etc)",
+         "ordinal_position" : 9
+      }
+   },
+   "link" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The unique identifier for this link.",
+         "ordinal_position" : 3
+      },
+      "markup_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "markup ID associated with this placement.",
+         "ordinal_position" : 4
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "document",
+            "sheet",
+            "acc_document",
+            "acc_sheet",
+            "acc_sheet_history",
+            "photo",
+            "rfi",
+            "progress-tracking",
+            "form",
+            "submittal"
+         ],
+         "notes" : "Type of link",
+         "ordinal_position" : 5
+      },
+      "destination" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The unique identifier of the entity linked to.  Mutually exclusive with uri.",
+         "ordinal_position" : 6
+      },
+      "uri" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The uniform resource identifier being linked to.  Mutually exclusive with destination.",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the link.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the link was created in ISO8601 format",
+         "ordinal_position" : 9
+      },
+      "deleted" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicates if the link has been deleted",
+         "ordinal_position" : 10
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who deleted the link.",
+         "ordinal_position" : 11
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the link was deleted in ISO8601 format",
+         "ordinal_position" : 12
+      }
+   },
+   "markup" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Unique identifier of markup.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 3
+      },
+      "uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of markup.",
+         "ordinal_position" : 4
+      },
+      "feature_bound_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier of feature entity this markup is linked to.",
+         "ordinal_position" : 5
+      },
+      "feature_bound_type" : {
+         "data_type" : "string: null",
+         "constraints" : [
+            "issue",
+            "progress-tracking",
+            "photo",
+            "calibration"
+         ],
+         "notes" : "Type of feature entity this markup is linked to.",
+         "ordinal_position" : 6
+      },
+      "type" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Stencil schema used for markup",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the markup.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the markup was created in ISO8601 format",
+         "ordinal_position" : 9
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who updated the markup.",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the markup was updated in ISO8601 format",
+         "ordinal_position" : 11
+      },
+      "deleted" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicates if the markup has been deleted",
+         "ordinal_position" : 12
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who deleted the markup.",
+         "ordinal_position" : 13
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the markup was deleted in ISO8601 format",
+         "ordinal_position" : 14
+      },
+      "markup_text" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Text content for the given markup.  This is the initial text that the markup was created with, THIS MAY BE OVERRIDDEN BY TEXT ON THE PLACEMENT OF THIS MARKUP.  Merge with the \"placement\" table and check \"placement_text\" to identify the text of a given placement of this markup.  if \"placement_text\" is blank, then \"markup_text\" holds the current text content.  NOTE: if the markup is a feature bound markup (feature_bound_type is present), the text here is inaccurate and should be ignored.",
+         "ordinal_position" : 15
+      }
+   },
+   "placement" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for account scoping of issues data",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of issues data",
+         "ordinal_position" : 2
+      },
+      "markup_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "markup ID associated with this placement.",
+         "ordinal_position" : 3
+      },
+      "surface_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Surface ID this markup is placed on.",
+         "ordinal_position" : 4
+      },
+      "published" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicates if the markup is visible to all users or not.",
+         "ordinal_position" : 5
+      },
+      "layer_uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Layer ID this markup is placed on.",
+         "ordinal_position" : 6
+      },
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Unique identifier for the placement.",
+         "ordinal_position" : 7
+      },
+      "uid" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique identifier for the placement.",
+         "ordinal_position" : 8
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who created the placement.",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the placement was created in ISO8601 format",
+         "ordinal_position" : 10
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who updated the placement.",
+         "ordinal_position" : 11
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the placement was updated in ISO8601 format",
+         "ordinal_position" : 12
+      },
+      "deleted" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicates if the placement has been deleted",
+         "ordinal_position" : 13
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user who deleted the placement.",
+         "ordinal_position" : 14
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the placement was deleted in ISO8601 format",
+         "ordinal_position" : 15
+      },
+      "placement_text" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Text content for the given markup-placement.  THIS WILL OVERRIDE TEXT IN MARKUP.MARKUP_TEXT.  If there is text present in this column, it is the current text of the given placement.  If this field is blank, check the \"markup_text\" column by merging with the \"markup\" table to get text (if there is any for this placement).  NOTE: if the markup is a feature bound markup (feature_bound_type is present), the text here is inaccurate and should be ignored.",
+         "ordinal_position" : 16
+      }
+   }
+}

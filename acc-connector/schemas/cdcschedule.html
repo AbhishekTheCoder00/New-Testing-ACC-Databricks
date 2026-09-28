@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cdcschedule: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>cdcschedule Schema Description</h1>
+<b>Documentation Updated: </b>2026-03-11<br/>
+<ul><li><a href="#activities">activities</a></li>
+<li><a href="#activity_codes">activity_codes</a></li>
+<li><a href="#comments">comments</a></li>
+<li><a href="#dependencies">dependencies</a></li>
+<li><a href="#plan_commitments">plan_commitments</a></li>
+<li><a href="#plan_handoffs">plan_handoffs</a></li>
+<li><a href="#plan_plans">plan_plans</a></li>
+<li><a href="#plan_project_settings">plan_project_settings</a></li>
+<li><a href="#plan_task_comments">plan_task_comments</a></li>
+<li><a href="#plan_tasks">plan_tasks</a></li>
+<li><a href="#resources">resources</a></li>
+<li><a href="#schedules">schedules</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+
+        	<div class="message_highlight_note"><b>Beta Release</b><br>
+        		This is a Beta release of the cdcschedule data set and schema definitions are subject to change or even possibly be removed from the final data set release. Thank you for your understanding with any future schema updates.
+          </div>
+<h2><a name="activities">activities</a></h2>Schedule activities belonging to the latest schedule revision - This is the Change Data Capture (CDC) enabled version of the schedule.activities table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The activity ID</td></tr>
+<tr><td>2</td><td>schedule_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The schedules ID for the activity<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> schedules<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>5</td><td>unique_id</td><td>number</td><td></td><td>The activity unique id in the User's scheduling software</td></tr>
+<tr><td>6</td><td>sequential_id</td><td>number</td><td></td><td>The sequential ID of the activity</td></tr>
+<tr><td>7</td><td>file_activity_id</td><td>string</td><td></td><td>The activity ID field in the Schedule file</td></tr>
+<tr><td>8</td><td>parent_unique_id</td><td>number</td><td></td><td>The parent activity unique id in the User's scheduling software</td></tr>
+<tr><td>9</td><td>type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>MILESTONE</li>
+<li>ACTIVITY</li></ul></td><td>detailed column 7 description</td></tr>
+<tr><td>10</td><td>name</td><td>string: null</td><td></td><td>The activity name</td></tr>
+<tr><td>11</td><td>is_critical_path</td><td>boolean</td><td></td><td>Is the activity in the schedule's critical path</td></tr>
+<tr><td>12</td><td>completion_percentage</td><td>number</td><td></td><td>The activity completion percentage</td></tr>
+<tr><td>13</td><td>planned_start</td><td>timestamp: SQL</td><td></td><td>When the activity was planned to start</td></tr>
+<tr><td>14</td><td>planned_finish</td><td>timestamp: SQL</td><td></td><td>When the activity was planned to finish</td></tr>
+<tr><td>15</td><td>actual_start</td><td>timestamp: SQL</td><td></td><td>When the activity actually started</td></tr>
+<tr><td>16</td><td>actual_finish</td><td>timestamp: SQL</td><td></td><td>When the activity actually finished</td></tr>
+<tr><td>17</td><td>start</td><td>timestamp: SQL</td><td></td><td>A calculated field to determine the start display date of the activity</td></tr>
+<tr><td>18</td><td>finish</td><td>timestamp: SQL</td><td></td><td>A calculated field to determine the finish display date of the activity</td></tr>
+<tr><td>19</td><td>duration</td><td>number</td><td></td><td>The duration of the activity in days</td></tr>
+<tr><td>20</td><td>actual_duration</td><td>number</td><td></td><td>The actual duration of the activity in days</td></tr>
+<tr><td>21</td><td>remaining_duration</td><td>number</td><td></td><td>The remaining duration of the activity in days</td></tr>
+<tr><td>22</td><td>free_slack_units</td><td>string</td><td></td><td>Units of the free (remaining) slack of the activity</td></tr>
+<tr><td>23</td><td>free_slack_duration</td><td>number</td><td></td><td>The free (remaining) slack of the activity in the units in column free_slack_units</td></tr>
+<tr><td>24</td><td>total_slack_units</td><td>string</td><td></td><td>Units of the total slack of the activity</td></tr>
+<tr><td>25</td><td>total_slack_duration</td><td>number</td><td></td><td>The total slack of the activity in the units in column total_slack_units</td></tr>
+<tr><td>26</td><td>is_wbs</td><td>boolean</td><td></td><td>Is the activity a WBS</td></tr>
+<tr><td>27</td><td>wbs_path</td><td>string: null</td><td></td><td>The WBS Path of the activity, constracted from unique ids, string array // [1,2,3,4] -&gt; "[1,2,3,4]"</td></tr>
+<tr><td>28</td><td>wbs_code</td><td>string: null</td><td></td><td>The WBS code of the activity</td></tr>
+<tr><td>29</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the activity<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>30</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the activity<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>31</td><td>wbs_path_text</td><td>string: null</td><td></td><td>The WBS Path of the activity, constracted from names, string array</td></tr>
+<tr><td>32</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the activitie was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>33</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="activity_codes">activity_codes</a></h2>Activity codes (Custom attributes) assignments to Activities belonging to the latest schedule revision - This is the Change Data Capture (CDC) enabled version of the schedule.activity_codes table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The activity code ID (Activity code assignment ID)</td></tr>
+<tr><td>2</td><td>schedule_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The schedule id of the activity code<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> schedules<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>5</td><td>activity_unique_id</td><td>number</td><td></td><td>The activity unique id in the User's scheduling software</td></tr>
+<tr><td>6</td><td>name</td><td>string</td><td></td><td>The name of the activity code</td></tr>
+<tr><td>7</td><td>value</td><td>string</td><td></td><td>The value code of the activity code assignment</td></tr>
+<tr><td>8</td><td>value_description</td><td>string: null</td><td></td><td>The value free text of the activity code assignment</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the activity code<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the activity code<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the activity_code was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="comments">comments</a></h2>Schedule update requests status changes - This is the Change Data Capture (CDC) enabled version of the schedule.comments table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The comment ID</td></tr>
+<tr><td>2</td><td>schedule_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The update request id for the status change request<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> schedules<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>5</td><td>activity_unique_id</td><td>number</td><td></td><td>The activity unique id in the User's scheduling software</td></tr>
+<tr><td>6</td><td>body</td><td>string</td><td>Max length: 10000</td><td>The comment text</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>User who created the comment</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the comment<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the comment was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the comment was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="dependencies">dependencies</a></h2>Activity dependencies (links) belonging to the latest schedule revision - This is the Change Data Capture (CDC) enabled version of the schedule.dependencies table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The dependency ID</td></tr>
+<tr><td>2</td><td>schedule_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The schedules ID for the revision<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> schedules<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>5</td><td>source_unique_id</td><td>number</td><td></td><td>The source activity unique id of the dependency</td></tr>
+<tr><td>6</td><td>target_unique_id</td><td>number</td><td></td><td>The target activity unique id of the dependency</td></tr>
+<tr><td>7</td><td>type</td><td>enum: string</td><td>ENUM VALUES: FINISH_FINISH,
+  FINISH_START,
+  START_FINISH,
+  START_START</td><td>The type of dependency link</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the dependency<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the dependency<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the dependencie was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="plan_commitments">plan_commitments</a></h2>The Workplan commitments in ACC Build<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The commitment ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>plan_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The plan ID derived from the linked task<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> plans<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>task_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The task ID this commitment is made against<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> tasks<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>replanned_commitment_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID of the commitment this one replans<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> commitments<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>7</td><td>root_cause_id</td><td>string: UUID</td><td></td><td>The root cause ID when commitment is incomplete or replanned</td></tr>
+<tr><td>8</td><td>task_type</td><td>string</td><td></td><td>The task type when the task was committed</td></tr>
+<tr><td>9</td><td>work_type</td><td>string</td><td></td><td>The work type when the task was committed</td></tr>
+<tr><td>10</td><td>status</td><td>string</td><td></td><td>The status when the task was committed</td></tr>
+<tr><td>11</td><td>start_date</td><td>date: string</td><td></td><td>The start date of the commitment</td></tr>
+<tr><td>12</td><td>finish_date</td><td>date: string</td><td></td><td>The finish date of the commitment</td></tr>
+<tr><td>13</td><td>duration</td><td>number</td><td></td><td>The duration of the commitment in working days</td></tr>
+<tr><td>14</td><td>assigned_member_id</td><td>string: null</td><td></td><td>The member ID who committed to the task</td></tr>
+<tr><td>15</td><td>assigned_company_id</td><td>string: null</td><td></td><td>The company ID who committed to the task</td></tr>
+<tr><td>16</td><td>assigned_role_id</td><td>string: null</td><td></td><td>The role ID assigned to the commitment</td></tr>
+<tr><td>17</td><td>location_id</td><td>string: UUID</td><td></td><td>The location ID associated with the commitment</td></tr>
+<tr><td>18</td><td>wbs_id</td><td>string: UUID</td><td></td><td>The WBS ID associated with the commitment</td></tr>
+<tr><td>19</td><td>crew_size</td><td>number</td><td></td><td>The crew size for the commitment</td></tr>
+<tr><td>20</td><td>was_start_changed</td><td>boolean</td><td></td><td>Whether the start date was changed from the original task</td></tr>
+<tr><td>21</td><td>was_duration_changed</td><td>boolean</td><td></td><td>Whether the duration was changed from the original task</td></tr>
+<tr><td>22</td><td>was_finish_changed</td><td>boolean</td><td></td><td>Whether the finish date was changed from the original task</td></tr>
+<tr><td>23</td><td>created_by</td><td>string</td><td></td><td>The user who created the commitment</td></tr>
+<tr><td>24</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the commitment</td></tr>
+<tr><td>25</td><td>updated_by</td><td>string</td><td></td><td>The user who last updated the commitment</td></tr>
+<tr><td>26</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Last update time of the commitment</td></tr>
+<tr><td>27</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the row was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>28</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="plan_handoffs">plan_handoffs</a></h2>The Workplan task handoffs in ACC Build<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The handoff ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>plan_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The plan ID this handoff belongs to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> plans<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>source_task</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The source task ID of the handoff<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> tasks<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>target_task</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The target task ID of the handoff<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> tasks<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>The user who created the handoff</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the handoff</td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>The user who last updated the handoff</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Last update time of the handoff</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the dependencie was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="plan_plans">plan_plans</a></h2>The Workplan plans in ACC Build<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The plan ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>The plan name</td></tr>
+<tr><td>5</td><td>schedule_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The connected schedule ID for the plan<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> schedules<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>created_by</td><td>string</td><td></td><td>The user who created the plan</td></tr>
+<tr><td>7</td><td>updated_by</td><td>string</td><td></td><td>The user who last updated the plan</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the plan</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Last update time of the plan</td></tr>
+<tr><td>10</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the dependencie was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="plan_project_settings">plan_project_settings</a></h2>The Workplan project settings in ACC Build<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>non_working_dates</td><td>string</td><td></td><td>Non-working dates configured for the project (JSON array)</td></tr>
+<tr><td>4</td><td>first_day_of_the_week</td><td>string: null</td><td></td><td>The first day of the project working week</td></tr>
+<tr><td>5</td><td>working_days</td><td>string: null</td><td></td><td>The project working days configuration</td></tr>
+<tr><td>6</td><td>wbs_tree</td><td>string</td><td></td><td>The WBS tree structure for the project (JSON)</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>The user who created the project settings</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the project settings</td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>The user who last updated the project settings</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Last update time of the project settings</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the dependencie was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="plan_task_comments">plan_task_comments</a></h2>The Workplan tasks comments in ACC Build<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The task comments ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>task_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The task ID for the task comment<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> tasks<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>plan_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The plan ID for the task comment<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> plans<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>body</td><td>string</td><td></td><td>The body of the task comment</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the task comment</td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the task comment</td></tr>
+<tr><td>9</td><td>created_by</td><td>string</td><td></td><td>The user who created the task comment</td></tr>
+<tr><td>10</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the schedule was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="plan_tasks">plan_tasks</a></h2>The Workplan tasks in ACC Build<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The task ID</td></tr>
+<tr><td>2</td><td>plan_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The plan ID this task belongs to<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> plans<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>5</td><td>parent_task_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The parent task ID for hierarchical task structures<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> tasks<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>activity_unique_id</td><td>number</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> schedule_activities<br/><strong>Column: </strong> unique_id</span></td></tr>
+<tr><td>7</td><td>unique_id</td><td>number</td><td></td><td>The unique sequential identifier of the task within the plan</td></tr>
+<tr><td>8</td><td>task_type</td><td>string</td><td></td><td>The task type (e.g. task, milestone)</td></tr>
+<tr><td>9</td><td>work_type</td><td>string</td><td></td><td>The work type / sub-type of the task</td></tr>
+<tr><td>10</td><td>status</td><td>string</td><td></td><td>The current status of the task</td></tr>
+<tr><td>11</td><td>title</td><td>string</td><td></td><td>The task title / name</td></tr>
+<tr><td>12</td><td>description</td><td>string</td><td></td><td>The task description</td></tr>
+<tr><td>13</td><td>start_date</td><td>date: string</td><td></td><td>The start date of the task</td></tr>
+<tr><td>14</td><td>finish_date</td><td>date: string</td><td></td><td>The finish date of the task</td></tr>
+<tr><td>15</td><td>duration</td><td>number</td><td></td><td>The duration of the task in working days</td></tr>
+<tr><td>16</td><td>location_id</td><td>string: UUID</td><td></td><td>The location ID associated with the task</td></tr>
+<tr><td>17</td><td>assigned_member_id</td><td>string: null</td><td></td><td>The member ID assigned to the task</td></tr>
+<tr><td>18</td><td>assigned_company_id</td><td>string: null</td><td></td><td>The company ID assigned to the task</td></tr>
+<tr><td>19</td><td>assigned_role_id</td><td>string: null</td><td></td><td>The role ID assigned to the task</td></tr>
+<tr><td>20</td><td>wbs_id</td><td>string: UUID</td><td></td><td>The WBS ID associated with the task</td></tr>
+<tr><td>21</td><td>completion_percentage</td><td>number</td><td></td><td>The completion percentage of the task (0-100)</td></tr>
+<tr><td>22</td><td>crew_size</td><td>number</td><td></td><td>The crew size assigned to the task</td></tr>
+<tr><td>23</td><td>priority</td><td>number</td><td></td><td>The priority of the task</td></tr>
+<tr><td>24</td><td>comments_count</td><td>number</td><td></td><td>The number of comments on the task</td></tr>
+<tr><td>25</td><td>commitments_count</td><td>number</td><td></td><td>The number of commitments on the task</td></tr>
+<tr><td>26</td><td>task_imports_id</td><td>string</td><td></td><td>The import ID if the task was imported from Excel</td></tr>
+<tr><td>27</td><td>created_by</td><td>string</td><td></td><td>The user who created the task</td></tr>
+<tr><td>28</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the task</td></tr>
+<tr><td>29</td><td>updated_by</td><td>string</td><td></td><td>The user who last updated the task</td></tr>
+<tr><td>30</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Last update time of the task</td></tr>
+<tr><td>31</td><td>archived_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the schedule was archived</td></tr>
+<tr><td>32</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the schedule was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>33</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="resources">resources</a></h2>Resource (Assignees) assignments to Activities belonging to the latest schedule revision - This is the Change Data Capture (CDC) enabled version of the schedule.resources table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The resource ID (Resource assignment ID)</td></tr>
+<tr><td>2</td><td>schedule_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The schedule id of the activity code<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> schedules<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>3</td><td>resource_unique_id</td><td>number</td><td></td><td>The resource unique id in the User's scheduling software</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>6</td><td>activity_unique_id</td><td>number</td><td></td><td>The activity unique id in the User's scheduling software</td></tr>
+<tr><td>7</td><td>name</td><td>string</td><td></td><td>The name of the resource</td></tr>
+<tr><td>8</td><td>type</td><td>enum: string</td><td>ENUM VALUES: WORK, COST, MATERIAL</td><td>The type of resource</td></tr>
+<tr><td>9</td><td>email_address</td><td>string</td><td>Max length: 1000</td><td>The email address of the resource</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the resource<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the resource<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the resource was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="schedules">schedules</a></h2>Schedules in ACC Build - This is the Change Data Capture (CDC) enabled version of the schedule.schedules table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The schedule ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>The schedule name</td></tr>
+<tr><td>5</td><td>type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>XER</li>
+<li>XML</li>
+<li>MPP</li>
+<li>PP</li></ul></td><td>Schedule file type</td></tr>
+<tr><td>6</td><td>version_number</td><td>number</td><td></td><td>The revision number of the schedule</td></tr>
+<tr><td>7</td><td>is_public</td><td>boolean</td><td></td><td>Is the schedule available to all project members or to a restricted list of users</td></tr>
+<tr><td>8</td><td>created_by</td><td>string</td><td></td><td>User who created the Schedule</td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>User who updated the Schedule</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the schedule<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the schedule<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the schedule was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

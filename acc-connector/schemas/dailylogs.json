@@ -1,0 +1,400 @@
+{
+   "dailylogs" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The unique identifier of the dailylog.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date for the daily log data",
+         "ordinal_position" : 4
+      },
+      "company_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Company Identifier",
+         "ordinal_position" : 5
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [
+            "NEW",
+            "IN_PROGRESS",
+            "PUBLISHED"
+         ],
+         "notes" : "Status of the daily log",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who created the dailylog.",
+         "ordinal_position" : 7
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who last modified the dailylog.",
+         "ordinal_position" : 8
+      },
+      "published_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who published the dailylog.",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last created in ISO8601 format.",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated in ISO8601 format.",
+         "ordinal_position" : 11
+      },
+      "published_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last published in ISO8601 format.",
+         "ordinal_position" : 12
+      }
+   },
+   "labor_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The unique identifier of the labor information.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "company_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The company ID for the labor item - details for the company are available in admin::companies table",
+         "ordinal_position" : 4
+      },
+      "labor_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the labor for this labor item information",
+         "ordinal_position" : 5
+      },
+      "company_oxygen_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Oxygen ID for the labor company",
+         "ordinal_position" : 6
+      },
+      "workers_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Workers hours",
+         "ordinal_position" : 7
+      },
+      "total_hours" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total hours",
+         "ordinal_position" : 8
+      },
+      "comment" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Comment for the labor item",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who created the labo item information.",
+         "ordinal_position" : 10
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who last modified the labor item information.",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last created in ISO8601 format.",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated in ISO8601 format.",
+         "ordinal_position" : 13
+      }
+   },
+   "labors" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The unique identifier of the labor information.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "daily_log_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the dailylog for this labor information",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the labor",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who created the labor information.",
+         "ordinal_position" : 6
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who last modified the labor information.",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last created in ISO8601 format.",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated in ISO8601 format.",
+         "ordinal_position" : 9
+      }
+   },
+   "notes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The unique identifier of the note.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "daily_log_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the dailylog for this note",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title for the note",
+         "ordinal_position" : 5
+      },
+      "content" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Content of the note",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who created the note.",
+         "ordinal_position" : 7
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who last modified the note.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last created in ISO8601 format.",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated in ISO8601 format.",
+         "ordinal_position" : 10
+      }
+   },
+   "weather_logs" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The unique identifier of the weather information.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "daily_log_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the dailylog for this weather information",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the weather reading",
+         "ordinal_position" : 5
+      },
+      "location" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Location for the weather reading",
+         "ordinal_position" : 6
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the weather reading",
+         "ordinal_position" : 7
+      },
+      "highest_temperature" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "High Temperature for the dailylog",
+         "ordinal_position" : 8
+      },
+      "highest_temperature_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time of the highest temperature reading.",
+         "ordinal_position" : 9
+      },
+      "lowest_temperature" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Low Temperature for the dailylog",
+         "ordinal_position" : 10
+      },
+      "lowest_temperature_time" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time of the lowest temperature reading.",
+         "ordinal_position" : 11
+      },
+      "visibility" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Visibility reading",
+         "ordinal_position" : 12
+      },
+      "humidity" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Humidity reading",
+         "ordinal_position" : 13
+      },
+      "wind" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Wind speed reading",
+         "ordinal_position" : 14
+      },
+      "precipitation" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Precipitation in dailylog",
+         "ordinal_position" : 15
+      },
+      "notes" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Various informational notes",
+         "ordinal_position" : 16
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who created the weather information.",
+         "ordinal_position" : 17
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who last modified the weather information.",
+         "ordinal_position" : 18
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last created in ISO8601 format.",
+         "ordinal_position" : 19
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated in ISO8601 format.",
+         "ordinal_position" : 20
+      }
+   }
+}

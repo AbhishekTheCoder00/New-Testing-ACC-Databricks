@@ -1,0 +1,5432 @@
+{
+   "admin_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "object_access_change_list" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Access change list in JSON Array Format",
+         "ordinal_position" : 7
+      },
+      "object_added_services" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Allowed services",
+         "ordinal_position" : 8
+      },
+      "object_allow_edit_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Allow company edit",
+         "ordinal_position" : 9
+      },
+      "object_default_access_level" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Default level of access for the object",
+         "ordinal_position" : 10
+      },
+      "object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Display name for the target being acted on",
+         "ordinal_position" : 11
+      },
+      "object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the object being acted on - if the object_object_type is user, this ID is the admin_users id column, not the Autodesk ID",
+         "ordinal_position" : 12
+      },
+      "object_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the object being acted on",
+         "ordinal_position" : 13
+      },
+      "object_name_was" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Previous name for the object being acted on",
+         "ordinal_position" : 14
+      },
+      "object_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type of the object being acted on",
+         "ordinal_position" : 15
+      },
+      "object_removed_services" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Removed services from the object",
+         "ordinal_position" : 16
+      },
+      "object_service_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Service name for the object being acted on",
+         "ordinal_position" : 17
+      },
+      "object_services_list" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Service listing in JSON Array Format",
+         "ordinal_position" : 18
+      },
+      "object_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Size of the object being acted on",
+         "ordinal_position" : 19
+      },
+      "object_status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Status of the object being acted on",
+         "ordinal_position" : 20
+      },
+      "object_status_was" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Old status of the object being acted on",
+         "ordinal_position" : 21
+      },
+      "object_update_image" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Image defintion",
+         "ordinal_position" : 22
+      },
+      "target_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Display name for the object being acted on",
+         "ordinal_position" : 23
+      },
+      "target_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the target being acted on - if the target_object_type is user, this ID is the admin_users id column, not the Autodesk ID",
+         "ordinal_position" : 24
+      },
+      "target_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object type for the target being acted on",
+         "ordinal_position" : 25
+      }
+   },
+   "assets_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "object_activity_source" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Activity Source",
+         "ordinal_position" : 7
+      },
+      "object_after_asset_status_color" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Asset Status Color",
+         "ordinal_position" : 8
+      },
+      "object_after_asset_status_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Asset Status Display Name",
+         "ordinal_position" : 9
+      },
+      "object_after_asset_status_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Asset Status Entity Type",
+         "ordinal_position" : 10
+      },
+      "object_after_asset_status_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object After Asset Status ID",
+         "ordinal_position" : 11
+      },
+      "object_after_asset_status_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Status Is Active",
+         "ordinal_position" : 12
+      },
+      "object_after_asset_status_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Asset Status is Missing",
+         "ordinal_position" : 13
+      },
+      "object_after_asset_status_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Asset Status is Valid",
+         "ordinal_position" : 14
+      },
+      "object_after_category_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Category Display Name",
+         "ordinal_position" : 15
+      },
+      "object_after_category_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Category Entity Type",
+         "ordinal_position" : 16
+      },
+      "object_after_category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Category ID",
+         "ordinal_position" : 17
+      },
+      "object_after_category_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Category Is Active",
+         "ordinal_position" : 18
+      },
+      "object_after_category_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Category Is Missing",
+         "ordinal_position" : 19
+      },
+      "object_after_category_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Category Is Valid",
+         "ordinal_position" : 20
+      },
+      "object_after_category_path" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Category Path",
+         "ordinal_position" : 21
+      },
+      "object_after_location_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Location Display Name",
+         "ordinal_position" : 22
+      },
+      "object_after_location_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Location Entity Type",
+         "ordinal_position" : 23
+      },
+      "object_after_location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object After Location ID",
+         "ordinal_position" : 24
+      },
+      "object_after_location_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Location Is Active",
+         "ordinal_position" : 25
+      },
+      "object_after_location_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Location Is Missing",
+         "ordinal_position" : 26
+      },
+      "object_after_location_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object After Location Is Valid",
+         "ordinal_position" : 27
+      },
+      "object_after_location_path" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object After Location Path",
+         "ordinal_position" : 28
+      },
+      "object_before_entity_category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Before Entity Category Id",
+         "ordinal_position" : 29
+      },
+      "object_before_entity_client_asset_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Before Entity Client Asset Id",
+         "ordinal_position" : 30
+      },
+      "object_before_entity_created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Before Entity Created At",
+         "ordinal_position" : 31
+      },
+      "object_before_entity_created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Before Entity Created By",
+         "ordinal_position" : 32
+      },
+      "object_before_entity_custom_attributes" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Before Entity Custom Attributes",
+         "ordinal_position" : 33
+      },
+      "object_before_entity_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Before Entity Id",
+         "ordinal_position" : 34
+      },
+      "object_before_entity_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Before Entity Is Active",
+         "ordinal_position" : 35
+      },
+      "object_before_entity_location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Before Entity Location Id",
+         "ordinal_position" : 36
+      },
+      "object_before_entity_status_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Before Entity Status Id",
+         "ordinal_position" : 37
+      },
+      "object_before_entity_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Before Entity Updated At",
+         "ordinal_position" : 38
+      },
+      "object_before_entity_updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Before Entity Updated By",
+         "ordinal_position" : 39
+      },
+      "object_before_entity_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object Before Entity Version",
+         "ordinal_position" : 40
+      },
+      "object_before_location_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Before Location Display Name",
+         "ordinal_position" : 41
+      },
+      "object_before_location_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Before Location Entity Type",
+         "ordinal_position" : 42
+      },
+      "object_before_location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Before Location Id",
+         "ordinal_position" : 43
+      },
+      "object_before_location_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Before Location Is Active",
+         "ordinal_position" : 44
+      },
+      "object_before_location_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Before Location Is Missing",
+         "ordinal_position" : 45
+      },
+      "object_before_location_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Before Location Is Valid",
+         "ordinal_position" : 46
+      },
+      "object_before_location_path" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Before Location Path",
+         "ordinal_position" : 47
+      },
+      "object_category_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Category Display Name",
+         "ordinal_position" : 48
+      },
+      "object_category_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Category Entity Type",
+         "ordinal_position" : 49
+      },
+      "object_category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Category Id",
+         "ordinal_position" : 50
+      },
+      "object_category_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Category Is Active",
+         "ordinal_position" : 51
+      },
+      "object_category_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Category Is Missing",
+         "ordinal_position" : 52
+      },
+      "object_category_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Category Is Valid",
+         "ordinal_position" : 53
+      },
+      "object_category_path" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Category Path",
+         "ordinal_position" : 54
+      },
+      "object_created_entity_category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Created Entity Category Id",
+         "ordinal_position" : 55
+      },
+      "object_created_entity_client_asset_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Created Entity Client Asset Id",
+         "ordinal_position" : 56
+      },
+      "object_created_entity_created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Created Entity Created At",
+         "ordinal_position" : 57
+      },
+      "object_created_entity_created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Created Entity Created By",
+         "ordinal_position" : 58
+      },
+      "object_created_entity_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Created Entity Id",
+         "ordinal_position" : 59
+      },
+      "object_created_entity_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Created Entity Is Active",
+         "ordinal_position" : 60
+      },
+      "object_created_entity_status_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Created Entity Status Id",
+         "ordinal_position" : 61
+      },
+      "object_created_entity_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Created Entity Updated At",
+         "ordinal_position" : 62
+      },
+      "object_created_entity_updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Created Entity Updated By",
+         "ordinal_position" : 63
+      },
+      "object_created_entity_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object Created Entity Version",
+         "ordinal_position" : 64
+      },
+      "object_deleted_entity_category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Category Id",
+         "ordinal_position" : 65
+      },
+      "object_deleted_entity_client_asset_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Client Asset Id",
+         "ordinal_position" : 66
+      },
+      "object_deleted_entity_created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Created At",
+         "ordinal_position" : 67
+      },
+      "object_deleted_entity_created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Created By",
+         "ordinal_position" : 68
+      },
+      "object_deleted_entity_deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Deleted At",
+         "ordinal_position" : 69
+      },
+      "object_deleted_entity_deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Deleted By",
+         "ordinal_position" : 70
+      },
+      "object_deleted_entity_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Id",
+         "ordinal_position" : 71
+      },
+      "object_deleted_entity_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Is Active",
+         "ordinal_position" : 72
+      },
+      "object_deleted_entity_location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Location Id",
+         "ordinal_position" : 73
+      },
+      "object_deleted_entity_status_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Status Id",
+         "ordinal_position" : 74
+      },
+      "object_deleted_entity_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Updated At",
+         "ordinal_position" : 75
+      },
+      "object_deleted_entity_updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Updated By",
+         "ordinal_position" : 76
+      },
+      "object_deleted_entity_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object Deleted Entity Version",
+         "ordinal_position" : 77
+      },
+      "object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Display Name",
+         "ordinal_position" : 78
+      },
+      "object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Id",
+         "ordinal_position" : 79
+      },
+      "object_location_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Location Display Name",
+         "ordinal_position" : 80
+      },
+      "object_location_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Location Entity Type",
+         "ordinal_position" : 81
+      },
+      "object_location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Location Id",
+         "ordinal_position" : 82
+      },
+      "object_location_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Location Is Active",
+         "ordinal_position" : 83
+      },
+      "object_location_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Location Is Missing",
+         "ordinal_position" : 84
+      },
+      "object_location_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Location Is Valid",
+         "ordinal_position" : 85
+      },
+      "object_location_path" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Location Path",
+         "ordinal_position" : 86
+      },
+      "object_patch_entity_custom_attributes" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Patch Entity Custom Attributes",
+         "ordinal_position" : 87
+      },
+      "object_patch_entity_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Patch Entity Updated At",
+         "ordinal_position" : 88
+      },
+      "object_patch_entity_updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Patch Entity Updated By",
+         "ordinal_position" : 89
+      },
+      "object_asset_status_color" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object asset status color",
+         "ordinal_position" : 90
+      },
+      "object_asset_status_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object asset status display name",
+         "ordinal_position" : 91
+      },
+      "object_asset_status_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object asset status entity type",
+         "ordinal_position" : 92
+      },
+      "object_asset_status_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object asset status ID",
+         "ordinal_position" : 93
+      },
+      "object_asset_status_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object asset status is active",
+         "ordinal_position" : 94
+      },
+      "object_asset_status_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object asset status is missing",
+         "ordinal_position" : 95
+      },
+      "object_asset_status_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object asset status is valid",
+         "ordinal_position" : 96
+      },
+      "object_before_asset_status_color" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object before asset status color",
+         "ordinal_position" : 97
+      },
+      "object_before_asset_status_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object before asset status display name",
+         "ordinal_position" : 98
+      },
+      "object_before_asset_status_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object before asset status entity type",
+         "ordinal_position" : 99
+      },
+      "object_before_asset_status_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object before asset status id",
+         "ordinal_position" : 100
+      },
+      "object_before_asset_status_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object before asset status is active",
+         "ordinal_position" : 101
+      },
+      "object_before_asset_status_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object before asset status is missing",
+         "ordinal_position" : 102
+      },
+      "object_before_asset_status_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object before asset status is valid",
+         "ordinal_position" : 103
+      },
+      "object_before_category_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object before category display name",
+         "ordinal_position" : 104
+      },
+      "object_before_category_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object before category entity type",
+         "ordinal_position" : 105
+      },
+      "object_before_category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object before category id",
+         "ordinal_position" : 106
+      },
+      "object_before_category_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object before category is active",
+         "ordinal_position" : 107
+      },
+      "object_before_category_is_missing" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object before category is missing",
+         "ordinal_position" : 108
+      },
+      "object_before_category_is_valid" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object before category is valid",
+         "ordinal_position" : 109
+      },
+      "object_before_category_path" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object before category path",
+         "ordinal_position" : 110
+      }
+   },
+   "bridge_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity was created",
+         "ordinal_position" : 6
+      },
+      "object_automation_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Specifies the type of automation applied to an object. For example, 'acs_folder' for folder-based automations and 'acs_sheet' for sheet automations. To identify Design Collaboration team automations, look for entries where 'automationType' = 'acs_folder' and 'owner' = 'dc'.",
+         "ordinal_position" : 7
+      },
+      "object_initiator_project_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Represents the ID of the ACC project where the user initiated the action.",
+         "ordinal_position" : 8
+      },
+      "object_item_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Specifies the name of the item (such as a folder, sheet or team) that has an automation applied to it.",
+         "ordinal_position" : 9
+      },
+      "object_origin" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Indicates the method by which the Bridged Project connection was established. For example, if the connection was made using the 'Bridge to a project' flow, the 'origin' field will be empty. For connections created through folder or sheet automation setup, the 'origin' field will contain 'create-bridge-automation'.",
+         "ordinal_position" : 10
+      },
+      "object_owner" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Contains the value 'dc' for Design Collaboration team automations. This helps users distinguish between folder and team automations when the 'automationType' = 'acs_folder'.",
+         "ordinal_position" : 11
+      },
+      "object_reason" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Provides context on why an automation was deleted. For example, values may include 'AUTOMATION_DELETED', 'FOLDER_DELETED', 'SHEETS_COLLECTION_DELETED', 'SHEET_DELETED'.",
+         "ordinal_position" : 12
+      },
+      "object_recipient_email" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The email address of the recipient invited to create a Bridge between projects.",
+         "ordinal_position" : 13
+      },
+      "object_source_project_account_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The account ID associated with the source project.",
+         "ordinal_position" : 14
+      },
+      "object_source_project_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The project name associated with the source project.",
+         "ordinal_position" : 15
+      },
+      "object_source_project_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The project ID associated with the source project.",
+         "ordinal_position" : 16
+      },
+      "object_target_project_account_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The account ID associated with the target project.",
+         "ordinal_position" : 17
+      },
+      "object_target_project_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The project name associated with the target project.",
+         "ordinal_position" : 18
+      },
+      "object_target_project_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The project ID associated with the target project.",
+         "ordinal_position" : 19
+      }
+   },
+   "cost_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "object_cost_payment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object cost payment display name",
+         "ordinal_position" : 7
+      },
+      "object_cost_payment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object cost payment id",
+         "ordinal_position" : 8
+      },
+      "object_uom_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object uom display name",
+         "ordinal_position" : 9
+      },
+      "object_uom_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object uom id",
+         "ordinal_position" : 10
+      },
+      "object_uom_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object uom type",
+         "ordinal_position" : 11
+      },
+      "object_abbr" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object abbr",
+         "ordinal_position" : 12
+      },
+      "object_association_association_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object association association type",
+         "ordinal_position" : 13
+      },
+      "object_association_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object association display name",
+         "ordinal_position" : 14
+      },
+      "object_association_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object association id",
+         "ordinal_position" : 15
+      },
+      "object_association_number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object association number",
+         "ordinal_position" : 16
+      },
+      "object_association_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object association type",
+         "ordinal_position" : 17
+      },
+      "object_attachment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object attachment display name",
+         "ordinal_position" : 18
+      },
+      "object_attachment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object attachment id",
+         "ordinal_position" : 19
+      },
+      "object_attachment_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object attachment type",
+         "ordinal_position" : 20
+      },
+      "object_billing_period_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object billing period display name",
+         "ordinal_position" : 21
+      },
+      "object_billing_period_end_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Object billing period end date",
+         "ordinal_position" : 22
+      },
+      "object_billing_period_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object billing period id",
+         "ordinal_position" : 23
+      },
+      "object_billing_period_start_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Object billing period start date",
+         "ordinal_position" : 24
+      },
+      "object_budget_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object budget code",
+         "ordinal_position" : 25
+      },
+      "object_budget_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object budget display name",
+         "ordinal_position" : 26
+      },
+      "object_budget_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object budget id",
+         "ordinal_position" : 27
+      },
+      "object_budget_payment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object budget payment display name",
+         "ordinal_position" : 28
+      },
+      "object_budget_payment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object budget payment id",
+         "ordinal_position" : 29
+      },
+      "object_budget_payment_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object budget payment type",
+         "ordinal_position" : 30
+      },
+      "object_budgetpayment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object budgetpayment display name",
+         "ordinal_position" : 31
+      },
+      "object_budgetpayment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object budgetpayment id",
+         "ordinal_position" : 32
+      },
+      "object_budgets" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object budgets",
+         "ordinal_position" : 33
+      },
+      "object_calendar_configuration_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object calendar configuration display name",
+         "ordinal_position" : 34
+      },
+      "object_calendar_configuration_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object calendar configuration id",
+         "ordinal_position" : 35
+      },
+      "object_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object code",
+         "ordinal_position" : 36
+      },
+      "object_comment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object comment display name",
+         "ordinal_position" : 37
+      },
+      "object_comment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object comment id",
+         "ordinal_position" : 38
+      },
+      "object_compliance_definition_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object compliance definition display name",
+         "ordinal_position" : 39
+      },
+      "object_compliance_definition_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object compliance definition id",
+         "ordinal_position" : 40
+      },
+      "object_compliance_definition_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object compliance definition type",
+         "ordinal_position" : 41
+      },
+      "object_compliance_requirement_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object compliance requirement display name",
+         "ordinal_position" : 42
+      },
+      "object_compliance_requirement_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object compliance requirement id",
+         "ordinal_position" : 43
+      },
+      "object_compliance_requirement_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object compliance requirement type",
+         "ordinal_position" : 44
+      },
+      "object_container_setting_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object container setting display name",
+         "ordinal_position" : 45
+      },
+      "object_container_setting_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object container setting id",
+         "ordinal_position" : 46
+      },
+      "object_contract_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object contract display name",
+         "ordinal_position" : 47
+      },
+      "object_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object contract id",
+         "ordinal_position" : 48
+      },
+      "object_cost_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object cost item display name",
+         "ordinal_position" : 49
+      },
+      "object_cost_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object cost item id",
+         "ordinal_position" : 50
+      },
+      "object_custom_column_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object custom column display name",
+         "ordinal_position" : 51
+      },
+      "object_custom_column_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object custom column id",
+         "ordinal_position" : 52
+      },
+      "object_default_value_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object default value display name",
+         "ordinal_position" : 53
+      },
+      "object_default_value_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object default value id",
+         "ordinal_position" : 54
+      },
+      "object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object display name",
+         "ordinal_position" : 55
+      },
+      "object_distribution_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object distribution display name",
+         "ordinal_position" : 56
+      },
+      "object_distribution_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object distribution id",
+         "ordinal_position" : 57
+      },
+      "object_distribution_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object distribution item display name",
+         "ordinal_position" : 58
+      },
+      "object_distribution_item_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object distribution item id",
+         "ordinal_position" : 59
+      },
+      "object_document_package_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object document package display name",
+         "ordinal_position" : 60
+      },
+      "object_document_package_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object document package id",
+         "ordinal_position" : 61
+      },
+      "object_document_template_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object document template display name",
+         "ordinal_position" : 62
+      },
+      "object_document_template_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object document template id",
+         "ordinal_position" : 63
+      },
+      "object_document_template_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object document template type",
+         "ordinal_position" : 64
+      },
+      "object_document_package_item_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object document package item display name",
+         "ordinal_position" : 65
+      },
+      "object_document_package_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object document package item id",
+         "ordinal_position" : 66
+      },
+      "object_email_notification_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object email notification display name",
+         "ordinal_position" : 67
+      },
+      "object_email_notification_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object email notification id",
+         "ordinal_position" : 68
+      },
+      "object_exchange_rate_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object exchange rate display name",
+         "ordinal_position" : 69
+      },
+      "object_exchange_rate_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object exchange rate id",
+         "ordinal_position" : 70
+      },
+      "object_expense_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object expense code",
+         "ordinal_position" : 71
+      },
+      "object_expense_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object expense display name",
+         "ordinal_position" : 72
+      },
+      "object_expense_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object expense id",
+         "ordinal_position" : 73
+      },
+      "object_expense_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object expense type",
+         "ordinal_position" : 74
+      },
+      "object_expense_item_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object expense item code",
+         "ordinal_position" : 75
+      },
+      "object_expense_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object expense item display name",
+         "ordinal_position" : 76
+      },
+      "object_expense_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object expense item id",
+         "ordinal_position" : 77
+      },
+      "object_forecast_adjustment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object forecast adjustment display name",
+         "ordinal_position" : 78
+      },
+      "object_forecast_adjustment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object forecast adjustment id",
+         "ordinal_position" : 79
+      },
+      "object_form_definition_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object form definition display name",
+         "ordinal_position" : 80
+      },
+      "object_form_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object form definition id",
+         "ordinal_position" : 81
+      },
+      "object_form_instance_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object form instance code",
+         "ordinal_position" : 82
+      },
+      "object_form_instance_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object form instance display name",
+         "ordinal_position" : 83
+      },
+      "object_form_instance_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object form instance id",
+         "ordinal_position" : 84
+      },
+      "object_form_instance_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object form instance type",
+         "ordinal_position" : 85
+      },
+      "object_form_item_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object form item display name",
+         "ordinal_position" : 86
+      },
+      "object_form_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object form item id",
+         "ordinal_position" : 87
+      },
+      "object_from_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object from display name",
+         "ordinal_position" : 88
+      },
+      "object_from_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object from id",
+         "ordinal_position" : 89
+      },
+      "object_group_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object group key",
+         "ordinal_position" : 90
+      },
+      "object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object id",
+         "ordinal_position" : 91
+      },
+      "object_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object key",
+         "ordinal_position" : 92
+      },
+      "object_main_contract_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object main contract code",
+         "ordinal_position" : 93
+      },
+      "object_main_contract_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object main contract display name",
+         "ordinal_position" : 94
+      },
+      "object_main_contract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object main contract id",
+         "ordinal_position" : 95
+      },
+      "object_main_contract_is_mile_stone" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object main contract is mile stone",
+         "ordinal_position" : 96
+      },
+      "object_main_contract_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object main contract type",
+         "ordinal_position" : 97
+      },
+      "object_main_contract_item_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object main contract item code",
+         "ordinal_position" : 98
+      },
+      "object_main_contract_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object main contract item display name",
+         "ordinal_position" : 99
+      },
+      "object_main_contract_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object main contract item id",
+         "ordinal_position" : 100
+      },
+      "object_maincontract_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object maincontract display name",
+         "ordinal_position" : 101
+      },
+      "object_maincontract_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object maincontract id",
+         "ordinal_position" : 102
+      },
+      "object_markup_formula_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object markup formula display name",
+         "ordinal_position" : 103
+      },
+      "object_markup_formula_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object markup formula id",
+         "ordinal_position" : 104
+      },
+      "object_milestone_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object milestone display name",
+         "ordinal_position" : 105
+      },
+      "object_milestone_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object milestone id",
+         "ordinal_position" : 106
+      },
+      "object_milestone_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object milestone type",
+         "ordinal_position" : 107
+      },
+      "object_oco_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object oco display name",
+         "ordinal_position" : 108
+      },
+      "object_oco_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object oco id",
+         "ordinal_position" : 109
+      },
+      "object_parent_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object parent display name",
+         "ordinal_position" : 110
+      },
+      "object_parent_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object parent id",
+         "ordinal_position" : 111
+      },
+      "object_payment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object payment display name",
+         "ordinal_position" : 112
+      },
+      "object_payment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object payment id",
+         "ordinal_position" : 113
+      },
+      "object_payment_item_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object payment item code",
+         "ordinal_position" : 114
+      },
+      "object_payment_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object payment item display name",
+         "ordinal_position" : 115
+      },
+      "object_payment_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object payment item id",
+         "ordinal_position" : 116
+      },
+      "object_payment_reference_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object payment reference display name",
+         "ordinal_position" : 117
+      },
+      "object_payment_reference_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object payment reference id",
+         "ordinal_position" : 118
+      },
+      "object_payment_reference_is_mile_stone" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object payment reference is mile stone",
+         "ordinal_position" : 119
+      },
+      "object_payment_reference_paid_amount" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object payment reference paid amount",
+         "ordinal_position" : 120
+      },
+      "object_payment_reference_reference" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object payment reference reference",
+         "ordinal_position" : 121
+      },
+      "object_pco_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object pco display name",
+         "ordinal_position" : 122
+      },
+      "object_pco_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object pco id",
+         "ordinal_position" : 123
+      },
+      "object_permission_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object permission display name",
+         "ordinal_position" : 124
+      },
+      "object_permission_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object permission id",
+         "ordinal_position" : 125
+      },
+      "object_permission_level" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object permission level",
+         "ordinal_position" : 126
+      },
+      "object_preset" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object preset",
+         "ordinal_position" : 127
+      },
+      "object_proceed_step_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object proceed step display name",
+         "ordinal_position" : 128
+      },
+      "object_proceed_step_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object proceed step id",
+         "ordinal_position" : 129
+      },
+      "object_proceed_step_index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object proceed step index",
+         "ordinal_position" : 130
+      },
+      "object_proceed_step_task_definition_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object proceed step task definition key",
+         "ordinal_position" : 131
+      },
+      "object_property_definition_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object property definition display name",
+         "ordinal_position" : 132
+      },
+      "object_property_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object property definition id",
+         "ordinal_position" : 133
+      },
+      "object_property_definition_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object property definition type",
+         "ordinal_position" : 134
+      },
+      "object_property_value_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object property value display name",
+         "ordinal_position" : 135
+      },
+      "object_property_value_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object property value id",
+         "ordinal_position" : 136
+      },
+      "object_rco_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object rco code",
+         "ordinal_position" : 137
+      },
+      "object_rco_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object rco display name",
+         "ordinal_position" : 138
+      },
+      "object_rco_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object rco id",
+         "ordinal_position" : 139
+      },
+      "object_rco_is_mile_stone" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object rco is mile stone",
+         "ordinal_position" : 140
+      },
+      "object_recipient" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object recipient",
+         "ordinal_position" : 141
+      },
+      "object_resource_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object resource type",
+         "ordinal_position" : 142
+      },
+      "object_rfq_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object rfq display name",
+         "ordinal_position" : 143
+      },
+      "object_rfq_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object rfq id",
+         "ordinal_position" : 144
+      },
+      "object_schedule_of_value_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object schedule of value code",
+         "ordinal_position" : 145
+      },
+      "object_schedule_of_value_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object schedule of value display name",
+         "ordinal_position" : 146
+      },
+      "object_schedule_of_value_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object schedule of value id",
+         "ordinal_position" : 147
+      },
+      "object_sco_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object sco display name",
+         "ordinal_position" : 148
+      },
+      "object_sco_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object sco id",
+         "ordinal_position" : 149
+      },
+      "object_segment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object segment display name",
+         "ordinal_position" : 150
+      },
+      "object_segment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object segment id",
+         "ordinal_position" : 151
+      },
+      "object_segment_value_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object segment value code",
+         "ordinal_position" : 152
+      },
+      "object_segment_value_display_name" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object segment value display name",
+         "ordinal_position" : 153
+      },
+      "object_segment_value_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object segment value id",
+         "ordinal_position" : 154
+      },
+      "object_source" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object source",
+         "ordinal_position" : 155
+      },
+      "object_source_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object source type",
+         "ordinal_position" : 156
+      },
+      "object_sub_cost_item_code" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object sub cost item code",
+         "ordinal_position" : 157
+      },
+      "object_sub_cost_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object sub cost item display name",
+         "ordinal_position" : 158
+      },
+      "object_sub_cost_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object sub cost item id",
+         "ordinal_position" : 159
+      },
+      "object_sub_cost_item_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object sub cost item type",
+         "ordinal_position" : 160
+      },
+      "object_subject_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object subject id",
+         "ordinal_position" : 161
+      },
+      "object_subject_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object subject type",
+         "ordinal_position" : 162
+      },
+      "object_tax_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object tax display name",
+         "ordinal_position" : 163
+      },
+      "object_tax_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object tax id",
+         "ordinal_position" : 164
+      },
+      "object_tax_association_association_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax association association type",
+         "ordinal_position" : 165
+      },
+      "object_tax_association_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax association display name",
+         "ordinal_position" : 166
+      },
+      "object_tax_association_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax association id",
+         "ordinal_position" : 167
+      },
+      "object_tax_association_number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax association number",
+         "ordinal_position" : 168
+      },
+      "object_tax_formula_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax formula display name",
+         "ordinal_position" : 169
+      },
+      "object_tax_formula_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object tax formula id",
+         "ordinal_position" : 170
+      },
+      "object_tax_formula_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax formula item display name",
+         "ordinal_position" : 171
+      },
+      "object_tax_formula_item_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax formula item id",
+         "ordinal_position" : 172
+      },
+      "object_tax_formula_item_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax formula item type",
+         "ordinal_position" : 173
+      },
+      "object_tax_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax item display name",
+         "ordinal_position" : 174
+      },
+      "object_tax_item_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tax item id",
+         "ordinal_position" : 175
+      },
+      "object_template_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object template display name",
+         "ordinal_position" : 176
+      },
+      "object_template_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object template id",
+         "ordinal_position" : 177
+      },
+      "object_terminated_step_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object terminated step display name",
+         "ordinal_position" : 178
+      },
+      "object_terminated_step_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object terminated step id",
+         "ordinal_position" : 179
+      },
+      "object_terminated_step_index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object terminated step index",
+         "ordinal_position" : 180
+      },
+      "object_terminated_step_task_definition_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object terminated step task definition key",
+         "ordinal_position" : 181
+      },
+      "object_terminology_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object terminology display name",
+         "ordinal_position" : 182
+      },
+      "object_terminology_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object terminology id",
+         "ordinal_position" : 183
+      },
+      "object_terminology_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object terminology type",
+         "ordinal_position" : 184
+      },
+      "object_to" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object to",
+         "ordinal_position" : 185
+      },
+      "object_tracking_item_instance_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tracking item instance code",
+         "ordinal_position" : 186
+      },
+      "object_tracking_item_instance_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tracking item instance display name",
+         "ordinal_position" : 187
+      },
+      "object_tracking_item_instance_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object tracking item instance id",
+         "ordinal_position" : 188
+      },
+      "object_transference_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object transference display name",
+         "ordinal_position" : 189
+      },
+      "object_transference_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object transference id",
+         "ordinal_position" : 190
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object type",
+         "ordinal_position" : 191
+      },
+      "object_undefined_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object undefined display name",
+         "ordinal_position" : 192
+      },
+      "object_undefined_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object undefined id",
+         "ordinal_position" : 193
+      },
+      "object_verb_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object verb key",
+         "ordinal_position" : 194
+      },
+      "object_workflow_condition_display_name" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object workflow condition display name",
+         "ordinal_position" : 195
+      },
+      "object_workflow_condition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object workflow condition id",
+         "ordinal_position" : 196
+      },
+      "object_workflow_definition_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object workflow definition display name",
+         "ordinal_position" : 197
+      },
+      "object_workflow_definition_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object workflow definition id",
+         "ordinal_position" : 198
+      },
+      "object_workflow_instance_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object workflow instance display name",
+         "ordinal_position" : 199
+      },
+      "object_workflow_instance_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object workflow instance id",
+         "ordinal_position" : 200
+      }
+   },
+   "cost_changes" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 4
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 5
+      },
+      "change_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type identifier for the change",
+         "ordinal_position" : 6
+      },
+      "before_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the changed field before the change",
+         "ordinal_position" : 7
+      },
+      "after_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the changed field after the change",
+         "ordinal_position" : 8
+      }
+   },
+   "docs_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "object_approval_status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Approval status for this object",
+         "ordinal_position" : 7
+      },
+      "object_collection_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Collection Display name for this object",
+         "ordinal_position" : 8
+      },
+      "object_collection_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Collection id for this object",
+         "ordinal_position" : 9
+      },
+      "object_collection_instance_index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Collection Instance index for this object",
+         "ordinal_position" : 10
+      },
+      "object_collection_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Collection size for this object",
+         "ordinal_position" : 11
+      },
+      "object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Display name for this object",
+         "ordinal_position" : 12
+      },
+      "object_file_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "File name for this object",
+         "ordinal_position" : 13
+      },
+      "object_folder_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Folder Display name for this object",
+         "ordinal_position" : 14
+      },
+      "object_folder_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Folder id for this object",
+         "ordinal_position" : 15
+      },
+      "object_from_set_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "From Set Display name for this object",
+         "ordinal_position" : 16
+      },
+      "object_from_set_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "From Set id for this object",
+         "ordinal_position" : 17
+      },
+      "object_hyperlink_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Hyperlink Display name for this object",
+         "ordinal_position" : 18
+      },
+      "object_hyperlink_hyperlink_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Hyperlink id for this object",
+         "ordinal_position" : 19
+      },
+      "object_hyperlink_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Hyperlink id for this object",
+         "ordinal_position" : 20
+      },
+      "object_hyperlink_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Hyperlink Object type for this object",
+         "ordinal_position" : 21
+      },
+      "object_hyperlink_parent_folder_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Hyperlink Parent Folder urn for this object",
+         "ordinal_position" : 22
+      },
+      "object_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id id for this object",
+         "ordinal_position" : 23
+      },
+      "object_issuance_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Issuance date for this object",
+         "ordinal_position" : 24
+      },
+      "object_new_description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "New description for this object",
+         "ordinal_position" : 25
+      },
+      "object_new_issuance_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "New Issuance date for this object",
+         "ordinal_position" : 26
+      },
+      "object_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object type for this object",
+         "ordinal_position" : 27
+      },
+      "object_observer_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Observer id for this object",
+         "ordinal_position" : 28
+      },
+      "object_observer_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Observer name for this object",
+         "ordinal_position" : 29
+      },
+      "object_observer_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Observer type for this object",
+         "ordinal_position" : 30
+      },
+      "object_old_description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Old description for this object",
+         "ordinal_position" : 31
+      },
+      "object_old_issuance_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Old Issuance date for this object",
+         "ordinal_position" : 32
+      },
+      "object_old_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Old name for this object",
+         "ordinal_position" : 33
+      },
+      "object_parent_folder_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Parent Folder urn for this object",
+         "ordinal_position" : 34
+      },
+      "object_pending_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Pending name for this object",
+         "ordinal_position" : 35
+      },
+      "object_remove_reason" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Remove reason for this object",
+         "ordinal_position" : 36
+      },
+      "object_resource_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Resource type for this object",
+         "ordinal_position" : 37
+      },
+      "object_review_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Review Display name for this object",
+         "ordinal_position" : 38
+      },
+      "object_review_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Review id for this object",
+         "ordinal_position" : 39
+      },
+      "object_review_sequence_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Review Sequence id for this object",
+         "ordinal_position" : 40
+      },
+      "object_reviewer_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Reviewer id for this object",
+         "ordinal_position" : 41
+      },
+      "object_reviewer_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Reviewer name for this object",
+         "ordinal_position" : 42
+      },
+      "object_reviewer_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Reviewer type for this object",
+         "ordinal_position" : 43
+      },
+      "object_revision_number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Revision number for this object",
+         "ordinal_position" : 44
+      },
+      "object_sequence_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequence id for this object",
+         "ordinal_position" : 45
+      },
+      "object_source_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Source Display name for this object",
+         "ordinal_position" : 46
+      },
+      "object_source_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Source id for this object",
+         "ordinal_position" : 47
+      },
+      "object_source_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Source Object type for this object",
+         "ordinal_position" : 48
+      },
+      "object_source_parent_folder_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Source Parent Folder urn for this object",
+         "ordinal_position" : 49
+      },
+      "object_source_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Source version for this object",
+         "ordinal_position" : 50
+      },
+      "object_status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Status status for this object",
+         "ordinal_position" : 51
+      },
+      "object_task_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Task name for this object",
+         "ordinal_position" : 52
+      },
+      "object_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version version for this object",
+         "ordinal_position" : 53
+      },
+      "object_version_set_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Version Set Display name for this object",
+         "ordinal_position" : 54
+      },
+      "object_version_set_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Version Set id for this object",
+         "ordinal_position" : 55
+      },
+      "object_version_set_issuance_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Version Set Issuance date for this object",
+         "ordinal_position" : 56
+      },
+      "object_version_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Version urn for this object",
+         "ordinal_position" : 57
+      },
+      "object_version_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version number for this object",
+         "ordinal_position" : 58
+      },
+      "target_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Display name for this target",
+         "ordinal_position" : 59
+      },
+      "target_folder_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Folder Display name for this target",
+         "ordinal_position" : 60
+      },
+      "target_folder_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Folder id for this target",
+         "ordinal_position" : 61
+      },
+      "target_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id id for this target",
+         "ordinal_position" : 62
+      },
+      "target_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object type for this target",
+         "ordinal_position" : 63
+      },
+      "target_parent_folder_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Parent Folder urn for this target",
+         "ordinal_position" : 64
+      },
+      "target_project_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project Account id for this target",
+         "ordinal_position" : 65
+      },
+      "target_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project id for this target",
+         "ordinal_position" : 66
+      },
+      "target_sequence_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequence id for this target",
+         "ordinal_position" : 67
+      },
+      "target_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version version for this target",
+         "ordinal_position" : 68
+      },
+      "target_viewer_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Viewer Display name for this target",
+         "ordinal_position" : 69
+      },
+      "target_viewer_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Viewer id for this target",
+         "ordinal_position" : 70
+      }
+   },
+   "docs_custom_attribute_constraints" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 4
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 5
+      },
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID for the custom attribute constraint",
+         "ordinal_position" : 6
+      },
+      "attribute_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the attribute",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type for the attribute",
+         "ordinal_position" : 8
+      },
+      "length_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Length type for the attribute",
+         "ordinal_position" : 9
+      },
+      "max_length" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Maximum length for the attribute",
+         "ordinal_position" : 10
+      },
+      "min_length" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Minimum length for the attribute",
+         "ordinal_position" : 11
+      },
+      "default_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Default value for the attribute",
+         "ordinal_position" : 12
+      }
+   },
+   "docs_custom_attributes" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 4
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 5
+      },
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID for the custom attribute",
+         "ordinal_position" : 6
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the custom attribute",
+         "ordinal_position" : 7
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "New value of the custom attribute",
+         "ordinal_position" : 8
+      },
+      "old_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Old value of the custom attribute",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user creating the custom attribute",
+         "ordinal_position" : 10
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user updating the custom attribute",
+         "ordinal_position" : 11
+      },
+      "attribute_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Custom attribute type",
+         "ordinal_position" : 12
+      }
+   },
+   "docs_naming_standards" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 4
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 5
+      },
+      "module" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Module name for the naming standard",
+         "ordinal_position" : 6
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the naming standard",
+         "ordinal_position" : 7
+      },
+      "old_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Previous name of the naming standard",
+         "ordinal_position" : 8
+      },
+      "new_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "New name of the naming standard",
+         "ordinal_position" : 9
+      },
+      "upload_rule" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Upload rule",
+         "ordinal_position" : 10
+      },
+      "attribute_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Attribute name",
+         "ordinal_position" : 11
+      }
+   },
+   "docs_permissions" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 4
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 5
+      },
+      "permission" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Permission name",
+         "ordinal_position" : 6
+      }
+   },
+   "docs_standard_attributes" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 4
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 5
+      },
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the attribute",
+         "ordinal_position" : 6
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the attribute",
+         "ordinal_position" : 7
+      },
+      "attribute_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type for the attribute",
+         "ordinal_position" : 8
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the attribute",
+         "ordinal_position" : 9
+      }
+   },
+   "issues_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "object_answer" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Answer of the issue",
+         "ordinal_position" : 7
+      },
+      "object_assigned_to" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Assigned to user for the issue",
+         "ordinal_position" : 8
+      },
+      "object_assigned_to_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Assigned to type for the issue",
+         "ordinal_position" : 9
+      },
+      "object_attachment_attachment_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Attachement type for the issue",
+         "ordinal_position" : 10
+      },
+      "object_attachment_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Attachment Display name for the issue",
+         "ordinal_position" : 11
+      },
+      "object_attachment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Attachement id for the issue",
+         "ordinal_position" : 12
+      },
+      "object_attachment_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Attachment name for the issue",
+         "ordinal_position" : 13
+      },
+      "object_attachment_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Attachement urn type for the issue",
+         "ordinal_position" : 14
+      },
+      "object_attachment_urn_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Attachement urn for the issue",
+         "ordinal_position" : 15
+      },
+      "object_comment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Comment ID for the issue",
+         "ordinal_position" : 16
+      },
+      "object_created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Created at timestamp for the issue",
+         "ordinal_position" : 17
+      },
+      "object_display_name" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Display name for the issue",
+         "ordinal_position" : 18
+      },
+      "object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the issue",
+         "ordinal_position" : 19
+      },
+      "object_status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Status of the issue",
+         "ordinal_position" : 20
+      },
+      "object_title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title for the issue",
+         "ordinal_position" : 21
+      },
+      "object_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated timestamp for the issue",
+         "ordinal_position" : 22
+      }
+   },
+   "issues_changes" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 4
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 5
+      },
+      "change_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type identifier for the change",
+         "ordinal_position" : 6
+      },
+      "before_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the changed field before the change",
+         "ordinal_position" : 7
+      },
+      "after_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the changed field after the change",
+         "ordinal_position" : 8
+      }
+   },
+   "rfis_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "object_comment_body" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Comment body for the RFI Comment",
+         "ordinal_position" : 7
+      },
+      "object_comment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Comment ID for the RFI Comment",
+         "ordinal_position" : 8
+      },
+      "object_comment_mentions" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Mentions for the RFI Comment",
+         "ordinal_position" : 9
+      },
+      "object_comment_rfi_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the RFI Comment",
+         "ordinal_position" : 10
+      },
+      "object_comment_source" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Source client of the RFI Comment",
+         "ordinal_position" : 11
+      },
+      "object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "RFI display name",
+         "ordinal_position" : 12
+      },
+      "object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the RFI",
+         "ordinal_position" : 13
+      }
+   },
+   "rfis_changes" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 4
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 5
+      },
+      "change_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type identifier for the change",
+         "ordinal_position" : 6
+      },
+      "before_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the changed field before the change",
+         "ordinal_position" : 7
+      },
+      "after_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the changed field after the change",
+         "ordinal_position" : 8
+      }
+   },
+   "sheets_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "object_acc_collection_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object ACC Colledtion Display Name",
+         "ordinal_position" : 7
+      },
+      "object_acc_collection_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object ACC Collection Id",
+         "ordinal_position" : 8
+      },
+      "object_collection_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Collection Display Name",
+         "ordinal_position" : 9
+      },
+      "object_collection_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Collection Id",
+         "ordinal_position" : 10
+      },
+      "object_collection_instance_index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object Collection Instance Index",
+         "ordinal_position" : 11
+      },
+      "object_collection_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Object Collection Size",
+         "ordinal_position" : 12
+      },
+      "object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Display Name",
+         "ordinal_position" : 13
+      },
+      "object_history_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object History Display Name",
+         "ordinal_position" : 14
+      },
+      "object_history_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object History Id",
+         "ordinal_position" : 15
+      },
+      "object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object ID",
+         "ordinal_position" : 16
+      },
+      "object_indirect" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Object Indirect",
+         "ordinal_position" : 17
+      },
+      "object_issuance_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Issuance Date",
+         "ordinal_position" : 18
+      },
+      "object_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Object Type",
+         "ordinal_position" : 19
+      },
+      "object_source_file" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Source File",
+         "ordinal_position" : 20
+      },
+      "object_source_object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Source Collection Display Name",
+         "ordinal_position" : 21
+      },
+      "object_source_object_history" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Source Object History",
+         "ordinal_position" : 22
+      },
+      "object_source_object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Source Object Id",
+         "ordinal_position" : 23
+      },
+      "object_source_object_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Source Collection Object Type",
+         "ordinal_position" : 24
+      },
+      "object_source_object_project" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Source Object Project",
+         "ordinal_position" : 25
+      },
+      "object_source_object_version_set" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Source Collection Version Set",
+         "ordinal_position" : 26
+      },
+      "object_target_object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Target Collection Display Name",
+         "ordinal_position" : 27
+      },
+      "object_target_object_history" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Target Object History",
+         "ordinal_position" : 28
+      },
+      "object_target_object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Target Object Id",
+         "ordinal_position" : 29
+      },
+      "object_target_object_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Target Collection Object Type",
+         "ordinal_position" : 30
+      },
+      "object_target_object_project" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Target Object Project",
+         "ordinal_position" : 31
+      },
+      "object_target_object_version_set" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Target Collection Version Set",
+         "ordinal_position" : 32
+      },
+      "object_title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Title",
+         "ordinal_position" : 33
+      },
+      "object_version_set_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Object Version Collection Display Name",
+         "ordinal_position" : 34
+      },
+      "object_version_set_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Object Version Set Id",
+         "ordinal_position" : 35
+      },
+      "object_version_set_issuance_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Object Version Collection Issuance Date",
+         "ordinal_position" : 36
+      },
+      "target_acc_collection_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Target ACC Collection Display Name",
+         "ordinal_position" : 37
+      },
+      "target_acc_collection_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Target ACC Collection Id",
+         "ordinal_position" : 38
+      },
+      "target_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Target Display Name",
+         "ordinal_position" : 39
+      },
+      "target_history_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Target History Display Name",
+         "ordinal_position" : 40
+      },
+      "target_history_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Target History Id",
+         "ordinal_position" : 41
+      },
+      "target_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Target ID",
+         "ordinal_position" : 42
+      },
+      "target_issuance_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Target Issuance Date",
+         "ordinal_position" : 43
+      },
+      "target_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Target Object Type",
+         "ordinal_position" : 44
+      }
+   },
+   "submittals_activities" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "object_assigned_to" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The id of the assignee (Deprecated field, use ball in court fields instead)",
+         "ordinal_position" : 7
+      },
+      "object_assigned_to_field" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Indicator which field is ball in court (Deprecated field, use ball in court fields instead)",
+         "ordinal_position" : 8
+      },
+      "object_attachment_category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the attachment category",
+         "ordinal_position" : 9
+      },
+      "object_attribute_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 10
+      },
+      "object_attribute_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the attribute",
+         "ordinal_position" : 11
+      },
+      "object_ball_in_court_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Indicator which field is ball in court",
+         "ordinal_position" : 12
+      },
+      "object_body" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Body of the comment",
+         "ordinal_position" : 13
+      },
+      "object_container_custom_identifier_sequence_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - global",
+            "2 - spec"
+         ],
+         "notes" : "Project current sequence type",
+         "ordinal_position" : 14
+      },
+      "object_container_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 15
+      },
+      "object_container_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the container",
+         "ordinal_position" : 16
+      },
+      "object_container_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 17
+      },
+      "object_created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 18
+      },
+      "object_created_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 19
+      },
+      "object_custom_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The custom identifier of the item.",
+         "ordinal_position" : 20
+      },
+      "object_custom_identifier_sort" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Same value as 'custom_identifier' but this column has db collation in order to enable sorting by the custom identifier value.",
+         "ordinal_position" : 21
+      },
+      "object_description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the item",
+         "ordinal_position" : 22
+      },
+      "object_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 23
+      },
+      "object_entities_0_created_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 24
+      },
+      "object_entities_0_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 25
+      },
+      "object_entities_0_domain" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The domain of the entity",
+         "ordinal_position" : 26
+      },
+      "object_entities_0_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the entity",
+         "ordinal_position" : 27
+      },
+      "object_entities_0_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "type of the entity",
+         "ordinal_position" : 28
+      },
+      "object_entities_1_created_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 29
+      },
+      "object_entities_1_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 30
+      },
+      "object_entities_1_domain" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The domain of the entity",
+         "ordinal_position" : 31
+      },
+      "object_entities_1_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "id of the entity",
+         "ordinal_position" : 32
+      },
+      "object_entities_1_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "type of the entity",
+         "ordinal_position" : 33
+      },
+      "object_entities_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 34
+      },
+      "object_entities_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "id of the entity",
+         "ordinal_position" : 35
+      },
+      "object_entity_created_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 36
+      },
+      "object_entity_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 37
+      },
+      "object_entity_domain" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The domain of the entity",
+         "ordinal_position" : 38
+      },
+      "object_entity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "id of the entity",
+         "ordinal_position" : 39
+      },
+      "object_entity_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "type of the entity",
+         "ordinal_position" : 40
+      },
+      "object_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id of the entity",
+         "ordinal_position" : 41
+      },
+      "object_identifier" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "identifier of the entity",
+         "ordinal_position" : 42
+      },
+      "object_item_assigned_to_field" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Indicator which field is ball in court",
+         "ordinal_position" : 43
+      },
+      "object_item_ball_in_court_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Indicator which field is ball in court",
+         "ordinal_position" : 44
+      },
+      "object_item_custom_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The custom identifier of the item.",
+         "ordinal_position" : 45
+      },
+      "object_item_custom_identifier_sort" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Same value as 'custom_identifier' but this column has db collation in order to enable sorting by the custom identifier value.",
+         "ordinal_position" : 46
+      },
+      "object_item_description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the item",
+         "ordinal_position" : 47
+      },
+      "object_item_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 48
+      },
+      "object_item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the Submittal.",
+         "ordinal_position" : 49
+      },
+      "object_item_identifier" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier of the item. Created automatically",
+         "ordinal_position" : 50
+      },
+      "object_item_lead_time" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "item's lead time",
+         "ordinal_position" : 51
+      },
+      "object_item_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 52
+      },
+      "object_item_priority" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The item priority",
+         "ordinal_position" : 53
+      },
+      "object_item_required_approval_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "item's required approval date",
+         "ordinal_position" : 54
+      },
+      "object_item_required_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "item's required date",
+         "ordinal_position" : 55
+      },
+      "object_item_required_on_job_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Date and time for the item to be done on site",
+         "ordinal_position" : 56
+      },
+      "object_item_response_comment" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Response comment of the item (in addition to response id)",
+         "ordinal_position" : 57
+      },
+      "object_item_response_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the response, if was added.",
+         "ordinal_position" : 58
+      },
+      "object_item_revision" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Revision of the item",
+         "ordinal_position" : 59
+      },
+      "object_item_sequence_type_change" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "'sequence_before_change::sequence_after_change' sequence type",
+         "ordinal_position" : 60
+      },
+      "object_item_state_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "State of the item",
+         "ordinal_position" : 61
+      },
+      "object_item_status_id" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - Required",
+            "2 - Open",
+            "3 - Closed",
+            "4 - Void",
+            "5 - Empty",
+            "6 - Draft"
+         ],
+         "notes" : "Status ID",
+         "ordinal_position" : 62
+      },
+      "object_item_submitter_due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "When the responsible contractor submission is due",
+         "ordinal_position" : 63
+      },
+      "object_item_subsection" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Sub spec section",
+         "ordinal_position" : 64
+      },
+      "object_item_title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title (name) of the item",
+         "ordinal_position" : 65
+      },
+      "object_item_type_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the item type",
+         "ordinal_position" : 66
+      },
+      "object_lead_time" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "item's lead time",
+         "ordinal_position" : 67
+      },
+      "object_name_for_activity" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the activity",
+         "ordinal_position" : 68
+      },
+      "object_new_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The new value",
+         "ordinal_position" : 69
+      },
+      "object_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 70
+      },
+      "object_old_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The old value",
+         "ordinal_position" : 71
+      },
+      "object_package" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The related package of the item",
+         "ordinal_position" : 72
+      },
+      "object_priority" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The priority of the item",
+         "ordinal_position" : 73
+      },
+      "object_required_approval_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "item's required approval date",
+         "ordinal_position" : 74
+      },
+      "object_required_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "item's required date",
+         "ordinal_position" : 75
+      },
+      "object_required_on_job_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Date and time for the item to be done on site",
+         "ordinal_position" : 76
+      },
+      "object_resource_urns" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "URNS of the attachments",
+         "ordinal_position" : 77
+      },
+      "object_response_comment" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Response comment of the item (in addition to response id)",
+         "ordinal_position" : 78
+      },
+      "object_response_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the response, if was added.",
+         "ordinal_position" : 79
+      },
+      "object_revision" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Revision of the item",
+         "ordinal_position" : 80
+      },
+      "object_sequence_type_change" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "'sequence_before_change::sequence_after_change' sequence type",
+         "ordinal_position" : 81
+      },
+      "object_spec_container_custom_identifier_sequence_type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "1 - global",
+            "2 - spec"
+         ],
+         "notes" : "Project current sequence type",
+         "ordinal_position" : 82
+      },
+      "object_spec_container_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 83
+      },
+      "object_spec_container_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of the container",
+         "ordinal_position" : 84
+      },
+      "object_spec_container_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 85
+      },
+      "object_spec_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 86
+      },
+      "object_spec_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id of the spec",
+         "ordinal_position" : 87
+      },
+      "object_spec_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Identifier of the spec",
+         "ordinal_position" : 88
+      },
+      "object_spec_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 89
+      },
+      "object_state_from_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 90
+      },
+      "object_state_from_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The old state of the item",
+         "ordinal_position" : 91
+      },
+      "object_state_from_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 92
+      },
+      "object_state_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "State of the item",
+         "ordinal_position" : 93
+      },
+      "object_state_to_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 94
+      },
+      "object_state_to_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The new state of the item",
+         "ordinal_position" : 95
+      },
+      "object_state_to_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 96
+      },
+      "object_status_id" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - Required",
+            "2 - Open",
+            "3 - Closed",
+            "4 - Void",
+            "5 - Empty",
+            "6 - Draft"
+         ],
+         "notes" : "Status ID",
+         "ordinal_position" : 97
+      },
+      "object_step_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the parent step",
+         "ordinal_position" : 98
+      },
+      "object_step_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the step in the review workflow",
+         "ordinal_position" : 99
+      },
+      "object_steps" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Array of steps",
+         "ordinal_position" : 100
+      },
+      "object_submitter_due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "When the responsible contractor submission is due",
+         "ordinal_position" : 101
+      },
+      "object_subsection" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Sub spec section",
+         "ordinal_position" : 102
+      },
+      "object_task_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the task",
+         "ordinal_position" : 103
+      },
+      "object_tasks" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Array of tasks",
+         "ordinal_position" : 104
+      },
+      "object_title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title (name) of the item",
+         "ordinal_position" : 105
+      },
+      "object_type_container_custom_identifier_sequence_type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "1 - global",
+            "2 - spec"
+         ],
+         "notes" : "Project current sequence type",
+         "ordinal_position" : 106
+      },
+      "object_type_container_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 107
+      },
+      "object_type_container_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of the container",
+         "ordinal_position" : 108
+      },
+      "object_type_container_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 109
+      },
+      "object_type_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 110
+      },
+      "object_type_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the type",
+         "ordinal_position" : 111
+      },
+      "object_type_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the type active",
+         "ordinal_position" : 112
+      },
+      "object_type_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The key of the object",
+         "ordinal_position" : 113
+      },
+      "object_type_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 114
+      },
+      "object_type_platform_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "For default types",
+         "ordinal_position" : 115
+      },
+      "object_type_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the type",
+         "ordinal_position" : 116
+      },
+      "object_type_identifier" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the type",
+         "ordinal_position" : 117
+      },
+      "object_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "URN of the attachment",
+         "ordinal_position" : 118
+      },
+      "object_urn_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - oss",
+            "2 - dm"
+         ],
+         "notes" : "The type of the urn",
+         "ordinal_position" : 119
+      },
+      "object_watchers" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Watchers array",
+         "ordinal_position" : 120
+      },
+      "target_assigned_to_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 121
+      },
+      "target_assigned_to_human_readable_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable company name of the assignee (Deprecated field, use ball in court fields instead)",
+         "ordinal_position" : 122
+      },
+      "target_assigned_to_human_readable_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable name of the assignee (Deprecated field, use ball in court fields instead)",
+         "ordinal_position" : 123
+      },
+      "target_assigned_to_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The id of the assignee (Deprecated field, use ball in court fields instead)",
+         "ordinal_position" : 124
+      },
+      "target_assigned_to_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 125
+      },
+      "target_assigned_to_autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The id of the assignee (Deprecated field, use ball in court fields instead)",
+         "ordinal_position" : 126
+      },
+      "target_assigned_to_roles" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The array of related roles (Deprecated field, use ball in court fields instead)",
+         "ordinal_position" : 127
+      },
+      "target_assigned_to_field" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Indicator which field is ball in court (Deprecated field, use ball in court fields instead)",
+         "ordinal_position" : 128
+      },
+      "target_ball_in_court_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Indicator which field is ball in court",
+         "ordinal_position" : 129
+      },
+      "target_container_custom_identifier_sequence_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - global",
+            "2 - spec"
+         ],
+         "notes" : "Project current sequence type",
+         "ordinal_position" : 130
+      },
+      "target_container_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 131
+      },
+      "target_container_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the container",
+         "ordinal_position" : 132
+      },
+      "target_container_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 133
+      },
+      "target_custom_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The custom identifier of the item.",
+         "ordinal_position" : 134
+      },
+      "target_custom_identifier_sort" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Same value as 'custom_identifier' but this column has db collation in order to enable sorting by the custom identifier value.",
+         "ordinal_position" : 135
+      },
+      "target_description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the item",
+         "ordinal_position" : 136
+      },
+      "target_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 137
+      },
+      "target_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the target",
+         "ordinal_position" : 138
+      },
+      "target_identifier" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier of the target",
+         "ordinal_position" : 139
+      },
+      "target_lead_time" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "item's lead time",
+         "ordinal_position" : 140
+      },
+      "target_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 141
+      },
+      "target_package_container_custom_identifier_sequence_type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "1 - global",
+            "2 - spec"
+         ],
+         "notes" : "Project current sequence type",
+         "ordinal_position" : 142
+      },
+      "target_package_container_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 143
+      },
+      "target_package_container_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of the container",
+         "ordinal_position" : 144
+      },
+      "target_package_container_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 145
+      },
+      "target_package_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 146
+      },
+      "target_package_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of the package",
+         "ordinal_position" : 147
+      },
+      "target_package_identifier" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier of the package",
+         "ordinal_position" : 148
+      },
+      "target_package_is_deleted" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "is the package deleted",
+         "ordinal_position" : 149
+      },
+      "target_package_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 150
+      },
+      "target_package_spec_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 151
+      },
+      "target_package_spec_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Related spec id of the package",
+         "ordinal_position" : 152
+      },
+      "target_package_spec_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Related spec identifier of the package",
+         "ordinal_position" : 153
+      },
+      "target_package_spec_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 154
+      },
+      "target_priority" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The priority of the item",
+         "ordinal_position" : 155
+      },
+      "target_required_approval_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "item's required approval date",
+         "ordinal_position" : 156
+      },
+      "target_required_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "item's required date",
+         "ordinal_position" : 157
+      },
+      "target_required_on_job_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Date and time for the item to be done on site",
+         "ordinal_position" : 158
+      },
+      "target_response_comment" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Response comment of the item (in addition to response id)",
+         "ordinal_position" : 159
+      },
+      "target_response_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the response, if was added.",
+         "ordinal_position" : 160
+      },
+      "target_revision" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Revision of the item",
+         "ordinal_position" : 161
+      },
+      "target_sequence_type_change" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "'sequence_before_change::sequence_after_change' sequence type",
+         "ordinal_position" : 162
+      },
+      "target_spec_container_custom_identifier_sequence_type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "1 - global",
+            "2 - spec"
+         ],
+         "notes" : "Project current sequence type",
+         "ordinal_position" : 163
+      },
+      "target_spec_container_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 164
+      },
+      "target_spec_container_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of the container",
+         "ordinal_position" : 165
+      },
+      "target_spec_container_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 166
+      },
+      "target_spec_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 167
+      },
+      "target_spec_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of the spec",
+         "ordinal_position" : 168
+      },
+      "target_spec_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Identifier of the spec",
+         "ordinal_position" : 169
+      },
+      "target_spec_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 170
+      },
+      "target_state_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "State of the item",
+         "ordinal_position" : 171
+      },
+      "target_status_id" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - Required",
+            "2 - Open",
+            "3 - Closed",
+            "4 - Void",
+            "5 - Empty",
+            "6 - Draft"
+         ],
+         "notes" : "Status ID",
+         "ordinal_position" : 172
+      },
+      "target_submitter_due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "When the responsible contractor submission is due",
+         "ordinal_position" : 173
+      },
+      "target_subsection" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Sub spec section",
+         "ordinal_position" : 174
+      },
+      "target_title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title (name) of the item",
+         "ordinal_position" : 175
+      },
+      "target_type_container_custom_identifier_sequence_type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "1 - global",
+            "2 - spec"
+         ],
+         "notes" : "Project current sequence type",
+         "ordinal_position" : 176
+      },
+      "target_type_container_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 177
+      },
+      "target_type_container_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the container",
+         "ordinal_position" : 178
+      },
+      "target_type_container_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 179
+      },
+      "target_type_display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 180
+      },
+      "target_type_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the type",
+         "ordinal_position" : 181
+      },
+      "target_type_is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the type active",
+         "ordinal_position" : 182
+      },
+      "target_type_key" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The key of the target",
+         "ordinal_position" : 183
+      },
+      "target_type_object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 184
+      },
+      "target_type_platform_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "For default types",
+         "ordinal_position" : 185
+      },
+      "target_type_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the type",
+         "ordinal_position" : 186
+      },
+      "target_type_identifier" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Identifier of the target",
+         "ordinal_position" : 187
+      }
+   },
+   "submittals_object_ball_in_court_companies" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 5
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 6
+      },
+      "human_readable_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable name of the company",
+         "ordinal_position" : 7
+      },
+      "id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Member group id of the company",
+         "ordinal_position" : 8
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 9
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Member group id of the company",
+         "ordinal_position" : 10
+      }
+   },
+   "submittals_object_ball_in_court_roles" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 5
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 6
+      },
+      "human_readable_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable name of the role",
+         "ordinal_position" : 7
+      },
+      "id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Member group id of the role",
+         "ordinal_position" : 8
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 9
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Member group id of the role",
+         "ordinal_position" : 10
+      }
+   },
+   "submittals_object_ball_in_court_users" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 5
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 6
+      },
+      "human_readable_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable company name of the related user",
+         "ordinal_position" : 7
+      },
+      "human_readable_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable name of the user",
+         "ordinal_position" : 8
+      },
+      "id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk id of the user",
+         "ordinal_position" : 9
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 10
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk id of the user",
+         "ordinal_position" : 11
+      },
+      "roles" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The array of related roles of the user",
+         "ordinal_position" : 12
+      }
+   },
+   "submittals_target_ball_in_court_companies" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 5
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 6
+      },
+      "human_readable_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable name of the company",
+         "ordinal_position" : 7
+      },
+      "id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Member group id of the company",
+         "ordinal_position" : 8
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 9
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Member group id of the company",
+         "ordinal_position" : 10
+      }
+   },
+   "submittals_target_ball_in_court_roles" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 5
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 6
+      },
+      "human_readable_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable name of the role",
+         "ordinal_position" : 7
+      },
+      "id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Member group id of the role",
+         "ordinal_position" : 8
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 9
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Member group id of the role",
+         "ordinal_position" : 10
+      }
+   },
+   "submittals_target_ball_in_court_users" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 5
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 6
+      },
+      "human_readable_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable company name of the related user",
+         "ordinal_position" : 7
+      },
+      "human_readable_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Human readable name of the user",
+         "ordinal_position" : 8
+      },
+      "id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk id of the user",
+         "ordinal_position" : 9
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 10
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk id of the user",
+         "ordinal_position" : 11
+      },
+      "roles" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The array of related roles of the user",
+         "ordinal_position" : 12
+      }
+   },
+   "submittals_target_steps" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "completed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the step finished",
+         "ordinal_position" : 7
+      },
+      "days_to_respond" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of days that the reviewers have to respond",
+         "ordinal_position" : 8
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 9
+      },
+      "due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Date for the item to be done with current state",
+         "ordinal_position" : 10
+      },
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the step",
+         "ordinal_position" : 11
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 12
+      },
+      "started_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the step started",
+         "ordinal_position" : 13
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "not-started",
+            "in-progress",
+            "completed"
+         ],
+         "notes" : "The status of the step",
+         "ordinal_position" : 14
+      },
+      "step_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the step in the review workflow",
+         "ordinal_position" : 15
+      }
+   },
+   "submittals_target_tasks" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 5
+      },
+      "assigned_to" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID / Role member group ID / Company member group ID that the task is assigned to",
+         "ordinal_position" : 6
+      },
+      "assigned_to_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - user",
+            "2 - company",
+            "3 - role"
+         ],
+         "notes" : "Indication for assigned_to id type",
+         "ordinal_position" : 7
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 8
+      },
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the task",
+         "ordinal_position" : 9
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the task a required task in the review step",
+         "ordinal_position" : 10
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 11
+      },
+      "response_comment" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Response comment of the task (in addition to response id)",
+         "ordinal_position" : 12
+      },
+      "response_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the response, if was added.",
+         "ordinal_position" : 13
+      },
+      "started_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the task started",
+         "ordinal_position" : 14
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "not-started",
+            "in-progress",
+            "completed"
+         ],
+         "notes" : "The status of the task",
+         "ordinal_position" : 15
+      },
+      "step" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the parent step",
+         "ordinal_position" : 16
+      }
+   },
+   "submittals_target_transition_attachments" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user performing the activity action",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 6
+      },
+      "attachment_category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the attachment category",
+         "ordinal_position" : 7
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 8
+      },
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The id of the attachment",
+         "ordinal_position" : 9
+      },
+      "item" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "object string id of related item",
+         "ordinal_position" : 10
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 11
+      },
+      "resource_urns" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "URNS of the attachments",
+         "ordinal_position" : 12
+      },
+      "revision" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Revision of the item",
+         "ordinal_position" : 13
+      },
+      "urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "URN of the attachment",
+         "ordinal_position" : 14
+      },
+      "urn_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - oss",
+            "2 - dm"
+         ],
+         "notes" : "The type of the urn",
+         "ordinal_position" : 15
+      }
+   },
+   "submittals_target_watchers" : {
+      "activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity ID for this event",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "activity_verb" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Activity performed by the user",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The timestamp when the activity created",
+         "ordinal_position" : 5
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The display name of the entity",
+         "ordinal_position" : 6
+      },
+      "human_readable_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The human readable company name of the watcher entity",
+         "ordinal_position" : 7
+      },
+      "human_readable_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The human readable name of the watcher entity",
+         "ordinal_position" : 8
+      },
+      "id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The id of the watcher entity",
+         "ordinal_position" : 9
+      },
+      "object_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The object type of the entity",
+         "ordinal_position" : 10
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The id of the watcher entity",
+         "ordinal_position" : 11
+      },
+      "roles" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The array of related roles if the watcher is user",
+         "ordinal_position" : 12
+      }
+   }
+}

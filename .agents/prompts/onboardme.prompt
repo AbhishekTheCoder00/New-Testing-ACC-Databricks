@@ -1,0 +1,24 @@
+---
+agent: 'agent'
+description: 'On-board (me i.e. the developer) onto this project. Setup the development environment.'
+---
+
+## Preconditions and assumptions
+- The user/developer has just cloned this repository.
+- The user/developer is new to this project.
+
+## Task
+Follow the instructions in `docs/devenv.md` to set up the development environment for the
+developer.
+
+Then verify the setup by running, from `acc-connector/`:
+1. `python scripts/smoke_check.py` — offline smoke check, needs `SECRET_KEY` set.
+2. `python -m unittest discover -s tests` — the stdlib unit tests.
+
+Report which step failed if either does, and do not proceed to describing the codebase
+until both pass.
+
+## After setup
+Give the developer a short orientation using `docs/design/ARCHITECTURE.md` and
+`docs/design/sourcemap.md`. Do not read all source files — use the sourcemap to pick the
+handful worth showing.

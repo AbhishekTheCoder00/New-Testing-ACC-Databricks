@@ -1,0 +1,1596 @@
+{
+   "checklist_assignees" : {
+      "instance_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "serial id",
+         "ordinal_position" : 4
+      },
+      "assignee_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the assignee.",
+         "ordinal_position" : 5
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the assignee",
+         "ordinal_position" : 6
+      },
+      "assignee_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "User",
+            "Company",
+            "Role"
+         ],
+         "notes" : "Name of the entity assigned to the checklist.",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 9
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was deleted.",
+         "ordinal_position" : 10
+      },
+      "is_previous_assignee" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "true if a user was an assignee and removed.",
+         "ordinal_position" : 11
+      }
+   },
+   "checklist_attachments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the attachment",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "lineage_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "asdk urn at which attachment is uploaded",
+         "ordinal_position" : 4
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version of the attachment.",
+         "ordinal_position" : 5
+      },
+      "instance_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist.",
+         "ordinal_position" : 6
+      }
+   },
+   "checklist_item_doc_attachments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the Item Document Attachment",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "lineage_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "asdk urn at which attachment is uploaded",
+         "ordinal_position" : 4
+      },
+      "item_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist item",
+         "ordinal_position" : 5
+      },
+      "section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist section",
+         "ordinal_position" : 6
+      },
+      "instance_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist.",
+         "ordinal_position" : 7
+      }
+   },
+   "checklist_items" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist item",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 4
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 5
+      },
+      "instance_section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist",
+         "ordinal_position" : 6
+      },
+      "template_item_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "the template item id",
+         "ordinal_position" : 7
+      },
+      "modified_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The oxygen Id of the last user that modified the item",
+         "ordinal_position" : 8
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the answer required for this question",
+         "ordinal_position" : 9
+      },
+      "note" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "a note of the item",
+         "ordinal_position" : 10
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "the title of the item",
+         "ordinal_position" : 11
+      },
+      "answers" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Answers of the item (can be a UUID FOREIGN KEY for answer_type=6)",
+         "ordinal_position" : 12
+      },
+      "instance_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist",
+         "ordinal_position" : 13
+      },
+      "answer_type" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Type of answer specified for this checklist item. answer_type = 6 means the answers column contains a UUID that is a FOREIGN KEY (id) into the checklist_items_answers table",
+         "ordinal_position" : 14
+      },
+      "answers_v2" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Answers of the checklist item (with normalized formatting across answer types, e.g.: without UUID FOREIGN KEY for answer_type=6)",
+         "ordinal_position" : 15
+      }
+   },
+   "checklist_items_answers" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the answer.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "answer" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Answer for the checklist item",
+         "ordinal_position" : 4
+      },
+      "item_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier for item version. if not given the lastest version is selected of the item.",
+         "ordinal_position" : 5
+      }
+   },
+   "checklist_section_assignees" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist Section Assignees",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "instance_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist",
+         "ordinal_position" : 4
+      },
+      "instance_section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist",
+         "ordinal_position" : 5
+      },
+      "id2" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Second ID of the Checklist Section Assignees",
+         "ordinal_position" : 6
+      },
+      "assignee_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the assignee.",
+         "ordinal_position" : 7
+      },
+      "assignee_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "User",
+            "Company",
+            "Role"
+         ],
+         "notes" : "Name of the entity assigned to the checklist.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 10
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was deleted.",
+         "ordinal_position" : 11
+      },
+      "is_previous_section_assignee" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "true if a user was an assignee and removed.",
+         "ordinal_position" : 12
+      }
+   },
+   "checklist_sections" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist section",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 4
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 5
+      },
+      "instance_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Checklist",
+         "ordinal_position" : 6
+      },
+      "template_section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the section template",
+         "ordinal_position" : 7
+      },
+      "modified_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The oxygen Id of the last user that modified the item",
+         "ordinal_position" : 8
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Status of the checklist section",
+         "ordinal_position" : 9
+      }
+   },
+   "checklist_sections_signatures" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of signature",
+         "ordinal_position" : 1
+      },
+      "instance_section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "checklist section number",
+         "ordinal_position" : 2
+      },
+      "instance_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of checklist",
+         "ordinal_position" : 3
+      },
+      "required_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Required by",
+         "ordinal_position" : 4
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is signature required",
+         "ordinal_position" : 5
+      },
+      "instructions" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Instructions for signature",
+         "ordinal_position" : 6
+      },
+      "signed_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name for signature",
+         "ordinal_position" : 7
+      },
+      "signed_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Company for signature",
+         "ordinal_position" : 8
+      },
+      "submitted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "OxygenId of user who submitted the signature",
+         "ordinal_position" : 9
+      },
+      "signed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when resource was signed",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when resource was created",
+         "ordinal_position" : 11
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when resource was deleted",
+         "ordinal_position" : 12
+      },
+      "urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Urn of resource",
+         "ordinal_position" : 13
+      },
+      "oss_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Oss urn of resource",
+         "ordinal_position" : 14
+      },
+      "upload_status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Not Completed",
+            "Completed"
+         ],
+         "notes" : "Upload status of signature",
+         "ordinal_position" : 15
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 16
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 17
+      }
+   },
+   "checklist_signatures" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the signature",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "instance_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The ID of the checklist",
+         "ordinal_position" : 4
+      },
+      "required_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the person/role that supposed to sign",
+         "ordinal_position" : 5
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Weather the signature is required to be signed in order to complete the checklist or not",
+         "ordinal_position" : 6
+      },
+      "defined_at" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Where the signature is defined",
+         "ordinal_position" : 7
+      },
+      "required_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the person that supposed to sign",
+         "ordinal_position" : 8
+      },
+      "required_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The company of the person that supposed to sign",
+         "ordinal_position" : 9
+      },
+      "signed_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the signed person",
+         "ordinal_position" : 10
+      },
+      "signed_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The company of the signed person",
+         "ordinal_position" : 11
+      },
+      "submitted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The oxygen Id of the user that signed",
+         "ordinal_position" : 12
+      },
+      "signed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The date of the signing",
+         "ordinal_position" : 13
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 14
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 15
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was deleted.",
+         "ordinal_position" : 16
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The type of the signature file",
+         "ordinal_position" : 17
+      },
+      "is_signed" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Weather the required signature signed or not",
+         "ordinal_position" : 18
+      }
+   },
+   "checklists" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unique identifier of the checklist",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "scheduled_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Scheduled date in ISO8601 format",
+         "ordinal_position" : 4
+      },
+      "location" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Location for the checklist activity",
+         "ordinal_position" : 5
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the checklist.",
+         "ordinal_position" : 6
+      },
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template",
+         "ordinal_position" : 7
+      },
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version ID of the template associated with the checklist. Every time you update a template it updates the version ID.",
+         "ordinal_position" : 8
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who created the checklist.",
+         "ordinal_position" : 9
+      },
+      "modified_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who last modified the checklist.",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated in ISO8601 format.",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last created in ISO8601 format.",
+         "ordinal_position" : 12
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was deleted - used for offline mobile DB management in ISO8601 format.",
+         "ordinal_position" : 13
+      },
+      "instructions" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the template.",
+         "ordinal_position" : 14
+      },
+      "template_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Quality",
+            "Punch List",
+            "Safety",
+            "Commissioning"
+         ],
+         "notes" : "Template Type Name",
+         "ordinal_position" : 15
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Not Scheduled",
+            "Scheduled",
+            "In Progress",
+            "Completed",
+            "Signed Of",
+            "Pending Signature",
+            "Not Started"
+         ],
+         "notes" : "Status Name for the checlist",
+         "ordinal_position" : 16
+      },
+      "progress" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Percentage of completed checklist items; calculated using",
+         "ordinal_position" : 17
+      },
+      "completed_items_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of completed checklist items.",
+         "ordinal_position" : 18
+      },
+      "items_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of checklist items.",
+         "ordinal_position" : 19
+      },
+      "sections_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of checklist sections.",
+         "ordinal_position" : 20
+      },
+      "created_by_company" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "oxygenId of the company",
+         "ordinal_position" : 21
+      },
+      "required_signatures_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "total number of signatures",
+         "ordinal_position" : 22
+      },
+      "unsigned_signatures_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "total number of unssignatures",
+         "ordinal_position" : 23
+      },
+      "allow_section_assignee" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "true if a user can be assigned to the a checklist sections.\nfalse if a user cannot be assigned to the a checklist sections.",
+         "ordinal_position" : 24
+      },
+      "checklist_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Sequential id in which checklist is created in the project.",
+         "ordinal_position" : 25
+      },
+      "completed_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was completed in ISO8601 format.",
+         "ordinal_position" : 26
+      },
+      "started_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource status changed from Not Started to In Progress in ISO8601 format.",
+         "ordinal_position" : 27
+      },
+      "is_archived" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "true if resource is archived.",
+         "ordinal_position" : 28
+      },
+      "archived_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last archived/unarchived in ISO8601 format.",
+         "ordinal_position" : 29
+      },
+      "archived_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "oxygenId of the last user that archived/unarchived the checklist.",
+         "ordinal_position" : 30
+      }
+   },
+   "template_item_instructions" : {
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version ID of the template. Every time you update a template it updates the version ID.",
+         "ordinal_position" : 4
+      },
+      "section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template Section",
+         "ordinal_position" : 5
+      },
+      "item_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template Item",
+         "ordinal_position" : 6
+      },
+      "item_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier for item version. if not given the lastest version is selected of the item.",
+         "ordinal_position" : 7
+      },
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the description of the instruction.",
+         "ordinal_position" : 8
+      },
+      "instructions_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The instructions type",
+         "ordinal_position" : 9
+      },
+      "data" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the item.",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 12
+      }
+   },
+   "template_items" : {
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version ID of the template. Every time you update a template it updates the version ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template",
+         "ordinal_position" : 4
+      },
+      "template_section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template Section",
+         "ordinal_position" : 5
+      },
+      "item_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The ID of the item",
+         "ordinal_position" : 6
+      },
+      "item_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier for item version. if not given the lastest version is selected of the item.",
+         "ordinal_position" : 7
+      },
+      "number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Item number according to the order the item was created in the template.",
+         "ordinal_position" : 8
+      },
+      "index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Order the items appear in the UI.",
+         "ordinal_position" : 9
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the answer required for this question",
+         "ordinal_position" : 10
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the item",
+         "ordinal_position" : 11
+      },
+      "section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the section.",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 13
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 14
+      },
+      "response_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The response type name",
+         "ordinal_position" : 15
+      },
+      "possible_answers" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The possible answers of the item",
+         "ordinal_position" : 16
+      }
+   },
+   "template_items_all" : {
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version ID of the template. Every time you update a template it updates the version ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template",
+         "ordinal_position" : 4
+      },
+      "template_section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template Section",
+         "ordinal_position" : 5
+      },
+      "item_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The ID of the item",
+         "ordinal_position" : 6
+      },
+      "item_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier for item version. if not given the lastest version is selected of the item.",
+         "ordinal_position" : 7
+      },
+      "number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Item number according to the order the item was created in the template.",
+         "ordinal_position" : 8
+      },
+      "index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Order the items appear in the UI.",
+         "ordinal_position" : 9
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the answer required for this question",
+         "ordinal_position" : 10
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the item",
+         "ordinal_position" : 11
+      },
+      "section_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the section.",
+         "ordinal_position" : 12
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 13
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 14
+      },
+      "response_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The response type name",
+         "ordinal_position" : 15
+      },
+      "possible_answers" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The possible answers of the item",
+         "ordinal_position" : 16
+      }
+   },
+   "template_items_answers" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Added for project scoping of checklist data",
+         "ordinal_position" : 2
+      },
+      "list_response_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the type of answer.",
+         "ordinal_position" : 3
+      },
+      "possible_answers" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The possible answers of the item",
+         "ordinal_position" : 4
+      }
+   },
+   "template_sections" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the section.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template",
+         "ordinal_position" : 4
+      },
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version ID of the template. Every time you update a template it updates the version ID.",
+         "ordinal_position" : 5
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the section.",
+         "ordinal_position" : 6
+      },
+      "number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Section number according to the order the section was created in the template. The number is displayed in the format that is defined in included.sections.attributes.sectionNumbering.id",
+         "ordinal_position" : 7
+      },
+      "index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of the section according to the order that it appears in the UI.",
+         "ordinal_position" : 8
+      },
+      "instructions" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the section.",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 11
+      }
+   },
+   "template_sections_all" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the section.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the Template",
+         "ordinal_position" : 4
+      },
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version ID of the template. Every time you update a template it updates the version ID.",
+         "ordinal_position" : 5
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the section.",
+         "ordinal_position" : 6
+      },
+      "number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Section number according to the order the section was created in the template. The number is displayed in the format that is defined in included.sections.attributes.sectionNumbering.id",
+         "ordinal_position" : 7
+      },
+      "index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of the section according to the order that it appears in the UI.",
+         "ordinal_position" : 8
+      },
+      "instructions" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the section.",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 11
+      }
+   },
+   "template_signatures" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "id of the template signatures",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Template signature version ID",
+         "ordinal_position" : 4
+      },
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Template signature ID",
+         "ordinal_position" : 5
+      },
+      "required_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Who is required to sign",
+         "ordinal_position" : 6
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the template signature required",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 9
+      }
+   },
+   "template_signatures_all" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the signature",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Template version ID for the signature",
+         "ordinal_position" : 4
+      },
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Template ID for the signature",
+         "ordinal_position" : 5
+      },
+      "required_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Required by",
+         "ordinal_position" : 6
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the signature required for this question",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 9
+      }
+   },
+   "templates" : {
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the template",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the template.",
+         "ordinal_position" : 4
+      },
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version ID of the template. Every time you update a template it updates the version ID.",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who created the template.",
+         "ordinal_position" : 6
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 8
+      },
+      "instructions" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the template.",
+         "ordinal_position" : 9
+      },
+      "template_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Quality",
+            "Punch List",
+            "Safety",
+            "Commissioning"
+         ],
+         "notes" : "Name for the template type",
+         "ordinal_position" : 10
+      },
+      "allow_section_assignee" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "true if you can add a section assignee to the template.\nfalse if you cannot add a section assignee to the template.",
+         "ordinal_position" : 11
+      },
+      "items_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of items",
+         "ordinal_position" : 12
+      },
+      "sections_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of sections",
+         "ordinal_position" : 13
+      },
+      "modified_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "oxygenId of the last user that updated the checklist",
+         "ordinal_position" : 14
+      },
+      "version_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version Number for the template",
+         "ordinal_position" : 15
+      },
+      "share_status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "active",
+            "detached",
+            "deleted"
+         ],
+         "notes" : "Status of account level template in project. Possible values are active/detached/deleted.",
+         "ordinal_position" : 16
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was deleted.",
+         "ordinal_position" : 17
+      }
+   },
+   "templates_versions" : {
+      "template_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the template",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the template.",
+         "ordinal_position" : 4
+      },
+      "template_version_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version ID of the template. Every time you update a template it updates the version ID.",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who created the template.",
+         "ordinal_position" : 6
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was last updated.",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was created.",
+         "ordinal_position" : 8
+      },
+      "instructions" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the template.",
+         "ordinal_position" : 9
+      },
+      "template_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Quality",
+            "Punch List",
+            "Safety",
+            "Commissioning"
+         ],
+         "notes" : "Name for the template type",
+         "ordinal_position" : 10
+      },
+      "allow_section_assignee" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "true if you can add a section assignee to the template.\nfalse if you cannot add a section assignee to the template.",
+         "ordinal_position" : 11
+      },
+      "items_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of items",
+         "ordinal_position" : 12
+      },
+      "sections_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of sections",
+         "ordinal_position" : 13
+      },
+      "modified_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "oxygenId of the last user that updated the checklist",
+         "ordinal_position" : 14
+      },
+      "version_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Version Number for the template",
+         "ordinal_position" : 15
+      },
+      "share_status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "active",
+            "detached",
+            "deleted"
+         ],
+         "notes" : "Status of account level template in project. Possible values are active/detached/deleted.",
+         "ordinal_position" : 16
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the resource was deleted.",
+         "ordinal_position" : 17
+      }
+   }
+}

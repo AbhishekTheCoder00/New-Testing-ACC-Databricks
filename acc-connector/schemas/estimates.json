@@ -1,0 +1,892 @@
+{
+   "cost_markup_formula_bond_levels" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Resource Identifier",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.",
+         "ordinal_position" : 3
+      },
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 4
+      },
+      "order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the bond level within the parent markup item. The first bond level in the item starts with a value of 0.",
+         "ordinal_position" : 5
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount for the bond level.\n\nThis column is nullable. If the value is null, it means no amount has been specified and this level will not contribute to markup calculation. If specified, the valid range for this is: 0 < x < 100000000",
+         "ordinal_position" : 6
+      },
+      "percentage" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The percentage for the bond level. \n\nThis column is nullable. If the value is null, it means no percentage has been specified and this level will not contribute to markup calculation. If specified, the valid range for this is: 0 <= x <= 999",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 9
+      }
+   },
+   "cost_markup_formula_items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Resource identifier",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data. \n\nThis column is nullable. If the value is null, it means this is an account-level settings.",
+         "ordinal_position" : 3
+      },
+      "section_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 4
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Item description\n\nThis column is nullable. If the value is null, it means no description has been specified.",
+         "ordinal_position" : 5
+      },
+      "order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the current item within the parent markup section. The first item in the formula starts with an value of 0.",
+         "ordinal_position" : 6
+      },
+      "markup_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "MARKUP",
+            "MARGIN",
+            "LUMP_SUM",
+            "BOND"
+         ],
+         "notes" : "Cost markup type",
+         "ordinal_position" : 7
+      },
+      "cost_basis_source" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "CURRENT",
+            "PRECEDING",
+            "PRECEDING_MARKUP",
+            "ESTIMATE",
+            "SECTION",
+            "PROJECT."
+         ],
+         "notes" : "Cost basis source",
+         "ordinal_position" : 8
+      },
+      "cost_basis_section_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The section id if the cost_basis_source is SECTION. Otherwise, this column will be set to null.\n\nFOREIGN_KEY:\ncost_markup_formula_sections, id",
+         "ordinal_position" : 9
+      },
+      "amount" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The amount to apply when the markup type is LUMP_SUM.\n\nThis column is nullable. If the value is null, it means the amount has not been specified. If specified, the valid range for the value is: 0 <= x <= 100000000",
+         "ordinal_position" : 10
+      },
+      "percentage" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The percentage to apply when the markup type is MARKUP or MARGIN.\n\nThis column is nullable. If the value is null, it means the percentage has not been specified. If specified, the valid range for the value is: 0 <= x <= 999",
+         "ordinal_position" : 11
+      },
+      "total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total markup for the item.\n\nThis column is nullable. If this value is null, it means the total is not available. If specified, the valid range for the value is: 0 <= x <= 100000000",
+         "ordinal_position" : 12
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 13
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 14
+      }
+   },
+   "cost_markup_formula_sections" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Resource identifier",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.",
+         "ordinal_position" : 3
+      },
+      "formula_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 4
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the markup section\n\nThis column is nullable. If the value is null, it means no description has been specified.",
+         "ordinal_position" : 5
+      },
+      "order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the current section within the parent markup formula. The first section in the formula starts with an value of 0.",
+         "ordinal_position" : 6
+      },
+      "total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total markup for the section.\n\nThis column is nullable. If the value is null, it means the total is not available. If specified, the valid range for the value is: 0 <= x <= 100000000",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 9
+      }
+   },
+   "cost_markup_formulas" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Resource identifier",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.",
+         "ordinal_position" : 3
+      },
+      "total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total markup for the project.\n\nThis column is nullable. If the value is null, it means the total is not available. If specified, the valid range for the value is: 0 <= x <= 100000000",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 6
+      }
+   },
+   "equipment_cost_calculations" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Resource identifier",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.",
+         "ordinal_position" : 3
+      },
+      "equipment_type" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Equipment type\n\nThis column is nullable. If the value is null, it means no equipment type has been selected.",
+         "ordinal_position" : 4
+      },
+      "rate" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The cost rate. \n\nThis column is nullable. If the value is null, it means no rate has been specified.",
+         "ordinal_position" : 5
+      },
+      "productivity" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The productivity for equipment cost. \n\nThis column is nullable. If the value is null, it means no productivity has been specified.",
+         "ordinal_position" : 6
+      },
+      "productivity_unit" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "H",
+            "D"
+         ],
+         "notes" : "The unit of time measurement. \n\nThis column is nullable. If the value is null, it means no unit has been specified.",
+         "ordinal_position" : 7
+      },
+      "rounding" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "UP",
+            "DOWN",
+            "NONE"
+         ],
+         "notes" : "Rounding method. \n\nThis column is nullable. If the value is null, then rounding will be default to NONE",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 10
+      }
+   },
+   "estimation_instances" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Resource identifier",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name / description for the instance",
+         "ordinal_position" : 4
+      },
+      "unit_of_measure" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "EA",
+            "LF",
+            "SF",
+            "CY",
+            "TON",
+            "YD",
+            "SY",
+            "CF",
+            "LBS",
+            "M",
+            "M2",
+            "M3",
+            "T",
+            "KG"
+         ],
+         "notes" : "The unit of measurement for the quantity",
+         "ordinal_position" : 5
+      },
+      "part_number" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Part number associated with this instance",
+         "ordinal_position" : 6
+      },
+      "barcode" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Bar code associated with this instance",
+         "ordinal_position" : 7
+      },
+      "quantity" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Amount of material associated with this instance",
+         "ordinal_position" : 8
+      },
+      "takeoff_instance_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of takeoff items associated with this instance.\n\nThis column is nullable. If this value is null, it means this instance is not synced with any takeoff items.",
+         "ordinal_position" : 9
+      },
+      "material_cost_calculation_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 10
+      },
+      "material_cost_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total material cost for the instance.\n\nThis column is nullable. If the value is null, it means the calculated material cost is not available.",
+         "ordinal_position" : 11
+      },
+      "labor_cost_calculation_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 12
+      },
+      "labor_cost_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total labor cost for the instance.\n\nThis column is nullable. If the value is null, it means the calculated labor cost is not available.",
+         "ordinal_position" : 13
+      },
+      "equipment_cost_calculation_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 14
+      },
+      "equipment_cost_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total equipment cost for this instance.\n\nThis column is nullable. If the value is null, it means the calculated equipment cost is not available.",
+         "ordinal_position" : 15
+      },
+      "other_cost_rate" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Other cost rate. \n\nThis column is nullable. If the value is null, it means the cost rate has not been specified. If specified, the valid range for the value is: 0 <= x <= 100000000",
+         "ordinal_position" : 16
+      },
+      "other_cost_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total other cost for this instance.\n\nThis column is nullable. If the value is null, it means the total other cost is not available.",
+         "ordinal_position" : 17
+      },
+      "subcontractor_cost_rate" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Subcontractor cost rate.\n\nThis column is nullable. If the value is null, it means the subcontractor cost rate has not been not specified. If specified, the valid range for the value is: 0 <= x <= 100000000",
+         "ordinal_position" : 18
+      },
+      "subcontractor_cost_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total subcontractor cost for his instance.\n\nThis column is nullable. If the value is null, it means the total cost is not available. If it is not null, then the valid range for the value is: 0 <=x <= 100000000",
+         "ordinal_position" : 19
+      },
+      "total_cost" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total cost for the instance.\n\nThis column is nullable. If the value is null, it means the total cost is not available.",
+         "ordinal_position" : 20
+      },
+      "markup_total" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total markup applied for this specific instance. \n\nThis column is nullable. If the value is null, it means the instance specific markup is not available.",
+         "ordinal_position" : 21
+      },
+      "classification1_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 22
+      },
+      "classification2_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 23
+      },
+      "content_lineage_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 24
+      },
+      "package_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 25
+      },
+      "location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 26
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 27
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 28
+      }
+   },
+   "labor_cost_calculations" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Resource identifier",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.",
+         "ordinal_position" : 3
+      },
+      "labor_type" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Labor type\n\nThis column is nullable. If the value is null, it means no labor type has been selected.",
+         "ordinal_position" : 4
+      },
+      "rate_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "STANDARD",
+            "UNION",
+            "PREVAILING"
+         ],
+         "notes" : "Labor cost rate type.\n\nThis column is nullable. If the value is null, it means the rate type has not been specified.",
+         "ordinal_position" : 5
+      },
+      "rate" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Labor cost rate.\n\nThis column is nullable. If this value is null, it means the cost rate has not been specified. If specified, the valid range for the value is: 0 <= X <= 100000000",
+         "ordinal_position" : 6
+      },
+      "daily_hours" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Daily hours for the labor cost.\n\nThis column is nullable. If this value is null, it means the daily hours has not been specified. If specified, the valid range for the value is: 0 <= x <= 24",
+         "ordinal_position" : 7
+      },
+      "productivity" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Productivity for labor cost. \n\nThis column is nullable. If the value is null, it means no productivity has been specified. If specified, the valid range for the value is: x <= 0 <= 999.99",
+         "ordinal_position" : 8
+      },
+      "productivity_unit" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "H",
+            "D"
+         ],
+         "notes" : "Unit of time measurement. \n\nThis column is nullable. If the value is null, it means no unit has been specified.",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 11
+      }
+   },
+   "material_cost_calculations" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Resource identifier",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.",
+         "ordinal_position" : 3
+      },
+      "rate" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The cost rate. \n\nThe valid range for the value is: 0 <= X <= 100000000",
+         "ordinal_position" : 4
+      },
+      "factor" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The cost factor.",
+         "ordinal_position" : 5
+      },
+      "factor_unit" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "EA",
+            "IN",
+            "LF",
+            "YD",
+            "SI",
+            "SF",
+            "SY",
+            "CI",
+            "CF",
+            "CY",
+            "LBS",
+            "TON",
+            "MM",
+            "M",
+            "M2",
+            "M3",
+            "KG",
+            "T"
+         ],
+         "notes" : "The unit of measurement for the factor.",
+         "ordinal_position" : 6
+      },
+      "waste_percentage" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The cost waster percentage. \n\nThe valid range for the value is: 0 <= x <= 100",
+         "ordinal_position" : 7
+      },
+      "rounding" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "UP",
+            "DOWN",
+            "NONE"
+         ],
+         "notes" : "The rounding method. \n\nThis column is nullable. If the value is null, then rounding will be default to NONE",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 10
+      }
+   },
+   "settings" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data. \n\nThis column is nullable. If the value is null, it means this is an account-level settings.",
+         "ordinal_position" : 2
+      },
+      "measurement_system" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "IMPERIAL",
+            "METRIC"
+         ],
+         "notes" : "The project measurement system.\n\nThis column is nullable. If the value is null, it means the measurement system for the project has not been configured.",
+         "ordinal_position" : 3
+      },
+      "currency" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "USD",
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BOV",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYN",
+            "BYR",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHE",
+            "CHF",
+            "CHW",
+            "CLF",
+            "CLP",
+            "CNY",
+            "COP",
+            "COU",
+            "CRC",
+            "CUC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EEK",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LTL",
+            "LVL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRU",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MXV",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLE",
+            "SLL",
+            "SOS",
+            "SRD",
+            "SSP",
+            "STN",
+            "SVC",
+            "SYP",
+            "SZL",
+            "THB",
+            "TRL",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USN",
+            "UYI",
+            "UYU",
+            "UYW",
+            "UZS",
+            "VED",
+            "VES",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XSU",
+            "XTS",
+            "XUA",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMW",
+            "ZWL"
+         ],
+         "notes" : "The project currency code in ISO 4217 format.\n\nThis column is nullable. If the value is null, it means the currency code for the project has not been configured.",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was created.",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "UTC timestamp when the row was last updated.",
+         "ordinal_position" : 6
+      }
+   }
+}

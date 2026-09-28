@@ -1,0 +1,1434 @@
+{
+   "account_services" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "service" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "documentManagement",
+            "projectManagement",
+            "costManagement",
+            "designCollaboration",
+            "fieldManagement",
+            "modelCoordination",
+            "field",
+            "glue",
+            "plan",
+            "insight"
+         ],
+         "notes" : "BIM 360 Service",
+         "ordinal_position" : 2
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the account_service was created",
+         "ordinal_position" : 3
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the account_service was updated",
+         "ordinal_position" : 4
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the account_service was deleted",
+         "ordinal_position" : 5
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 6
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 7
+      }
+   },
+   "accounts" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Account Identifier",
+         "ordinal_position" : 1
+      },
+      "display_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Display name of the account",
+         "ordinal_position" : 2
+      },
+      "start_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Start of the account availability",
+         "ordinal_position" : 3
+      },
+      "end_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "End of the account availability",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the account was created",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the account was updated",
+         "ordinal_position" : 6
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the account was deleted",
+         "ordinal_position" : 7
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 8
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 9
+      }
+   },
+   "companies" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Company ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the company",
+         "ordinal_position" : 3
+      },
+      "trade" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "Trade of the company",
+         "ordinal_position" : 4
+      },
+      "category" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Category for the company",
+         "ordinal_position" : 5
+      },
+      "address_line1" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Company specified address",
+         "ordinal_position" : 6
+      },
+      "address_line2" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Company specified address",
+         "ordinal_position" : 7
+      },
+      "city" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "City for the Company address",
+         "ordinal_position" : 8
+      },
+      "state_or_province" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "State for the Company address",
+         "ordinal_position" : 9
+      },
+      "postal_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Postal code for the address",
+         "ordinal_position" : 10
+      },
+      "country" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Country of the address",
+         "ordinal_position" : 11
+      },
+      "phone" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Phone for the company",
+         "ordinal_position" : 12
+      },
+      "website_url" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Web site for the company",
+         "ordinal_position" : 13
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the company",
+         "ordinal_position" : 14
+      },
+      "erp_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ERP Id",
+         "ordinal_position" : 15
+      },
+      "tax_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Tax ID",
+         "ordinal_position" : 16
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "deleted",
+            "active"
+         ],
+         "notes" : "Status of the company",
+         "ordinal_position" : 17
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date company created",
+         "ordinal_position" : 18
+      },
+      "project_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Size of project",
+         "ordinal_position" : 19
+      },
+      "user_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "User size of project",
+         "ordinal_position" : 20
+      },
+      "custom_properties" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Customer defined properties",
+         "ordinal_position" : 21
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the companie was updated",
+         "ordinal_position" : 22
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the companie was deleted",
+         "ordinal_position" : 23
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 24
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 25
+      }
+   },
+   "project_companies" : {
+      "project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID",
+         "ordinal_position" : 1
+      },
+      "company_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The company ID for the company that is a part of the project",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "company_oxygen_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Oxygen ID for the company",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_companie was created",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_companie was updated",
+         "ordinal_position" : 6
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_companie was deleted",
+         "ordinal_position" : 7
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 8
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 9
+      }
+   },
+   "project_products" : {
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "product_key" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "autoSpecs",
+            "build",
+            "buildingConnected",
+            "capitalPlanning",
+            "cost",
+            "designCollaboration",
+            "docs",
+            "financials",
+            "insight",
+            "modelCoordination",
+            "projectAdministration",
+            "takeoff"
+         ],
+         "notes" : "Bim360/Acc Product",
+         "ordinal_position" : 3
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "active",
+            "activating",
+            "inactive",
+            "activationFailed",
+            "deactivationFailed",
+            "deactivating"
+         ],
+         "notes" : "Status of the product",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date/time service was added",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_product was updated",
+         "ordinal_position" : 6
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_product was deleted",
+         "ordinal_position" : 7
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 8
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 9
+      }
+   },
+   "project_roles" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID",
+         "ordinal_position" : 2
+      },
+      "role_oxygen_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Oxygen ID for the role",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name for the role",
+         "ordinal_position" : 4
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "active",
+            "inactive"
+         ],
+         "notes" : "Status of the role",
+         "ordinal_position" : 5
+      },
+      "role_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Admin ID for the role",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_role was created",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_role was updated",
+         "ordinal_position" : 8
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_role was deleted",
+         "ordinal_position" : 9
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 10
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 11
+      }
+   },
+   "project_services" : {
+      "project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "service" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "documentManagement",
+            "projectManagement",
+            "costManagement",
+            "designCollaboration",
+            "fieldManagement",
+            "modelCoordination",
+            "field",
+            "glue",
+            "plan",
+            "insight"
+         ],
+         "notes" : "BIM 360 Service",
+         "ordinal_position" : 3
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "active",
+            "inactive",
+            "archived"
+         ],
+         "notes" : "Status of the service",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date/time service was added",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_service was updated",
+         "ordinal_position" : 6
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_service was deleted",
+         "ordinal_position" : 7
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 8
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 9
+      }
+   },
+   "project_user_companies" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "company_oxygen_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Oxygen ID for the company",
+         "ordinal_position" : 2
+      },
+      "project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID",
+         "ordinal_position" : 3
+      },
+      "user_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The user ID for the member of the company",
+         "ordinal_position" : 4
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Status of the user",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date/time user was added",
+         "ordinal_position" : 6
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the user was updated",
+         "ordinal_position" : 7
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the user was deleted",
+         "ordinal_position" : 8
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 9
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 10
+      }
+   },
+   "project_user_roles" : {
+      "project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "user_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The user ID for the member of the project",
+         "ordinal_position" : 3
+      },
+      "role_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The role the user has for this particular project",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date user added to project",
+         "ordinal_position" : 5
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID for the user role",
+         "ordinal_position" : 6
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the user role was updated",
+         "ordinal_position" : 7
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the user role was deleted",
+         "ordinal_position" : 8
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 9
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 10
+      }
+   },
+   "project_users" : {
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "user_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The user ID for the member of the project",
+         "ordinal_position" : 3
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [
+            "active",
+            "activating",
+            "deleted"
+         ],
+         "notes" : "The user's status for the project",
+         "ordinal_position" : 4
+      },
+      "company_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The user's assigned company for the project",
+         "ordinal_position" : 5
+      },
+      "access_level" : {
+         "data_type" : "string",
+         "constraints" : [
+            "project_user",
+            "project_admin"
+         ],
+         "notes" : "The user's access level for the project",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Created date<br/><i>project_users table is a new table created at the database level in November, 2020 as part of the effort to unify BIM 360 and ACC.<br/>A data migration was performed that migrated the records of BIM 360 users to this new table, and as a result the created_at reflects the date when the user records were written into this new table<br/>Users added after November, 2020 should have a consistent date between project_user_services and project_users table.</i>",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Updated date",
+         "ordinal_position" : 8
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project_user was deleted",
+         "ordinal_position" : 9
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 10
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 11
+      }
+   },
+   "projects" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Project ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the project",
+         "ordinal_position" : 3
+      },
+      "start_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Start date for the project",
+         "ordinal_position" : 4
+      },
+      "end_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "End date for the project",
+         "ordinal_position" : 5
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [
+            "&lt;userDefinedValue&gt;",
+            "Convention Center",
+            "Data Center",
+            "Hotel / Motel",
+            "Office",
+            "Parking Structure / Garage",
+            "Performing Arts",
+            "Restaurant",
+            "Retail",
+            "Stadium / Arena",
+            "Theme Park",
+            "Warehouse (non-manufacturing)",
+            "Assisted Living / Nursing Home",
+            "Hospital",
+            "Medical Laboratory",
+            "Medical Office",
+            "OutPatient Surgery Center",
+            "Court House",
+            "Dormitory",
+            "Education Facility",
+            "Government Building",
+            "Library",
+            "Military Facility",
+            "Museum",
+            "Prison / Correctional Facility",
+            "Recreation Building",
+            "Religious Building",
+            "Research Facility / Laboratory",
+            "Multi-Family Housing",
+            "Single-Family Housing",
+            "Airport",
+            "Bridge",
+            "Canal / Waterway",
+            "Dams / Flood Control / Reservoirs",
+            "Harbor / River Development",
+            "Rail",
+            "Seaport",
+            "Streets / Roads / Highways",
+            "Transportation Building",
+            "Tunnel",
+            "Waste Water / Sewers",
+            "Water Supply",
+            "Manufacturing / Factory",
+            "Mining Facility",
+            "Oil &amp; Gas",
+            "Plant",
+            "Power Plant",
+            "Solar Farm",
+            "Utilities",
+            "Wind Farm",
+            "Demonstration Project",
+            "Template Project",
+            "Training Project"
+         ],
+         "notes" : "Project type definition",
+         "ordinal_position" : 6
+      },
+      "value" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Project Value",
+         "ordinal_position" : 7
+      },
+      "currency" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "USD",
+            "AUD",
+            "CAD",
+            "EUR",
+            "GBP",
+            "ALL",
+            "AZN",
+            "BYR",
+            "BRL",
+            "BGN",
+            "CNY",
+            "HRK",
+            "CZK",
+            "DKK",
+            "EEK",
+            "HKD",
+            "HUF",
+            "ISK",
+            "INR",
+            "IRR",
+            "ILS",
+            "JPY",
+            "KZT",
+            "KRW",
+            "KPW",
+            "KGS",
+            "LVL",
+            "LTL",
+            "MKD",
+            "MNT",
+            "ANG",
+            "NOK",
+            "PKR",
+            "PLN",
+            "RON",
+            "RUB",
+            "SAR",
+            "RSD",
+            "SGD",
+            "ZAR",
+            "SEK",
+            "CHF",
+            "TWD",
+            "TRL",
+            "UAH",
+            "UZS",
+            "YER",
+            "PHP",
+            "NZD",
+            "MYR",
+            "THB",
+            "IDR",
+            "VND"
+         ],
+         "notes" : "Value currency",
+         "ordinal_position" : 8
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "active",
+            "pending",
+            "expired",
+            "archived",
+            "deleted"
+         ],
+         "notes" : "Status of the project",
+         "ordinal_position" : 9
+      },
+      "job_number" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Job number of the project",
+         "ordinal_position" : 10
+      },
+      "address_line1" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Address of the project",
+         "ordinal_position" : 11
+      },
+      "address_line2" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Address of the project",
+         "ordinal_position" : 12
+      },
+      "city" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "City of the project",
+         "ordinal_position" : 13
+      },
+      "state_or_province" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "State of the project",
+         "ordinal_position" : 14
+      },
+      "postal_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Postal code for the project",
+         "ordinal_position" : 15
+      },
+      "country" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Country for the project",
+         "ordinal_position" : 16
+      },
+      "timezone" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Pacific/Honolulu",
+            "America/Juneau",
+            "America/Los_Angeles",
+            "America/Phoenix",
+            "America/Denver",
+            "America/Chicago",
+            "America/New_York",
+            "America/Indiana/Indianapolis",
+            "Pacific/Pago_Pago",
+            "Pacific/Midway",
+            "America/Tijuana",
+            "America/Chihuahua",
+            "America/Mazatlan",
+            "America/Guatemala",
+            "America/Mexico_City",
+            "America/Monterrey",
+            "America/Regina",
+            "America/Bogota",
+            "America/Lima",
+            "America/Caracas",
+            "America/Halifax",
+            "America/Guyana",
+            "America/La_Paz",
+            "America/Santiago",
+            "America/St_Johns",
+            "America/Sao_Paulo",
+            "America/Argentina/Buenos_Aires",
+            "America/Godthab",
+            "Atlantic/South_Georgia",
+            "Atlantic/Azores",
+            "Atlantic/Cape_Verde",
+            "Africa/Casablanca",
+            "Europe/Dublin",
+            "Europe/Lisbon",
+            "Europe/London",
+            "Africa/Monrovia",
+            "Etc/UTC",
+            "Europe/Amsterdam",
+            "Europe/Belgrade",
+            "Europe/Berlin",
+            "Europe/Bratislava",
+            "Europe/Brussels",
+            "Europe/Budapest",
+            "Europe/Copenhagen",
+            "Europe/Ljubljana",
+            "Europe/Madrid",
+            "Europe/Paris",
+            "Europe/Prague",
+            "Europe/Rome",
+            "Europe/Sarajevo",
+            "Europe/Skopje",
+            "Europe/Stockholm",
+            "Europe/Vienna",
+            "Europe/Warsaw",
+            "Africa/Algiers",
+            "Europe/Zagreb",
+            "Europe/Athens",
+            "Europe/Bucharest",
+            "Africa/Cairo",
+            "Africa/Harare",
+            "Europe/Helsinki",
+            "Europe/Istanbul",
+            "Asia/Jerusalem",
+            "Europe/Kiev",
+            "Africa/Johannesburg",
+            "Europe/Riga",
+            "Europe/Sofia",
+            "Europe/Tallinn",
+            "Europe/Vilnius",
+            "Asia/Baghdad",
+            "Asia/Kuwait",
+            "Europe/Minsk",
+            "Africa/Nairobi",
+            "Asia/Riyadh",
+            "Asia/Tehran",
+            "Asia/Muscat",
+            "Asia/Baku",
+            "Europe/Moscow",
+            "Asia/Tbilisi",
+            "Asia/Yerevan",
+            "Asia/Kabul",
+            "Asia/Karachi",
+            "Asia/Tashkent",
+            "Asia/Kolkata",
+            "Asia/Colombo",
+            "Asia/Kathmandu",
+            "Asia/Almaty",
+            "Asia/Dhaka",
+            "Asia/Yekaterinburg",
+            "Asia/Rangoon",
+            "Asia/Bangkok",
+            "Asia/Jakarta",
+            "Asia/Novosibirsk",
+            "Asia/Shanghai",
+            "Asia/Chongqing",
+            "Asia/Hong_Kong",
+            "Asia/Krasnoyarsk",
+            "Asia/Kuala_Lumpur",
+            "Australia/Perth",
+            "Asia/Singapore",
+            "Asia/Taipei",
+            "Asia/Ulaanbaatar",
+            "Asia/Urumqi",
+            "Asia/Irkutsk",
+            "Asia/Tokyo",
+            "Asia/Seoul",
+            "Australia/Adelaide",
+            "Australia/Darwin",
+            "Australia/Brisbane",
+            "Australia/Melbourne",
+            "Pacific/Guam",
+            "Australia/Hobart",
+            "Pacific/Port_Moresby",
+            "Australia/Sydney",
+            "Asia/Yakutsk",
+            "Pacific/Noumea",
+            "Asia/Vladivostok",
+            "Pacific/Auckland",
+            "Pacific/Fiji",
+            "Asia/Kamchatka",
+            "Asia/Magadan",
+            "Pacific/Majuro",
+            "Pacific/Guadalcanal",
+            "Pacific/Tongatapu",
+            "Pacific/Apia",
+            "Pacific/Fakaofo"
+         ],
+         "notes" : "Timezone for the project",
+         "ordinal_position" : 17
+      },
+      "construction_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "New Construction",
+            "Renovation"
+         ],
+         "notes" : "Construction type",
+         "ordinal_position" : 18
+      },
+      "contract_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "Construction Management (CM) at Risk",
+            "Design-Bid",
+            "Design-Bid-Build",
+            "Design-Build-Operate",
+            "IPD"
+         ],
+         "notes" : "Contract type for the project",
+         "ordinal_position" : 19
+      },
+      "business_unit_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Business Unit ID for the project",
+         "ordinal_position" : 20
+      },
+      "last_sign_in" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last access / sign in for the project. Currently, this field is updated when a user logs into the following services on the Web: (BIM 360) Account Admin, (BIM 360) Project Admin, Document Management, Classic Field, Classic Plan.  No other services or mobile applications update Last Sign-in at this time.",
+         "ordinal_position" : 21
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Time project was created",
+         "ordinal_position" : 22
+      },
+      "acc_project" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicator if this is an ACC Project versus a BIM 360 Project",
+         "ordinal_position" : 23
+      },
+      "latitude" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Latitude for the project site",
+         "ordinal_position" : 24
+      },
+      "longitude" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Longitude for the project site",
+         "ordinal_position" : 25
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Time project was last updated",
+         "ordinal_position" : 26
+      },
+      "status_reason" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Reason for the current project status",
+         "ordinal_position" : 27
+      },
+      "total_member_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total active members within the project. NOTE: This is not real time data",
+         "ordinal_position" : 28
+      },
+      "total_company_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Total active companies within the project. NOTE: This is not real time data",
+         "ordinal_position" : 29
+      },
+      "classification" : {
+         "data_type" : "string",
+         "constraints" : [
+            "component",
+            "production",
+            "sample",
+            "template"
+         ],
+         "notes" : "Project Classification",
+         "ordinal_position" : 30
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the project was deleted",
+         "ordinal_position" : 31
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 32
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 33
+      }
+   },
+   "roles" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the Role",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Name of the Role",
+         "ordinal_position" : 3
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "active",
+            "inactive"
+         ],
+         "notes" : "Status of the Role",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the role was created",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the role was updated",
+         "ordinal_position" : 6
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the role was deleted",
+         "ordinal_position" : 7
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 8
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 9
+      }
+   },
+   "users" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The HQ User ID",
+         "ordinal_position" : 1
+      },
+      "autodesk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "email" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Email address for the user",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name for the user",
+         "ordinal_position" : 5
+      },
+      "first_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "First name of the user",
+         "ordinal_position" : 6
+      },
+      "last_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Last name of the user",
+         "ordinal_position" : 7
+      },
+      "address_line1" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User specified address",
+         "ordinal_position" : 8
+      },
+      "address_line2" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User specified address",
+         "ordinal_position" : 9
+      },
+      "city" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "City for the user address",
+         "ordinal_position" : 10
+      },
+      "state_or_province" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "State for the user address",
+         "ordinal_position" : 11
+      },
+      "postal_code" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Postal code for the address",
+         "ordinal_position" : 12
+      },
+      "country" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Country for the user",
+         "ordinal_position" : 13
+      },
+      "last_sign_in" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last time the user has signed in to BIM 360. Currently, this field is updated when a user logs into the following services on the Web: (BIM 360) Account Admin, (BIM 360) Project Admin, Document Management, Classic Field, Classic Plan.  No other services or mobile applications update Last Sign-in at this time.",
+         "ordinal_position" : 14
+      },
+      "phone" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Phone number for the user",
+         "ordinal_position" : 15
+      },
+      "job_title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User specified job title",
+         "ordinal_position" : 16
+      },
+      "access_level_account_admin" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Account Administrator",
+         "ordinal_position" : 17
+      },
+      "access_level_project_admin" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicates the user is a project admin for at least 1 active project",
+         "ordinal_position" : 18
+      },
+      "access_level_project_member" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicates the user is participating in at least 1 active project in which they are not an admin",
+         "ordinal_position" : 19
+      },
+      "access_level_executive" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Account Executive",
+         "ordinal_position" : 20
+      },
+      "default_role_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the account role to set when adding users to additional projects. For example if this ID is for 'Architect' then by default the user will be set to an 'Architect' role in any projects.",
+         "ordinal_position" : 21
+      },
+      "default_company_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the company ID to set when adding users to additional projects.",
+         "ordinal_position" : 22
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [
+            "active",
+            "inactive"
+         ],
+         "notes" : "Current status of a user in the account",
+         "ordinal_position" : 23
+      },
+      "status_reason" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Reason for the current user status in the account",
+         "ordinal_position" : 24
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Time user was added to the account",
+         "ordinal_position" : 25
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last time the user record was updated",
+         "ordinal_position" : 26
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp when the user was deleted",
+         "ordinal_position" : 27
+      },
+      "adsk_row_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique row identifier to be used in CDC operations",
+         "ordinal_position" : 28
+      },
+      "adsk_updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A non-immutable internal timestamp for row updates",
+         "ordinal_position" : 29
+      }
+   }
+}

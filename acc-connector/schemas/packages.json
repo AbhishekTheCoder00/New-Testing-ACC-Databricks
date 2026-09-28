@@ -1,0 +1,283 @@
+{
+   "package_associations" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the package association",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "package_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The id of the package that the association belongs to",
+         "ordinal_position" : 4
+      },
+      "version_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The id of the version file that the association belongs to",
+         "ordinal_position" : 5
+      }
+   },
+   "package_roles" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the package role",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "adsk_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Autodesk ID",
+         "ordinal_position" : 4
+      },
+      "adsk_id_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "user",
+            "role",
+            "company"
+         ],
+         "notes" : "The Autodesk ID type",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The created time of the package",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who create the package",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The updated time of the package",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who update the package",
+         "ordinal_position" : 9
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "inactive",
+            "active",
+            "pending",
+            "disable"
+         ],
+         "notes" : "detailed column 7 description",
+         "ordinal_position" : 10
+      }
+   },
+   "packages" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the package",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "locked" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicating whether the package is locked",
+         "ordinal_position" : 4
+      },
+      "locked_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The lock time",
+         "ordinal_position" : 5
+      },
+      "locked_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user id who locked the package",
+         "ordinal_position" : 6
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of this package",
+         "ordinal_position" : 7
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The description of this package",
+         "ordinal_position" : 8
+      },
+      "resource_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The count of the resources in the package",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The created time of the package",
+         "ordinal_position" : 10
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who create the package",
+         "ordinal_position" : 11
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The updated time of the package",
+         "ordinal_position" : 12
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who update the package",
+         "ordinal_position" : 13
+      },
+      "version_resource_option" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Indicates that versions under a package are fixed versions or keep up to date.",
+         "ordinal_position" : 14
+      }
+   },
+   "version_resources" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "version_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The id of the version file",
+         "ordinal_position" : 3
+      },
+      "urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The URN of the version file",
+         "ordinal_position" : 4
+      },
+      "version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The version number of this version file",
+         "ordinal_position" : 5
+      },
+      "revision" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The revision number of this version file",
+         "ordinal_position" : 6
+      },
+      "file_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The file type of this version file",
+         "ordinal_position" : 7
+      },
+      "path" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The folder path of this version file",
+         "ordinal_position" : 8
+      },
+      "trashed" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicating whether this file or its parent folder has been deleted",
+         "ordinal_position" : 9
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The file name of this version file",
+         "ordinal_position" : 10
+      },
+      "file_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The file size of this version file",
+         "ordinal_position" : 11
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The created time of the package",
+         "ordinal_position" : 12
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who create the package",
+         "ordinal_position" : 13
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The updated time of the package",
+         "ordinal_position" : 14
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who update the package",
+         "ordinal_position" : 15
+      }
+   }
+}

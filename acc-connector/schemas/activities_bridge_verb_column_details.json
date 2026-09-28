@@ -1,0 +1,131 @@
+{
+   "bridge-invite" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_initiator_project_id",
+         "object_recipient_email",
+         "object_source_project_account_id",
+         "object_source_project_display_name",
+         "object_source_project_id"
+      ]
+   },
+   "create-bridge" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_initiator_project_id",
+         "object_origin",
+         "object_source_project_account_id",
+         "object_source_project_display_name",
+         "object_source_project_id",
+         "object_target_project_account_id",
+         "object_target_project_display_name",
+         "object_target_project_id"
+      ]
+   },
+   "create-bridge-automation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_automation_type",
+         "object_initiator_project_id",
+         "object_item_name",
+         "object_owner",
+         "object_source_project_account_id",
+         "object_source_project_display_name",
+         "object_source_project_id",
+         "object_target_project_account_id",
+         "object_target_project_display_name",
+         "object_target_project_id"
+      ]
+   },
+   "delete-bridge" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_initiator_project_id",
+         "object_source_project_account_id",
+         "object_source_project_display_name",
+         "object_source_project_id",
+         "object_target_project_account_id",
+         "object_target_project_display_name",
+         "object_target_project_id"
+      ]
+   },
+   "delete-bridge-automation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_automation_type",
+         "object_initiator_project_id",
+         "object_item_name",
+         "object_reason",
+         "object_source_project_account_id",
+         "object_source_project_display_name",
+         "object_source_project_id",
+         "object_target_project_account_id",
+         "object_target_project_display_name",
+         "object_target_project_id"
+      ]
+   },
+   "pause-bridge-automation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_automation_type",
+         "object_initiator_project_id",
+         "object_item_name",
+         "object_source_project_account_id",
+         "object_source_project_display_name",
+         "object_source_project_id",
+         "object_target_project_account_id",
+         "object_target_project_display_name",
+         "object_target_project_id"
+      ]
+   },
+   "resume-bridge-automation" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_automation_type",
+         "object_initiator_project_id",
+         "object_item_name",
+         "object_owner",
+         "object_source_project_account_id",
+         "object_source_project_display_name",
+         "object_source_project_id",
+         "object_target_project_account_id",
+         "object_target_project_display_name",
+         "object_target_project_id"
+      ]
+   }
+}

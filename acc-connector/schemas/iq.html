@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>iq: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>iq Schema Description</h1>
+<b>Documentation Updated: </b>2023-12-04<br/>
+<ul><li><a href="#company_daily_quality_risk_changes">company_daily_quality_risk_changes</a></li>
+<li><a href="#company_daily_safety_risk_changes">company_daily_safety_risk_changes</a></li>
+<li><a href="#cost_impact_issues">cost_impact_issues</a></li>
+<li><a href="#design_issues_building_components">design_issues_building_components</a></li>
+<li><a href="#design_issues_root_cause">design_issues_root_cause</a></li>
+<li><a href="#inspection_risk_issues">inspection_risk_issues</a></li>
+<li><a href="#issues_quality_categories">issues_quality_categories</a></li>
+<li><a href="#issues_quality_risks">issues_quality_risks</a></li>
+<li><a href="#issues_safety_hazard">issues_safety_hazard</a></li>
+<li><a href="#issues_safety_observations">issues_safety_observations</a></li>
+<li><a href="#issues_safety_risk">issues_safety_risk</a></li>
+<li><a href="#project_daily_quality_risk_changes">project_daily_quality_risk_changes</a></li>
+<li><a href="#rfis_building_components">rfis_building_components</a></li>
+<li><a href="#rfis_disciplines">rfis_disciplines</a></li>
+<li><a href="#rfis_high_risk">rfis_high_risk</a></li>
+<li><a href="#rfis_root_cause">rfis_root_cause</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="company_daily_quality_risk_changes">company_daily_quality_risk_changes</a></h2>Company Daily Risk Changes Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Id</td></tr>
+<tr><td>2</td><td>company_id</td><td>string: UUID</td><td></td><td>Company Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+<tr><td>5</td><td>start_time</td><td>timestamp: SQL</td><td></td><td>Start Time</td></tr>
+<tr><td>6</td><td>daily_risk</td><td>string</td><td></td><td>Daily Risk</td></tr>
+<tr><td>7</td><td>daily_risk_indicator</td><td>number</td><td></td><td>Daily Risk Indicator</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Created At</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+</tbody></table><h2><a name="company_daily_safety_risk_changes">company_daily_safety_risk_changes</a></h2>Company Daily Safety Risk Changes Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Id</td></tr>
+<tr><td>2</td><td>company_id</td><td>string: UUID</td><td></td><td>Company Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+<tr><td>5</td><td>start_date</td><td>timestamp: SQL</td><td></td><td>Start Date</td></tr>
+<tr><td>6</td><td>daily_safety_risk</td><td>number</td><td></td><td>Daily Safety Risk</td></tr>
+<tr><td>7</td><td>daily_safety_risk_indicator</td><td>number</td><td></td><td>Daily Safety Risk Indicator</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Created At</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+</tbody></table><h2><a name="cost_impact_issues">cost_impact_issues</a></h2>Cost Impact Issues Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>cost_impact</td><td>string</td><td></td><td>Cost Impact: High Medium Low</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="design_issues_building_components">design_issues_building_components</a></h2>Design Issues Building Components Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>building_component</td><td>string</td><td></td><td>Building Components</td></tr>
+<tr><td>5</td><td>user_building_component</td><td>string</td><td></td><td>Building Components ser by user</td></tr>
+<tr><td>6</td><td>building_component_keyword</td><td>string</td><td></td><td>Building Components Keywords</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">7</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">8</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="design_issues_root_cause">design_issues_root_cause</a></h2>Design Issues Root Cause Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>root_cause</td><td>string</td><td></td><td>Root Causes</td></tr>
+<tr><td>5</td><td>user_root_cause</td><td>string</td><td></td><td>Root Causes set by user</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">7</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="inspection_risk_issues">inspection_risk_issues</a></h2>Inspection Risk Issues Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>inspection_risk</td><td>boolean</td><td></td><td>Inspection Risk</td></tr>
+<tr><td>5</td><td>user_category</td><td>string</td><td></td><td>Categories set by user</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">7</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="issues_quality_categories">issues_quality_categories</a></h2>Issues Categories Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>3</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>4</td><td>category</td><td>string</td><td></td><td>Categories</td></tr>
+<tr><td>5</td><td>user_category</td><td>string</td><td></td><td>Categories set by user</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">7</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="issues_quality_risks">issues_quality_risks</a></h2>Issues Risks Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>3</td><td>risk</td><td>string</td><td></td><td>Risk</td></tr>
+<tr><td>4</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+<tr><td>7</td><td>user_risk</td><td>string</td><td></td><td>User Risk</td></tr>
+</tbody></table><h2><a name="issues_safety_hazard">issues_safety_hazard</a></h2>Issues Safety Hazard Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>safety_hazard_category</td><td>string</td><td></td><td>Safety Hazard Categories</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="issues_safety_observations">issues_safety_observations</a></h2>Issues Safety Observations Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>safety_observation_category</td><td>string</td><td></td><td>Safety Observation Category</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="issues_safety_risk">issues_safety_risk</a></h2>Issues Safety Risk Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Issue Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>safety_risk_category</td><td>string</td><td></td><td>Safety Risk Category: Fall, Electrocution, Struck by, caught in between, fire, other</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="project_daily_quality_risk_changes">project_daily_quality_risk_changes</a></h2>Project Daily Risk Changes Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+<tr><td>4</td><td>start_time</td><td>timestamp: SQL</td><td></td><td>Project Start Time</td></tr>
+<tr><td>5</td><td>daily_risk</td><td>string</td><td></td><td>Daily Risk: Low, Medium, High</td></tr>
+<tr><td>6</td><td>daily_risk_indicator</td><td>number</td><td></td><td>Daily Risk Indicator</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Created At</td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+</tbody></table><h2><a name="rfis_building_components">rfis_building_components</a></h2>RFIs Building Components Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>RFI Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>building_component</td><td>string</td><td></td><td>Building Components</td></tr>
+<tr><td>5</td><td>building_component_keyword</td><td>string</td><td></td><td>Building Components Keywords</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">7</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="rfis_disciplines">rfis_disciplines</a></h2>RFIs Disciplines Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>RFI Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>discipline</td><td>string</td><td></td><td>Disciplines</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="rfis_high_risk">rfis_high_risk</a></h2>RFIs High Risk Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>RFI Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>risk</td><td>string</td><td></td><td>Risk</td></tr>
+<tr><td>5</td><td>score</td><td>number</td><td></td><td>Score</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">7</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table><h2><a name="rfis_root_cause">rfis_root_cause</a></h2>RFIs Root Cause Description<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>RFI Id</td></tr>
+<tr><td>2</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated At</td></tr>
+<tr><td>3</td><td>predicted_at</td><td>timestamp: SQL</td><td></td><td>Predicted At</td></tr>
+<tr><td>4</td><td>root_cause</td><td>string</td><td></td><td>Root Causes</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">5</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project Id</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

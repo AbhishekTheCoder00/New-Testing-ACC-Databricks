@@ -1,0 +1,458 @@
+{
+   "disciplines" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "container_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type of the contain to which this tag belongs",
+         "ordinal_position" : 3
+      },
+      "index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Discipline index",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Discipline name",
+         "ordinal_position" : 5
+      },
+      "designator" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Short charcators as a discipline designator",
+         "ordinal_position" : 6
+      }
+   },
+   "lineages" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the sheet_history",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "container_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Typ of the contain to which the sheet_history belongs",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the sheet_history",
+         "ordinal_position" : 5
+      }
+   },
+   "sets" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the version_set",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "container_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Typ of the contain to which the version set belongs",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the version_set",
+         "ordinal_position" : 5
+      },
+      "issuance_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Issuance time of the version_set",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the version_set",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who create the version_set",
+         "ordinal_position" : 8
+      },
+      "created_by_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of user who create the version_set",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the version_set",
+         "ordinal_position" : 10
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who update the version_set",
+         "ordinal_position" : 11
+      },
+      "updated_by_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of user who update the version_set",
+         "ordinal_position" : 12
+      }
+   },
+   "sheet_bubbles" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "container_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Typ of the contain to which this bubble object belongs",
+         "ordinal_position" : 3
+      },
+      "sheet_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of a sheet",
+         "ordinal_position" : 4
+      },
+      "urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Urn of the bubble related to the sheet",
+         "ordinal_position" : 5
+      },
+      "viewable_guid" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id to identify the given resource in the bubble related to the sheet",
+         "ordinal_position" : 6
+      },
+      "paper_width" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Physical paper height of the sheet",
+         "ordinal_position" : 7
+      },
+      "paper_height" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Physical paper height of the sheet",
+         "ordinal_position" : 8
+      },
+      "viewable_order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Page number in the bubble related to the sheet",
+         "ordinal_position" : 9
+      },
+      "pug_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Urn of the viewable pug object for the sheet",
+         "ordinal_position" : 10
+      },
+      "pug_width" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Width of the viewable pug object for the sheet",
+         "ordinal_position" : 11
+      },
+      "pug_height" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Height of the viewable pug object for the sheet",
+         "ordinal_position" : 12
+      },
+      "large_thumbnail_width" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Width of the large thumbnaill for the sheet",
+         "ordinal_position" : 13
+      },
+      "large_thumbnail_height" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Height of the large thumbnaill for the sheet",
+         "ordinal_position" : 14
+      },
+      "small_thumbnail_width" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Width of the small thumbnaill for the sheet",
+         "ordinal_position" : 15
+      },
+      "small_thumbnail_height" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Height of the small thumbnaill for the sheet",
+         "ordinal_position" : 16
+      },
+      "storage_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The storage urn of the pdf page for the sheet",
+         "ordinal_position" : 17
+      },
+      "storage_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Storage size of the sheet",
+         "ordinal_position" : 18
+      },
+      "viewable_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Urn of the viewable leaflet object for the sheet",
+         "ordinal_position" : 19
+      },
+      "viewable_width" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Width of the viewable leaflet object for the sheet",
+         "ordinal_position" : 20
+      },
+      "viewable_height" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Height of the viewable leaflet object for the sheet",
+         "ordinal_position" : 21
+      }
+   },
+   "sheet_tags" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "container_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Typ of the contain to which this tag belongs",
+         "ordinal_position" : 3
+      },
+      "sheet_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of a sheet",
+         "ordinal_position" : 4
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Text value of a tag",
+         "ordinal_position" : 5
+      }
+   },
+   "sheets" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id for the sheet",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "container_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Typ of the contain to which the sheet belongs",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the sheet",
+         "ordinal_position" : 5
+      },
+      "nat_sort_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name variety based on natural sorting",
+         "ordinal_position" : 6
+      },
+      "history_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the history the sheet belongs to",
+         "ordinal_position" : 7
+      },
+      "version_set_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id for the version set the sheet belongs to",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the sheet",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who create the sheet",
+         "ordinal_position" : 10
+      },
+      "created_by_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of user who create the sheet",
+         "ordinal_position" : 11
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the sheet",
+         "ordinal_position" : 12
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who update the sheet",
+         "ordinal_position" : 13
+      },
+      "updated_by_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of user who update the sheet",
+         "ordinal_position" : 14
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description for the sheet",
+         "ordinal_position" : 15
+      },
+      "upload_file_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the upload file, from which the sheet created",
+         "ordinal_position" : 16
+      },
+      "upload_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The id of the upload command that creates the sheet",
+         "ordinal_position" : 17
+      },
+      "processing_state" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The processing state of the sheet",
+         "ordinal_position" : 18
+      },
+      "is_current" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Indicate whether this is the current version among sheets with same name",
+         "ordinal_position" : 19
+      },
+      "discipline_index" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Index of the relevant discipline",
+         "ordinal_position" : 20
+      },
+      "deleted" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Whether this is a deleted sheet",
+         "ordinal_position" : 21
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Deletion time of the sheet",
+         "ordinal_position" : 22
+      },
+      "deleted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Id of user who delete the sheet",
+         "ordinal_position" : 23
+      },
+      "deleted_by_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of user who delete the sheet",
+         "ordinal_position" : 24
+      },
+      "original_set_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Snapshot of the set name when the sheet is deleted",
+         "ordinal_position" : 25
+      }
+   }
+}

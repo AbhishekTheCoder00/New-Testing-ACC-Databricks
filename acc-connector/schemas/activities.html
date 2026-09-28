@@ -1,0 +1,1158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>activities: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>activities Schema Description</h1>
+<b>Documentation Updated: </b>2025-06-11<br/>
+<ul><li><a href="#admin_activities">admin_activities</a></li>
+<li><a href="#assets_activities">assets_activities</a></li>
+<li><a href="#bridge_activities">bridge_activities</a></li>
+<li><a href="#cost_activities">cost_activities</a></li>
+<li><a href="#cost_changes">cost_changes</a></li>
+<li><a href="#docs_activities">docs_activities</a></li>
+<li><a href="#docs_custom_attribute_constraints">docs_custom_attribute_constraints</a></li>
+<li><a href="#docs_custom_attributes">docs_custom_attributes</a></li>
+<li><a href="#docs_naming_standards">docs_naming_standards</a></li>
+<li><a href="#docs_permissions">docs_permissions</a></li>
+<li><a href="#docs_standard_attributes">docs_standard_attributes</a></li>
+<li><a href="#issues_activities">issues_activities</a></li>
+<li><a href="#issues_changes">issues_changes</a></li>
+<li><a href="#rfis_activities">rfis_activities</a></li>
+<li><a href="#rfis_changes">rfis_changes</a></li>
+<li><a href="#sheets_activities">sheets_activities</a></li>
+<li><a href="#submittals_activities">submittals_activities</a></li>
+<li><a href="#submittals_object_ball_in_court_companies">submittals_object_ball_in_court_companies</a></li>
+<li><a href="#submittals_object_ball_in_court_roles">submittals_object_ball_in_court_roles</a></li>
+<li><a href="#submittals_object_ball_in_court_users">submittals_object_ball_in_court_users</a></li>
+<li><a href="#submittals_target_ball_in_court_companies">submittals_target_ball_in_court_companies</a></li>
+<li><a href="#submittals_target_ball_in_court_roles">submittals_target_ball_in_court_roles</a></li>
+<li><a href="#submittals_target_ball_in_court_users">submittals_target_ball_in_court_users</a></li>
+<li><a href="#submittals_target_steps">submittals_target_steps</a></li>
+<li><a href="#submittals_target_tasks">submittals_target_tasks</a></li>
+<li><a href="#submittals_target_transition_attachments">submittals_target_transition_attachments</a></li>
+<li><a href="#submittals_target_watchers">submittals_target_watchers</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="admin_activities">admin_activities</a></h2>Activities generated in ACC Build User Administration<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_access_change_list</td><td>string</td><td></td><td>Access change list in JSON Array Format</td></tr>
+<tr><td>8</td><td>object_added_services</td><td>string</td><td></td><td>Allowed services</td></tr>
+<tr><td>9</td><td>object_allow_edit_company</td><td>string</td><td></td><td>Allow company edit</td></tr>
+<tr><td>10</td><td>object_default_access_level</td><td>string</td><td></td><td>Default level of access for the object</td></tr>
+<tr><td>11</td><td>object_display_name</td><td>string</td><td></td><td>Display name for the target being acted on</td></tr>
+<tr><td>12</td><td>object_id</td><td>string: UUID</td><td></td><td>ID for the object being acted on - if the object_object_type is user, this ID is the admin_users id column, not the Autodesk ID</td></tr>
+<tr><td>13</td><td>object_name</td><td>string</td><td></td><td>Name of the object being acted on</td></tr>
+<tr><td>14</td><td>object_name_was</td><td>string</td><td></td><td>Previous name for the object being acted on</td></tr>
+<tr><td>15</td><td>object_object_type</td><td>string</td><td></td><td>Type of the object being acted on</td></tr>
+<tr><td>16</td><td>object_removed_services</td><td>string</td><td></td><td>Removed services from the object</td></tr>
+<tr><td>17</td><td>object_service_name</td><td>string</td><td></td><td>Service name for the object being acted on</td></tr>
+<tr><td>18</td><td>object_services_list</td><td>string</td><td></td><td>Service listing in JSON Array Format</td></tr>
+<tr><td>19</td><td>object_size</td><td>number</td><td></td><td>Size of the object being acted on</td></tr>
+<tr><td>20</td><td>object_status</td><td>string</td><td></td><td>Status of the object being acted on</td></tr>
+<tr><td>21</td><td>object_status_was</td><td>string</td><td></td><td>Old status of the object being acted on</td></tr>
+<tr><td>22</td><td>object_update_image</td><td>string</td><td></td><td>Image defintion</td></tr>
+<tr><td>23</td><td>target_display_name</td><td>string</td><td></td><td>Display name for the object being acted on</td></tr>
+<tr><td>24</td><td>target_id</td><td>string: UUID</td><td></td><td>ID for the target being acted on - if the target_object_type is user, this ID is the admin_users id column, not the Autodesk ID</td></tr>
+<tr><td>25</td><td>target_object_type</td><td>string</td><td></td><td>Object type for the target being acted on</td></tr>
+</tbody></table><h2><a name="assets_activities">assets_activities</a></h2>Activities generated in ACC Build Issues Service<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_activity_source</td><td>string</td><td></td><td>Object Activity Source</td></tr>
+<tr><td>8</td><td>object_after_asset_status_color</td><td>string</td><td></td><td>Object After Asset Status Color</td></tr>
+<tr><td>9</td><td>object_after_asset_status_display_name</td><td>string</td><td></td><td>Object After Asset Status Display Name</td></tr>
+<tr><td>10</td><td>object_after_asset_status_entity_type</td><td>string</td><td></td><td>Object After Asset Status Entity Type</td></tr>
+<tr><td>11</td><td>object_after_asset_status_id</td><td>string: UUID</td><td></td><td>Object After Asset Status ID</td></tr>
+<tr><td>12</td><td>object_after_asset_status_is_active</td><td>boolean</td><td></td><td>Object After Status Is Active</td></tr>
+<tr><td>13</td><td>object_after_asset_status_is_missing</td><td>boolean</td><td></td><td>Object After Asset Status is Missing</td></tr>
+<tr><td>14</td><td>object_after_asset_status_is_valid</td><td>boolean</td><td></td><td>Object After Asset Status is Valid</td></tr>
+<tr><td>15</td><td>object_after_category_display_name</td><td>string</td><td></td><td>Object After Category Display Name</td></tr>
+<tr><td>16</td><td>object_after_category_entity_type</td><td>string</td><td></td><td>Object After Category Entity Type</td></tr>
+<tr><td>17</td><td>object_after_category_id</td><td>string</td><td></td><td>Object After Category ID</td></tr>
+<tr><td>18</td><td>object_after_category_is_active</td><td>boolean</td><td></td><td>Object After Category Is Active</td></tr>
+<tr><td>19</td><td>object_after_category_is_missing</td><td>boolean</td><td></td><td>Object After Category Is Missing</td></tr>
+<tr><td>20</td><td>object_after_category_is_valid</td><td>boolean</td><td></td><td>Object After Category Is Valid</td></tr>
+<tr><td>21</td><td>object_after_category_path</td><td>string</td><td></td><td>Object After Category Path</td></tr>
+<tr><td>22</td><td>object_after_location_display_name</td><td>string</td><td></td><td>Object After Location Display Name</td></tr>
+<tr><td>23</td><td>object_after_location_entity_type</td><td>string</td><td></td><td>Object After Location Entity Type</td></tr>
+<tr><td>24</td><td>object_after_location_id</td><td>string: UUID</td><td></td><td>Object After Location ID</td></tr>
+<tr><td>25</td><td>object_after_location_is_active</td><td>boolean</td><td></td><td>Object After Location Is Active</td></tr>
+<tr><td>26</td><td>object_after_location_is_missing</td><td>boolean</td><td></td><td>Object After Location Is Missing</td></tr>
+<tr><td>27</td><td>object_after_location_is_valid</td><td>boolean</td><td></td><td>Object After Location Is Valid</td></tr>
+<tr><td>28</td><td>object_after_location_path</td><td>string</td><td></td><td>Object After Location Path</td></tr>
+<tr><td>29</td><td>object_before_entity_category_id</td><td>string</td><td></td><td>Object Before Entity Category Id</td></tr>
+<tr><td>30</td><td>object_before_entity_client_asset_id</td><td>string</td><td></td><td>Object Before Entity Client Asset Id</td></tr>
+<tr><td>31</td><td>object_before_entity_created_at</td><td>timestamp: SQL</td><td></td><td>Object Before Entity Created At</td></tr>
+<tr><td>32</td><td>object_before_entity_created_by</td><td>string</td><td></td><td>Object Before Entity Created By</td></tr>
+<tr><td>33</td><td>object_before_entity_custom_attributes</td><td>string</td><td></td><td>Object Before Entity Custom Attributes</td></tr>
+<tr><td>34</td><td>object_before_entity_id</td><td>string: UUID</td><td></td><td>Object Before Entity Id</td></tr>
+<tr><td>35</td><td>object_before_entity_is_active</td><td>boolean</td><td></td><td>Object Before Entity Is Active</td></tr>
+<tr><td>36</td><td>object_before_entity_location_id</td><td>string: UUID</td><td></td><td>Object Before Entity Location Id</td></tr>
+<tr><td>37</td><td>object_before_entity_status_id</td><td>string: UUID</td><td></td><td>Object Before Entity Status Id</td></tr>
+<tr><td>38</td><td>object_before_entity_updated_at</td><td>timestamp: SQL</td><td></td><td>Object Before Entity Updated At</td></tr>
+<tr><td>39</td><td>object_before_entity_updated_by</td><td>string</td><td></td><td>Object Before Entity Updated By</td></tr>
+<tr><td>40</td><td>object_before_entity_version</td><td>number</td><td></td><td>Object Before Entity Version</td></tr>
+<tr><td>41</td><td>object_before_location_display_name</td><td>string</td><td></td><td>Object Before Location Display Name</td></tr>
+<tr><td>42</td><td>object_before_location_entity_type</td><td>string</td><td></td><td>Object Before Location Entity Type</td></tr>
+<tr><td>43</td><td>object_before_location_id</td><td>string: UUID</td><td></td><td>Object Before Location Id</td></tr>
+<tr><td>44</td><td>object_before_location_is_active</td><td>boolean</td><td></td><td>Object Before Location Is Active</td></tr>
+<tr><td>45</td><td>object_before_location_is_missing</td><td>boolean</td><td></td><td>Object Before Location Is Missing</td></tr>
+<tr><td>46</td><td>object_before_location_is_valid</td><td>boolean</td><td></td><td>Object Before Location Is Valid</td></tr>
+<tr><td>47</td><td>object_before_location_path</td><td>string</td><td></td><td>Object Before Location Path</td></tr>
+<tr><td>48</td><td>object_category_display_name</td><td>string</td><td></td><td>Object Category Display Name</td></tr>
+<tr><td>49</td><td>object_category_entity_type</td><td>string</td><td></td><td>Object Category Entity Type</td></tr>
+<tr><td>50</td><td>object_category_id</td><td>string</td><td></td><td>Object Category Id</td></tr>
+<tr><td>51</td><td>object_category_is_active</td><td>boolean</td><td></td><td>Object Category Is Active</td></tr>
+<tr><td>52</td><td>object_category_is_missing</td><td>boolean</td><td></td><td>Object Category Is Missing</td></tr>
+<tr><td>53</td><td>object_category_is_valid</td><td>boolean</td><td></td><td>Object Category Is Valid</td></tr>
+<tr><td>54</td><td>object_category_path</td><td>string</td><td></td><td>Object Category Path</td></tr>
+<tr><td>55</td><td>object_created_entity_category_id</td><td>string</td><td></td><td>Object Created Entity Category Id</td></tr>
+<tr><td>56</td><td>object_created_entity_client_asset_id</td><td>string</td><td></td><td>Object Created Entity Client Asset Id</td></tr>
+<tr><td>57</td><td>object_created_entity_created_at</td><td>timestamp: SQL</td><td></td><td>Object Created Entity Created At</td></tr>
+<tr><td>58</td><td>object_created_entity_created_by</td><td>string</td><td></td><td>Object Created Entity Created By</td></tr>
+<tr><td>59</td><td>object_created_entity_id</td><td>string: UUID</td><td></td><td>Object Created Entity Id</td></tr>
+<tr><td>60</td><td>object_created_entity_is_active</td><td>boolean</td><td></td><td>Object Created Entity Is Active</td></tr>
+<tr><td>61</td><td>object_created_entity_status_id</td><td>string: UUID</td><td></td><td>Object Created Entity Status Id</td></tr>
+<tr><td>62</td><td>object_created_entity_updated_at</td><td>timestamp: SQL</td><td></td><td>Object Created Entity Updated At</td></tr>
+<tr><td>63</td><td>object_created_entity_updated_by</td><td>string</td><td></td><td>Object Created Entity Updated By</td></tr>
+<tr><td>64</td><td>object_created_entity_version</td><td>number</td><td></td><td>Object Created Entity Version</td></tr>
+<tr><td>65</td><td>object_deleted_entity_category_id</td><td>string</td><td></td><td>Object Deleted Entity Category Id</td></tr>
+<tr><td>66</td><td>object_deleted_entity_client_asset_id</td><td>string</td><td></td><td>Object Deleted Entity Client Asset Id</td></tr>
+<tr><td>67</td><td>object_deleted_entity_created_at</td><td>timestamp: SQL</td><td></td><td>Object Deleted Entity Created At</td></tr>
+<tr><td>68</td><td>object_deleted_entity_created_by</td><td>string</td><td></td><td>Object Deleted Entity Created By</td></tr>
+<tr><td>69</td><td>object_deleted_entity_deleted_at</td><td>timestamp: SQL</td><td></td><td>Object Deleted Entity Deleted At</td></tr>
+<tr><td>70</td><td>object_deleted_entity_deleted_by</td><td>string</td><td></td><td>Object Deleted Entity Deleted By</td></tr>
+<tr><td>71</td><td>object_deleted_entity_id</td><td>string: UUID</td><td></td><td>Object Deleted Entity Id</td></tr>
+<tr><td>72</td><td>object_deleted_entity_is_active</td><td>boolean</td><td></td><td>Object Deleted Entity Is Active</td></tr>
+<tr><td>73</td><td>object_deleted_entity_location_id</td><td>string: UUID</td><td></td><td>Object Deleted Entity Location Id</td></tr>
+<tr><td>74</td><td>object_deleted_entity_status_id</td><td>string: UUID</td><td></td><td>Object Deleted Entity Status Id</td></tr>
+<tr><td>75</td><td>object_deleted_entity_updated_at</td><td>timestamp: SQL</td><td></td><td>Object Deleted Entity Updated At</td></tr>
+<tr><td>76</td><td>object_deleted_entity_updated_by</td><td>string</td><td></td><td>Object Deleted Entity Updated By</td></tr>
+<tr><td>77</td><td>object_deleted_entity_version</td><td>number</td><td></td><td>Object Deleted Entity Version</td></tr>
+<tr><td>78</td><td>object_display_name</td><td>string</td><td></td><td>Object Display Name</td></tr>
+<tr><td>79</td><td>object_id</td><td>string: UUID</td><td></td><td>Object Id</td></tr>
+<tr><td>80</td><td>object_location_display_name</td><td>string</td><td></td><td>Object Location Display Name</td></tr>
+<tr><td>81</td><td>object_location_entity_type</td><td>string</td><td></td><td>Object Location Entity Type</td></tr>
+<tr><td>82</td><td>object_location_id</td><td>string: UUID</td><td></td><td>Object Location Id</td></tr>
+<tr><td>83</td><td>object_location_is_active</td><td>boolean</td><td></td><td>Object Location Is Active</td></tr>
+<tr><td>84</td><td>object_location_is_missing</td><td>boolean</td><td></td><td>Object Location Is Missing</td></tr>
+<tr><td>85</td><td>object_location_is_valid</td><td>boolean</td><td></td><td>Object Location Is Valid</td></tr>
+<tr><td>86</td><td>object_location_path</td><td>string</td><td></td><td>Object Location Path</td></tr>
+<tr><td>87</td><td>object_patch_entity_custom_attributes</td><td>string</td><td></td><td>Object Patch Entity Custom Attributes</td></tr>
+<tr><td>88</td><td>object_patch_entity_updated_at</td><td>timestamp: SQL</td><td></td><td>Object Patch Entity Updated At</td></tr>
+<tr><td>89</td><td>object_patch_entity_updated_by</td><td>string</td><td></td><td>Object Patch Entity Updated By</td></tr>
+<tr><td>90</td><td>object_asset_status_color</td><td>string</td><td></td><td>Object asset status color</td></tr>
+<tr><td>91</td><td>object_asset_status_display_name</td><td>string</td><td></td><td>Object asset status display name</td></tr>
+<tr><td>92</td><td>object_asset_status_entity_type</td><td>string</td><td></td><td>Object asset status entity type</td></tr>
+<tr><td>93</td><td>object_asset_status_id</td><td>string: UUID</td><td></td><td>Object asset status ID</td></tr>
+<tr><td>94</td><td>object_asset_status_is_active</td><td>boolean</td><td></td><td>Object asset status is active</td></tr>
+<tr><td>95</td><td>object_asset_status_is_missing</td><td>boolean</td><td></td><td>Object asset status is missing</td></tr>
+<tr><td>96</td><td>object_asset_status_is_valid</td><td>boolean</td><td></td><td>Object asset status is valid</td></tr>
+<tr><td>97</td><td>object_before_asset_status_color</td><td>string</td><td></td><td>Object before asset status color</td></tr>
+<tr><td>98</td><td>object_before_asset_status_display_name</td><td>string</td><td></td><td>Object before asset status display name</td></tr>
+<tr><td>99</td><td>object_before_asset_status_entity_type</td><td>string</td><td></td><td>Object before asset status entity type</td></tr>
+<tr><td>100</td><td>object_before_asset_status_id</td><td>string: UUID</td><td></td><td>Object before asset status id</td></tr>
+<tr><td>101</td><td>object_before_asset_status_is_active</td><td>boolean</td><td></td><td>Object before asset status is active</td></tr>
+<tr><td>102</td><td>object_before_asset_status_is_missing</td><td>boolean</td><td></td><td>Object before asset status is missing</td></tr>
+<tr><td>103</td><td>object_before_asset_status_is_valid</td><td>boolean</td><td></td><td>Object before asset status is valid</td></tr>
+<tr><td>104</td><td>object_before_category_display_name</td><td>string</td><td></td><td>Object before category display name</td></tr>
+<tr><td>105</td><td>object_before_category_entity_type</td><td>string</td><td></td><td>Object before category entity type</td></tr>
+<tr><td>106</td><td>object_before_category_id</td><td>string</td><td></td><td>Object before category id</td></tr>
+<tr><td>107</td><td>object_before_category_is_active</td><td>boolean</td><td></td><td>Object before category is active</td></tr>
+<tr><td>108</td><td>object_before_category_is_missing</td><td>boolean</td><td></td><td>Object before category is missing</td></tr>
+<tr><td>109</td><td>object_before_category_is_valid</td><td>boolean</td><td></td><td>Object before category is valid</td></tr>
+<tr><td>110</td><td>object_before_category_path</td><td>string</td><td></td><td>Object before category path</td></tr>
+</tbody></table><h2><a name="bridge_activities">bridge_activities</a></h2>Activities generated for ACC Bridge<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_automation_type</td><td>string</td><td></td><td>Specifies the type of automation applied to an object. For example, 'acs_folder' for folder-based automations and 'acs_sheet' for sheet automations. To identify Design Collaboration team automations, look for entries where 'automationType' = 'acs_folder' and 'owner' = 'dc'.</td></tr>
+<tr><td>8</td><td>object_initiator_project_id</td><td>string</td><td></td><td>Represents the ID of the ACC project where the user initiated the action.</td></tr>
+<tr><td>9</td><td>object_item_name</td><td>string</td><td></td><td>Specifies the name of the item (such as a folder, sheet or team) that has an automation applied to it.</td></tr>
+<tr><td>10</td><td>object_origin</td><td>string</td><td></td><td>Indicates the method by which the Bridged Project connection was established. For example, if the connection was made using the 'Bridge to a project' flow, the 'origin' field will be empty. For connections created through folder or sheet automation setup, the 'origin' field will contain 'create-bridge-automation'.</td></tr>
+<tr><td>11</td><td>object_owner</td><td>string</td><td></td><td>Contains the value 'dc' for Design Collaboration team automations. This helps users distinguish between folder and team automations when the 'automationType' = 'acs_folder'.</td></tr>
+<tr><td>12</td><td>object_reason</td><td>string</td><td></td><td>Provides context on why an automation was deleted. For example, values may include 'AUTOMATION_DELETED', 'FOLDER_DELETED', 'SHEETS_COLLECTION_DELETED', 'SHEET_DELETED'.</td></tr>
+<tr><td>13</td><td>object_recipient_email</td><td>string</td><td></td><td>The email address of the recipient invited to create a Bridge between projects.</td></tr>
+<tr><td>14</td><td>object_source_project_account_id</td><td>string</td><td></td><td>The account ID associated with the source project.</td></tr>
+<tr><td>15</td><td>object_source_project_display_name</td><td>string</td><td></td><td>The project name associated with the source project.</td></tr>
+<tr><td>16</td><td>object_source_project_id</td><td>string</td><td></td><td>The project ID associated with the source project.</td></tr>
+<tr><td>17</td><td>object_target_project_account_id</td><td>string</td><td></td><td>The account ID associated with the target project.</td></tr>
+<tr><td>18</td><td>object_target_project_display_name</td><td>string</td><td></td><td>The project name associated with the target project.</td></tr>
+<tr><td>19</td><td>object_target_project_id</td><td>string</td><td></td><td>The project ID associated with the target project.</td></tr>
+</tbody></table><h2><a name="cost_activities">cost_activities</a></h2>Activities generated in ACC Build Cost Service<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_cost_payment_display_name</td><td>string</td><td></td><td>Object cost payment display name</td></tr>
+<tr><td>8</td><td>object_cost_payment_id</td><td>string: UUID</td><td></td><td>Object cost payment id</td></tr>
+<tr><td>9</td><td>object_uom_display_name</td><td>string</td><td></td><td>Object uom display name</td></tr>
+<tr><td>10</td><td>object_uom_id</td><td>string</td><td></td><td>Object uom id</td></tr>
+<tr><td>11</td><td>object_uom_type</td><td>string</td><td></td><td>Object uom type</td></tr>
+<tr><td>12</td><td>object_abbr</td><td>string</td><td></td><td>Object abbr</td></tr>
+<tr><td>13</td><td>object_association_association_type</td><td>string</td><td></td><td>Object association association type</td></tr>
+<tr><td>14</td><td>object_association_display_name</td><td>string</td><td></td><td>Object association display name</td></tr>
+<tr><td>15</td><td>object_association_id</td><td>string: UUID</td><td></td><td>Object association id</td></tr>
+<tr><td>16</td><td>object_association_number</td><td>string</td><td></td><td>Object association number</td></tr>
+<tr><td>17</td><td>object_association_type</td><td>string</td><td></td><td>Object association type</td></tr>
+<tr><td>18</td><td>object_attachment_display_name</td><td>string</td><td></td><td>Object attachment display name</td></tr>
+<tr><td>19</td><td>object_attachment_id</td><td>string: UUID</td><td></td><td>Object attachment id</td></tr>
+<tr><td>20</td><td>object_attachment_type</td><td>string</td><td></td><td>Object attachment type</td></tr>
+<tr><td>21</td><td>object_billing_period_display_name</td><td>string: UUID</td><td></td><td>Object billing period display name</td></tr>
+<tr><td>22</td><td>object_billing_period_end_date</td><td>date: string</td><td></td><td>Object billing period end date</td></tr>
+<tr><td>23</td><td>object_billing_period_id</td><td>string: UUID</td><td></td><td>Object billing period id</td></tr>
+<tr><td>24</td><td>object_billing_period_start_date</td><td>date: string</td><td></td><td>Object billing period start date</td></tr>
+<tr><td>25</td><td>object_budget_code</td><td>string</td><td></td><td>Object budget code</td></tr>
+<tr><td>26</td><td>object_budget_display_name</td><td>string</td><td></td><td>Object budget display name</td></tr>
+<tr><td>27</td><td>object_budget_id</td><td>string: UUID</td><td></td><td>Object budget id</td></tr>
+<tr><td>28</td><td>object_budget_payment_display_name</td><td>string</td><td></td><td>Object budget payment display name</td></tr>
+<tr><td>29</td><td>object_budget_payment_id</td><td>string: UUID</td><td></td><td>Object budget payment id</td></tr>
+<tr><td>30</td><td>object_budget_payment_type</td><td>string</td><td></td><td>Object budget payment type</td></tr>
+<tr><td>31</td><td>object_budgetpayment_display_name</td><td>string</td><td></td><td>Object budgetpayment display name</td></tr>
+<tr><td>32</td><td>object_budgetpayment_id</td><td>string: UUID</td><td></td><td>Object budgetpayment id</td></tr>
+<tr><td>33</td><td>object_budgets</td><td>string</td><td></td><td>Object budgets</td></tr>
+<tr><td>34</td><td>object_calendar_configuration_display_name</td><td>string</td><td></td><td>Object calendar configuration display name</td></tr>
+<tr><td>35</td><td>object_calendar_configuration_id</td><td>string</td><td></td><td>Object calendar configuration id</td></tr>
+<tr><td>36</td><td>object_code</td><td>number</td><td></td><td>Object code</td></tr>
+<tr><td>37</td><td>object_comment_display_name</td><td>string</td><td></td><td>Object comment display name</td></tr>
+<tr><td>38</td><td>object_comment_id</td><td>string: UUID</td><td></td><td>Object comment id</td></tr>
+<tr><td>39</td><td>object_compliance_definition_display_name</td><td>string</td><td></td><td>Object compliance definition display name</td></tr>
+<tr><td>40</td><td>object_compliance_definition_id</td><td>string</td><td></td><td>Object compliance definition id</td></tr>
+<tr><td>41</td><td>object_compliance_definition_type</td><td>string</td><td></td><td>Object compliance definition type</td></tr>
+<tr><td>42</td><td>object_compliance_requirement_display_name</td><td>string</td><td></td><td>Object compliance requirement display name</td></tr>
+<tr><td>43</td><td>object_compliance_requirement_id</td><td>string</td><td></td><td>Object compliance requirement id</td></tr>
+<tr><td>44</td><td>object_compliance_requirement_type</td><td>string</td><td></td><td>Object compliance requirement type</td></tr>
+<tr><td>45</td><td>object_container_setting_display_name</td><td>string</td><td></td><td>Object container setting display name</td></tr>
+<tr><td>46</td><td>object_container_setting_id</td><td>string: UUID</td><td></td><td>Object container setting id</td></tr>
+<tr><td>47</td><td>object_contract_display_name</td><td>string</td><td></td><td>Object contract display name</td></tr>
+<tr><td>48</td><td>object_contract_id</td><td>string: UUID</td><td></td><td>Object contract id</td></tr>
+<tr><td>49</td><td>object_cost_item_display_name</td><td>string</td><td></td><td>Object cost item display name</td></tr>
+<tr><td>50</td><td>object_cost_item_id</td><td>string: UUID</td><td></td><td>Object cost item id</td></tr>
+<tr><td>51</td><td>object_custom_column_display_name</td><td>string: UUID</td><td></td><td>Object custom column display name</td></tr>
+<tr><td>52</td><td>object_custom_column_id</td><td>string: UUID</td><td></td><td>Object custom column id</td></tr>
+<tr><td>53</td><td>object_default_value_display_name</td><td>string</td><td></td><td>Object default value display name</td></tr>
+<tr><td>54</td><td>object_default_value_id</td><td>string</td><td></td><td>Object default value id</td></tr>
+<tr><td>55</td><td>object_display_name</td><td>string</td><td></td><td>Object display name</td></tr>
+<tr><td>56</td><td>object_distribution_display_name</td><td>string: UUID</td><td></td><td>Object distribution display name</td></tr>
+<tr><td>57</td><td>object_distribution_id</td><td>string: UUID</td><td></td><td>Object distribution id</td></tr>
+<tr><td>58</td><td>object_distribution_item_display_name</td><td>string</td><td></td><td>Object distribution item display name</td></tr>
+<tr><td>59</td><td>object_distribution_item_id</td><td>string</td><td></td><td>Object distribution item id</td></tr>
+<tr><td>60</td><td>object_document_package_display_name</td><td>string</td><td></td><td>Object document package display name</td></tr>
+<tr><td>61</td><td>object_document_package_id</td><td>string: UUID</td><td></td><td>Object document package id</td></tr>
+<tr><td>62</td><td>object_document_template_display_name</td><td>string</td><td></td><td>Object document template display name</td></tr>
+<tr><td>63</td><td>object_document_template_id</td><td>string: UUID</td><td></td><td>Object document template id</td></tr>
+<tr><td>64</td><td>object_document_template_type</td><td>string</td><td></td><td>Object document template type</td></tr>
+<tr><td>65</td><td>object_document_package_item_display_name</td><td>string: UUID</td><td></td><td>Object document package item display name</td></tr>
+<tr><td>66</td><td>object_document_package_item_id</td><td>string: UUID</td><td></td><td>Object document package item id</td></tr>
+<tr><td>67</td><td>object_email_notification_display_name</td><td>string: UUID</td><td></td><td>Object email notification display name</td></tr>
+<tr><td>68</td><td>object_email_notification_id</td><td>string: UUID</td><td></td><td>Object email notification id</td></tr>
+<tr><td>69</td><td>object_exchange_rate_display_name</td><td>string</td><td></td><td>Object exchange rate display name</td></tr>
+<tr><td>70</td><td>object_exchange_rate_id</td><td>string</td><td></td><td>Object exchange rate id</td></tr>
+<tr><td>71</td><td>object_expense_code</td><td>string</td><td></td><td>Object expense code</td></tr>
+<tr><td>72</td><td>object_expense_display_name</td><td>string</td><td></td><td>Object expense display name</td></tr>
+<tr><td>73</td><td>object_expense_id</td><td>string: UUID</td><td></td><td>Object expense id</td></tr>
+<tr><td>74</td><td>object_expense_type</td><td>string</td><td></td><td>Object expense type</td></tr>
+<tr><td>75</td><td>object_expense_item_code</td><td>number</td><td></td><td>Object expense item code</td></tr>
+<tr><td>76</td><td>object_expense_item_display_name</td><td>string</td><td></td><td>Object expense item display name</td></tr>
+<tr><td>77</td><td>object_expense_item_id</td><td>string: UUID</td><td></td><td>Object expense item id</td></tr>
+<tr><td>78</td><td>object_forecast_adjustment_display_name</td><td>string</td><td></td><td>Object forecast adjustment display name</td></tr>
+<tr><td>79</td><td>object_forecast_adjustment_id</td><td>string: UUID</td><td></td><td>Object forecast adjustment id</td></tr>
+<tr><td>80</td><td>object_form_definition_display_name</td><td>string</td><td></td><td>Object form definition display name</td></tr>
+<tr><td>81</td><td>object_form_definition_id</td><td>string: UUID</td><td></td><td>Object form definition id</td></tr>
+<tr><td>82</td><td>object_form_instance_code</td><td>number</td><td></td><td>Object form instance code</td></tr>
+<tr><td>83</td><td>object_form_instance_display_name</td><td>string</td><td></td><td>Object form instance display name</td></tr>
+<tr><td>84</td><td>object_form_instance_id</td><td>string: UUID</td><td></td><td>Object form instance id</td></tr>
+<tr><td>85</td><td>object_form_instance_type</td><td>string</td><td></td><td>Object form instance type</td></tr>
+<tr><td>86</td><td>object_form_item_display_name</td><td>string: UUID</td><td></td><td>Object form item display name</td></tr>
+<tr><td>87</td><td>object_form_item_id</td><td>string: UUID</td><td></td><td>Object form item id</td></tr>
+<tr><td>88</td><td>object_from_display_name</td><td>string</td><td></td><td>Object from display name</td></tr>
+<tr><td>89</td><td>object_from_id</td><td>string: UUID</td><td></td><td>Object from id</td></tr>
+<tr><td>90</td><td>object_group_key</td><td>string</td><td></td><td>Object group key</td></tr>
+<tr><td>91</td><td>object_id</td><td>string: UUID</td><td></td><td>Object id</td></tr>
+<tr><td>92</td><td>object_key</td><td>string</td><td></td><td>Object key</td></tr>
+<tr><td>93</td><td>object_main_contract_code</td><td>number</td><td></td><td>Object main contract code</td></tr>
+<tr><td>94</td><td>object_main_contract_display_name</td><td>string</td><td></td><td>Object main contract display name</td></tr>
+<tr><td>95</td><td>object_main_contract_id</td><td>string: UUID</td><td></td><td>Object main contract id</td></tr>
+<tr><td>96</td><td>object_main_contract_is_mile_stone</td><td>string</td><td></td><td>Object main contract is mile stone</td></tr>
+<tr><td>97</td><td>object_main_contract_type</td><td>string</td><td></td><td>Object main contract type</td></tr>
+<tr><td>98</td><td>object_main_contract_item_code</td><td>number</td><td></td><td>Object main contract item code</td></tr>
+<tr><td>99</td><td>object_main_contract_item_display_name</td><td>string</td><td></td><td>Object main contract item display name</td></tr>
+<tr><td>100</td><td>object_main_contract_item_id</td><td>string: UUID</td><td></td><td>Object main contract item id</td></tr>
+<tr><td>101</td><td>object_maincontract_display_name</td><td>string</td><td></td><td>Object maincontract display name</td></tr>
+<tr><td>102</td><td>object_maincontract_id</td><td>string: UUID</td><td></td><td>Object maincontract id</td></tr>
+<tr><td>103</td><td>object_markup_formula_display_name</td><td>string</td><td></td><td>Object markup formula display name</td></tr>
+<tr><td>104</td><td>object_markup_formula_id</td><td>string: UUID</td><td></td><td>Object markup formula id</td></tr>
+<tr><td>105</td><td>object_milestone_display_name</td><td>string</td><td></td><td>Object milestone display name</td></tr>
+<tr><td>106</td><td>object_milestone_id</td><td>string: UUID</td><td></td><td>Object milestone id</td></tr>
+<tr><td>107</td><td>object_milestone_type</td><td>string</td><td></td><td>Object milestone type</td></tr>
+<tr><td>108</td><td>object_oco_display_name</td><td>string</td><td></td><td>Object oco display name</td></tr>
+<tr><td>109</td><td>object_oco_id</td><td>string: UUID</td><td></td><td>Object oco id</td></tr>
+<tr><td>110</td><td>object_parent_display_name</td><td>string</td><td></td><td>Object parent display name</td></tr>
+<tr><td>111</td><td>object_parent_id</td><td>string: UUID</td><td></td><td>Object parent id</td></tr>
+<tr><td>112</td><td>object_payment_display_name</td><td>string</td><td></td><td>Object payment display name</td></tr>
+<tr><td>113</td><td>object_payment_id</td><td>string: UUID</td><td></td><td>Object payment id</td></tr>
+<tr><td>114</td><td>object_payment_item_code</td><td>number</td><td></td><td>Object payment item code</td></tr>
+<tr><td>115</td><td>object_payment_item_display_name</td><td>string</td><td></td><td>Object payment item display name</td></tr>
+<tr><td>116</td><td>object_payment_item_id</td><td>string: UUID</td><td></td><td>Object payment item id</td></tr>
+<tr><td>117</td><td>object_payment_reference_display_name</td><td>string</td><td></td><td>Object payment reference display name</td></tr>
+<tr><td>118</td><td>object_payment_reference_id</td><td>string</td><td></td><td>Object payment reference id</td></tr>
+<tr><td>119</td><td>object_payment_reference_is_mile_stone</td><td>string</td><td></td><td>Object payment reference is mile stone</td></tr>
+<tr><td>120</td><td>object_payment_reference_paid_amount</td><td>string</td><td></td><td>Object payment reference paid amount</td></tr>
+<tr><td>121</td><td>object_payment_reference_reference</td><td>string</td><td></td><td>Object payment reference reference</td></tr>
+<tr><td>122</td><td>object_pco_display_name</td><td>string</td><td></td><td>Object pco display name</td></tr>
+<tr><td>123</td><td>object_pco_id</td><td>string: UUID</td><td></td><td>Object pco id</td></tr>
+<tr><td>124</td><td>object_permission_display_name</td><td>string: UUID</td><td></td><td>Object permission display name</td></tr>
+<tr><td>125</td><td>object_permission_id</td><td>string: UUID</td><td></td><td>Object permission id</td></tr>
+<tr><td>126</td><td>object_permission_level</td><td>string</td><td></td><td>Object permission level</td></tr>
+<tr><td>127</td><td>object_preset</td><td>string</td><td></td><td>Object preset</td></tr>
+<tr><td>128</td><td>object_proceed_step_display_name</td><td>string</td><td></td><td>Object proceed step display name</td></tr>
+<tr><td>129</td><td>object_proceed_step_id</td><td>string</td><td></td><td>Object proceed step id</td></tr>
+<tr><td>130</td><td>object_proceed_step_index</td><td>number</td><td></td><td>Object proceed step index</td></tr>
+<tr><td>131</td><td>object_proceed_step_task_definition_key</td><td>string</td><td></td><td>Object proceed step task definition key</td></tr>
+<tr><td>132</td><td>object_property_definition_display_name</td><td>string</td><td></td><td>Object property definition display name</td></tr>
+<tr><td>133</td><td>object_property_definition_id</td><td>string: UUID</td><td></td><td>Object property definition id</td></tr>
+<tr><td>134</td><td>object_property_definition_type</td><td>string</td><td></td><td>Object property definition type</td></tr>
+<tr><td>135</td><td>object_property_value_display_name</td><td>string: UUID</td><td></td><td>Object property value display name</td></tr>
+<tr><td>136</td><td>object_property_value_id</td><td>string: UUID</td><td></td><td>Object property value id</td></tr>
+<tr><td>137</td><td>object_rco_code</td><td>string</td><td></td><td>Object rco code</td></tr>
+<tr><td>138</td><td>object_rco_display_name</td><td>string</td><td></td><td>Object rco display name</td></tr>
+<tr><td>139</td><td>object_rco_id</td><td>string: UUID</td><td></td><td>Object rco id</td></tr>
+<tr><td>140</td><td>object_rco_is_mile_stone</td><td>string</td><td></td><td>Object rco is mile stone</td></tr>
+<tr><td>141</td><td>object_recipient</td><td>string</td><td></td><td>Object recipient</td></tr>
+<tr><td>142</td><td>object_resource_type</td><td>string</td><td></td><td>Object resource type</td></tr>
+<tr><td>143</td><td>object_rfq_display_name</td><td>string</td><td></td><td>Object rfq display name</td></tr>
+<tr><td>144</td><td>object_rfq_id</td><td>string: UUID</td><td></td><td>Object rfq id</td></tr>
+<tr><td>145</td><td>object_schedule_of_value_code</td><td>number</td><td></td><td>Object schedule of value code</td></tr>
+<tr><td>146</td><td>object_schedule_of_value_display_name</td><td>string</td><td></td><td>Object schedule of value display name</td></tr>
+<tr><td>147</td><td>object_schedule_of_value_id</td><td>string: UUID</td><td></td><td>Object schedule of value id</td></tr>
+<tr><td>148</td><td>object_sco_display_name</td><td>string</td><td></td><td>Object sco display name</td></tr>
+<tr><td>149</td><td>object_sco_id</td><td>string: UUID</td><td></td><td>Object sco id</td></tr>
+<tr><td>150</td><td>object_segment_display_name</td><td>string</td><td></td><td>Object segment display name</td></tr>
+<tr><td>151</td><td>object_segment_id</td><td>string: UUID</td><td></td><td>Object segment id</td></tr>
+<tr><td>152</td><td>object_segment_value_code</td><td>number</td><td></td><td>Object segment value code</td></tr>
+<tr><td>153</td><td>object_segment_value_display_name</td><td>number</td><td></td><td>Object segment value display name</td></tr>
+<tr><td>154</td><td>object_segment_value_id</td><td>string: UUID</td><td></td><td>Object segment value id</td></tr>
+<tr><td>155</td><td>object_source</td><td>string</td><td></td><td>Object source</td></tr>
+<tr><td>156</td><td>object_source_type</td><td>string</td><td></td><td>Object source type</td></tr>
+<tr><td>157</td><td>object_sub_cost_item_code</td><td>number</td><td></td><td>Object sub cost item code</td></tr>
+<tr><td>158</td><td>object_sub_cost_item_display_name</td><td>string</td><td></td><td>Object sub cost item display name</td></tr>
+<tr><td>159</td><td>object_sub_cost_item_id</td><td>string: UUID</td><td></td><td>Object sub cost item id</td></tr>
+<tr><td>160</td><td>object_sub_cost_item_type</td><td>string</td><td></td><td>Object sub cost item type</td></tr>
+<tr><td>161</td><td>object_subject_id</td><td>number</td><td></td><td>Object subject id</td></tr>
+<tr><td>162</td><td>object_subject_type</td><td>string</td><td></td><td>Object subject type</td></tr>
+<tr><td>163</td><td>object_tax_display_name</td><td>string: UUID</td><td></td><td>Object tax display name</td></tr>
+<tr><td>164</td><td>object_tax_id</td><td>string: UUID</td><td></td><td>Object tax id</td></tr>
+<tr><td>165</td><td>object_tax_association_association_type</td><td>string</td><td></td><td>Object tax association association type</td></tr>
+<tr><td>166</td><td>object_tax_association_display_name</td><td>string</td><td></td><td>Object tax association display name</td></tr>
+<tr><td>167</td><td>object_tax_association_id</td><td>string</td><td></td><td>Object tax association id</td></tr>
+<tr><td>168</td><td>object_tax_association_number</td><td>string</td><td></td><td>Object tax association number</td></tr>
+<tr><td>169</td><td>object_tax_formula_display_name</td><td>string</td><td></td><td>Object tax formula display name</td></tr>
+<tr><td>170</td><td>object_tax_formula_id</td><td>string: UUID</td><td></td><td>Object tax formula id</td></tr>
+<tr><td>171</td><td>object_tax_formula_item_display_name</td><td>string</td><td></td><td>Object tax formula item display name</td></tr>
+<tr><td>172</td><td>object_tax_formula_item_id</td><td>string</td><td></td><td>Object tax formula item id</td></tr>
+<tr><td>173</td><td>object_tax_formula_item_type</td><td>string</td><td></td><td>Object tax formula item type</td></tr>
+<tr><td>174</td><td>object_tax_item_display_name</td><td>string</td><td></td><td>Object tax item display name</td></tr>
+<tr><td>175</td><td>object_tax_item_id</td><td>string</td><td></td><td>Object tax item id</td></tr>
+<tr><td>176</td><td>object_template_display_name</td><td>string</td><td></td><td>Object template display name</td></tr>
+<tr><td>177</td><td>object_template_id</td><td>string: UUID</td><td></td><td>Object template id</td></tr>
+<tr><td>178</td><td>object_terminated_step_display_name</td><td>string</td><td></td><td>Object terminated step display name</td></tr>
+<tr><td>179</td><td>object_terminated_step_id</td><td>string</td><td></td><td>Object terminated step id</td></tr>
+<tr><td>180</td><td>object_terminated_step_index</td><td>number</td><td></td><td>Object terminated step index</td></tr>
+<tr><td>181</td><td>object_terminated_step_task_definition_key</td><td>string</td><td></td><td>Object terminated step task definition key</td></tr>
+<tr><td>182</td><td>object_terminology_display_name</td><td>string: UUID</td><td></td><td>Object terminology display name</td></tr>
+<tr><td>183</td><td>object_terminology_id</td><td>string: UUID</td><td></td><td>Object terminology id</td></tr>
+<tr><td>184</td><td>object_terminology_type</td><td>string</td><td></td><td>Object terminology type</td></tr>
+<tr><td>185</td><td>object_to</td><td>string</td><td></td><td>Object to</td></tr>
+<tr><td>186</td><td>object_tracking_item_instance_code</td><td>string</td><td></td><td>Object tracking item instance code</td></tr>
+<tr><td>187</td><td>object_tracking_item_instance_display_name</td><td>string</td><td></td><td>Object tracking item instance display name</td></tr>
+<tr><td>188</td><td>object_tracking_item_instance_id</td><td>string</td><td></td><td>Object tracking item instance id</td></tr>
+<tr><td>189</td><td>object_transference_display_name</td><td>string: UUID</td><td></td><td>Object transference display name</td></tr>
+<tr><td>190</td><td>object_transference_id</td><td>string: UUID</td><td></td><td>Object transference id</td></tr>
+<tr><td>191</td><td>object_type</td><td>string</td><td></td><td>Object type</td></tr>
+<tr><td>192</td><td>object_undefined_display_name</td><td>string</td><td></td><td>Object undefined display name</td></tr>
+<tr><td>193</td><td>object_undefined_id</td><td>string</td><td></td><td>Object undefined id</td></tr>
+<tr><td>194</td><td>object_verb_key</td><td>string</td><td></td><td>Object verb key</td></tr>
+<tr><td>195</td><td>object_workflow_condition_display_name</td><td>string: UUID</td><td></td><td>Object workflow condition display name</td></tr>
+<tr><td>196</td><td>object_workflow_condition_id</td><td>string: UUID</td><td></td><td>Object workflow condition id</td></tr>
+<tr><td>197</td><td>object_workflow_definition_display_name</td><td>string</td><td></td><td>Object workflow definition display name</td></tr>
+<tr><td>198</td><td>object_workflow_definition_id</td><td>string: UUID</td><td></td><td>Object workflow definition id</td></tr>
+<tr><td>199</td><td>object_workflow_instance_display_name</td><td>string</td><td></td><td>Object workflow instance display name</td></tr>
+<tr><td>200</td><td>object_workflow_instance_id</td><td>string: UUID</td><td></td><td>Object workflow instance id</td></tr>
+</tbody></table><h2><a name="cost_changes">cost_changes</a></h2>Change for values of a Cost object<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>6</td><td>change_type</td><td>string</td><td></td><td>Type identifier for the change</td></tr>
+<tr><td>7</td><td>before_value</td><td>string</td><td></td><td>Value of the changed field before the change</td></tr>
+<tr><td>8</td><td>after_value</td><td>string</td><td></td><td>Value of the changed field after the change</td></tr>
+</tbody></table><h2><a name="docs_activities">docs_activities</a></h2>Activities generated in ACC Build Document Management<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_approval_status</td><td>string</td><td></td><td>Approval status for this object</td></tr>
+<tr><td>8</td><td>object_collection_display_name</td><td>string</td><td></td><td>Collection Display name for this object</td></tr>
+<tr><td>9</td><td>object_collection_id</td><td>string: UUID</td><td></td><td>Collection id for this object</td></tr>
+<tr><td>10</td><td>object_collection_instance_index</td><td>number</td><td></td><td>Collection Instance index for this object</td></tr>
+<tr><td>11</td><td>object_collection_size</td><td>number</td><td></td><td>Collection size for this object</td></tr>
+<tr><td>12</td><td>object_display_name</td><td>string</td><td></td><td>Display name for this object</td></tr>
+<tr><td>13</td><td>object_file_name</td><td>string</td><td></td><td>File name for this object</td></tr>
+<tr><td>14</td><td>object_folder_display_name</td><td>string</td><td></td><td>Folder Display name for this object</td></tr>
+<tr><td>15</td><td>object_folder_id</td><td>string</td><td></td><td>Folder id for this object</td></tr>
+<tr><td>16</td><td>object_from_set_display_name</td><td>string</td><td></td><td>From Set Display name for this object</td></tr>
+<tr><td>17</td><td>object_from_set_id</td><td>string</td><td></td><td>From Set id for this object</td></tr>
+<tr><td>18</td><td>object_hyperlink_display_name</td><td>string</td><td></td><td>Hyperlink Display name for this object</td></tr>
+<tr><td>19</td><td>object_hyperlink_hyperlink_id</td><td>string</td><td></td><td>Hyperlink id for this object</td></tr>
+<tr><td>20</td><td>object_hyperlink_id</td><td>string</td><td></td><td>Hyperlink id for this object</td></tr>
+<tr><td>21</td><td>object_hyperlink_object_type</td><td>string</td><td></td><td>Hyperlink Object type for this object</td></tr>
+<tr><td>22</td><td>object_hyperlink_parent_folder_urn</td><td>string</td><td></td><td>Hyperlink Parent Folder urn for this object</td></tr>
+<tr><td>23</td><td>object_id</td><td>string</td><td></td><td>Id id for this object</td></tr>
+<tr><td>24</td><td>object_issuance_date</td><td>date: string</td><td></td><td>Issuance date for this object</td></tr>
+<tr><td>25</td><td>object_new_description</td><td>string</td><td></td><td>New description for this object</td></tr>
+<tr><td>26</td><td>object_new_issuance_date</td><td>date: string</td><td></td><td>New Issuance date for this object</td></tr>
+<tr><td>27</td><td>object_object_type</td><td>string</td><td></td><td>Object type for this object</td></tr>
+<tr><td>28</td><td>object_observer_id</td><td>string</td><td></td><td>Observer id for this object</td></tr>
+<tr><td>29</td><td>object_observer_name</td><td>string</td><td></td><td>Observer name for this object</td></tr>
+<tr><td>30</td><td>object_observer_type</td><td>string</td><td></td><td>Observer type for this object</td></tr>
+<tr><td>31</td><td>object_old_description</td><td>string</td><td></td><td>Old description for this object</td></tr>
+<tr><td>32</td><td>object_old_issuance_date</td><td>date: string</td><td></td><td>Old Issuance date for this object</td></tr>
+<tr><td>33</td><td>object_old_name</td><td>string</td><td></td><td>Old name for this object</td></tr>
+<tr><td>34</td><td>object_parent_folder_urn</td><td>string</td><td></td><td>Parent Folder urn for this object</td></tr>
+<tr><td>35</td><td>object_pending_name</td><td>string</td><td></td><td>Pending name for this object</td></tr>
+<tr><td>36</td><td>object_remove_reason</td><td>string</td><td></td><td>Remove reason for this object</td></tr>
+<tr><td>37</td><td>object_resource_type</td><td>string</td><td></td><td>Resource type for this object</td></tr>
+<tr><td>38</td><td>object_review_display_name</td><td>string</td><td></td><td>Review Display name for this object</td></tr>
+<tr><td>39</td><td>object_review_id</td><td>string: UUID</td><td></td><td>Review id for this object</td></tr>
+<tr><td>40</td><td>object_review_sequence_id</td><td>number</td><td></td><td>Review Sequence id for this object</td></tr>
+<tr><td>41</td><td>object_reviewer_id</td><td>string</td><td></td><td>Reviewer id for this object</td></tr>
+<tr><td>42</td><td>object_reviewer_name</td><td>string</td><td></td><td>Reviewer name for this object</td></tr>
+<tr><td>43</td><td>object_reviewer_type</td><td>string</td><td></td><td>Reviewer type for this object</td></tr>
+<tr><td>44</td><td>object_revision_number</td><td>string</td><td></td><td>Revision number for this object</td></tr>
+<tr><td>45</td><td>object_sequence_id</td><td>number</td><td></td><td>Sequence id for this object</td></tr>
+<tr><td>46</td><td>object_source_display_name</td><td>string</td><td></td><td>Source Display name for this object</td></tr>
+<tr><td>47</td><td>object_source_id</td><td>string</td><td></td><td>Source id for this object</td></tr>
+<tr><td>48</td><td>object_source_object_type</td><td>string</td><td></td><td>Source Object type for this object</td></tr>
+<tr><td>49</td><td>object_source_parent_folder_urn</td><td>string</td><td></td><td>Source Parent Folder urn for this object</td></tr>
+<tr><td>50</td><td>object_source_version</td><td>number</td><td></td><td>Source version for this object</td></tr>
+<tr><td>51</td><td>object_status</td><td>string</td><td></td><td>Status status for this object</td></tr>
+<tr><td>52</td><td>object_task_name</td><td>string</td><td></td><td>Task name for this object</td></tr>
+<tr><td>53</td><td>object_version</td><td>number</td><td></td><td>Version version for this object</td></tr>
+<tr><td>54</td><td>object_version_set_display_name</td><td>string</td><td></td><td>Version Set Display name for this object</td></tr>
+<tr><td>55</td><td>object_version_set_id</td><td>string: UUID</td><td></td><td>Version Set id for this object</td></tr>
+<tr><td>56</td><td>object_version_set_issuance_date</td><td>date: string</td><td></td><td>Version Set Issuance date for this object</td></tr>
+<tr><td>57</td><td>object_version_urn</td><td>string</td><td></td><td>Version urn for this object</td></tr>
+<tr><td>58</td><td>object_version_number</td><td>number</td><td></td><td>Version number for this object</td></tr>
+<tr><td>59</td><td>target_display_name</td><td>string</td><td></td><td>Display name for this target</td></tr>
+<tr><td>60</td><td>target_folder_display_name</td><td>string</td><td></td><td>Folder Display name for this target</td></tr>
+<tr><td>61</td><td>target_folder_id</td><td>string</td><td></td><td>Folder id for this target</td></tr>
+<tr><td>62</td><td>target_id</td><td>string</td><td></td><td>Id id for this target</td></tr>
+<tr><td>63</td><td>target_object_type</td><td>string</td><td></td><td>Object type for this target</td></tr>
+<tr><td>64</td><td>target_parent_folder_urn</td><td>string</td><td></td><td>Parent Folder urn for this target</td></tr>
+<tr><td>65</td><td>target_project_account_id</td><td>string: UUID</td><td></td><td>Project Account id for this target</td></tr>
+<tr><td>66</td><td>target_project_id</td><td>string: UUID</td><td></td><td>Project id for this target</td></tr>
+<tr><td>67</td><td>target_sequence_id</td><td>number</td><td></td><td>Sequence id for this target</td></tr>
+<tr><td>68</td><td>target_version</td><td>number</td><td></td><td>Version version for this target</td></tr>
+<tr><td>69</td><td>target_viewer_display_name</td><td>string</td><td></td><td>Viewer Display name for this target</td></tr>
+<tr><td>70</td><td>target_viewer_id</td><td>string</td><td></td><td>Viewer id for this target</td></tr>
+</tbody></table><h2><a name="docs_custom_attribute_constraints">docs_custom_attribute_constraints</a></h2>Document Management custom attribute constraints<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>6</td><td>id</td><td>number</td><td></td><td>ID for the custom attribute constraint</td></tr>
+<tr><td>7</td><td>attribute_id</td><td>number</td><td></td><td>ID of the attribute</td></tr>
+<tr><td>8</td><td>type</td><td>string</td><td></td><td>Type for the attribute</td></tr>
+<tr><td>9</td><td>length_type</td><td>string</td><td></td><td>Length type for the attribute</td></tr>
+<tr><td>10</td><td>max_length</td><td>number</td><td></td><td>Maximum length for the attribute</td></tr>
+<tr><td>11</td><td>min_length</td><td>number</td><td></td><td>Minimum length for the attribute</td></tr>
+<tr><td>12</td><td>default_value</td><td>string</td><td></td><td>Default value for the attribute</td></tr>
+</tbody></table><h2><a name="docs_custom_attributes">docs_custom_attributes</a></h2>Document Management custom attributes<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>6</td><td>id</td><td>number</td><td></td><td>ID for the custom attribute</td></tr>
+<tr><td>7</td><td>name</td><td>string</td><td></td><td>Name of the custom attribute</td></tr>
+<tr><td>8</td><td>value</td><td>string</td><td></td><td>New value of the custom attribute</td></tr>
+<tr><td>9</td><td>old_value</td><td>string</td><td></td><td>Old value of the custom attribute</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user creating the custom attribute</td></tr>
+<tr><td>11</td><td>updated_by</td><td>string</td><td></td><td>Autodesk ID of the user updating the custom attribute</td></tr>
+<tr><td>12</td><td>attribute_type</td><td>string</td><td></td><td>Custom attribute type</td></tr>
+</tbody></table><h2><a name="docs_naming_standards">docs_naming_standards</a></h2>Document Management Naming Standards<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>6</td><td>module</td><td>string</td><td></td><td>Module name for the naming standard</td></tr>
+<tr><td>7</td><td>name</td><td>string</td><td></td><td>Name of the naming standard</td></tr>
+<tr><td>8</td><td>old_name</td><td>string</td><td></td><td>Previous name of the naming standard</td></tr>
+<tr><td>9</td><td>new_name</td><td>string</td><td></td><td>New name of the naming standard</td></tr>
+<tr><td>10</td><td>upload_rule</td><td>string</td><td></td><td>Upload rule</td></tr>
+<tr><td>11</td><td>attribute_name</td><td>string</td><td></td><td>Attribute name</td></tr>
+</tbody></table><h2><a name="docs_permissions">docs_permissions</a></h2>Document Management Permissions<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>6</td><td>permission</td><td>string</td><td></td><td>Permission name</td></tr>
+</tbody></table><h2><a name="docs_standard_attributes">docs_standard_attributes</a></h2>Document Management Standard Attributes<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>6</td><td>id</td><td>number</td><td></td><td>ID of the attribute</td></tr>
+<tr><td>7</td><td>name</td><td>string</td><td></td><td>Name of the attribute</td></tr>
+<tr><td>8</td><td>attribute_type</td><td>string</td><td></td><td>Type for the attribute</td></tr>
+<tr><td>9</td><td>value</td><td>string</td><td></td><td>Value of the attribute</td></tr>
+</tbody></table><h2><a name="issues_activities">issues_activities</a></h2>Activities generated in ACC Build Issues Service<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_answer</td><td>string</td><td></td><td>Answer of the issue</td></tr>
+<tr><td>8</td><td>object_assigned_to</td><td>string</td><td></td><td>Assigned to user for the issue</td></tr>
+<tr><td>9</td><td>object_assigned_to_type</td><td>string</td><td></td><td>Assigned to type for the issue</td></tr>
+<tr><td>10</td><td>object_attachment_attachment_type</td><td>string</td><td></td><td>Attachement type for the issue</td></tr>
+<tr><td>11</td><td>object_attachment_display_name</td><td>string</td><td></td><td>Attachment Display name for the issue</td></tr>
+<tr><td>12</td><td>object_attachment_id</td><td>string: UUID</td><td></td><td>Attachement id for the issue</td></tr>
+<tr><td>13</td><td>object_attachment_name</td><td>string</td><td></td><td>Attachment name for the issue</td></tr>
+<tr><td>14</td><td>object_attachment_urn</td><td>string</td><td></td><td>Attachement urn type for the issue</td></tr>
+<tr><td>15</td><td>object_attachment_urn_type</td><td>string</td><td></td><td>Attachement urn for the issue</td></tr>
+<tr><td>16</td><td>object_comment_id</td><td>string: UUID</td><td></td><td>Comment ID for the issue</td></tr>
+<tr><td>17</td><td>object_created_at</td><td>timestamp: SQL</td><td></td><td>Created at timestamp for the issue</td></tr>
+<tr><td>18</td><td>object_display_name</td><td>number</td><td></td><td>Display name for the issue</td></tr>
+<tr><td>19</td><td>object_id</td><td>string: UUID</td><td></td><td>ID of the issue</td></tr>
+<tr><td>20</td><td>object_status</td><td>string</td><td></td><td>Status of the issue</td></tr>
+<tr><td>21</td><td>object_title</td><td>string</td><td></td><td>Title for the issue</td></tr>
+<tr><td>22</td><td>object_updated_at</td><td>timestamp: SQL</td><td></td><td>Updated timestamp for the issue</td></tr>
+</tbody></table><h2><a name="issues_changes">issues_changes</a></h2>Change for values of an Issue<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>6</td><td>change_type</td><td>string</td><td></td><td>Type identifier for the change</td></tr>
+<tr><td>7</td><td>before_value</td><td>string</td><td></td><td>Value of the changed field before the change</td></tr>
+<tr><td>8</td><td>after_value</td><td>string</td><td></td><td>Value of the changed field after the change</td></tr>
+</tbody></table><h2><a name="rfis_activities">rfis_activities</a></h2>Activities generated in ACC Build RFI Service<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_comment_body</td><td>string</td><td></td><td>Comment body for the RFI Comment</td></tr>
+<tr><td>8</td><td>object_comment_id</td><td>string: UUID</td><td></td><td>Comment ID for the RFI Comment</td></tr>
+<tr><td>9</td><td>object_comment_mentions</td><td>string</td><td></td><td>Mentions for the RFI Comment</td></tr>
+<tr><td>10</td><td>object_comment_rfi_id</td><td>string: UUID</td><td></td><td>ID of the RFI Comment</td></tr>
+<tr><td>11</td><td>object_comment_source</td><td>string</td><td></td><td>Source client of the RFI Comment</td></tr>
+<tr><td>12</td><td>object_display_name</td><td>string</td><td></td><td>RFI display name</td></tr>
+<tr><td>13</td><td>object_id</td><td>string: UUID</td><td></td><td>ID of the RFI</td></tr>
+</tbody></table><h2><a name="rfis_changes">rfis_changes</a></h2>Change for values of an RFI<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>3</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td>4</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>6</td><td>change_type</td><td>string</td><td></td><td>Type identifier for the change</td></tr>
+<tr><td>7</td><td>before_value</td><td>string</td><td></td><td>Value of the changed field before the change</td></tr>
+<tr><td>8</td><td>after_value</td><td>string</td><td></td><td>Value of the changed field after the change</td></tr>
+</tbody></table><h2><a name="sheets_activities">sheets_activities</a></h2>Activities generated in ACC Build Sheets Service<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_acc_collection_display_name</td><td>string</td><td></td><td>Object ACC Colledtion Display Name</td></tr>
+<tr><td>8</td><td>object_acc_collection_id</td><td>string</td><td></td><td>Object ACC Collection Id</td></tr>
+<tr><td>9</td><td>object_collection_display_name</td><td>string</td><td></td><td>Object Collection Display Name</td></tr>
+<tr><td>10</td><td>object_collection_id</td><td>string: UUID</td><td></td><td>Object Collection Id</td></tr>
+<tr><td>11</td><td>object_collection_instance_index</td><td>number</td><td></td><td>Object Collection Instance Index</td></tr>
+<tr><td>12</td><td>object_collection_size</td><td>number</td><td></td><td>Object Collection Size</td></tr>
+<tr><td>13</td><td>object_display_name</td><td>string</td><td></td><td>Object Display Name</td></tr>
+<tr><td>14</td><td>object_history_display_name</td><td>string</td><td></td><td>Object History Display Name</td></tr>
+<tr><td>15</td><td>object_history_id</td><td>string: UUID</td><td></td><td>Object History Id</td></tr>
+<tr><td>16</td><td>object_id</td><td>string: UUID</td><td></td><td>Object ID</td></tr>
+<tr><td>17</td><td>object_indirect</td><td>boolean</td><td></td><td>Object Indirect</td></tr>
+<tr><td>18</td><td>object_issuance_date</td><td>timestamp: SQL</td><td></td><td>Object Issuance Date</td></tr>
+<tr><td>19</td><td>object_object_type</td><td>string</td><td></td><td>Object Object Type</td></tr>
+<tr><td>20</td><td>object_source_file</td><td>string</td><td></td><td>Object Source File</td></tr>
+<tr><td>21</td><td>object_source_object_display_name</td><td>string</td><td></td><td>Object Source Collection Display Name</td></tr>
+<tr><td>22</td><td>object_source_object_history</td><td>string</td><td></td><td>Object Source Object History</td></tr>
+<tr><td>23</td><td>object_source_object_id</td><td>string: UUID</td><td></td><td>Object Source Object Id</td></tr>
+<tr><td>24</td><td>object_source_object_object_type</td><td>string</td><td></td><td>Object Source Collection Object Type</td></tr>
+<tr><td>25</td><td>object_source_object_project</td><td>string</td><td></td><td>Object Source Object Project</td></tr>
+<tr><td>26</td><td>object_source_object_version_set</td><td>string</td><td></td><td>Object Source Collection Version Set</td></tr>
+<tr><td>27</td><td>object_target_object_display_name</td><td>string</td><td></td><td>Object Target Collection Display Name</td></tr>
+<tr><td>28</td><td>object_target_object_history</td><td>string</td><td></td><td>Object Target Object History</td></tr>
+<tr><td>29</td><td>object_target_object_id</td><td>string: UUID</td><td></td><td>Object Target Object Id</td></tr>
+<tr><td>30</td><td>object_target_object_object_type</td><td>string</td><td></td><td>Object Target Collection Object Type</td></tr>
+<tr><td>31</td><td>object_target_object_project</td><td>string</td><td></td><td>Object Target Object Project</td></tr>
+<tr><td>32</td><td>object_target_object_version_set</td><td>string</td><td></td><td>Object Target Collection Version Set</td></tr>
+<tr><td>33</td><td>object_title</td><td>string</td><td></td><td>Object Title</td></tr>
+<tr><td>34</td><td>object_version_set_display_name</td><td>string</td><td></td><td>Object Version Collection Display Name</td></tr>
+<tr><td>35</td><td>object_version_set_id</td><td>string: UUID</td><td></td><td>Object Version Set Id</td></tr>
+<tr><td>36</td><td>object_version_set_issuance_date</td><td>timestamp: SQL</td><td></td><td>Object Version Collection Issuance Date</td></tr>
+<tr><td>37</td><td>target_acc_collection_display_name</td><td>string</td><td></td><td>Target ACC Collection Display Name</td></tr>
+<tr><td>38</td><td>target_acc_collection_id</td><td>string</td><td></td><td>Target ACC Collection Id</td></tr>
+<tr><td>39</td><td>target_display_name</td><td>string</td><td></td><td>Target Display Name</td></tr>
+<tr><td>40</td><td>target_history_display_name</td><td>string</td><td></td><td>Target History Display Name</td></tr>
+<tr><td>41</td><td>target_history_id</td><td>string</td><td></td><td>Target History Id</td></tr>
+<tr><td>42</td><td>target_id</td><td>string: UUID</td><td></td><td>Target ID</td></tr>
+<tr><td>43</td><td>target_issuance_date</td><td>timestamp: SQL</td><td></td><td>Target Issuance Date</td></tr>
+<tr><td>44</td><td>target_object_type</td><td>string</td><td></td><td>Target Object Type</td></tr>
+</tbody></table><h2><a name="submittals_activities">submittals_activities</a></h2>Activities generated in ACC Build Submittals Service<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>object_assigned_to</td><td>string</td><td></td><td>The id of the assignee (Deprecated field, use ball in court fields instead)</td></tr>
+<tr><td>8</td><td>object_assigned_to_field</td><td>string</td><td></td><td>Indicator which field is ball in court (Deprecated field, use ball in court fields instead)</td></tr>
+<tr><td>9</td><td>object_attachment_category</td><td>string</td><td></td><td>ID of the attachment category</td></tr>
+<tr><td>10</td><td>object_attribute_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>11</td><td>object_attribute_type</td><td>string</td><td></td><td>The type of the attribute</td></tr>
+<tr><td>12</td><td>object_ball_in_court_type</td><td>string</td><td></td><td>Indicator which field is ball in court</td></tr>
+<tr><td>13</td><td>object_body</td><td>string</td><td></td><td>Body of the comment</td></tr>
+<tr><td>14</td><td>object_container_custom_identifier_sequence_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - global</li>
+<li>2 - spec</li></ul></td><td>Project current sequence type</td></tr>
+<tr><td>15</td><td>object_container_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>16</td><td>object_container_id</td><td>string: UUID</td><td></td><td>ID of the container</td></tr>
+<tr><td>17</td><td>object_container_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>18</td><td>object_created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>19</td><td>object_created_on</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created</td></tr>
+<tr><td>20</td><td>object_custom_identifier</td><td>string</td><td></td><td>The custom identifier of the item.</td></tr>
+<tr><td>21</td><td>object_custom_identifier_sort</td><td>string</td><td></td><td>Same value as 'custom_identifier' but this column has db collation in order to enable sorting by the custom identifier value.</td></tr>
+<tr><td>22</td><td>object_description</td><td>string</td><td></td><td>Description of the item</td></tr>
+<tr><td>23</td><td>object_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>24</td><td>object_entities_0_created_on</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created</td></tr>
+<tr><td>25</td><td>object_entities_0_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>26</td><td>object_entities_0_domain</td><td>string</td><td></td><td>The domain of the entity</td></tr>
+<tr><td>27</td><td>object_entities_0_id</td><td>string</td><td></td><td>ID of the entity</td></tr>
+<tr><td>28</td><td>object_entities_0_type</td><td>string</td><td></td><td>type of the entity</td></tr>
+<tr><td>29</td><td>object_entities_1_created_on</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created</td></tr>
+<tr><td>30</td><td>object_entities_1_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>31</td><td>object_entities_1_domain</td><td>string</td><td></td><td>The domain of the entity</td></tr>
+<tr><td>32</td><td>object_entities_1_id</td><td>string</td><td></td><td>id of the entity</td></tr>
+<tr><td>33</td><td>object_entities_1_type</td><td>string</td><td></td><td>type of the entity</td></tr>
+<tr><td>34</td><td>object_entities_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>35</td><td>object_entities_id</td><td>string</td><td></td><td>id of the entity</td></tr>
+<tr><td>36</td><td>object_entity_created_on</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created</td></tr>
+<tr><td>37</td><td>object_entity_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>38</td><td>object_entity_domain</td><td>string</td><td></td><td>The domain of the entity</td></tr>
+<tr><td>39</td><td>object_entity_id</td><td>string</td><td></td><td>id of the entity</td></tr>
+<tr><td>40</td><td>object_entity_type</td><td>string</td><td></td><td>type of the entity</td></tr>
+<tr><td>41</td><td>object_id</td><td>string: UUID</td><td></td><td>id of the entity</td></tr>
+<tr><td>42</td><td>object_identifier</td><td>number</td><td></td><td>identifier of the entity</td></tr>
+<tr><td>43</td><td>object_item_assigned_to_field</td><td>string</td><td></td><td>Indicator which field is ball in court</td></tr>
+<tr><td>44</td><td>object_item_ball_in_court_type</td><td>string</td><td></td><td>Indicator which field is ball in court</td></tr>
+<tr><td>45</td><td>object_item_custom_identifier</td><td>string</td><td></td><td>The custom identifier of the item.</td></tr>
+<tr><td>46</td><td>object_item_custom_identifier_sort</td><td>string</td><td></td><td>Same value as 'custom_identifier' but this column has db collation in order to enable sorting by the custom identifier value.</td></tr>
+<tr><td>47</td><td>object_item_description</td><td>string</td><td></td><td>Description of the item</td></tr>
+<tr><td>48</td><td>object_item_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>49</td><td>object_item_id</td><td>string: UUID</td><td></td><td>The ID for the Submittal.</td></tr>
+<tr><td>50</td><td>object_item_identifier</td><td>number</td><td></td><td>Identifier of the item. Created automatically</td></tr>
+<tr><td>51</td><td>object_item_lead_time</td><td>number</td><td></td><td>item's lead time</td></tr>
+<tr><td>52</td><td>object_item_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>53</td><td>object_item_priority</td><td>string</td><td></td><td>The item priority</td></tr>
+<tr><td>54</td><td>object_item_required_approval_date</td><td>date: string</td><td></td><td>item's required approval date</td></tr>
+<tr><td>55</td><td>object_item_required_date</td><td>date: string</td><td></td><td>item's required date</td></tr>
+<tr><td>56</td><td>object_item_required_on_job_date</td><td>date: string</td><td></td><td>Date and time for the item to be done on site</td></tr>
+<tr><td>57</td><td>object_item_response_comment</td><td>string</td><td></td><td>Response comment of the item (in addition to response id)</td></tr>
+<tr><td>58</td><td>object_item_response_id</td><td>string: UUID</td><td></td><td>ID of the response, if was added.</td></tr>
+<tr><td>59</td><td>object_item_revision</td><td>number</td><td></td><td>Revision of the item</td></tr>
+<tr><td>60</td><td>object_item_sequence_type_change</td><td>string</td><td></td><td>'sequence_before_change::sequence_after_change' sequence type</td></tr>
+<tr><td>61</td><td>object_item_state_id</td><td>string</td><td></td><td>State of the item</td></tr>
+<tr><td>62</td><td>object_item_status_id</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Required</li>
+<li>2 - Open</li>
+<li>3 - Closed</li>
+<li>4 - Void</li>
+<li>5 - Empty</li>
+<li>6 - Draft</li></ul></td><td>Status ID</td></tr>
+<tr><td>63</td><td>object_item_submitter_due_date</td><td>date: string</td><td></td><td>When the responsible contractor submission is due</td></tr>
+<tr><td>64</td><td>object_item_subsection</td><td>string</td><td></td><td>Sub spec section</td></tr>
+<tr><td>65</td><td>object_item_title</td><td>string</td><td></td><td>Title (name) of the item</td></tr>
+<tr><td>66</td><td>object_item_type_id</td><td>string: UUID</td><td></td><td>ID for the item type</td></tr>
+<tr><td>67</td><td>object_lead_time</td><td>number</td><td></td><td>item's lead time</td></tr>
+<tr><td>68</td><td>object_name_for_activity</td><td>string</td><td></td><td>The name of the activity</td></tr>
+<tr><td>69</td><td>object_new_value</td><td>string</td><td></td><td>The new value</td></tr>
+<tr><td>70</td><td>object_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>71</td><td>object_old_value</td><td>string</td><td></td><td>The old value</td></tr>
+<tr><td>72</td><td>object_package</td><td>string</td><td></td><td>The related package of the item</td></tr>
+<tr><td>73</td><td>object_priority</td><td>string</td><td></td><td>The priority of the item</td></tr>
+<tr><td>74</td><td>object_required_approval_date</td><td>date: string</td><td></td><td>item's required approval date</td></tr>
+<tr><td>75</td><td>object_required_date</td><td>date: string</td><td></td><td>item's required date</td></tr>
+<tr><td>76</td><td>object_required_on_job_date</td><td>date: string</td><td></td><td>Date and time for the item to be done on site</td></tr>
+<tr><td>77</td><td>object_resource_urns</td><td>string</td><td></td><td>URNS of the attachments</td></tr>
+<tr><td>78</td><td>object_response_comment</td><td>string</td><td></td><td>Response comment of the item (in addition to response id)</td></tr>
+<tr><td>79</td><td>object_response_id</td><td>string: UUID</td><td></td><td>ID of the response, if was added.</td></tr>
+<tr><td>80</td><td>object_revision</td><td>number</td><td></td><td>Revision of the item</td></tr>
+<tr><td>81</td><td>object_sequence_type_change</td><td>string</td><td></td><td>'sequence_before_change::sequence_after_change' sequence type</td></tr>
+<tr><td>82</td><td>object_spec_container_custom_identifier_sequence_type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - global</li>
+<li>2 - spec</li></ul></td><td>Project current sequence type</td></tr>
+<tr><td>83</td><td>object_spec_container_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>84</td><td>object_spec_container_id</td><td>string</td><td></td><td>Id of the container</td></tr>
+<tr><td>85</td><td>object_spec_container_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>86</td><td>object_spec_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>87</td><td>object_spec_id</td><td>string: UUID</td><td></td><td>id of the spec</td></tr>
+<tr><td>88</td><td>object_spec_identifier</td><td>string</td><td></td><td>Identifier of the spec</td></tr>
+<tr><td>89</td><td>object_spec_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>90</td><td>object_state_from_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>91</td><td>object_state_from_id</td><td>string</td><td></td><td>The old state of the item</td></tr>
+<tr><td>92</td><td>object_state_from_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>93</td><td>object_state_id</td><td>string</td><td></td><td>State of the item</td></tr>
+<tr><td>94</td><td>object_state_to_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>95</td><td>object_state_to_id</td><td>string</td><td></td><td>The new state of the item</td></tr>
+<tr><td>96</td><td>object_state_to_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>97</td><td>object_status_id</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Required</li>
+<li>2 - Open</li>
+<li>3 - Closed</li>
+<li>4 - Void</li>
+<li>5 - Empty</li>
+<li>6 - Draft</li></ul></td><td>Status ID</td></tr>
+<tr><td>98</td><td>object_step_id</td><td>string: UUID</td><td></td><td>ID of the parent step</td></tr>
+<tr><td>99</td><td>object_step_number</td><td>number</td><td></td><td>The order of the step in the review workflow</td></tr>
+<tr><td>100</td><td>object_steps</td><td>string</td><td></td><td>Array of steps</td></tr>
+<tr><td>101</td><td>object_submitter_due_date</td><td>date: string</td><td></td><td>When the responsible contractor submission is due</td></tr>
+<tr><td>102</td><td>object_subsection</td><td>string</td><td></td><td>Sub spec section</td></tr>
+<tr><td>103</td><td>object_task_id</td><td>string: UUID</td><td></td><td>ID of the task</td></tr>
+<tr><td>104</td><td>object_tasks</td><td>string</td><td></td><td>Array of tasks</td></tr>
+<tr><td>105</td><td>object_title</td><td>string</td><td></td><td>Title (name) of the item</td></tr>
+<tr><td>106</td><td>object_type_container_custom_identifier_sequence_type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - global</li>
+<li>2 - spec</li></ul></td><td>Project current sequence type</td></tr>
+<tr><td>107</td><td>object_type_container_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>108</td><td>object_type_container_id</td><td>string</td><td></td><td>Id of the container</td></tr>
+<tr><td>109</td><td>object_type_container_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>110</td><td>object_type_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>111</td><td>object_type_id</td><td>string: UUID</td><td></td><td>ID for the type</td></tr>
+<tr><td>112</td><td>object_type_is_active</td><td>boolean</td><td></td><td>Is the type active</td></tr>
+<tr><td>113</td><td>object_type_key</td><td>string</td><td></td><td>The key of the object</td></tr>
+<tr><td>114</td><td>object_type_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>115</td><td>object_type_platform_id</td><td>string</td><td></td><td>For default types</td></tr>
+<tr><td>116</td><td>object_type_value</td><td>string</td><td></td><td>Value of the type</td></tr>
+<tr><td>117</td><td>object_type_identifier</td><td>string: UUID</td><td></td><td>Identifier of the type</td></tr>
+<tr><td>118</td><td>object_urn</td><td>string</td><td></td><td>URN of the attachment</td></tr>
+<tr><td>119</td><td>object_urn_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - oss</li>
+<li>2 - dm</li></ul></td><td>The type of the urn</td></tr>
+<tr><td>120</td><td>object_watchers</td><td>string</td><td></td><td>Watchers array</td></tr>
+<tr><td>121</td><td>target_assigned_to_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>122</td><td>target_assigned_to_human_readable_company</td><td>string</td><td></td><td>Human readable company name of the assignee (Deprecated field, use ball in court fields instead)</td></tr>
+<tr><td>123</td><td>target_assigned_to_human_readable_name</td><td>string</td><td></td><td>Human readable name of the assignee (Deprecated field, use ball in court fields instead)</td></tr>
+<tr><td>124</td><td>target_assigned_to_id</td><td>string</td><td></td><td>The id of the assignee (Deprecated field, use ball in court fields instead)</td></tr>
+<tr><td>125</td><td>target_assigned_to_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>126</td><td>target_assigned_to_autodesk_id</td><td>string</td><td></td><td>The id of the assignee (Deprecated field, use ball in court fields instead)</td></tr>
+<tr><td>127</td><td>target_assigned_to_roles</td><td>string</td><td></td><td>The array of related roles (Deprecated field, use ball in court fields instead)</td></tr>
+<tr><td>128</td><td>target_assigned_to_field</td><td>string</td><td></td><td>Indicator which field is ball in court (Deprecated field, use ball in court fields instead)</td></tr>
+<tr><td>129</td><td>target_ball_in_court_type</td><td>string</td><td></td><td>Indicator which field is ball in court</td></tr>
+<tr><td>130</td><td>target_container_custom_identifier_sequence_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - global</li>
+<li>2 - spec</li></ul></td><td>Project current sequence type</td></tr>
+<tr><td>131</td><td>target_container_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>132</td><td>target_container_id</td><td>string: UUID</td><td></td><td>ID of the container</td></tr>
+<tr><td>133</td><td>target_container_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>134</td><td>target_custom_identifier</td><td>string</td><td></td><td>The custom identifier of the item.</td></tr>
+<tr><td>135</td><td>target_custom_identifier_sort</td><td>string</td><td></td><td>Same value as 'custom_identifier' but this column has db collation in order to enable sorting by the custom identifier value.</td></tr>
+<tr><td>136</td><td>target_description</td><td>string</td><td></td><td>Description of the item</td></tr>
+<tr><td>137</td><td>target_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>138</td><td>target_id</td><td>string</td><td></td><td>ID of the target</td></tr>
+<tr><td>139</td><td>target_identifier</td><td>number</td><td></td><td>Identifier of the target</td></tr>
+<tr><td>140</td><td>target_lead_time</td><td>number</td><td></td><td>item's lead time</td></tr>
+<tr><td>141</td><td>target_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>142</td><td>target_package_container_custom_identifier_sequence_type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - global</li>
+<li>2 - spec</li></ul></td><td>Project current sequence type</td></tr>
+<tr><td>143</td><td>target_package_container_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>144</td><td>target_package_container_id</td><td>string: UUID</td><td></td><td>Id of the container</td></tr>
+<tr><td>145</td><td>target_package_container_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>146</td><td>target_package_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>147</td><td>target_package_id</td><td>string: UUID</td><td></td><td>Id of the package</td></tr>
+<tr><td>148</td><td>target_package_identifier</td><td>number</td><td></td><td>Identifier of the package</td></tr>
+<tr><td>149</td><td>target_package_is_deleted</td><td>boolean</td><td></td><td>is the package deleted</td></tr>
+<tr><td>150</td><td>target_package_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>151</td><td>target_package_spec_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>152</td><td>target_package_spec_id</td><td>string: UUID</td><td></td><td>Related spec id of the package</td></tr>
+<tr><td>153</td><td>target_package_spec_identifier</td><td>string</td><td></td><td>Related spec identifier of the package</td></tr>
+<tr><td>154</td><td>target_package_spec_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>155</td><td>target_priority</td><td>string</td><td></td><td>The priority of the item</td></tr>
+<tr><td>156</td><td>target_required_approval_date</td><td>date: string</td><td></td><td>item's required approval date</td></tr>
+<tr><td>157</td><td>target_required_date</td><td>date: string</td><td></td><td>item's required date</td></tr>
+<tr><td>158</td><td>target_required_on_job_date</td><td>date: string</td><td></td><td>Date and time for the item to be done on site</td></tr>
+<tr><td>159</td><td>target_response_comment</td><td>string</td><td></td><td>Response comment of the item (in addition to response id)</td></tr>
+<tr><td>160</td><td>target_response_id</td><td>string</td><td></td><td>ID of the response, if was added.</td></tr>
+<tr><td>161</td><td>target_revision</td><td>number</td><td></td><td>Revision of the item</td></tr>
+<tr><td>162</td><td>target_sequence_type_change</td><td>string</td><td></td><td>'sequence_before_change::sequence_after_change' sequence type</td></tr>
+<tr><td>163</td><td>target_spec_container_custom_identifier_sequence_type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - global</li>
+<li>2 - spec</li></ul></td><td>Project current sequence type</td></tr>
+<tr><td>164</td><td>target_spec_container_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>165</td><td>target_spec_container_id</td><td>string: UUID</td><td></td><td>Id of the container</td></tr>
+<tr><td>166</td><td>target_spec_container_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>167</td><td>target_spec_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>168</td><td>target_spec_id</td><td>string</td><td></td><td>Id of the spec</td></tr>
+<tr><td>169</td><td>target_spec_identifier</td><td>string</td><td></td><td>Identifier of the spec</td></tr>
+<tr><td>170</td><td>target_spec_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>171</td><td>target_state_id</td><td>string</td><td></td><td>State of the item</td></tr>
+<tr><td>172</td><td>target_status_id</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Required</li>
+<li>2 - Open</li>
+<li>3 - Closed</li>
+<li>4 - Void</li>
+<li>5 - Empty</li>
+<li>6 - Draft</li></ul></td><td>Status ID</td></tr>
+<tr><td>173</td><td>target_submitter_due_date</td><td>date: string</td><td></td><td>When the responsible contractor submission is due</td></tr>
+<tr><td>174</td><td>target_subsection</td><td>string</td><td></td><td>Sub spec section</td></tr>
+<tr><td>175</td><td>target_title</td><td>string</td><td></td><td>Title (name) of the item</td></tr>
+<tr><td>176</td><td>target_type_container_custom_identifier_sequence_type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - global</li>
+<li>2 - spec</li></ul></td><td>Project current sequence type</td></tr>
+<tr><td>177</td><td>target_type_container_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>178</td><td>target_type_container_id</td><td>string: UUID</td><td></td><td>ID of the container</td></tr>
+<tr><td>179</td><td>target_type_container_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>180</td><td>target_type_display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>181</td><td>target_type_id</td><td>string: UUID</td><td></td><td>ID for the type</td></tr>
+<tr><td>182</td><td>target_type_is_active</td><td>boolean</td><td></td><td>Is the type active</td></tr>
+<tr><td>183</td><td>target_type_key</td><td>string</td><td></td><td>The key of the target</td></tr>
+<tr><td>184</td><td>target_type_object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>185</td><td>target_type_platform_id</td><td>string</td><td></td><td>For default types</td></tr>
+<tr><td>186</td><td>target_type_value</td><td>string</td><td></td><td>Value of the type</td></tr>
+<tr><td>187</td><td>target_type_identifier</td><td>string: UUID</td><td></td><td>Identifier of the target</td></tr>
+</tbody></table><h2><a name="submittals_object_ball_in_court_companies">submittals_object_ball_in_court_companies</a></h2>The object ball in court companies of the activity<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>7</td><td>human_readable_name</td><td>string</td><td></td><td>Human readable name of the company</td></tr>
+<tr><td>8</td><td>id</td><td>string</td><td></td><td>Member group id of the company</td></tr>
+<tr><td>9</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>10</td><td>autodesk_id</td><td>string</td><td></td><td>Member group id of the company</td></tr>
+</tbody></table><h2><a name="submittals_object_ball_in_court_roles">submittals_object_ball_in_court_roles</a></h2>The object ball in court roles of the activity<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>7</td><td>human_readable_name</td><td>string</td><td></td><td>Human readable name of the role</td></tr>
+<tr><td>8</td><td>id</td><td>string</td><td></td><td>Member group id of the role</td></tr>
+<tr><td>9</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>10</td><td>autodesk_id</td><td>string</td><td></td><td>Member group id of the role</td></tr>
+</tbody></table><h2><a name="submittals_object_ball_in_court_users">submittals_object_ball_in_court_users</a></h2>The object ball in court users of the activity<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>7</td><td>human_readable_company</td><td>string</td><td></td><td>Human readable company name of the related user</td></tr>
+<tr><td>8</td><td>human_readable_name</td><td>string</td><td></td><td>Human readable name of the user</td></tr>
+<tr><td>9</td><td>id</td><td>string</td><td></td><td>Autodesk id of the user</td></tr>
+<tr><td>10</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>11</td><td>autodesk_id</td><td>string</td><td></td><td>Autodesk id of the user</td></tr>
+<tr><td>12</td><td>roles</td><td>string</td><td></td><td>The array of related roles of the user</td></tr>
+</tbody></table><h2><a name="submittals_target_ball_in_court_companies">submittals_target_ball_in_court_companies</a></h2>The target ball in court companies of the activity<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>7</td><td>human_readable_name</td><td>string</td><td></td><td>Human readable name of the company</td></tr>
+<tr><td>8</td><td>id</td><td>string</td><td></td><td>Member group id of the company</td></tr>
+<tr><td>9</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>10</td><td>autodesk_id</td><td>string</td><td></td><td>Member group id of the company</td></tr>
+</tbody></table><h2><a name="submittals_target_ball_in_court_roles">submittals_target_ball_in_court_roles</a></h2>The target ball in court roles of the activity<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>7</td><td>human_readable_name</td><td>string</td><td></td><td>Human readable name of the role</td></tr>
+<tr><td>8</td><td>id</td><td>string</td><td></td><td>Member group id of the role</td></tr>
+<tr><td>9</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>10</td><td>autodesk_id</td><td>string</td><td></td><td>Member group id of the role</td></tr>
+</tbody></table><h2><a name="submittals_target_ball_in_court_users">submittals_target_ball_in_court_users</a></h2>The target ball in court users of the activity<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>7</td><td>human_readable_company</td><td>string</td><td></td><td>Human readable company name of the related user</td></tr>
+<tr><td>8</td><td>human_readable_name</td><td>string</td><td></td><td>Human readable name of the user</td></tr>
+<tr><td>9</td><td>id</td><td>string</td><td></td><td>Autodesk id of the user</td></tr>
+<tr><td>10</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>11</td><td>autodesk_id</td><td>string</td><td></td><td>Autodesk id of the user</td></tr>
+<tr><td>12</td><td>roles</td><td>string</td><td></td><td>The array of related roles of the user</td></tr>
+</tbody></table><h2><a name="submittals_target_steps">submittals_target_steps</a></h2>Review steps for ACC Build Submittal items<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>completed_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the step finished</td></tr>
+<tr><td>8</td><td>days_to_respond</td><td>number</td><td></td><td>Number of days that the reviewers have to respond</td></tr>
+<tr><td>9</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>10</td><td>due_date</td><td>date: string</td><td></td><td>Date for the item to be done with current state</td></tr>
+<tr><td>11</td><td>id</td><td>string: UUID</td><td></td><td>ID for the step</td></tr>
+<tr><td>12</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>13</td><td>started_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the step started</td></tr>
+<tr><td>14</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>not-started</li>
+<li>in-progress</li>
+<li>completed</li></ul></td><td>The status of the step</td></tr>
+<tr><td>15</td><td>step_number</td><td>number</td><td></td><td>The order of the step in the review workflow</td></tr>
+</tbody></table><h2><a name="submittals_target_tasks">submittals_target_tasks</a></h2>Review tasks for ACC Build Submittal items.<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>assigned_to</td><td>string</td><td></td><td>Autodesk User ID / Role member group ID / Company member group ID that the task is assigned to</td></tr>
+<tr><td>7</td><td>assigned_to_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - user</li>
+<li>2 - company</li>
+<li>3 - role</li></ul></td><td>Indication for assigned_to id type</td></tr>
+<tr><td>8</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>9</td><td>id</td><td>string: UUID</td><td></td><td>ID for the task</td></tr>
+<tr><td>10</td><td>is_required</td><td>boolean</td><td></td><td>Is the task a required task in the review step</td></tr>
+<tr><td>11</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>12</td><td>response_comment</td><td>string</td><td></td><td>Response comment of the task (in addition to response id)</td></tr>
+<tr><td>13</td><td>response_id</td><td>string: UUID</td><td></td><td>ID of the response, if was added.</td></tr>
+<tr><td>14</td><td>started_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the task started</td></tr>
+<tr><td>15</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>not-started</li>
+<li>in-progress</li>
+<li>completed</li></ul></td><td>The status of the task</td></tr>
+<tr><td>16</td><td>step</td><td>string: UUID</td><td></td><td>ID of the parent step</td></tr>
+</tbody></table><h2><a name="submittals_target_transition_attachments">submittals_target_transition_attachments</a></h2>The target transition attachments of the activity<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_by</td><td>string</td><td></td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>attachment_category</td><td>string</td><td></td><td>ID of the attachment category</td></tr>
+<tr><td>8</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>9</td><td>id</td><td>string: UUID</td><td></td><td>The id of the attachment</td></tr>
+<tr><td>10</td><td>item</td><td>string</td><td></td><td>object string id of related item</td></tr>
+<tr><td>11</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>12</td><td>resource_urns</td><td>string</td><td></td><td>URNS of the attachments</td></tr>
+<tr><td>13</td><td>revision</td><td>number</td><td></td><td>Revision of the item</td></tr>
+<tr><td>14</td><td>urn</td><td>string</td><td></td><td>URN of the attachment</td></tr>
+<tr><td>15</td><td>urn_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - oss</li>
+<li>2 - dm</li></ul></td><td>The type of the urn</td></tr>
+</tbody></table><h2><a name="submittals_target_watchers">submittals_target_watchers</a></h2>The target watchers of the activity<br/><span class="yellow_highlight">Date Range Extractions Supported - Maximum Date Range Allowed: 31 days - Default Date Range: YESTERDAY</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>activity_id</td><td>string</td><td></td><td>Activity ID for this event</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>activity_verb</td><td>string</td><td></td><td>Activity performed by the user</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The timestamp when the activity created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>display_name</td><td>string</td><td></td><td>The display name of the entity</td></tr>
+<tr><td>7</td><td>human_readable_company</td><td>string</td><td></td><td>The human readable company name of the watcher entity</td></tr>
+<tr><td>8</td><td>human_readable_name</td><td>string</td><td></td><td>The human readable name of the watcher entity</td></tr>
+<tr><td>9</td><td>id</td><td>string</td><td></td><td>The id of the watcher entity</td></tr>
+<tr><td>10</td><td>object_type</td><td>string</td><td></td><td>The object type of the entity</td></tr>
+<tr><td>11</td><td>autodesk_id</td><td>string</td><td></td><td>The id of the watcher entity</td></tr>
+<tr><td>12</td><td>roles</td><td>string</td><td></td><td>The array of related roles if the watcher is user</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Activities Data Set Verb Descriptions: Bridge</title>
+  	<style>
+    	body
+    	{
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left;
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+
+      #content
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+
+      #copyright p {
+      	color: #444;
+      	margin: 0px;
+      	padding: 0px;
+      	}
+
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>Activities Data Set Verb Descriptions: Bridge</h1>
+The Activities data set is more complex than the average Forma Data Schema data set due to the variable nature of payloads associated with the various "Activity Verbs" which define the particular activity
+taken in the system. For the Activities schema, there are several tables defined (one for each service) and for each of these table definitions, there are common columns
+and then many unique columns based on the particular service. The common columns included for all tables are:
+
+<ul>
+<li><b>activity_id:</b> Activity ID for this event</li>
+<li><b>bim360_account_id:</b> BIM 360 HQ Account ID</li>
+<li><b>bim360_project_id:</b> BIM 360 HQ Project ID</li>
+<li><b>activity_verb:</b> Activity performed by the user</li>
+<li><b>created_by:</b> Autodesk ID of the user performing the activity action</li>
+<li><b>created_at:</b> The timestamp when the activity created</li>
+</ul>
+
+After these standard columns there are many service specific columns for the table definition. Columns may or many not contain data depending on the Activity Verb
+in question. The following summary details the particular columns applicable for an Activity Verb. Also, for certain Activity Verbs there are Related Tables (in a SQL relational sense) that can be associated with the verb. These tables use the <b>activity_id</b> as
+the foreign key for lookups and when there is an applicable foreign table, they are noted in the details below.
+<p/>
+This description information is also made available programatically in the format of JSON files (one for each Activities table) in the <b>"schemas"</b> directory as part of every
+extract archive. The naming convention for this file is:
+
+<ul>
+<li><pre><b>activities_</b>&lt;service_group&gt;<b>_verb_column_details.json</b><pre></li>
+</ul>
+
+The description file is an array of JSON objects with two primary fields:
+
+<ul>
+<li><b>columns:</b> Relevant columns for the verb</li>
+<li><b>related_tables:</b> any tables with additional information on the verb in question</li>
+</ul>
+
+The following is an example JSON snippet from the Docs description file.
+<pre style="margin-left: 48px;font-size:10px;">
+ &lcub;
+   "activate-approval-workflow" : &lcub;
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ]
+   &rcub;,
+   "add-attribute-to-namingstandard" : &lcub;
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id",
+         "object_object_type"
+      ],
+      "related_tables" : [
+         "docs_naming_standards"
+      ]
+   &rcub;,
+   ...
+</pre>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li><h2>Activity Verbs</h2>Now that we have reviewed the data description for Activities data, the following is a detailed summary of 7 Activity Verbs for
+ the Bridge Schema along with their relevant columns and any related tables.
+<table>
+		<tr style="border:0;background-color:white;">
+
+			<td valign="top" style="border:0;background-color:white;">
+  			<ul>
+          <li><a href="#bridge-invite">bridge-invite</a></li><li><a href="#create-bridge">create-bridge</a></li>
+  			</ul>
+			</td>
+
+			<td valign="top" style="border:0;background-color:white;">
+  			<ul>
+          <li><a href="#create-bridge-automation">create-bridge-automation</a></li><li><a href="#delete-bridge">delete-bridge</a></li>
+  			</ul>
+			</td>
+
+			<td valign="top" style="border:0;background-color:white;">
+  			<ul>
+          <li><a href="#delete-bridge-automation">delete-bridge-automation</a></li><li><a href="#pause-bridge-automation">pause-bridge-automation</a></li>
+  			</ul>
+			</td>
+
+			<td valign="top" style="border:0;background-color:white;">
+  			<ul>
+          <li><a href="#resume-bridge-automation">resume-bridge-automation</a></li>
+  			</ul>
+			</td>
+
+		<tr>
+</table>
+<table><colgroup><col /><col /><col /></colgroup><tbody><tr id="header"><th>activity_verb</th><th>relevant_columns</th><th>related_tables</th></tr>
+<tr style="background-color: white;"><td valign="top"><a name="bridge-invite">bridge-invite</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity was created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_initiator_project_id</td><td>Represents the ID of the ACC project where the user initiated the action.</td></tr>
+<tr><td style="width: 25%;">object_recipient_email</td><td>The email address of the recipient invited to create a Bridge between projects.</td></tr>
+<tr><td style="width: 25%;">object_source_project_account_id</td><td>The account ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_display_name</td><td>The project name associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_id</td><td>The project ID associated with the source project.</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="create-bridge">create-bridge</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity was created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_initiator_project_id</td><td>Represents the ID of the ACC project where the user initiated the action.</td></tr>
+<tr><td style="width: 25%;">object_origin</td><td>Indicates the method by which the Bridged Project connection was established. For example, if the connection was made using the 'Bridge to a project' flow, the 'origin' field will be empty. For connections created through folder or sheet automation setup, the 'origin' field will contain 'create-bridge-automation'.</td></tr>
+<tr><td style="width: 25%;">object_source_project_account_id</td><td>The account ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_display_name</td><td>The project name associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_id</td><td>The project ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_account_id</td><td>The account ID associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_display_name</td><td>The project name associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_id</td><td>The project ID associated with the target project.</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="create-bridge-automation">create-bridge-automation</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity was created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_automation_type</td><td>Specifies the type of automation applied to an object. For example, 'acs_folder' for folder-based automations and 'acs_sheet' for sheet automations. To identify Design Collaboration team automations, look for entries where 'automationType' = 'acs_folder' and 'owner' = 'dc'. [e.g.: acs_folder, rfi]</td></tr>
+<tr><td style="width: 25%;">object_initiator_project_id</td><td>Represents the ID of the ACC project where the user initiated the action.</td></tr>
+<tr><td style="width: 25%;">object_item_name</td><td>Specifies the name of the item (such as a folder, sheet or team) that has an automation applied to it.</td></tr>
+<tr><td style="width: 25%;">object_owner</td><td>Contains the value 'dc' for Design Collaboration team automations. This helps users distinguish between folder and team automations when the 'automationType' = 'acs_folder'.</td></tr>
+<tr><td style="width: 25%;">object_source_project_account_id</td><td>The account ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_display_name</td><td>The project name associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_id</td><td>The project ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_account_id</td><td>The account ID associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_display_name</td><td>The project name associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_id</td><td>The project ID associated with the target project.</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="delete-bridge">delete-bridge</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity was created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_initiator_project_id</td><td>Represents the ID of the ACC project where the user initiated the action.</td></tr>
+<tr><td style="width: 25%;">object_source_project_account_id</td><td>The account ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_display_name</td><td>The project name associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_id</td><td>The project ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_account_id</td><td>The account ID associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_display_name</td><td>The project name associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_id</td><td>The project ID associated with the target project.</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="delete-bridge-automation">delete-bridge-automation</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity was created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_automation_type</td><td>Specifies the type of automation applied to an object. For example, 'acs_folder' for folder-based automations and 'acs_sheet' for sheet automations. To identify Design Collaboration team automations, look for entries where 'automationType' = 'acs_folder' and 'owner' = 'dc'. [e.g.: acs_folder, acs_sheet]</td></tr>
+<tr><td style="width: 25%;">object_initiator_project_id</td><td>Represents the ID of the ACC project where the user initiated the action.</td></tr>
+<tr><td style="width: 25%;">object_item_name</td><td>Specifies the name of the item (such as a folder, sheet or team) that has an automation applied to it.</td></tr>
+<tr><td style="width: 25%;">object_reason</td><td>Provides context on why an automation was deleted. For example, values may include 'AUTOMATION_DELETED', 'FOLDER_DELETED', 'SHEETS_COLLECTION_DELETED', 'SHEET_DELETED'.</td></tr>
+<tr><td style="width: 25%;">object_source_project_account_id</td><td>The account ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_display_name</td><td>The project name associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_id</td><td>The project ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_account_id</td><td>The account ID associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_display_name</td><td>The project name associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_id</td><td>The project ID associated with the target project.</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="pause-bridge-automation">pause-bridge-automation</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity was created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_automation_type</td><td>Specifies the type of automation applied to an object. For example, 'acs_folder' for folder-based automations and 'acs_sheet' for sheet automations. To identify Design Collaboration team automations, look for entries where 'automationType' = 'acs_folder' and 'owner' = 'dc'. [e.g.: acs_folder]</td></tr>
+<tr><td style="width: 25%;">object_initiator_project_id</td><td>Represents the ID of the ACC project where the user initiated the action.</td></tr>
+<tr><td style="width: 25%;">object_item_name</td><td>Specifies the name of the item (such as a folder, sheet or team) that has an automation applied to it.</td></tr>
+<tr><td style="width: 25%;">object_source_project_account_id</td><td>The account ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_display_name</td><td>The project name associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_id</td><td>The project ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_account_id</td><td>The account ID associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_display_name</td><td>The project name associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_id</td><td>The project ID associated with the target project.</td></tr>
+</table></td><td valign="top"></td></tr><tr style="background-color: white;"><td valign="top"><a name="resume-bridge-automation">resume-bridge-automation</td><td valign="top"><table style="width: 98%; margin: 3px 6px 12px 6px;"><tr><td style="width: 25%;">activity_id</td><td>Activity ID for this event</td></tr>
+<tr><td style="width: 25%;">bim360_account_id</td><td>BIM 360 HQ Account ID.</td></tr>
+<tr><td style="width: 25%;">bim360_project_id</td><td>BIM 360 HQ Project ID.</td></tr>
+<tr><td style="width: 25%;">created_by</td><td>Autodesk ID of the user performing the activity action</td></tr>
+<tr><td style="width: 25%;">created_at</td><td>The timestamp when the activity was created</td></tr>
+<tr><td style="width: 25%;">activity_verb</td><td>Activity performed by the user</td></tr>
+<tr><td style="width: 25%;">object_automation_type</td><td>Specifies the type of automation applied to an object. For example, 'acs_folder' for folder-based automations and 'acs_sheet' for sheet automations. To identify Design Collaboration team automations, look for entries where 'automationType' = 'acs_folder' and 'owner' = 'dc'. [e.g.: acs_folder]</td></tr>
+<tr><td style="width: 25%;">object_initiator_project_id</td><td>Represents the ID of the ACC project where the user initiated the action.</td></tr>
+<tr><td style="width: 25%;">object_item_name</td><td>Specifies the name of the item (such as a folder, sheet or team) that has an automation applied to it.</td></tr>
+<tr><td style="width: 25%;">object_owner</td><td>Contains the value 'dc' for Design Collaboration team automations. This helps users distinguish between folder and team automations when the 'automationType' = 'acs_folder'.</td></tr>
+<tr><td style="width: 25%;">object_source_project_account_id</td><td>The account ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_display_name</td><td>The project name associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_source_project_id</td><td>The project ID associated with the source project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_account_id</td><td>The account ID associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_display_name</td><td>The project name associated with the target project.</td></tr>
+<tr><td style="width: 25%;">object_target_project_id</td><td>The project ID associated with the target project.</td></tr>
+</table></td><td valign="top"></td></tr></tbody></table>
+
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. |
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> |
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+
+  </body>
+</html>

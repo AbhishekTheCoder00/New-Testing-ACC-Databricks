@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cdctransmittals: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>cdctransmittals Schema Description</h1>
+<b>Documentation Updated: </b>2025-12-08<br/>
+<ul><li><a href="#transmittal_documents">transmittal_documents</a></li>
+<li><a href="#transmittal_non_members">transmittal_non_members</a></li>
+<li><a href="#transmittal_recipients">transmittal_recipients</a></li>
+<li><a href="#workflow_transmittals">workflow_transmittals</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+
+        	<div class="message_highlight_note"><b>Beta Release</b><br>
+        		This is a Beta release of the cdctransmittals data set and schema definitions are subject to change or even possibly be removed from the final data set release. Thank you for your understanding with any future schema updates.
+          </div>
+<h2><a name="transmittal_documents">transmittal_documents</a></h2>Object to define a transmittal document - This is the Change Data Capture (CDC) enabled version of the transmittals.transmittal_documents table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique id for the transmittal document</td></tr>
+<tr><td>2</td><td>workflow_transmittal_id</td><td>string: UUID</td><td></td><td>Id for the transmittal the document belongs to</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>5</td><td>urn</td><td>string</td><td></td><td>The URN of the document</td></tr>
+<tr><td>6</td><td>file_name</td><td>string</td><td></td><td>File name of the document</td></tr>
+<tr><td>7</td><td>version_number</td><td>number</td><td></td><td>The specific version of the document</td></tr>
+<tr><td>8</td><td>revision_number</td><td>number</td><td></td><td>The specific revision of the document</td></tr>
+<tr><td>9</td><td>parent_folder_urn</td><td>string</td><td></td><td>The URN of the folder that the document belongs to</td></tr>
+<tr><td>10</td><td>last_modified_time</td><td>timestamp: SQL</td><td></td><td>Last modified time of the document</td></tr>
+<tr><td>11</td><td>last_modified_user_id</td><td>string</td><td></td><td>Id of the last modified user</td></tr>
+<tr><td>12</td><td>last_modified_user_name</td><td>string</td><td></td><td>Name of the last modified user</td></tr>
+<tr><td>13</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the transmittal document<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>14</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the transmittal document<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>15</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the transmittal_document was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>16</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="transmittal_non_members">transmittal_non_members</a></h2>Object to define a transmittal external recipient - This is the Change Data Capture (CDC) enabled version of the transmittals.transmittal_non_members table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique id for the transmittal external recipient</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>email</td><td>string</td><td></td><td>External user inputed email.</td></tr>
+<tr><td>5</td><td>first_name</td><td>string</td><td></td><td>External user inputed first name.</td></tr>
+<tr><td>6</td><td>last_name</td><td>string</td><td></td><td>External user inputed last name.</td></tr>
+<tr><td>7</td><td>company_name</td><td>string</td><td></td><td>External user inputed company name.</td></tr>
+<tr><td>8</td><td>role</td><td>string</td><td></td><td>External user inputed role name.</td></tr>
+<tr><td>9</td><td>workflow_transmittal_id</td><td>string: UUID</td><td></td><td>Id for the transmittal the recipient belongs to</td></tr>
+<tr><td>10</td><td>viewed_at</td><td>timestamp: SQL</td><td></td><td>The first time of when the recipient is viewed this transmittal</td></tr>
+<tr><td>11</td><td>downloaded_at</td><td>timestamp: SQL</td><td></td><td>The first time of when the recipient is downloaded this transmittal</td></tr>
+<tr><td>12</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the transmittal non member<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the transmittal non member<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>14</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the transmittal_non_member was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>15</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="transmittal_recipients">transmittal_recipients</a></h2>Object to define a transmittal recipient - This is the Change Data Capture (CDC) enabled version of the transmittals.transmittal_recipients table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique id for the transmittal recipient</td></tr>
+<tr><td>2</td><td>workflow_transmittal_id</td><td>string: UUID</td><td></td><td>Id for the transmittal the recipient belongs to</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">4</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>5</td><td>user_id</td><td>string: UUID</td><td></td><td>Id of user who owns the document</td></tr>
+<tr><td>6</td><td>user_name</td><td>string</td><td></td><td>Name of user who owns the document</td></tr>
+<tr><td>7</td><td>email</td><td>string</td><td></td><td>Email of user who owns the document</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the transmittal recipient<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the transmittal recipient<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>company_name</td><td>string</td><td></td><td>The name of recipient's company</td></tr>
+<tr><td>11</td><td>viewed_at</td><td>timestamp: SQL</td><td></td><td>The first time of when the recipient is viewed this transmittal</td></tr>
+<tr><td>12</td><td>downloaded_at</td><td>timestamp: SQL</td><td></td><td>The first time of when the recipient is downloaded this transmittal</td></tr>
+<tr><td>13</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the transmittal_recipient was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>14</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="workflow_transmittals">workflow_transmittals</a></h2>Object to define a transmittal with the basic information - This is the Change Data Capture (CDC) enabled version of the transmittals.workflow_transmittals table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Unique id for the transmittal</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>sequence_id</td><td>number</td><td></td><td>The sequence id of the transmittal</td></tr>
+<tr><td>5</td><td>title</td><td>string</td><td></td><td>Title of the transmittal</td></tr>
+<tr><td>6</td><td>status</td><td>number</td><td></td><td>Status of the transmittal, 1 =&gt; SENDING, 2 =&gt; COMPLETED, 3 =&gt; FAILED</td></tr>
+<tr><td>7</td><td>create_user_id</td><td>string: UUID</td><td></td><td>Id of user who create the transmittal</td></tr>
+<tr><td>8</td><td>create_user_name</td><td>string</td><td></td><td>Name of user who create the transmittal</td></tr>
+<tr><td>9</td><td>docs_count</td><td>number</td><td></td><td>The count of documents that belong to the transmittal</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Creation time of the transmittal<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Update time of the transmittal<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>create_user_company_id</td><td>string</td><td></td><td>Company id of the user who create the transmittal</td></tr>
+<tr><td>13</td><td>create_user_company_name</td><td>string</td><td></td><td>Company name of the user who create the transmittal</td></tr>
+<tr><td>14</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the workflow_transmittal was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>15</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

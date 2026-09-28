@@ -1,0 +1,119 @@
+name: ACC Connector CI/CD
+
+on:
+  push:
+    branches: [seond-new-staging-main-website]
+    paths:
+      - 'acc-connector/**'
+      - '.github/workflows/acc-connector-ci.yml'
+  pull_request:
+    branches: [seond-new-staging-main-website]
+    paths:
+      - 'acc-connector/**'
+      - '.github/workflows/acc-connector-ci.yml'
+
+defaults:
+  run:
+    working-directory: acc-connector
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  test:
+    name: Smoke tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: acc-connector/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Compile check
+        run: |
+          python -m py_compile \
+            backend/services/sync_service.py \
+            backend/clients/acc_client.py \
+            backend/services/bootstrap_service.py \
+            backend/clients/databricks_client.py \
+            backend/repositories/state_store.py \
+            app.py \
+            notebooks/auto_cdc_pipeline.py \
+            notebooks/auto_cdc_cdc_pipeline.py \
+            backend/services/provisioning/bootstrap_steps.py \
+            backend/services/sync/sync_steps.py \
+            backend/services/m2m/ssa_provisioner.py \
+            backend/services/m2m/ssa_token_service.py \
+            backend/services/m2m/dbx_token_service.py \
+            backend/services/m2m/provisioning_probe.py \
+            backend/services/m2m/connection_service.py \
+            backend/services/m2m/connection_bootstrap.py \
+            backend/services/m2m/connection_runner.py \
+            backend/services/m2m/scheduler.py \
+            backend/routes/portal_routes.py \
+            backend/routes/onboarding_routes.py \
+            backend/routes/connection_routes.py \
+            backend/utils/tenant_auth.py
+
+      - name: Unit tests
+        env:
+          SECRET_KEY: ci-test-dummy-key-not-used-in-production
+        run: python -m unittest discover -s tests
+
+      - name: Frontend state tests
+        run: |
+          node tests/sync_button_state.test.js
+          node tests/portal_state.test.js
+
+      - name: Offline smoke
+        env:
+          SECRET_KEY: ci-smoke-dummy-key-not-used-in-production
+        run: python scripts/smoke_check.py
+
+  deploy-dev:
+    name: Deploy Development
+    needs: test
+    if: >-
+      vars.ENABLE_DEPLOY == 'true' &&
+      github.ref == 'refs/heads/develop' &&
+      github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Dev EC2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DEPLOY_HOST: ${{ secrets.DEV_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          PUBLIC_HOST: ${{ secrets.DEV_PUBLIC_HOST }}
+        run: bash scripts/ci_deploy.sh
+
+  deploy-staging:
+    name: Deploy Staging
+    needs: test
+    if: >-
+      vars.ENABLE_DEPLOY == 'true' &&
+      github.ref == 'refs/heads/seond-new-staging-main-website' &&
+      github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Staging EC2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DEPLOY_HOST: ${{ secrets.STAGING_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          PUBLIC_HOST: ${{ secrets.STAGING_PUBLIC_HOST }}
+        run: bash scripts/ci_deploy.sh
+
+ 

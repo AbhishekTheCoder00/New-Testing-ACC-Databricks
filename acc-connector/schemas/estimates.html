@@ -1,0 +1,545 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>estimates: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>estimates Schema Description</h1>
+<b>Documentation Updated: </b>2025-10-21<br/>
+<ul><li><a href="#cost_markup_formula_bond_levels">cost_markup_formula_bond_levels</a></li>
+<li><a href="#cost_markup_formula_items">cost_markup_formula_items</a></li>
+<li><a href="#cost_markup_formula_sections">cost_markup_formula_sections</a></li>
+<li><a href="#cost_markup_formulas">cost_markup_formulas</a></li>
+<li><a href="#equipment_cost_calculations">equipment_cost_calculations</a></li>
+<li><a href="#estimation_instances">estimation_instances</a></li>
+<li><a href="#labor_cost_calculations">labor_cost_calculations</a></li>
+<li><a href="#material_cost_calculations">material_cost_calculations</a></li>
+<li><a href="#settings">settings</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+
+        	<div class="message_highlight_note"><b>Beta Release</b><br>
+        		This is a Beta release of the estimates data set and schema definitions are subject to change or even possibly be removed from the final data set release. Thank you for your understanding with any future schema updates.
+          </div>
+<h2><a name="cost_markup_formula_bond_levels">cost_markup_formula_bond_levels</a></h2>Table for cost markup formula bond levels<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource Identifier</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.</td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> cost_markup_formula_items<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>order</td><td>number</td><td></td><td>The order of the bond level within the parent markup item. The first bond level in the item starts with a value of 0.</td></tr>
+<tr><td>6</td><td>amount</td><td>number</td><td></td><td>The amount for the bond level.<br/><br/>This column is nullable. If the value is null, it means no amount has been specified and this level will not contribute to markup calculation. If specified, the valid range for this is: 0 < x < 100000000</td></tr>
+<tr><td>7</td><td>percentage</td><td>number</td><td></td><td>The percentage for the bond level. <br/><br/>This column is nullable. If the value is null, it means no percentage has been specified and this level will not contribute to markup calculation. If specified, the valid range for this is: 0 <= x <= 999</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table><h2><a name="cost_markup_formula_items">cost_markup_formula_items</a></h2>Table for cost markup formula items<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource identifier</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data. <br/><br/>This column is nullable. If the value is null, it means this is an account-level settings.</td></tr>
+<tr><td>4</td><td>section_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> cost_markup_formula_sections<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>description</td><td>string: null</td><td></td><td>Item description<br/><br/>This column is nullable. If the value is null, it means no description has been specified.</td></tr>
+<tr><td>6</td><td>order</td><td>number</td><td></td><td>The order of the current item within the parent markup section. The first item in the formula starts with an value of 0.</td></tr>
+<tr><td>7</td><td>markup_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>MARKUP</li>
+<li>MARGIN</li>
+<li>LUMP_SUM</li>
+<li>BOND</li></ul></td><td>Cost markup type</td></tr>
+<tr><td>8</td><td>cost_basis_source</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>CURRENT</li>
+<li>PRECEDING</li>
+<li>PRECEDING_MARKUP</li>
+<li>ESTIMATE</li>
+<li>SECTION</li>
+<li>PROJECT.</li></ul></td><td>Cost basis source</td></tr>
+<tr><td>9</td><td>cost_basis_section_id</td><td>string: UUID</td><td></td><td>The section id if the cost_basis_source is SECTION. Otherwise, this column will be set to null.<br/><br/>FOREIGN_KEY:<br/>cost_markup_formula_sections, id</td></tr>
+<tr><td>10</td><td>amount</td><td>number</td><td></td><td>The amount to apply when the markup type is LUMP_SUM.<br/><br/>This column is nullable. If the value is null, it means the amount has not been specified. If specified, the valid range for the value is: 0 <= x <= 100000000</td></tr>
+<tr><td>11</td><td>percentage</td><td>number</td><td></td><td>The percentage to apply when the markup type is MARKUP or MARGIN.<br/><br/>This column is nullable. If the value is null, it means the percentage has not been specified. If specified, the valid range for the value is: 0 <= x <= 999</td></tr>
+<tr><td>12</td><td>total</td><td>number</td><td></td><td>Total markup for the item.<br/><br/>This column is nullable. If this value is null, it means the total is not available. If specified, the valid range for the value is: 0 <= x <= 100000000</td></tr>
+<tr><td>13</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>14</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table><h2><a name="cost_markup_formula_sections">cost_markup_formula_sections</a></h2>Table for cost markup formula sections<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource identifier</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.</td></tr>
+<tr><td>4</td><td>formula_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> cost_markup_formulas<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>description</td><td>string</td><td></td><td>Description of the markup section<br/><br/>This column is nullable. If the value is null, it means no description has been specified.</td></tr>
+<tr><td>6</td><td>order</td><td>number</td><td></td><td>The order of the current section within the parent markup formula. The first section in the formula starts with an value of 0.</td></tr>
+<tr><td>7</td><td>total</td><td>number</td><td></td><td>Total markup for the section.<br/><br/>This column is nullable. If the value is null, it means the total is not available. If specified, the valid range for the value is: 0 <= x <= 100000000</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table><h2><a name="cost_markup_formulas">cost_markup_formulas</a></h2>Table for cost markup formulas<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource identifier</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.</td></tr>
+<tr><td>4</td><td>total</td><td>number</td><td></td><td>Total markup for the project.<br/><br/>This column is nullable. If the value is null, it means the total is not available. If specified, the valid range for the value is: 0 <= x <= 100000000</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table><h2><a name="equipment_cost_calculations">equipment_cost_calculations</a></h2>Table for equipment cost calculations<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource identifier</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.</td></tr>
+<tr><td>4</td><td>equipment_type</td><td>string: null</td><td></td><td>Equipment type<br/><br/>This column is nullable. If the value is null, it means no equipment type has been selected.</td></tr>
+<tr><td>5</td><td>rate</td><td>number</td><td></td><td>The cost rate. <br/><br/>This column is nullable. If the value is null, it means no rate has been specified.</td></tr>
+<tr><td>6</td><td>productivity</td><td>number</td><td></td><td>The productivity for equipment cost. <br/><br/>This column is nullable. If the value is null, it means no productivity has been specified.</td></tr>
+<tr><td>7</td><td>productivity_unit</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>H</li>
+<li>D</li></ul></td><td>The unit of time measurement. <br/><br/>This column is nullable. If the value is null, it means no unit has been specified.</td></tr>
+<tr><td>8</td><td>rounding</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>UP</li>
+<li>DOWN</li>
+<li>NONE</li></ul></td><td>Rounding method. <br/><br/>This column is nullable. If the value is null, then rounding will be default to NONE</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table><h2><a name="estimation_instances">estimation_instances</a></h2>Table for estimation instances<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource identifier</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name / description for the instance</td></tr>
+<tr><td>5</td><td>unit_of_measure</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>EA</li>
+<li>LF</li>
+<li>SF</li>
+<li>CY</li>
+<li>TON</li>
+<li>YD</li>
+<li>SY</li>
+<li>CF</li>
+<li>LBS</li>
+<li>M</li>
+<li>M2</li>
+<li>M3</li>
+<li>T</li>
+<li>KG</li></ul></td><td>The unit of measurement for the quantity</td></tr>
+<tr><td>6</td><td>part_number</td><td>string: null</td><td></td><td>Part number associated with this instance</td></tr>
+<tr><td>7</td><td>barcode</td><td>string: null</td><td></td><td>Bar code associated with this instance</td></tr>
+<tr><td>8</td><td>quantity</td><td>number</td><td></td><td>Amount of material associated with this instance</td></tr>
+<tr><td>9</td><td>takeoff_instance_count</td><td>number</td><td></td><td>Number of takeoff items associated with this instance.<br/><br/>This column is nullable. If this value is null, it means this instance is not synced with any takeoff items.</td></tr>
+<tr><td>10</td><td>material_cost_calculation_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> material_cost_calculations<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>11</td><td>material_cost_total</td><td>number</td><td></td><td>Total material cost for the instance.<br/><br/>This column is nullable. If the value is null, it means the calculated material cost is not available.</td></tr>
+<tr><td>12</td><td>labor_cost_calculation_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> labor_cost_calculations<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>13</td><td>labor_cost_total</td><td>number</td><td></td><td>Total labor cost for the instance.<br/><br/>This column is nullable. If the value is null, it means the calculated labor cost is not available.</td></tr>
+<tr><td>14</td><td>equipment_cost_calculation_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> equipment_cost_calculations<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>15</td><td>equipment_cost_total</td><td>number</td><td></td><td>Total equipment cost for this instance.<br/><br/>This column is nullable. If the value is null, it means the calculated equipment cost is not available.</td></tr>
+<tr><td>16</td><td>other_cost_rate</td><td>number</td><td></td><td>Other cost rate. <br/><br/>This column is nullable. If the value is null, it means the cost rate has not been specified. If specified, the valid range for the value is: 0 <= x <= 100000000</td></tr>
+<tr><td>17</td><td>other_cost_total</td><td>number</td><td></td><td>Total other cost for this instance.<br/><br/>This column is nullable. If the value is null, it means the total other cost is not available.</td></tr>
+<tr><td>18</td><td>subcontractor_cost_rate</td><td>number</td><td></td><td>Subcontractor cost rate.<br/><br/>This column is nullable. If the value is null, it means the subcontractor cost rate has not been not specified. If specified, the valid range for the value is: 0 <= x <= 100000000</td></tr>
+<tr><td>19</td><td>subcontractor_cost_total</td><td>number</td><td></td><td>Total subcontractor cost for his instance.<br/><br/>This column is nullable. If the value is null, it means the total cost is not available. If it is not null, then the valid range for the value is: 0 <=x <= 100000000</td></tr>
+<tr><td>20</td><td>total_cost</td><td>number</td><td></td><td>Total cost for the instance.<br/><br/>This column is nullable. If the value is null, it means the total cost is not available.</td></tr>
+<tr><td>21</td><td>markup_total</td><td>number</td><td></td><td>Total markup applied for this specific instance. <br/><br/>This column is nullable. If the value is null, it means the instance specific markup is not available.</td></tr>
+<tr><td>22</td><td>classification1_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> classifications<br/><strong>Column: </strong>  id (takeoff)</span></td></tr>
+<tr><td>23</td><td>classification2_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> classifications<br/><strong>Column: </strong>  id (takeoff)</span></td></tr>
+<tr><td>24</td><td>content_lineage_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> classifications<br/><strong>Column: </strong>  id (takeoff)</span></td></tr>
+<tr><td>25</td><td>package_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> packages<br/><strong>Column: </strong>  id (takeoff)</span></td></tr>
+<tr><td>26</td><td>location_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> locations_id (locations)<br/><strong>Column: </strong> </span></td></tr>
+<tr><td>27</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>28</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table><h2><a name="labor_cost_calculations">labor_cost_calculations</a></h2>Table for labor cost calculations<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource identifier</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.</td></tr>
+<tr><td>4</td><td>labor_type</td><td>string: null</td><td></td><td>Labor type<br/><br/>This column is nullable. If the value is null, it means no labor type has been selected.</td></tr>
+<tr><td>5</td><td>rate_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>STANDARD</li>
+<li>UNION</li>
+<li>PREVAILING</li></ul></td><td>Labor cost rate type.<br/><br/>This column is nullable. If the value is null, it means the rate type has not been specified.</td></tr>
+<tr><td>6</td><td>rate</td><td>number</td><td></td><td>Labor cost rate.<br/><br/>This column is nullable. If this value is null, it means the cost rate has not been specified. If specified, the valid range for the value is: 0 <= X <= 100000000</td></tr>
+<tr><td>7</td><td>daily_hours</td><td>number</td><td></td><td>Daily hours for the labor cost.<br/><br/>This column is nullable. If this value is null, it means the daily hours has not been specified. If specified, the valid range for the value is: 0 <= x <= 24</td></tr>
+<tr><td>8</td><td>productivity</td><td>number</td><td></td><td>Productivity for labor cost. <br/><br/>This column is nullable. If the value is null, it means no productivity has been specified. If specified, the valid range for the value is: x <= 0 <= 999.99</td></tr>
+<tr><td>9</td><td>productivity_unit</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>H</li>
+<li>D</li></ul></td><td>Unit of time measurement. <br/><br/>This column is nullable. If the value is null, it means no unit has been specified.</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table><h2><a name="material_cost_calculations">material_cost_calculations</a></h2>Table for material cost calculations<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource identifier</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data.</td></tr>
+<tr><td>4</td><td>rate</td><td>number</td><td></td><td>The cost rate. <br/><br/>The valid range for the value is: 0 <= X <= 100000000</td></tr>
+<tr><td>5</td><td>factor</td><td>number</td><td></td><td>The cost factor.</td></tr>
+<tr><td>6</td><td>factor_unit</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>EA</li>
+<li>IN</li>
+<li>LF</li>
+<li>YD</li>
+<li>SI</li>
+<li>SF</li>
+<li>SY</li>
+<li>CI</li>
+<li>CF</li>
+<li>CY</li>
+<li>LBS</li>
+<li>TON</li>
+<li>MM</li>
+<li>M</li>
+<li>M2</li>
+<li>M3</li>
+<li>KG</li>
+<li>T</li></ul></td><td>The unit of measurement for the factor.</td></tr>
+<tr><td>7</td><td>waste_percentage</td><td>number</td><td></td><td>The cost waster percentage. <br/><br/>The valid range for the value is: 0 <= x <= 100</td></tr>
+<tr><td>8</td><td>rounding</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>UP</li>
+<li>DOWN</li>
+<li>NONE</li></ul></td><td>The rounding method. <br/><br/>This column is nullable. If the value is null, then rounding will be default to NONE</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table><h2><a name="settings">settings</a></h2>Table for estimate settings<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. This column is added to enable simple data extraction by the Data. <br/><br/>This column is nullable. If the value is null, it means this is an account-level settings.</td></tr>
+<tr><td>3</td><td>measurement_system</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>IMPERIAL</li>
+<li>METRIC</li></ul></td><td>The project measurement system.<br/><br/>This column is nullable. If the value is null, it means the measurement system for the project has not been configured.</td></tr>
+<tr><td>4</td><td>currency</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>USD</li>
+<li>AED</li>
+<li>AFN</li>
+<li>ALL</li>
+<li>AMD</li>
+<li>ANG</li>
+<li>AOA</li>
+<li>ARS</li>
+<li>AUD</li>
+<li>AWG</li>
+<li>AZN</li>
+<li>BAM</li>
+<li>BBD</li>
+<li>BDT</li>
+<li>BGN</li>
+<li>BHD</li>
+<li>BIF</li>
+<li>BMD</li>
+<li>BND</li>
+<li>BOB</li>
+<li>BOV</li>
+<li>BRL</li>
+<li>BSD</li>
+<li>BTN</li>
+<li>BWP</li>
+<li>BYN</li>
+<li>BYR</li>
+<li>BZD</li>
+<li>CAD</li>
+<li>CDF</li>
+<li>CHE</li>
+<li>CHF</li>
+<li>CHW</li>
+<li>CLF</li>
+<li>CLP</li>
+<li>CNY</li>
+<li>COP</li>
+<li>COU</li>
+<li>CRC</li>
+<li>CUC</li>
+<li>CUP</li>
+<li>CVE</li>
+<li>CZK</li>
+<li>DJF</li>
+<li>DKK</li>
+<li>DOP</li>
+<li>DZD</li>
+<li>EEK</li>
+<li>EGP</li>
+<li>ERN</li>
+<li>ETB</li>
+<li>EUR</li>
+<li>FJD</li>
+<li>FKP</li>
+<li>GBP</li>
+<li>GEL</li>
+<li>GHS</li>
+<li>GIP</li>
+<li>GMD</li>
+<li>GNF</li>
+<li>GTQ</li>
+<li>GYD</li>
+<li>HKD</li>
+<li>HNL</li>
+<li>HRK</li>
+<li>HTG</li>
+<li>HUF</li>
+<li>IDR</li>
+<li>ILS</li>
+<li>INR</li>
+<li>IQD</li>
+<li>IRR</li>
+<li>ISK</li>
+<li>JMD</li>
+<li>JOD</li>
+<li>JPY</li>
+<li>KES</li>
+<li>KGS</li>
+<li>KHR</li>
+<li>KMF</li>
+<li>KPW</li>
+<li>KRW</li>
+<li>KWD</li>
+<li>KYD</li>
+<li>KZT</li>
+<li>LAK</li>
+<li>LBP</li>
+<li>LKR</li>
+<li>LRD</li>
+<li>LSL</li>
+<li>LTL</li>
+<li>LVL</li>
+<li>LYD</li>
+<li>MAD</li>
+<li>MDL</li>
+<li>MGA</li>
+<li>MKD</li>
+<li>MMK</li>
+<li>MNT</li>
+<li>MOP</li>
+<li>MRU</li>
+<li>MUR</li>
+<li>MVR</li>
+<li>MWK</li>
+<li>MXN</li>
+<li>MXV</li>
+<li>MYR</li>
+<li>MZN</li>
+<li>NAD</li>
+<li>NGN</li>
+<li>NIO</li>
+<li>NOK</li>
+<li>NPR</li>
+<li>NZD</li>
+<li>OMR</li>
+<li>PAB</li>
+<li>PEN</li>
+<li>PGK</li>
+<li>PHP</li>
+<li>PKR</li>
+<li>PLN</li>
+<li>PYG</li>
+<li>QAR</li>
+<li>RON</li>
+<li>RSD</li>
+<li>RUB</li>
+<li>RWF</li>
+<li>SAR</li>
+<li>SBD</li>
+<li>SCR</li>
+<li>SDG</li>
+<li>SEK</li>
+<li>SGD</li>
+<li>SHP</li>
+<li>SLE</li>
+<li>SLL</li>
+<li>SOS</li>
+<li>SRD</li>
+<li>SSP</li>
+<li>STN</li>
+<li>SVC</li>
+<li>SYP</li>
+<li>SZL</li>
+<li>THB</li>
+<li>TRL</li>
+<li>TJS</li>
+<li>TMT</li>
+<li>TND</li>
+<li>TOP</li>
+<li>TRY</li>
+<li>TTD</li>
+<li>TWD</li>
+<li>TZS</li>
+<li>UAH</li>
+<li>UGX</li>
+<li>USN</li>
+<li>UYI</li>
+<li>UYU</li>
+<li>UYW</li>
+<li>UZS</li>
+<li>VED</li>
+<li>VES</li>
+<li>VND</li>
+<li>VUV</li>
+<li>WST</li>
+<li>XAF</li>
+<li>XAG</li>
+<li>XAU</li>
+<li>XBA</li>
+<li>XBB</li>
+<li>XBC</li>
+<li>XBD</li>
+<li>XCD</li>
+<li>XDR</li>
+<li>XOF</li>
+<li>XPD</li>
+<li>XPF</li>
+<li>XPT</li>
+<li>XSU</li>
+<li>XTS</li>
+<li>XUA</li>
+<li>XXX</li>
+<li>YER</li>
+<li>ZAR</li>
+<li>ZMW</li>
+<li>ZWL</li></ul></td><td>The project currency code in ISO 4217 format.<br/><br/>This column is nullable. If the value is null, it means the currency code for the project has not been configured.</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was created.</td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>UTC timestamp when the row was last updated.</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cdcissues: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>cdcissues Schema Description</h1>
+<b>Documentation Updated: </b>2026-02-04<br/>
+<ul><li><a href="#attachments">attachments</a></li>
+<li><a href="#comments">comments</a></li>
+<li><a href="#custom_attribute_list_values">custom_attribute_list_values</a></li>
+<li><a href="#custom_attributes">custom_attributes</a></li>
+<li><a href="#custom_attributes_mappings">custom_attributes_mappings</a></li>
+<li><a href="#issue_subtypes">issue_subtypes</a></li>
+<li><a href="#issue_types">issue_types</a></li>
+<li><a href="#issues">issues</a></li>
+<li><a href="#placements">placements</a></li>
+<li><a href="#root_cause_categories">root_cause_categories</a></li>
+<li><a href="#root_causes">root_causes</a></li>
+<li><a href="#viewables">viewables</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+
+        	<div class="message_highlight_note"><b>Beta Release</b><br>
+        		This is a Beta release of the cdcissues data set and schema definitions are subject to change or even possibly be removed from the final data set release. Thank you for your understanding with any future schema updates.
+          </div>
+<h2><a name="attachments">attachments</a></h2>Attachments on Issue in BIM 360 Issue-Types. - This is the Change Data Capture (CDC) enabled version of the issues.attachments table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>attachment_id</td><td>string: UUID</td><td></td><td>ID of the attachment</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>issue_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">BIM 360 ID of the issue associated with the attachment.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> issues<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>display_name</td><td>string</td><td></td><td>File name to be displayed</td></tr>
+<tr><td>6</td><td>file_name</td><td>string</td><td></td><td>Actual file name</td></tr>
+<tr><td>7</td><td>storage_urn</td><td>string</td><td></td><td>Storage urn</td></tr>
+<tr><td>8</td><td>file_size</td><td>number</td><td></td><td>File type</td></tr>
+<tr><td>9</td><td>file_type</td><td>string</td><td></td><td>File size</td></tr>
+<tr><td>10</td><td>lineage_urn</td><td>string</td><td></td><td>Lineage urn of the attachment</td></tr>
+<tr><td>11</td><td>version</td><td>number</td><td></td><td>Version number</td></tr>
+<tr><td>12</td><td>version_urn</td><td>string</td><td></td><td>Version urn</td></tr>
+<tr><td>13</td><td>tip_version_urn</td><td>string</td><td></td><td>Tip version urn</td></tr>
+<tr><td>14</td><td>bubble_urn</td><td>string</td><td></td><td>Bubble urn</td></tr>
+<tr><td>15</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Created at timestamp<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>16</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the attachment.</td></tr>
+<tr><td>17</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Deleted at timestamp<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>18</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted the attachment.</td></tr>
+<tr><td>19</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the attachment was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>20</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the attachment.</td></tr>
+<tr><td>21</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="comments">comments</a></h2>Comments associated with BIM 360 issues. - This is the Change Data Capture (CDC) enabled version of the issues.comments table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>comment_id</td><td>string: UUID</td><td></td><td>Unique identifier of the comment</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>issue_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">BIM 360 ID of the issue associated with this comment.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> issues<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>comment_body</td><td>string</td><td></td><td>Content of the comment.</td></tr>
+<tr><td>6</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the comment</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Timestamp of the date and time the comment was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the comment was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the comment was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="custom_attribute_list_values">custom_attribute_list_values</a></h2>The list values for a customer attribute of list type - This is the Change Data Capture (CDC) enabled version of the issues.custom_attribute_list_values table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>attribute_mappings_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID of the custom attribute mapping definition<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> custom_attributes_mappings<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>list_id</td><td>string: UUID</td><td></td><td>ID of the customer attribute list value</td></tr>
+<tr><td>5</td><td>list_value</td><td>string</td><td></td><td>Display name of the custom attribute list value</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the custom_attribute_list_value was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the custom_attribute_list_value was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the custom_attribute_list_value was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="custom_attributes">custom_attributes</a></h2>Custom attributes for Issues<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>issue_id</td><td>string: UUID</td><td></td><td>Unique identifier of the issue</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>mapped_item_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>container</li>
+<li>issueType</li>
+<li>issueSubtype</li></ul></td><td>The type of item the custom attribute is mapped to. Possible values: container (all types and subtypes inherit the mapping), issueType (subtypes inherit the mapping), issueSubtype</td></tr>
+<tr><td>5</td><td>attribute_mapping_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID of the custom attribute mapping definition<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> custom_attributes_mappings<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>6</td><td>attribute_title</td><td>string</td><td>Max length: 100</td><td>The title of the custom attribute.</td></tr>
+<tr><td>7</td><td>attribute_description</td><td>string</td><td>Max length: 500</td><td>The description of the custom attribute.</td></tr>
+<tr><td>8</td><td>attribute_data_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>list</li>
+<li>text</li>
+<li>paragraph</li>
+<li>numeric</li></ul></td><td>The type of custom attribute.</td></tr>
+<tr><td>9</td><td>is_required</td><td>boolean</td><td></td><td>true if the custom attribute is required false if the custom attribute is not required</td></tr>
+<tr><td>10</td><td>attribute_value</td><td>string</td><td></td><td>Custom attribute value. In the case of a list option, the id of the selected option, otherwise the value will the actual value</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the attribute was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the attribute</td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the attribute was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>14</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the attribute</td></tr>
+<tr><td>15</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the attribute was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>16</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted the attribute.</td></tr>
+<tr><td>17</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="custom_attributes_mappings">custom_attributes_mappings</a></h2>Custom attributes for a project, including the custom attribute title, description and type. - This is the Change Data Capture (CDC) enabled version of the issues.custom_attributes_mappings table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the custom attribute mapping.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>mapped_item_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>container</li>
+<li>issueType</li>
+<li>issueSubtype</li></ul></td><td>The type of item the custom attribute is mapped to. Possible values: container (all types and subtypes inherit the mapping) issueType (subtypes inherit the mapping) issueSubtype.</td></tr>
+<tr><td>5</td><td>mapped_item_id</td><td>string: UUID</td><td></td><td>The ID of the item (container - type - or subtype) the custom attribute is mapped to.</td></tr>
+<tr><td>6</td><td>title</td><td>string</td><td>Max length: 100</td><td>The title of the custom attribute.</td></tr>
+<tr><td>7</td><td>description</td><td>string</td><td>Max length: 500</td><td>The description of the custom attribute.</td></tr>
+<tr><td>8</td><td>data_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>list</li>
+<li>text</li>
+<li>paragraph</li>
+<li>numeric</li></ul></td><td>The type of custom attribute.</td></tr>
+<tr><td>9</td><td>order</td><td>number</td><td></td><td>The order that the custom attributes were mapped to the item (container - type - subtype). This is only relevant to non-inherited mappings.</td></tr>
+<tr><td>10</td><td>is_required</td><td>boolean</td><td></td><td>true if the custom attribute is required false if the custom attribute is not required</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The date and time the custom attribute mapping was created - in the following format: YYYY-MM-DDThh:mm:ss.sz.<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>created_by</td><td>string</td><td></td><td>The BIM 360 ID of the user who created the custom attribute mapping. To verify the actual name of the user - call GET users and find the BIM 360 ID (uid). Note that you need to use a 2-legged token to call GET users.</td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>The last date and time the custom attribute was updated - in the following format: YYYY-MM-DDThh:mm:ss.sz.<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>14</td><td>updated_by</td><td>string</td><td></td><td>The BIM 360 ID of the user who last updated the custom attribute mapping. To verify the actual name of the user - call GET users and find the BIM 360 ID (uid). Note that you need to use a 2-legged token to call GET users.</td></tr>
+<tr><td>15</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the custom_attributes_mapping was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>16</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="issue_subtypes">issue_subtypes</a></h2>Subtypes for BIM 360 Issue-Types. - This is the Change Data Capture (CDC) enabled version of the issues.issue_subtypes table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>issue_subtype_id</td><td>string: UUID</td><td></td><td>ID for the Issue Subtype</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>issue_type_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Parent Issue Type ID for this Subtype<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> issue_types<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>issue_subtype</td><td>string</td><td>Max length: 250</td><td>Title of the Issue Subtype</td></tr>
+<tr><td>6</td><td>is_active</td><td>boolean</td><td></td><td>Is the Issue Subtype Active</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the issue type</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the issue type</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted  the issue type</td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="issue_types">issue_types</a></h2>Issue Types for BIM 360 Issues. - This is the Change Data Capture (CDC) enabled version of the issues.issue_types table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>issue_type_id</td><td>string: UUID</td><td></td><td>ID of the Issue Type</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>issue_type</td><td>string</td><td>Max length: 250</td><td>Title of the Issue Type</td></tr>
+<tr><td>5</td><td>is_active</td><td>boolean</td><td></td><td>Is the Issue Type active</td></tr>
+<tr><td>6</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the issue type</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the issue type</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted  the issue type</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="issues">issues</a></h2>Issues created in the BIM 360 system. - This is the Change Data Capture (CDC) enabled version of the issues.issues table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>issue_id</td><td>string: UUID</td><td></td><td>Unique identifier of the issue</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>display_id</td><td>number</td><td></td><td>Chronological user-friendly identifier of the issue</td></tr>
+<tr><td>5</td><td>title</td><td>string: null</td><td></td><td>Name of the issue</td></tr>
+<tr><td>6</td><td>description</td><td>string: null</td><td></td><td>Description of the purpose of the issue</td></tr>
+<tr><td>7</td><td>type_id</td><td>string: UUID</td><td></td><td>Unique identifier of the type of the issue</td></tr>
+<tr><td>8</td><td>subtype_id</td><td>string: UUID</td><td></td><td>Unique identifier of the subtype of the issue</td></tr>
+<tr><td>9</td><td>status</td><td>string: null</td><td><strong>Possible Values:</strong><br/><ul><li>open</li>
+<li>work_completed</li>
+<li>ready_to_inspect</li>
+<li>not_approved</li>
+<li>in_dispute</li>
+<li>closed</li>
+<li>void</li>
+<li>answered</li>
+<li>draft</li>
+<li>pending</li>
+<li>in_progress</li>
+<li>completed</li>
+<li>in_review</li></ul></td><td>Unique identifier of the current status of the issue</td></tr>
+<tr><td>10</td><td>assignee_id</td><td>string: null</td><td></td><td>Autodesk User ID of the current assignee of this issue</td></tr>
+<tr><td>11</td><td>assignee_type</td><td>string: null</td><td><strong>Possible Values:</strong><br/><ul><li>user</li>
+<li>company</li>
+<li>role</li></ul></td><td>Type of the current assignee of this issue</td></tr>
+<tr><td>12</td><td>due_date</td><td>timestamp: SQL</td><td></td><td>Due date of the issue in ISO8601 format</td></tr>
+<tr><td>13</td><td>location_id</td><td>string: UUID</td><td></td><td>Unique LBS (Location Breakdown Structure) identifier that relates to the issue</td></tr>
+<tr><td>14</td><td>location_details</td><td>string: null</td><td></td><td>Location as plain text that relates to the issue</td></tr>
+<tr><td>15</td><td>linked_document_urn</td><td>string: null</td><td></td><td>Linked document URN</td></tr>
+<tr><td>16</td><td>owner_id</td><td>string: null</td><td></td><td>Autodesk User ID of the user who owns this issue. Used in case this issue was created on-behalf of another person</td></tr>
+<tr><td>17</td><td>root_cause_id</td><td>string: UUID</td><td></td><td>Unique identifier of the type of root cause for the issue</td></tr>
+<tr><td>18</td><td>root_cause_category_id</td><td>string: UUID</td><td></td><td>Unique identifier of the category for the root cause</td></tr>
+<tr><td>19</td><td>response</td><td>string: null</td><td></td><td>Official response of the user for the issue</td></tr>
+<tr><td>20</td><td>response_by</td><td>string: null</td><td></td><td>Who responded to the issue</td></tr>
+<tr><td>21</td><td>response_at</td><td>timestamp: SQL</td><td></td><td>When was the response made</td></tr>
+<tr><td>22</td><td>opened_by</td><td>string: null</td><td></td><td>Autodesk User ID of the user who opened the issue</td></tr>
+<tr><td>23</td><td>opened_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue was opened in ISO8601 format</td></tr>
+<tr><td>24</td><td>closed_by</td><td>string: null</td><td></td><td>Autodesk User ID of the user who closed the issue</td></tr>
+<tr><td>25</td><td>closed_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue was closed in ISO8601 format</td></tr>
+<tr><td>26</td><td>created_by</td><td>string: null</td><td></td><td>Autodesk User ID of the user who created the issue</td></tr>
+<tr><td>27</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>28</td><td>updated_by</td><td>string: null</td><td></td><td>Autodesk User ID of the user who updated the issue</td></tr>
+<tr><td>29</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>30</td><td>start_date</td><td>timestamp: SQL</td><td></td><td>Start date of the issue in ISO8601 format</td></tr>
+<tr><td>31</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>deleted_at. If set the issue is 'soft deleted'<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>32</td><td>snapshot_urn</td><td>string: null</td><td></td><td>Snapshot URN</td></tr>
+<tr><td>33</td><td>published</td><td>boolean</td><td></td><td>published: shows if the issues is published or not.</td></tr>
+<tr><td>34</td><td>gps_coordinates</td><td>string</td><td></td><td>GPS location of the issues in (latitude, longitude) format</td></tr>
+<tr><td>35</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted  the issue</td></tr>
+<tr><td>36</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="placements">placements</a></h2>Placements associated with ACC issues. - This is the Change Data Capture (CDC) enabled version of the issues.placements table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>placement_id</td><td>string: UUID</td><td></td><td>ID of the placement</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>issue_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID of the issue associated with this placement.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> issues<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>lineage_urn</td><td>string</td><td></td><td>Lineage URN of the file</td></tr>
+<tr><td>6</td><td>type</td><td>string</td><td></td><td>Type of placement</td></tr>
+<tr><td>7</td><td>created_at_version</td><td>number</td><td></td><td>Version at which the placement was created</td></tr>
+<tr><td>8</td><td>origin_product</td><td>string</td><td></td><td>Product where the placement originated</td></tr>
+<tr><td>9</td><td>origin_tool</td><td>string</td><td></td><td>Tool used to create the placement</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the placement</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the placement was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the placement</td></tr>
+<tr><td>13</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the placement was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>14</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted the placement</td></tr>
+<tr><td>15</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the placement was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>16</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="root_cause_categories">root_cause_categories</a></h2>Root Cause Categories for BIM 360 Issues. - This is the Change Data Capture (CDC) enabled version of the issues.root_cause_categories table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>root_cause_category_id</td><td>string: UUID</td><td></td><td>ID of Root Cause Category</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>root_cause_category</td><td>string</td><td>Max length: 100</td><td>Title of the root cause category</td></tr>
+<tr><td>5</td><td>is_active</td><td>boolean</td><td></td><td>Always returns TRUE, regardless of the real value. Will be deprecated in the future.</td></tr>
+<tr><td>6</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the issue type</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the issue type</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted  the issue type</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>is_system</td><td>boolean</td><td></td><td>Is this a system level root cause category?</td></tr>
+<tr><td>13</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="root_causes">root_causes</a></h2>Root Causes for BIM 360 Issues. - This is the Change Data Capture (CDC) enabled version of the issues.root_causes table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>root_cause_id</td><td>string: UUID</td><td></td><td>ID of the root cause</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>root_cause_category_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">BIM 360 ID of the root cause category associated with this root cause<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> root_cause_categories<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>title</td><td>string</td><td>Max length: 100</td><td>Title of the root cause</td></tr>
+<tr><td>6</td><td>is_active</td><td>boolean</td><td></td><td>Always returns TRUE, regardless of the real value. Will be deprecated in the future.</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user who created the issue type</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user who updated the issue type</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>11</td><td>deleted_by</td><td>string</td><td></td><td>Autodesk User ID of the user who deleted  the issue type</td></tr>
+<tr><td>12</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the issue type was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>is_system</td><td>boolean</td><td></td><td>Is this a system level root cause?</td></tr>
+<tr><td>14</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="viewables">viewables</a></h2>Viewables associated with placements of ACC issues. - This is the Change Data Capture (CDC) enabled version of the issues.viewables table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>placement_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Unique identifier of the placement associated with this viewable<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> placements<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for account scoping of issues data</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Added for project scoping of issues data</td></tr>
+<tr><td>4</td><td>issue_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">BIM 360 ID of the issue associated with the viewable.<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> issues<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>file_version</td><td>number</td><td></td><td>File version identifier</td></tr>
+<tr><td>6</td><td>file_version_urn</td><td>string</td><td></td><td>URN of the file version</td></tr>
+<tr><td>7</td><td>guid</td><td>string</td><td></td><td>GUID of the viewable</td></tr>
+<tr><td>8</td><td>name</td><td>string</td><td></td><td>Name of the viewable</td></tr>
+<tr><td>9</td><td>viewable_id</td><td>string</td><td></td><td>Identifier of the viewable</td></tr>
+<tr><td>10</td><td>is_3d</td><td>boolean</td><td></td><td>Indicates if the viewable is 3D</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time the viewable was created in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>12</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time the viewable was updated in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>13</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time the viewable was deleted in ISO8601 format<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>14</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,282 @@
+{
+   "nodes_account" : {
+      "structure_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the structure",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "structure_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the structure",
+         "ordinal_position" : 4
+      },
+      "parent_node_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the parent node",
+         "ordinal_position" : 5
+      },
+      "node_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Unique int4 representing the id of the node in the given structure version",
+         "ordinal_position" : 6
+      },
+      "node_code" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Less user-friendly identifier of the node",
+         "ordinal_position" : 7
+      },
+      "node_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User-friendly name of the node",
+         "ordinal_position" : 8
+      },
+      "order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Represents in which order the node will appear inside it's parent node branch",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the node was created at",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the node was updated at",
+         "ordinal_position" : 11
+      }
+   },
+   "nodes_library_used_in_project" : {
+      "structure_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the structure",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "structure_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the structure",
+         "ordinal_position" : 4
+      },
+      "parent_node_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the parent node",
+         "ordinal_position" : 5
+      },
+      "node_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Unique int4 representing the id of the node in the given structure version",
+         "ordinal_position" : 6
+      },
+      "node_code" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Less user-friendly identifier of the node",
+         "ordinal_position" : 7
+      },
+      "node_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User-friendly name of the node",
+         "ordinal_position" : 8
+      },
+      "order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Represents in which order the node will appear inside it's parent node branch",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the node was created at",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the node was updated at",
+         "ordinal_position" : 11
+      }
+   },
+   "nodes_project" : {
+      "structure_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the structure",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "structure_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the structure",
+         "ordinal_position" : 4
+      },
+      "parent_node_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the parent node",
+         "ordinal_position" : 5
+      },
+      "node_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Unique int4 representing the id of the node in the given structure version",
+         "ordinal_position" : 6
+      },
+      "node_code" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Less user-friendly identifier of the node",
+         "ordinal_position" : 7
+      },
+      "node_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User-friendly name of the node",
+         "ordinal_position" : 8
+      },
+      "order" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Represents in which order the node will appear inside it's parent node branch",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the node was created at",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the node was updated at",
+         "ordinal_position" : 11
+      }
+   },
+   "structures_account" : {
+      "structure_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the structure",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "structure_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the structure",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the structure was created at",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the structure was updated at",
+         "ordinal_position" : 6
+      }
+   },
+   "structures_project" : {
+      "structure_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the structure",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "structure_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the structure",
+         "ordinal_position" : 4
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the structure was created at",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Timestamp the structure was updated at",
+         "ordinal_position" : 6
+      }
+   }
+}

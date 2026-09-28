@@ -1,0 +1,1072 @@
+{
+   "activities" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The activity ID",
+         "ordinal_position" : 1
+      },
+      "schedule_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The schedules ID for the activity",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 4
+      },
+      "unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The activity unique id in the User's scheduling software",
+         "ordinal_position" : 5
+      },
+      "sequential_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The sequential ID of the activity",
+         "ordinal_position" : 6
+      },
+      "file_activity_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The activity ID field in the Schedule file",
+         "ordinal_position" : 7
+      },
+      "parent_unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The parent activity unique id in the User's scheduling software",
+         "ordinal_position" : 8
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "MILESTONE",
+            "ACTIVITY"
+         ],
+         "notes" : "detailed column 7 description",
+         "ordinal_position" : 9
+      },
+      "name" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The activity name",
+         "ordinal_position" : 10
+      },
+      "is_critical_path" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the activity in the schedule's critical path",
+         "ordinal_position" : 11
+      },
+      "completion_percentage" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The activity completion percentage",
+         "ordinal_position" : 12
+      },
+      "planned_start" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the activity was planned to start",
+         "ordinal_position" : 13
+      },
+      "planned_finish" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the activity was planned to finish",
+         "ordinal_position" : 14
+      },
+      "actual_start" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the activity actually started",
+         "ordinal_position" : 15
+      },
+      "actual_finish" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the activity actually finished",
+         "ordinal_position" : 16
+      },
+      "start" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A calculated field to determine the start display date of the activity",
+         "ordinal_position" : 17
+      },
+      "finish" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "A calculated field to determine the finish display date of the activity",
+         "ordinal_position" : 18
+      },
+      "duration" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The duration of the activity in days",
+         "ordinal_position" : 19
+      },
+      "actual_duration" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The actual duration of the activity in days",
+         "ordinal_position" : 20
+      },
+      "remaining_duration" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The remaining duration of the activity in days",
+         "ordinal_position" : 21
+      },
+      "free_slack_units" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Units of the free (remaining) slack of the activity",
+         "ordinal_position" : 22
+      },
+      "free_slack_duration" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The free (remaining) slack of the activity in the units in column free_slack_units",
+         "ordinal_position" : 23
+      },
+      "total_slack_units" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Units of the total slack of the activity",
+         "ordinal_position" : 24
+      },
+      "total_slack_duration" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total slack of the activity in the units in column total_slack_units",
+         "ordinal_position" : 25
+      },
+      "is_wbs" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the activity a WBS",
+         "ordinal_position" : 26
+      },
+      "wbs_path" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The WBS Path of the activity, constracted from unique ids, string array // [1,2,3,4] -&gt; \"[1,2,3,4]\"",
+         "ordinal_position" : 27
+      },
+      "wbs_code" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The WBS code of the activity",
+         "ordinal_position" : 28
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the activity",
+         "ordinal_position" : 29
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the activity",
+         "ordinal_position" : 30
+      },
+      "wbs_path_text" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The WBS Path of the activity, constracted from names, string array",
+         "ordinal_position" : 31
+      }
+   },
+   "activity_codes" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The activity code ID (Activity code assignment ID)",
+         "ordinal_position" : 1
+      },
+      "schedule_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The schedule id of the activity code",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 4
+      },
+      "activity_unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The activity unique id in the User's scheduling software",
+         "ordinal_position" : 5
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the activity code",
+         "ordinal_position" : 6
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value code of the activity code assignment",
+         "ordinal_position" : 7
+      },
+      "value_description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The value free text of the activity code assignment",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the activity code",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the activity code",
+         "ordinal_position" : 10
+      }
+   },
+   "comments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The comment ID",
+         "ordinal_position" : 1
+      },
+      "schedule_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The update request id for the status change request",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 4
+      },
+      "activity_unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The activity unique id in the User's scheduling software",
+         "ordinal_position" : 5
+      },
+      "body" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The comment text",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User who created the comment",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the comment",
+         "ordinal_position" : 8
+      }
+   },
+   "dependencies" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The dependency ID",
+         "ordinal_position" : 1
+      },
+      "schedule_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The schedules ID for the revision",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 4
+      },
+      "source_unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The source activity unique id of the dependency",
+         "ordinal_position" : 5
+      },
+      "target_unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The target activity unique id of the dependency",
+         "ordinal_position" : 6
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The type of dependency link",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the dependency",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the dependency",
+         "ordinal_position" : 9
+      }
+   },
+   "plan_commitments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The commitment ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "plan_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The plan ID derived from the linked task",
+         "ordinal_position" : 4
+      },
+      "task_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The task ID this commitment is made against",
+         "ordinal_position" : 5
+      },
+      "replanned_commitment_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of the commitment this one replans",
+         "ordinal_position" : 6
+      },
+      "root_cause_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The root cause ID when commitment is incomplete",
+         "ordinal_position" : 7
+      },
+      "task_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The task type of the commitment",
+         "ordinal_position" : 8
+      },
+      "work_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The work type of the commitment",
+         "ordinal_position" : 9
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The current status of the commitment",
+         "ordinal_position" : 10
+      },
+      "start_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "The start date of the commitment",
+         "ordinal_position" : 11
+      },
+      "finish_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "The finish date of the commitment",
+         "ordinal_position" : 12
+      },
+      "duration" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The duration value when the task was committed",
+         "ordinal_position" : 13
+      },
+      "assigned_member_id" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The member ID assigned to the commitment",
+         "ordinal_position" : 14
+      },
+      "assigned_company_id" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The company ID assigned to the commitment",
+         "ordinal_position" : 15
+      },
+      "assigned_role_id" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The role ID assigned to the commitment",
+         "ordinal_position" : 16
+      },
+      "location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The location ID associated with the commitment",
+         "ordinal_position" : 17
+      },
+      "wbs_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The WBS ID associated with the commitment",
+         "ordinal_position" : 18
+      },
+      "crew_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The crew size committed to the task",
+         "ordinal_position" : 19
+      },
+      "was_start_changed" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Whether the start date was changed from the original task",
+         "ordinal_position" : 20
+      },
+      "was_duration_changed" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Whether the duration was changed from the original task",
+         "ordinal_position" : 21
+      },
+      "was_finish_changed" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Whether the finish date was changed from the original task",
+         "ordinal_position" : 22
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who created the commitment",
+         "ordinal_position" : 23
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the commitment",
+         "ordinal_position" : 24
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who last updated the commitment",
+         "ordinal_position" : 25
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last update time of the commitment",
+         "ordinal_position" : 26
+      }
+   },
+   "plan_handoffs" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The handoff ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "plan_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The plan ID this handoff belongs to",
+         "ordinal_position" : 4
+      },
+      "source_task" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The source task ID of the handoff",
+         "ordinal_position" : 5
+      },
+      "target_task" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The target task ID of the handoff",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who created the handoff",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the handoff",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who last updated the handoff",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last update time of the handoff",
+         "ordinal_position" : 10
+      }
+   },
+   "plan_plans" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The plan ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The plan name",
+         "ordinal_position" : 4
+      },
+      "schedule_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The connected schedule ID for the plan",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who created the plan",
+         "ordinal_position" : 6
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who last updated the plan",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the plan",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last update time of the plan",
+         "ordinal_position" : 9
+      }
+   },
+   "plan_project_settings" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "non_working_dates" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Non-working dates configured for the project (JSON array)",
+         "ordinal_position" : 3
+      },
+      "first_day_of_the_week" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The first day of the project working week",
+         "ordinal_position" : 4
+      },
+      "working_days" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The project working days configuration",
+         "ordinal_position" : 5
+      },
+      "wbs_tree" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The WBS tree structure for the project (JSON)",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who created the project settings",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the project settings",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who last updated the project settings",
+         "ordinal_position" : 9
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last update time of the project settings",
+         "ordinal_position" : 10
+      }
+   },
+   "plan_task_comments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The task comments ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "task_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The task ID for the task comment",
+         "ordinal_position" : 4
+      },
+      "plan_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The plan ID for the task comment",
+         "ordinal_position" : 5
+      },
+      "body" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The body of the task comment",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the task comment",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who created the task comment",
+         "ordinal_position" : 8
+      }
+   },
+   "plan_tasks" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The task ID",
+         "ordinal_position" : 1
+      },
+      "plan_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The plan ID this task belongs to",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 4
+      },
+      "parent_task_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The parent task ID for hierarchical task structures",
+         "ordinal_position" : 5
+      },
+      "activity_unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The task's connected schedule activity id",
+         "ordinal_position" : 6
+      },
+      "unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The unique sequential identifier of the task within the plan",
+         "ordinal_position" : 7
+      },
+      "task_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The task type (e.g. task, milestone)",
+         "ordinal_position" : 8
+      },
+      "work_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The work type of the task",
+         "ordinal_position" : 9
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The current status of the task",
+         "ordinal_position" : 10
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "the task title",
+         "ordinal_position" : 11
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The task description",
+         "ordinal_position" : 12
+      },
+      "start_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "The start date of the task",
+         "ordinal_position" : 13
+      },
+      "finish_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "The finish date of the task",
+         "ordinal_position" : 14
+      },
+      "duration" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The duration of the task in working days",
+         "ordinal_position" : 15
+      },
+      "location_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The location ID associated with the task",
+         "ordinal_position" : 16
+      },
+      "assigned_member_id" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The member ID assigned to the task",
+         "ordinal_position" : 17
+      },
+      "assigned_company_id" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The company ID assigned to the task",
+         "ordinal_position" : 18
+      },
+      "assigned_role_id" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "The role ID assigned to the task",
+         "ordinal_position" : 19
+      },
+      "wbs_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The WBS ID associated with the task",
+         "ordinal_position" : 20
+      },
+      "completion_percentage" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The completion percentage of the task (0-100)",
+         "ordinal_position" : 21
+      },
+      "crew_size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The crew size assigned to the task",
+         "ordinal_position" : 22
+      },
+      "priority" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The priority of the task",
+         "ordinal_position" : 23
+      },
+      "comments_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The number of comments on the task",
+         "ordinal_position" : 24
+      },
+      "commitments_count" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The total number of commitments and replans of the task",
+         "ordinal_position" : 25
+      },
+      "task_imports_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The import ID if the task was imported from Excel",
+         "ordinal_position" : 26
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who created the task",
+         "ordinal_position" : 27
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the task",
+         "ordinal_position" : 28
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The user who last updated the task",
+         "ordinal_position" : 29
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Last update time of the task",
+         "ordinal_position" : 30
+      }
+   },
+   "resources" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The resource ID (Resource assignment ID)",
+         "ordinal_position" : 1
+      },
+      "schedule_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The schedule id of the activity code",
+         "ordinal_position" : 2
+      },
+      "resource_unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The resource unique id in the User's scheduling software",
+         "ordinal_position" : 3
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 4
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 5
+      },
+      "activity_unique_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The activity unique id in the User's scheduling software",
+         "ordinal_position" : 6
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of the resource",
+         "ordinal_position" : 7
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [],
+         "notes" : "The type of resource",
+         "ordinal_position" : 8
+      },
+      "email_address" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The email address of the resource",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the resource",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the resource",
+         "ordinal_position" : 11
+      }
+   },
+   "schedules" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The schedule ID",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The schedule name",
+         "ordinal_position" : 4
+      },
+      "type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "XER",
+            "XML",
+            "MPP",
+            "PP"
+         ],
+         "notes" : "Schedule file type",
+         "ordinal_position" : 5
+      },
+      "version_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The revision number of the schedule",
+         "ordinal_position" : 6
+      },
+      "is_public" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the schedule available to all project members or to a restricted list of users",
+         "ordinal_position" : 7
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User who created the Schedule",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "User who updated the Schedule",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Creation time of the schedule",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Update time of the schedule",
+         "ordinal_position" : 11
+      }
+   }
+}

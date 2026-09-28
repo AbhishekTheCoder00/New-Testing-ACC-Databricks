@@ -1,0 +1,356 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>submittals: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>submittals Schema Description</h1>
+<b>Documentation Updated: </b>2023-12-04<br/>
+<ul><li><a href="#attachments">attachments</a></li>
+<li><a href="#comments">comments</a></li>
+<li><a href="#item_cc_users">item_cc_users</a></li>
+<li><a href="#item_co_reviewers_users">item_co_reviewers_users</a></li>
+<li><a href="#item_distribution_list_users">item_distribution_list_users</a></li>
+<li><a href="#itemrevisions">itemrevisions</a></li>
+<li><a href="#items">items</a></li>
+<li><a href="#packages">packages</a></li>
+<li><a href="#specs">specs</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="attachments">attachments</a></h2>Attachments for BIM 360 Submittal items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the Attachment</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the parent Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td></td><td>Name of the file</td></tr>
+<tr><td>6</td><td>is_response</td><td>boolean</td><td></td><td>is this attachment should be marked as a response</td></tr>
+<tr><td>7</td><td>revision</td><td>number</td><td></td><td>Revision of the item when the attachment was added</td></tr>
+<tr><td>8</td><td>attachment_type_id</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Document</li>
+<li>2 - Photo</li>
+<li>3 - PDF</li></ul></td><td>ID of the attachment type (document/ photo/ pdf)</td></tr>
+<tr><td>9</td><td>type_value</td><td>string</td><td></td><td>value of the attachment_type_id</td></tr>
+<tr><td>10</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the attachment</td></tr>
+<tr><td>11</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the attachment created</td></tr>
+<tr><td>12</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the attachment last updated</td></tr>
+<tr><td>13</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the attachment</td></tr>
+<tr><td>14</td><td>is_review</td><td>boolean</td><td></td><td>Attachment is a part of a review process</td></tr>
+<tr><td>15</td><td>is_deleted</td><td>boolean</td><td></td><td>was the attachment deleted</td></tr>
+<tr><td>16</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>when was the attachment deleted</td></tr>
+<tr><td>17</td><td>upload_urn</td><td>string</td><td></td><td>storage URN where attachments are uploaded</td></tr>
+</tbody></table><h2><a name="comments">comments</a></h2>Comments for BIM 360 Submittal items.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the Comment</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">The ID for the parent Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the comment</td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the comment updated</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the comment</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the comment was created</td></tr>
+<tr><td>9</td><td>body</td><td>string</td><td></td><td>Body of the comment</td></tr>
+<tr><td>10</td><td>is_deleted</td><td>boolean</td><td></td><td>was the comment deleted</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>when was the comment deleted</td></tr>
+</tbody></table><h2><a name="item_cc_users">item_cc_users</a></h2>List of Autodesk User IDs of cc'ed users. This table is going to be deprecated and replaced by item_distribution_list_users<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>user_id</td><td>string</td><td></td><td>Autodesk User IDs of cc'ed user</td></tr>
+</tbody></table><h2><a name="item_co_reviewers_users">item_co_reviewers_users</a></h2>List of Autodesk User IDs of consultant users<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>user_id</td><td>string</td><td></td><td>Autodesk User IDs of the reviewer user</td></tr>
+</tbody></table><h2><a name="item_distribution_list_users">item_distribution_list_users</a></h2>List of Autodesk User IDs of distribution_list users and their type<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the Item<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> items<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>user_id</td><td>string</td><td></td><td>Autodesk User IDs of cc'ed user/role/company</td></tr>
+<tr><td>5</td><td>user_type_id</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - user</li>
+<li>2 - company</li>
+<li>3 - role</li></ul></td><td>if of the distribution_list member user_type (user/role/company)</td></tr>
+<tr><td>6</td><td>user_type_value</td><td>string</td><td></td><td>value of the user_type_id</td></tr>
+</tbody></table><h2><a name="itemrevisions">itemrevisions</a></h2>Revisions for BIM 360 Submittals<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>revision</td><td>number</td><td></td><td>Revision of the item when it was recorded</td></tr>
+<tr><td>2</td><td>item_id</td><td>string: UUID</td><td></td><td>The ID for the Submittal.</td></tr>
+<tr><td>3</td><td>item_title</td><td>string</td><td></td><td>Title (name) of the item, when new revision created</td></tr>
+<tr><td>4</td><td>item_identifier</td><td>number</td><td></td><td>Identifier of the item. Created automatically</td></tr>
+<tr><td>5</td><td>spec_title</td><td>string</td><td></td><td>Title of the spec</td></tr>
+<tr><td>6</td><td>spec_identifier</td><td>string</td><td></td><td>Spec identifier. Created by the user</td></tr>
+<tr><td>7</td><td>spec_id</td><td>string: UUID</td><td></td><td>ID for the Spec Section</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">8</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">9</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+</tbody></table><h2><a name="items">items</a></h2>Submittal items for the BIM 360 system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID for the Submittal.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>spec_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the associated Spec<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> specs<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>spec_identifier</td><td>string</td><td></td><td>Identifier of the spec this item related to</td></tr>
+<tr><td>6</td><td>title</td><td>string</td><td></td><td>Title (name) of the item</td></tr>
+<tr><td>7</td><td>type_id</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Attic Stock</li>
+<li>2 - Certificates</li>
+<li>3 - O&amp;M Manuals</li>
+<li>4 - Product Data</li>
+<li>5 - Samples</li>
+<li>6 - Shop Drawings</li>
+<li>7 - Test Data</li>
+<li>8 - Warranty/Guarantee</li>
+<li>9 - Other</li>
+<li>10 - Documentation</li>
+<li>11 - LEED</li>
+<li>12 - Reports</li>
+<li>13 - Schedule</li>
+<li>14 - Qualification Data</li>
+<li>15 - Mockup</li></ul></td><td>ID of the item type</td></tr>
+<tr><td>8</td><td>type_value</td><td>string</td><td></td><td>value of the item type_id</td></tr>
+<tr><td>9</td><td>response_comment</td><td>string</td><td></td><td>Response comment of the item (in addition to response id)</td></tr>
+<tr><td>10</td><td>assigned_to</td><td>string</td><td></td><td>Autodesk User ID of the user that the item is assigned to</td></tr>
+<tr><td>11</td><td>revision</td><td>number</td><td></td><td>Revision of the item</td></tr>
+<tr><td>12</td><td>responded_by</td><td>string</td><td></td><td>Autodesk User ID of the user that responded</td></tr>
+<tr><td>13</td><td>description</td><td>string</td><td></td><td>Description of the item</td></tr>
+<tr><td>14</td><td>responded_at</td><td>timestamp: SQL</td><td></td><td>Date and time when response was added</td></tr>
+<tr><td>15</td><td>due_date</td><td>date: string</td><td></td><td>Date and time for the item to be done with current state</td></tr>
+<tr><td>16</td><td>required_on_job_date</td><td>date: string</td><td></td><td>Date and time for the item to be done on site</td></tr>
+<tr><td>17</td><td>manager</td><td>string</td><td></td><td>Autodesk User ID of the manager</td></tr>
+<tr><td>18</td><td>reviewer</td><td>string</td><td></td><td>Autodesk User ID of the reviewer</td></tr>
+<tr><td>19</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the item</td></tr>
+<tr><td>20</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>when was the item created</td></tr>
+<tr><td>21</td><td>state_id</td><td>string</td><td></td><td>State of the item</td></tr>
+<tr><td>22</td><td>response_id</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Rejected</li>
+<li>2 - Revise and resubmit</li>
+<li>3 - Approved as noted</li>
+<li>4 - Approved</li>
+<li>5 - For record only</li></ul></td><td>ID of the response, if was added.</td></tr>
+<tr><td>23</td><td>response_value</td><td>string</td><td></td><td>value of the response_id</td></tr>
+<tr><td>24</td><td>subsection</td><td>string</td><td></td><td>Sub spec section</td></tr>
+<tr><td>25</td><td>subcontractor</td><td>string</td><td></td><td>Autodesk User ID of the user that assigned as subcontractor</td></tr>
+<tr><td>26</td><td>identifier</td><td>number</td><td></td><td>Identifier of the item. Created automatically</td></tr>
+<tr><td>27</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user the last updated the item</td></tr>
+<tr><td>28</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>last time the item was updated</td></tr>
+<tr><td>29</td><td>status_id</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Required</li>
+<li>2 - Open</li>
+<li>3 - Closed</li>
+<li>4 - Void</li>
+<li>5 - Empty</li>
+<li>6 - Draft</li></ul></td><td>Status ID</td></tr>
+<tr><td>30</td><td>status_value</td><td>string</td><td></td><td>value of the status_id</td></tr>
+<tr><td>31</td><td>package_title</td><td>string</td><td></td><td>Title of the package the item is related to (if any)</td></tr>
+<tr><td>32</td><td>package</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the associated Package<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> packages<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>33</td><td>package_identifier</td><td>number</td><td></td><td>Identifier of the package the item is related to (if any)</td></tr>
+<tr><td>34</td><td>priority_id</td><td>number</td><td><strong>Possible Values:</strong><br/><ul><li>1 - Low</li>
+<li>2- Normal</li>
+<li>3 - High</li></ul></td><td>id of the priority the item is related to (if any)</td></tr>
+<tr><td>35</td><td>priority_value</td><td>string</td><td></td><td>value of the priority_id</td></tr>
+<tr><td>36</td><td>required_date</td><td>date: string</td><td></td><td>item's required date</td></tr>
+<tr><td>37</td><td>required_approval_date</td><td>date: string</td><td></td><td>item's required approval date</td></tr>
+<tr><td>38</td><td>lead_time</td><td>number</td><td></td><td>item's lead time</td></tr>
+<tr><td>39</td><td>sent_to_submitter</td><td>timestamp: SQL</td><td></td><td>when the submitter received the item</td></tr>
+<tr><td>40</td><td>received_from_submitter</td><td>timestamp: SQL</td><td></td><td>When the submitter moved the item forward</td></tr>
+<tr><td>41</td><td>sent_to_reviewer</td><td>timestamp: SQL</td><td></td><td>When the reviewer received the item</td></tr>
+<tr><td>42</td><td>received_from_reviewer</td><td>timestamp: SQL</td><td></td><td>When the reviewer moved the item forward</td></tr>
+<tr><td>43</td><td>published_date</td><td>timestamp: SQL</td><td></td><td>When the item was closed and distributed</td></tr>
+<tr><td>44</td><td>submitter_due_date</td><td>date: string</td><td></td><td>When the responsible contractor submission is due</td></tr>
+<tr><td>45</td><td>manager_due_date</td><td>date: string</td><td></td><td>When the manager review is due</td></tr>
+<tr><td>46</td><td>reviewer_due_date</td><td>date: string</td><td></td><td>When the reviewer review is due</td></tr>
+</tbody></table><h2><a name="packages">packages</a></h2>Submittal Packages for the BIM 360 system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the Package</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>spec_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">ID for the associated Spec<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> specs<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>5</td><td>title</td><td>string</td><td></td><td>Title of the package</td></tr>
+<tr><td>6</td><td>identifier</td><td>number</td><td></td><td>Identifier of the package. Created Automatically</td></tr>
+<tr><td>7</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the package</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the spec was created</td></tr>
+<tr><td>9</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the package</td></tr>
+<tr><td>10</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when spec was last updated</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Date and time when package was deleted</td></tr>
+<tr><td>12</td><td>is_deleted</td><td>boolean</td><td></td><td>Was the package deleted</td></tr>
+<tr><td>13</td><td>spec_identifier</td><td>string</td><td></td><td>Identifier of the spec this package related to</td></tr>
+</tbody></table><h2><a name="specs">specs</a></h2>Submittal Spec Sections for the BIM 360 system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>ID for the Spec Section</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>updated_by</td><td>string</td><td></td><td>Autodesk User ID of the user that last updated the spec</td></tr>
+<tr><td>5</td><td>title</td><td>string</td><td></td><td>Title of the spec</td></tr>
+<tr><td>6</td><td>identifier</td><td>string</td><td></td><td>Spec identifier. Created by the user</td></tr>
+<tr><td>7</td><td>created_by</td><td>string</td><td></td><td>Autodesk User ID of the user that created the spec</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the spec was created</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date and time when the spec was updated</td></tr>
+<tr><td>10</td><td>is_deleted</td><td>boolean</td><td></td><td>is the spec deleted</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>when was the spec deleted</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

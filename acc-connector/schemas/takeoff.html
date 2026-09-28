@@ -1,0 +1,362 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>takeoff: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>takeoff Schema Description</h1>
+<b>Documentation Updated: </b>2025-09-04<br/>
+<ul><li><a href="#carbon_definitions">carbon_definitions</a></li>
+<li><a href="#classification_systems">classification_systems</a></li>
+<li><a href="#classifications">classifications</a></li>
+<li><a href="#content_lineages">content_lineages</a></li>
+<li><a href="#packages">packages</a></li>
+<li><a href="#quantities">quantities</a></li>
+<li><a href="#quantity_definitions">quantity_definitions</a></li>
+<li><a href="#settings">settings</a></li>
+<li><a href="#takeoff_items">takeoff_items</a></li>
+<li><a href="#takeoff_types">takeoff_types</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+
+        	<div class="message_highlight_note"><b>Beta Release</b><br>
+        		This is a Beta release of the takeoff data set and schema definitions are subject to change or even possibly be removed from the final data set release. Thank you for your understanding with any future schema updates.
+          </div>
+<h2><a name="carbon_definitions">carbon_definitions</a></h2>Carbon definitions<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>declared_unit</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>EA</li>
+<li>IN</li>
+<li>LF</li>
+<li>YD</li>
+<li>SI</li>
+<li>SF</li>
+<li>SY</li>
+<li>CI</li>
+<li>CF</li>
+<li>CY</li>
+<li>LBS</li>
+<li>TON</li>
+<li>MM</li>
+<li>M</li>
+<li>M2</li>
+<li>M3</li>
+<li>KG</li>
+<li>T</li></ul></td><td>Unit of measure used to calculate the embodied carbon for a given material.</td></tr>
+<tr><td>5</td><td>unit_of_measure</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>KGCO2E</li>
+<li>TCO2E</li></ul></td><td>Unit of measure for the embodied carbon amount</td></tr>
+<tr><td>6</td><td>a1_a2_a3_achievable</td><td>number</td><td>nullable</td><td>Embodied carbon statistics for the product stages A1, A2, and A3 for the material or EPD. <br/><br/>Achievable embodied carbon quantity for the scope (20th percentile).</td></tr>
+<tr><td>7</td><td>a1_a2_a3_conservative</td><td>number</td><td>nullable</td><td>Embodied carbon statistics for the product stages A1, A2, and A3 for the material or EPD.<br/><br/>Conservative embodied carbon quantity for the scope (80th percentile).</td></tr>
+<tr><td>8</td><td>a1_a2_a3_mean</td><td>number</td><td>nullable</td><td>Embodied carbon statistics for the product stages A1, A2, and A3 for the material or EPD.<br/><br/>Mean of the embodied carbon results.</td></tr>
+<tr><td>9</td><td>a1_a2_a3_standard_deviation</td><td>number</td><td>nullable</td><td>Embodied carbon statistics for the product stages A1, A2, and A3 for the material or EPD.<br/><br/>Standard deviation of the embodied carbon results.</td></tr>
+</tbody></table><h2><a name="classification_systems">classification_systems</a></h2>Classification systems associated with each project. A classification system is used for the process of categorizing and organizing information for construction projects.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td>Max length: 200</td><td>The classification system name.</td></tr>
+<tr><td>5</td><td>type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>CLASSIFICATION_SYSTEM_1</li>
+<li>CLASSIFICATION_SYSTEM_2</li></ul></td><td>The type of classification system.</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was created</td></tr>
+<tr><td>7</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was updated</td></tr>
+</tbody></table><h2><a name="classifications">classifications</a></h2>Classification hierarchy for a classification system.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>system_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> classification_systems<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>code</td><td>string</td><td>Max length: 256</td><td>The classification code.</td></tr>
+<tr><td>6</td><td>parent_code</td><td>string: null</td><td>Max length: 256</td><td>Parent classification code. Null if the current classification is the root.</td></tr>
+<tr><td>7</td><td>description</td><td>string</td><td>Max length: 256</td><td>A description of the classification.</td></tr>
+<tr><td>8</td><td>parent_id</td><td>string: UUID</td><td>nullable</td><td>Parent classification ID, references the classification id. Null if the current classification is the root.</td></tr>
+</tbody></table><h2><a name="content_lineages">content_lineages</a></h2>List of 2D sheets and BIM models that are used in a Takeoff project.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>sheet_name</td><td>string: null</td><td>nullable
+Max length: 256</td><td>Name of the sheet. This is set to NULL if the content lineage points to a 3D model.</td></tr>
+<tr><td>5</td><td>lineage_urn</td><td>string: null</td><td>Max length: 256</td><td>The URN of the 3D model. This is set to NULL for a sheet.</td></tr>
+<tr><td>6</td><td>view_name</td><td>string: null</td><td>Max length: 256</td><td>The name of the 3D model view.</td></tr>
+<tr><td>7</td><td>type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>SHEET</li>
+<li>FILE_MODEL</li></ul></td><td>The content view type.</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was created</td></tr>
+<tr><td>9</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was updated</td></tr>
+</tbody></table><h2><a name="packages">packages</a></h2>Takeoff packages are used to organize and contain all takeoff data related to a scope of work in a project.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td>Max length: 64</td><td>The package name (user defined).</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was created</td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was updated</td></tr>
+</tbody></table><h2><a name="quantities">quantities</a></h2>Quantities associated with Takeoff items<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>quantity</td><td>number</td><td>nullable</td><td>The quantity of the takeoff.</td></tr>
+<tr><td>5</td><td>output_name</td><td>string</td><td>nullable. Max length: 256</td><td>A custom output name from the user.</td></tr>
+<tr><td>6</td><td>unit_of_measure</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>EA</li>
+<li>IN</li>
+<li>LF</li>
+<li>YD</li>
+<li>SI</li>
+<li>SF</li>
+<li>SY</li>
+<li>CI</li>
+<li>CF</li>
+<li>CY</li>
+<li>LBS</li>
+<li>TON</li>
+<li>MM</li>
+<li>M</li>
+<li>M2</li>
+<li>M3</li>
+<li>KG</li>
+<li>T</li></ul></td><td>The unit of measurement.</td></tr>
+<tr><td>7</td><td>quantity_order</td><td>number</td><td></td><td>The order for which the quantities are sorted. This value will be 0 for the Primary quantity and will be greater or equal to 1 for Secondary quantities.</td></tr>
+<tr><td>8</td><td>item_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> takeoff_items<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>9</td><td>classification1_id</td><td>string: UUID</td><td>nullable</td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> classifications<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>10</td><td>classification2_id</td><td>string: UUID</td><td>nullable</td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> classifications<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>11</td><td>carbon_definition_id</td><td>string: UUID</td><td>nullable</td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> carbon_definitions<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>12</td><td>unit_cost</td><td>number</td><td>nullable</td><td>Unit cost for the quantity</td></tr>
+<tr><td>13</td><td>total_cost</td><td>number</td><td>nullable</td><td>Total cost = quantity * unit_cost</td></tr>
+</tbody></table><h2><a name="quantity_definitions">quantity_definitions</a></h2>Quantity definitions associated with a Takeoff type<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>output_name</td><td>string: null</td><td>Max length: 256</td><td>A custom output name from the user.</td></tr>
+<tr><td>5</td><td>expression</td><td>string: null</td><td>Max length: 4096</td><td>The formula to calculate the quantity.</td></tr>
+<tr><td>6</td><td>unit_of_measure</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>EA</li>
+<li>IN</li>
+<li>LF</li>
+<li>YD</li>
+<li>SI</li>
+<li>SF</li>
+<li>SY</li>
+<li>CI</li>
+<li>CF</li>
+<li>CY</li>
+<li>LBS</li>
+<li>TON</li>
+<li>MM</li>
+<li>M</li>
+<li>M2</li>
+<li>M3</li>
+<li>KG</li>
+<li>T</li></ul></td><td>The unit of measurement.</td></tr>
+<tr><td>7</td><td>quantity_order</td><td>number</td><td></td><td>The order for which the quantities are sorted.</td></tr>
+<tr><td>8</td><td>type_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> takeoff_types<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>9</td><td>classification1_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> classifications<br/><strong>Column: </strong>  id.</span></td></tr>
+<tr><td>10</td><td>classification2_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> classifications<br/><strong>Column: </strong>  id.</span></td></tr>
+<tr><td>11</td><td>unit_cost</td><td>number</td><td>nullable</td><td>Unit cost for quantity</td></tr>
+<tr><td>12</td><td>carbon_definition_id</td><td>string: UUID</td><td>nullable</td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> carbon_definitions<br/><strong>Column: </strong>  id</span></td></tr>
+</tbody></table><h2><a name="settings">settings</a></h2>Takeoff settings for each project<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Same as Project id.</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>measurement_system</td><td>enum: string</td><td>nullable
+ENUM_VALUES:
+IMPERIAL, METRIC</td><td>The project measurement system.<br/>Possible values: IMPERIAL, METRIC.</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was created</td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was updated</td></tr>
+</tbody></table><h2><a name="takeoff_items">takeoff_items</a></h2>Takeoff items in a project. Each item belongs to a Takeoff package.<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>content_lineage_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> content_lineages<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>5</td><td>content_version</td><td>string</td><td>Max length: 256</td><td>The content view version.</td></tr>
+<tr><td>6</td><td>package_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> packages<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>7</td><td>type_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> takeoff_types<br/><strong>Column: </strong>  id</span></td></tr>
+<tr><td>8</td><td>object_name</td><td>string: null</td><td>Max length: 256</td><td>The name of the takeoff type that the item is derived from.</td></tr>
+<tr><td>9</td><td>location_id</td><td>string: UUID</td><td>nullable</td><td>Reference to Locations node id</td></tr>
+<tr><td>10</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was created</td></tr>
+<tr><td>11</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was updated</td></tr>
+</tbody></table><h2><a name="takeoff_types">takeoff_types</a></h2>Takeoff types are used to organize and describe groups of takeoff items with shared properties<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Resource Id</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td>Max length: 64</td><td>The takeoff type name.</td></tr>
+<tr><td>5</td><td>description</td><td>string: null</td><td>Max length: 256</td><td>A description of the takeoff type.</td></tr>
+<tr><td>6</td><td>tool</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>COUNT</li>
+<li>DISTANCE</li>
+<li>AREA</li>
+<li>SELECT</li></ul></td><td>The type of tool used to create takeoff items of this takeoff type.</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was created</td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Date the resource was updated</td></tr>
+<tr><td>9</td><td>package_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;"><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> packages<br/><strong>Column: </strong>  id</span></td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

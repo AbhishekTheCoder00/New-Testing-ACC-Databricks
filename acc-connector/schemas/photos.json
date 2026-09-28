@@ -1,0 +1,346 @@
+{
+   "photo_tags" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the photo tag",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "seq_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Used for sync token, the order in which columns were updated.",
+         "ordinal_position" : 4
+      },
+      "project_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Project UID this tag applies to.",
+         "ordinal_position" : 5
+      },
+      "photo_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Photo UID this tag applies to.",
+         "ordinal_position" : 6
+      },
+      "tag_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "String that represents the tag. (EX: \"stairs\", \"drywall\", etc)",
+         "ordinal_position" : 7
+      },
+      "tag_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Type of tag, \"user\", \"ml\" (autotag), etc",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the tag was created on the server.",
+         "ordinal_position" : 9
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The UID of the user who created the tag.",
+         "ordinal_position" : 10
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the row was deleted, if applicable.",
+         "ordinal_position" : 11
+      },
+      "deleter_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The UID of the user who deleted the photo, if deleted.",
+         "ordinal_position" : 12
+      },
+      "model_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Model version for the photo",
+         "ordinal_position" : 13
+      }
+   },
+   "photos" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the photo",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The title of the photo, which can be changed to a custom string",
+         "ordinal_position" : 4
+      },
+      "size" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 5
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 6
+      },
+      "annotation" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 7
+      },
+      "punch" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 8
+      },
+      "creator_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The UID of the user who created the photo",
+         "ordinal_position" : 9
+      },
+      "deleter_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The UID of the user who deleted the photo, if deleted.",
+         "ordinal_position" : 10
+      },
+      "updater_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The UID of the user who most recently updated the photo.",
+         "ordinal_position" : 11
+      },
+      "lat" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Latitude of the photo, if applicable.",
+         "ordinal_position" : 12
+      },
+      "lng" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Longitude of the photo, if applicable.",
+         "ordinal_position" : 13
+      },
+      "uid" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Photo UID",
+         "ordinal_position" : 14
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 15
+      },
+      "image_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 16
+      },
+      "type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 17
+      },
+      "taken_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the photo was taken at, parsed from the photo's metadata, if available.",
+         "ordinal_position" : 18
+      },
+      "locked_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 19
+      },
+      "is_public" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Whether the photo is public to all users on a project, or uses permissions.",
+         "ordinal_position" : 20
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the photo was uploaded to the server.",
+         "ordinal_position" : 21
+      },
+      "user_created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the photo was added to the project locally (on mobile devices, before uploading to the cloud).",
+         "ordinal_position" : 22
+      },
+      "updated_on" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the row was last updated.",
+         "ordinal_position" : 23
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the row was deleted, if applicable.",
+         "ordinal_position" : 24
+      },
+      "project" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Project UID this tag applies to.",
+         "ordinal_position" : 25
+      },
+      "seq_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Used for sync token, the order in which columns were updated.",
+         "ordinal_position" : 26
+      },
+      "sheet" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "N/A",
+         "ordinal_position" : 27
+      }
+   },
+   "referencer_participants" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the referencer participant",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "project_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Project UID this row applies to.",
+         "ordinal_position" : 4
+      },
+      "referencer_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique URN of the resource referencing the photo",
+         "ordinal_position" : 5
+      },
+      "participant_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The UID of the entity (user, group, role, etc...) referencing the photo",
+         "ordinal_position" : 6
+      },
+      "participant_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of the entity referencing the photo (for debugging purposes)",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the row was created on the server.",
+         "ordinal_position" : 8
+      }
+   },
+   "referencer_photos" : {
+      "id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "ID of the referencer photo",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "project_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Project UID this row applies to.",
+         "ordinal_position" : 4
+      },
+      "referencer_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique URN of the resource referencing the photo",
+         "ordinal_position" : 5
+      },
+      "photo_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The Photo UID this row applies to.",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "The datetime the row was created on the server.",
+         "ordinal_position" : 7
+      },
+      "edge_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "This column was created to account for Form's complex visibility rules that depend on the state of the Form. Instead of having the Form as the Referencer, the Form Template becomes the Referencer, and the Form URN becomes the edge that moves between various Form Template URNs (for example, each Form Template will have multiple URNs that correspond to the various states that the Form can be in: DRAFT, PUBLISHED, etc..).",
+         "ordinal_position" : 8
+      }
+   }
+}

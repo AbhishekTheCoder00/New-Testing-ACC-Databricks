@@ -1,0 +1,670 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cdcadmin: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>cdcadmin Schema Description</h1>
+<b>Documentation Updated: </b>2025-11-20<br/>
+<ul><li><a href="#account_services">account_services</a></li>
+<li><a href="#accounts">accounts</a></li>
+<li><a href="#companies">companies</a></li>
+<li><a href="#project_companies">project_companies</a></li>
+<li><a href="#project_products">project_products</a></li>
+<li><a href="#project_roles">project_roles</a></li>
+<li><a href="#project_services">project_services</a></li>
+<li><a href="#project_user_companies">project_user_companies</a></li>
+<li><a href="#project_user_roles">project_user_roles</a></li>
+<li><a href="#project_users">project_users</a></li>
+<li><a href="#projects">projects</a></li>
+<li><a href="#roles">roles</a></li>
+<li><a href="#users">users</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+
+        	<div class="message_highlight_note"><b>Beta Release</b><br>
+        		This is a Beta release of the cdcadmin data set and schema definitions are subject to change or even possibly be removed from the final data set release. Thank you for your understanding with any future schema updates.
+          </div>
+<h2><a name="account_services">account_services</a></h2>Service List for the Account - This is the Change Data Capture (CDC) enabled version of the admin.account_services table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>2</td><td>service</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>documentManagement</li>
+<li>projectManagement</li>
+<li>costManagement</li>
+<li>designCollaboration</li>
+<li>fieldManagement</li>
+<li>modelCoordination</li>
+<li>field</li>
+<li>glue</li>
+<li>plan</li>
+<li>insight</li></ul></td><td>BIM 360 Service</td></tr>
+<tr><td>3</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the account_service was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>4</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the account_service was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>5</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the account_service was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="accounts">accounts</a></h2>This is a list of accounts in BIM 360. For individual customer exports, this table will only include the single customer's information. - This is the Change Data Capture (CDC) enabled version of the admin.accounts table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Account Identifier</td></tr>
+<tr><td>2</td><td>display_name</td><td>string</td><td>Max length: 255</td><td>Display name of the account</td></tr>
+<tr><td>3</td><td>start_date</td><td>timestamp: SQL</td><td></td><td>Start of the account availability</td></tr>
+<tr><td>4</td><td>end_date</td><td>timestamp: SQL</td><td></td><td>End of the account availability</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the account was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the account was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the account was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="companies">companies</a></h2>Company organizations for use in BIM 360. - This is the Change Data Capture (CDC) enabled version of the admin.companies table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Company ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>3</td><td>name</td><td>string</td><td>Max length: 255</td><td>Name of the company</td></tr>
+<tr><td>4</td><td>trade</td><td>enum: string</td><td>Max length: 255</td><td>Trade of the company</td></tr>
+<tr><td>5</td><td>category</td><td>string</td><td>Max length: 255</td><td>Category for the company</td></tr>
+<tr><td>6</td><td>address_line1</td><td>string</td><td>Max length: 255</td><td>Company specified address</td></tr>
+<tr><td>7</td><td>address_line2</td><td>string</td><td>Max length: 255</td><td>Company specified address</td></tr>
+<tr><td>8</td><td>city</td><td>string</td><td>Max length: 255</td><td>City for the Company address</td></tr>
+<tr><td>9</td><td>state_or_province</td><td>string</td><td>Max length: 255</td><td>State for the Company address</td></tr>
+<tr><td>10</td><td>postal_code</td><td>string</td><td>Max length: 255</td><td>Postal code for the address</td></tr>
+<tr><td>11</td><td>country</td><td>string</td><td>Max length: 255</td><td>Country of the address</td></tr>
+<tr><td>12</td><td>phone</td><td>string</td><td>Max length: 255</td><td>Phone for the company</td></tr>
+<tr><td>13</td><td>website_url</td><td>string</td><td>Max length: 255</td><td>Web site for the company</td></tr>
+<tr><td>14</td><td>description</td><td>string</td><td>Max length: 255</td><td>Description of the company</td></tr>
+<tr><td>15</td><td>erp_id</td><td>string</td><td>Max length: 255</td><td>ERP Id</td></tr>
+<tr><td>16</td><td>tax_id</td><td>string</td><td>Max length: 255</td><td>Tax ID</td></tr>
+<tr><td>17</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>deleted</li>
+<li>active</li></ul></td><td>Status of the company</td></tr>
+<tr><td>18</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date company created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>19</td><td>project_size</td><td>number</td><td></td><td>Size of project</td></tr>
+<tr><td>20</td><td>user_size</td><td>number</td><td></td><td>User size of project</td></tr>
+<tr><td>21</td><td>custom_properties</td><td>string</td><td>Max length: 255</td><td>Customer defined properties</td></tr>
+<tr><td>22</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the companie was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>23</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the companie was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>24</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="project_companies">project_companies</a></h2>The company list for projects in BIM 360. - This is the Change Data Capture (CDC) enabled version of the admin.project_companies table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>project_id</td><td>string: UUID</td><td></td><td>Project ID</td></tr>
+<tr><td>2</td><td>company_id</td><td>string: UUID</td><td></td><td>The company ID for the company that is a part of the project</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>4</td><td>company_oxygen_id</td><td>string</td><td></td><td>Oxygen ID for the company</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_companie was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_companie was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_companie was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="project_products">project_products</a></h2>The Product List for the Project - This is the Change Data Capture (CDC) enabled version of the admin.project_products table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>3</td><td>product_key</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>autoSpecs</li>
+<li>build</li>
+<li>buildingConnected</li>
+<li>capitalPlanning</li>
+<li>cost</li>
+<li>designCollaboration</li>
+<li>docs</li>
+<li>financials</li>
+<li>insight</li>
+<li>modelCoordination</li>
+<li>projectAdministration</li>
+<li>takeoff</li></ul></td><td>Bim360/Acc Product</td></tr>
+<tr><td>4</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>active</li>
+<li>activating</li>
+<li>inactive</li>
+<li>activationFailed</li>
+<li>deactivationFailed</li>
+<li>deactivating</li></ul></td><td>Status of the product</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date/time service was added<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_product was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_product was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="project_roles">project_roles</a></h2>The project roles for projects in BIM 360. - This is the Change Data Capture (CDC) enabled version of the admin.project_roles table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project ID</td></tr>
+<tr><td>3</td><td>role_oxygen_id</td><td>string</td><td></td><td>Oxygen ID for the role</td></tr>
+<tr><td>4</td><td>name</td><td>string</td><td></td><td>Name for the role</td></tr>
+<tr><td>5</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>active</li>
+<li>inactive</li></ul></td><td>Status of the role</td></tr>
+<tr><td>6</td><td>role_id</td><td>string: UUID</td><td></td><td>Admin ID for the role</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_role was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_role was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_role was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="project_services">project_services</a></h2>The Service List for the Account - This is the Change Data Capture (CDC) enabled version of the admin.project_services table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>project_id</td><td>string: UUID</td><td></td><td>Project ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>3</td><td>service</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>documentManagement</li>
+<li>projectManagement</li>
+<li>costManagement</li>
+<li>designCollaboration</li>
+<li>fieldManagement</li>
+<li>modelCoordination</li>
+<li>field</li>
+<li>glue</li>
+<li>plan</li>
+<li>insight</li></ul></td><td>BIM 360 Service</td></tr>
+<tr><td>4</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>active</li>
+<li>inactive</li>
+<li>archived</li></ul></td><td>Status of the service</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date/time service was added<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_service was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_service was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="project_user_companies">project_user_companies</a></h2>The company list for projects in BIM 360. - This is the Change Data Capture (CDC) enabled version of the admin.project_user_companies table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>2</td><td>company_oxygen_id</td><td>string: UUID</td><td></td><td>Oxygen ID for the company</td></tr>
+<tr><td>3</td><td>project_id</td><td>string: UUID</td><td></td><td>Project ID</td></tr>
+<tr><td>4</td><td>user_id</td><td>string: UUID</td><td></td><td>The user ID for the member of the company</td></tr>
+<tr><td>5</td><td>status</td><td>string</td><td></td><td>Status of the user</td></tr>
+<tr><td>6</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date/time user was added<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the user was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the user was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="project_user_roles">project_user_roles</a></h2>The list of roles for the user in a particular project - This is the Change Data Capture (CDC) enabled version of the admin.project_user_roles table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>project_id</td><td>string: UUID</td><td></td><td>Project ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>3</td><td>user_id</td><td>string: UUID</td><td></td><td>The user ID for the member of the project</td></tr>
+<tr><td>4</td><td>role_id</td><td>string: UUID</td><td></td><td>The role the user has for this particular project</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Date user added to project<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">6</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project ID for the user role</td></tr>
+<tr><td>7</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the user role was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the user role was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="project_users">project_users</a></h2>The user list for projects - This is the Change Data Capture (CDC) enabled version of the admin.project_users table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">1</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">Project ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>3</td><td>user_id</td><td>string: UUID</td><td></td><td>The user ID for the member of the project</td></tr>
+<tr><td>4</td><td>status</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>active</li>
+<li>activating</li>
+<li>deleted</li></ul></td><td>The user's status for the project</td></tr>
+<tr><td>5</td><td>company_id</td><td>string: UUID</td><td></td><td>The user's assigned company for the project</td></tr>
+<tr><td>6</td><td>access_level</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>project_user</li>
+<li>project_admin</li></ul></td><td>The user's access level for the project</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Created date<br/><i>project_users table is a new table created at the database level in November, 2020 as part of the effort to unify BIM 360 and ACC.<br/>A data migration was performed that migrated the records of BIM 360 users to this new table, and as a result the created_at reflects the date when the user records were written into this new table<br/>Users added after November, 2020 should have a consistent date between project_user_services and project_users table.</i><br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Updated date<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>9</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project_user was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>10</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="projects">projects</a></h2>Projects in BIM 360 - This is the Change Data Capture (CDC) enabled version of the admin.projects table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>Project ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>3</td><td>name</td><td>string</td><td>Max length: 255</td><td>Name of the project</td></tr>
+<tr><td>4</td><td>start_date</td><td>timestamp: SQL</td><td></td><td>Start date for the project</td></tr>
+<tr><td>5</td><td>end_date</td><td>timestamp: SQL</td><td></td><td>End date for the project</td></tr>
+<tr><td>6</td><td>type</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>&lt;userDefinedValue&gt;</li>
+<li>Convention Center</li>
+<li>Data Center</li>
+<li>Hotel / Motel</li>
+<li>Office</li>
+<li>Parking Structure / Garage</li>
+<li>Performing Arts</li>
+<li>Restaurant</li>
+<li>Retail</li>
+<li>Stadium / Arena</li>
+<li>Theme Park</li>
+<li>Warehouse (non-manufacturing)</li>
+<li>Assisted Living / Nursing Home</li>
+<li>Hospital</li>
+<li>Medical Laboratory</li>
+<li>Medical Office</li>
+<li>OutPatient Surgery Center</li>
+<li>Court House</li>
+<li>Dormitory</li>
+<li>Education Facility</li>
+<li>Government Building</li>
+<li>Library</li>
+<li>Military Facility</li>
+<li>Museum</li>
+<li>Prison / Correctional Facility</li>
+<li>Recreation Building</li>
+<li>Religious Building</li>
+<li>Research Facility / Laboratory</li>
+<li>Multi-Family Housing</li>
+<li>Single-Family Housing</li>
+<li>Airport</li>
+<li>Bridge</li>
+<li>Canal / Waterway</li>
+<li>Dams / Flood Control / Reservoirs</li>
+<li>Harbor / River Development</li>
+<li>Rail</li>
+<li>Seaport</li>
+<li>Streets / Roads / Highways</li>
+<li>Transportation Building</li>
+<li>Tunnel</li>
+<li>Waste Water / Sewers</li>
+<li>Water Supply</li>
+<li>Manufacturing / Factory</li>
+<li>Mining Facility</li>
+<li>Oil &amp; Gas</li>
+<li>Plant</li>
+<li>Power Plant</li>
+<li>Solar Farm</li>
+<li>Utilities</li>
+<li>Wind Farm</li>
+<li>Demonstration Project</li>
+<li>Template Project</li>
+<li>Training Project</li></ul></td><td>Project type definition</td></tr>
+<tr><td>7</td><td>value</td><td>number</td><td></td><td>Project Value</td></tr>
+<tr><td>8</td><td>currency</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>USD</li>
+<li>AUD</li>
+<li>CAD</li>
+<li>EUR</li>
+<li>GBP</li>
+<li>ALL</li>
+<li>AZN</li>
+<li>BYR</li>
+<li>BRL</li>
+<li>BGN</li>
+<li>CNY</li>
+<li>HRK</li>
+<li>CZK</li>
+<li>DKK</li>
+<li>EEK</li>
+<li>HKD</li>
+<li>HUF</li>
+<li>ISK</li>
+<li>INR</li>
+<li>IRR</li>
+<li>ILS</li>
+<li>JPY</li>
+<li>KZT</li>
+<li>KRW</li>
+<li>KPW</li>
+<li>KGS</li>
+<li>LVL</li>
+<li>LTL</li>
+<li>MKD</li>
+<li>MNT</li>
+<li>ANG</li>
+<li>NOK</li>
+<li>PKR</li>
+<li>PLN</li>
+<li>RON</li>
+<li>RUB</li>
+<li>SAR</li>
+<li>RSD</li>
+<li>SGD</li>
+<li>ZAR</li>
+<li>SEK</li>
+<li>CHF</li>
+<li>TWD</li>
+<li>TRL</li>
+<li>UAH</li>
+<li>UZS</li>
+<li>YER</li>
+<li>PHP</li>
+<li>NZD</li>
+<li>MYR</li>
+<li>THB</li>
+<li>IDR</li>
+<li>VND</li></ul></td><td>Value currency</td></tr>
+<tr><td>9</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>active</li>
+<li>pending</li>
+<li>expired</li>
+<li>archived</li>
+<li>deleted</li></ul></td><td>Status of the project</td></tr>
+<tr><td>10</td><td>job_number</td><td>string</td><td>Max length: 100</td><td>Job number of the project</td></tr>
+<tr><td>11</td><td>address_line1</td><td>string</td><td>Max length: 255</td><td>Address of the project</td></tr>
+<tr><td>12</td><td>address_line2</td><td>string</td><td>Max length: 255</td><td>Address of the project</td></tr>
+<tr><td>13</td><td>city</td><td>string</td><td>Max length: 255</td><td>City of the project</td></tr>
+<tr><td>14</td><td>state_or_province</td><td>string</td><td>Max length: 255</td><td>State of the project</td></tr>
+<tr><td>15</td><td>postal_code</td><td>string</td><td>Max length: 255</td><td>Postal code for the project</td></tr>
+<tr><td>16</td><td>country</td><td>string</td><td>Max length: 255</td><td>Country for the project</td></tr>
+<tr><td>17</td><td>timezone</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>Pacific/Honolulu</li>
+<li>America/Juneau</li>
+<li>America/Los_Angeles</li>
+<li>America/Phoenix</li>
+<li>America/Denver</li>
+<li>America/Chicago</li>
+<li>America/New_York</li>
+<li>America/Indiana/Indianapolis</li>
+<li>Pacific/Pago_Pago</li>
+<li>Pacific/Midway</li>
+<li>America/Tijuana</li>
+<li>America/Chihuahua</li>
+<li>America/Mazatlan</li>
+<li>America/Guatemala</li>
+<li>America/Mexico_City</li>
+<li>America/Monterrey</li>
+<li>America/Regina</li>
+<li>America/Bogota</li>
+<li>America/Lima</li>
+<li>America/Caracas</li>
+<li>America/Halifax</li>
+<li>America/Guyana</li>
+<li>America/La_Paz</li>
+<li>America/Santiago</li>
+<li>America/St_Johns</li>
+<li>America/Sao_Paulo</li>
+<li>America/Argentina/Buenos_Aires</li>
+<li>America/Godthab</li>
+<li>Atlantic/South_Georgia</li>
+<li>Atlantic/Azores</li>
+<li>Atlantic/Cape_Verde</li>
+<li>Africa/Casablanca</li>
+<li>Europe/Dublin</li>
+<li>Europe/Lisbon</li>
+<li>Europe/London</li>
+<li>Africa/Monrovia</li>
+<li>Etc/UTC</li>
+<li>Europe/Amsterdam</li>
+<li>Europe/Belgrade</li>
+<li>Europe/Berlin</li>
+<li>Europe/Bratislava</li>
+<li>Europe/Brussels</li>
+<li>Europe/Budapest</li>
+<li>Europe/Copenhagen</li>
+<li>Europe/Ljubljana</li>
+<li>Europe/Madrid</li>
+<li>Europe/Paris</li>
+<li>Europe/Prague</li>
+<li>Europe/Rome</li>
+<li>Europe/Sarajevo</li>
+<li>Europe/Skopje</li>
+<li>Europe/Stockholm</li>
+<li>Europe/Vienna</li>
+<li>Europe/Warsaw</li>
+<li>Africa/Algiers</li>
+<li>Europe/Zagreb</li>
+<li>Europe/Athens</li>
+<li>Europe/Bucharest</li>
+<li>Africa/Cairo</li>
+<li>Africa/Harare</li>
+<li>Europe/Helsinki</li>
+<li>Europe/Istanbul</li>
+<li>Asia/Jerusalem</li>
+<li>Europe/Kiev</li>
+<li>Africa/Johannesburg</li>
+<li>Europe/Riga</li>
+<li>Europe/Sofia</li>
+<li>Europe/Tallinn</li>
+<li>Europe/Vilnius</li>
+<li>Asia/Baghdad</li>
+<li>Asia/Kuwait</li>
+<li>Europe/Minsk</li>
+<li>Africa/Nairobi</li>
+<li>Asia/Riyadh</li>
+<li>Asia/Tehran</li>
+<li>Asia/Muscat</li>
+<li>Asia/Baku</li>
+<li>Europe/Moscow</li>
+<li>Asia/Tbilisi</li>
+<li>Asia/Yerevan</li>
+<li>Asia/Kabul</li>
+<li>Asia/Karachi</li>
+<li>Asia/Tashkent</li>
+<li>Asia/Kolkata</li>
+<li>Asia/Colombo</li>
+<li>Asia/Kathmandu</li>
+<li>Asia/Almaty</li>
+<li>Asia/Dhaka</li>
+<li>Asia/Yekaterinburg</li>
+<li>Asia/Rangoon</li>
+<li>Asia/Bangkok</li>
+<li>Asia/Jakarta</li>
+<li>Asia/Novosibirsk</li>
+<li>Asia/Shanghai</li>
+<li>Asia/Chongqing</li>
+<li>Asia/Hong_Kong</li>
+<li>Asia/Krasnoyarsk</li>
+<li>Asia/Kuala_Lumpur</li>
+<li>Australia/Perth</li>
+<li>Asia/Singapore</li>
+<li>Asia/Taipei</li>
+<li>Asia/Ulaanbaatar</li>
+<li>Asia/Urumqi</li>
+<li>Asia/Irkutsk</li>
+<li>Asia/Tokyo</li>
+<li>Asia/Seoul</li>
+<li>Australia/Adelaide</li>
+<li>Australia/Darwin</li>
+<li>Australia/Brisbane</li>
+<li>Australia/Melbourne</li>
+<li>Pacific/Guam</li>
+<li>Australia/Hobart</li>
+<li>Pacific/Port_Moresby</li>
+<li>Australia/Sydney</li>
+<li>Asia/Yakutsk</li>
+<li>Pacific/Noumea</li>
+<li>Asia/Vladivostok</li>
+<li>Pacific/Auckland</li>
+<li>Pacific/Fiji</li>
+<li>Asia/Kamchatka</li>
+<li>Asia/Magadan</li>
+<li>Pacific/Majuro</li>
+<li>Pacific/Guadalcanal</li>
+<li>Pacific/Tongatapu</li>
+<li>Pacific/Apia</li>
+<li>Pacific/Fakaofo</li></ul></td><td>Timezone for the project</td></tr>
+<tr><td>18</td><td>construction_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>New Construction</li>
+<li>Renovation</li></ul></td><td>Construction type</td></tr>
+<tr><td>19</td><td>contract_type</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>Construction Management (CM) at Risk</li>
+<li>Design-Bid</li>
+<li>Design-Bid-Build</li>
+<li>Design-Build-Operate</li>
+<li>IPD</li></ul></td><td>Contract type for the project</td></tr>
+<tr><td>20</td><td>business_unit_id</td><td>string: UUID</td><td></td><td><span style="color: #1A59A8;">Business Unit ID for the project<br/><u><strong>Foreign Key:</strong></u><br/><strong>Table: </strong> business_units<br/><strong>Column: </strong> id</span></td></tr>
+<tr><td>21</td><td>last_sign_in</td><td>timestamp: SQL</td><td></td><td>Last access / sign in for the project. Currently, this field is updated when a user logs into the following services on the Web: (BIM 360) Account Admin, (BIM 360) Project Admin, Document Management, Classic Field, Classic Plan.  No other services or mobile applications update Last Sign-in at this time.</td></tr>
+<tr><td>22</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Time project was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>23</td><td>acc_project</td><td>boolean</td><td></td><td>Indicator if this is an ACC Project versus a BIM 360 Project</td></tr>
+<tr><td>24</td><td>latitude</td><td>number</td><td></td><td>Latitude for the project site</td></tr>
+<tr><td>25</td><td>longitude</td><td>number</td><td></td><td>Longitude for the project site</td></tr>
+<tr><td>26</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Time project was last updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>27</td><td>status_reason</td><td>string</td><td></td><td>Reason for the current project status</td></tr>
+<tr><td>28</td><td>total_member_size</td><td>number</td><td></td><td>Total active members within the project. NOTE: This is not real time data</td></tr>
+<tr><td>29</td><td>total_company_size</td><td>number</td><td></td><td>Total active companies within the project. NOTE: This is not real time data</td></tr>
+<tr><td>30</td><td>classification</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>component</li>
+<li>production</li>
+<li>sample</li>
+<li>template</li></ul></td><td>Project Classification</td></tr>
+<tr><td>31</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the project was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>32</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="roles">roles</a></h2>The industry roles for use in BIM 360. - This is the Change Data Capture (CDC) enabled version of the admin.roles table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The ID of the Role</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>3</td><td>name</td><td>string</td><td>Max length: 255</td><td>The Name of the Role</td></tr>
+<tr><td>4</td><td>status</td><td>enum: string</td><td><strong>Possible Values:</strong><br/><ul><li>active</li>
+<li>inactive</li></ul></td><td>Status of the Role</td></tr>
+<tr><td>5</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the role was created<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>6</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the role was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>7</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the role was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>8</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table><h2><a name="users">users</a></h2>Users in BIM 360. - This is the Change Data Capture (CDC) enabled version of the admin.users table.<br/><span class="yellow_highlight">Date Range Extractions Supported</span><table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>string: UUID</td><td></td><td>The HQ User ID</td></tr>
+<tr><td>2</td><td>autodesk_id</td><td>string</td><td>Max length: 255</td><td>Autodesk User ID</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td>4</td><td>email</td><td>string</td><td>Max length: 255</td><td>Email address for the user</td></tr>
+<tr><td>5</td><td>name</td><td>string</td><td>Max length: 255</td><td>Name for the user</td></tr>
+<tr><td>6</td><td>first_name</td><td>string</td><td>Max length: 255</td><td>First name of the user</td></tr>
+<tr><td>7</td><td>last_name</td><td>string</td><td>Max length: 255</td><td>Last name of the user</td></tr>
+<tr><td>8</td><td>address_line1</td><td>string</td><td>Max length: 255</td><td>User specified address</td></tr>
+<tr><td>9</td><td>address_line2</td><td>string</td><td>Max length: 255</td><td>User specified address</td></tr>
+<tr><td>10</td><td>city</td><td>string</td><td>Max length: 255</td><td>City for the user address</td></tr>
+<tr><td>11</td><td>state_or_province</td><td>string</td><td>Max length: 255</td><td>State for the user address</td></tr>
+<tr><td>12</td><td>postal_code</td><td>string</td><td>Max length: 255</td><td>Postal code for the address</td></tr>
+<tr><td>13</td><td>country</td><td>string</td><td>Max length: 255</td><td>Country for the user</td></tr>
+<tr><td>14</td><td>last_sign_in</td><td>timestamp: SQL</td><td></td><td>Last time the user has signed in to BIM 360. Currently, this field is updated when a user logs into the following services on the Web: (BIM 360) Account Admin, (BIM 360) Project Admin, Document Management, Classic Field, Classic Plan.  No other services or mobile applications update Last Sign-in at this time.</td></tr>
+<tr><td>15</td><td>phone</td><td>string</td><td>Max length: 255</td><td>Phone number for the user</td></tr>
+<tr><td>16</td><td>job_title</td><td>string</td><td>Max length: 255</td><td>User specified job title</td></tr>
+<tr><td>17</td><td>access_level_account_admin</td><td>boolean</td><td></td><td>Account Administrator</td></tr>
+<tr><td>18</td><td>access_level_project_admin</td><td>boolean</td><td></td><td>Indicates the user is a project admin for at least 1 active project</td></tr>
+<tr><td>19</td><td>access_level_project_member</td><td>boolean</td><td></td><td>Indicates the user is participating in at least 1 active project in which they are not an admin</td></tr>
+<tr><td>20</td><td>access_level_executive</td><td>boolean</td><td></td><td>Account Executive</td></tr>
+<tr><td>21</td><td>default_role_id</td><td>string: UUID</td><td>Max length: 255</td><td>ID of the account role to set when adding users to additional projects. For example if this ID is for 'Architect' then by default the user will be set to an 'Architect' role in any projects.</td></tr>
+<tr><td>22</td><td>default_company_id</td><td>string: UUID</td><td>Max length: 255</td><td>ID of the company ID to set when adding users to additional projects.</td></tr>
+<tr><td>23</td><td>status</td><td>string</td><td><strong>Possible Values:</strong><br/><ul><li>active</li>
+<li>inactive</li></ul></td><td>Current status of a user in the account</td></tr>
+<tr><td>24</td><td>status_reason</td><td>string</td><td></td><td>Reason for the current user status in the account</td></tr>
+<tr><td>25</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>Time user was added to the account<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>26</td><td>updated_at</td><td>timestamp: SQL</td><td></td><td>Last time the user record was updated<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>27</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>Timestamp when the user was deleted<br/><span class="yellow_highlight">Column used for filtering Date Range Extraction requests</span></td></tr>
+<tr><td>28</td><td>adsk_row_id</td><td>string</td><td></td><td>Unique row identifier to be used in CDC operations</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

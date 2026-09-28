@@ -1,0 +1,1342 @@
+{
+   "attachments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the Attachment",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the parent Item",
+         "ordinal_position" : 4
+      },
+      "name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Name of the file",
+         "ordinal_position" : 5
+      },
+      "revision" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Revision of the item when the attachment was added",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that created the attachment",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the attachment created",
+         "ordinal_position" : 8
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the attachment last updated",
+         "ordinal_position" : 9
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the attachment",
+         "ordinal_position" : 10
+      },
+      "upload_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "storage URN where attachments are uploaded",
+         "ordinal_position" : 11
+      },
+      "category_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the attachment category",
+         "ordinal_position" : 12
+      },
+      "category_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "value of the category_id",
+         "ordinal_position" : 13
+      },
+      "task_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the parent Task",
+         "ordinal_position" : 14
+      },
+      "is_file_uploaded" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Was the upload process completed successfully",
+         "ordinal_position" : 15
+      },
+      "urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the version of the file",
+         "ordinal_position" : 16
+      }
+   },
+   "comments" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the Comment",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the parent Item",
+         "ordinal_position" : 4
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the comment",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the comment updated",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that created the comment",
+         "ordinal_position" : 7
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the comment was created",
+         "ordinal_position" : 8
+      },
+      "body" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Body of the comment",
+         "ordinal_position" : 9
+      }
+   },
+   "custom_identifier_settings" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the custom identifier settings",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the task",
+         "ordinal_position" : 4
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the task was updated",
+         "ordinal_position" : 5
+      },
+      "can_switch_type" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Defaults to 'True', after one usage the value will be set to 'False' permanently.",
+         "ordinal_position" : 6
+      },
+      "sequence_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - global",
+            "2 - spec"
+         ],
+         "notes" : "Project current sequence type",
+         "ordinal_position" : 7
+      }
+   },
+   "item_custom_attribute_value" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the task",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 4
+      },
+      "parameter_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 5
+      },
+      "parameter_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of related parameter.",
+         "ordinal_position" : 6
+      },
+      "parameter_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of related parameter.",
+         "ordinal_position" : 7
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The value of item custom field. Value is saved as string, actual value type is based on related parameter type",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the custom attribute value was added",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that added the custom attribute value",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the custom attribute value updated",
+         "ordinal_position" : 11
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the custom attribute value",
+         "ordinal_position" : 12
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the custom attribute value got deleted",
+         "ordinal_position" : 13
+      },
+      "select_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Display field for single / multi select parameter type values.",
+         "ordinal_position" : 14
+      }
+   },
+   "item_revision" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the Submittal revision.",
+         "ordinal_position" : 3
+      },
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID of related Submittal.",
+         "ordinal_position" : 4
+      },
+      "manager" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID / Role member group ID / Company member group ID of the manager",
+         "ordinal_position" : 5
+      },
+      "manager_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - user",
+            "2 - company",
+            "3 - role"
+         ],
+         "notes" : "Indication for manager id type",
+         "ordinal_position" : 6
+      },
+      "subcontractor" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID / Role member group ID / Company member group ID of the subcontractor",
+         "ordinal_position" : 7
+      },
+      "subcontractor_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - user",
+            "2 - company",
+            "3 - role"
+         ],
+         "notes" : "Indication for subcontractor id type",
+         "ordinal_position" : 8
+      },
+      "revision" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Revision of the item",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "when was the item created",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "last time the item was updated",
+         "ordinal_position" : 11
+      },
+      "sent_to_submitter" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "when the submitter received the item",
+         "ordinal_position" : 12
+      },
+      "submitter_due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "When the responsible contractor submission is due",
+         "ordinal_position" : 13
+      },
+      "received_from_submitter" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the submitter moved the item forward",
+         "ordinal_position" : 14
+      },
+      "submitted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that submitted the item to the manager",
+         "ordinal_position" : 15
+      },
+      "sent_to_review" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the first review step started UPDATE: formerly sent_to_reviewer (now we have multiple reviewers)",
+         "ordinal_position" : 16
+      },
+      "manager_due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "When the manager review is due",
+         "ordinal_position" : 17
+      },
+      "sent_to_review_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that submitted the item to review",
+         "ordinal_position" : 18
+      },
+      "received_from_review" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the review finished UPDATE: formerly received_from_reviewer",
+         "ordinal_position" : 19
+      },
+      "response_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the response, if was added.",
+         "ordinal_position" : 20
+      },
+      "response_comment" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Response comment of the item (in addition to response id)",
+         "ordinal_position" : 21
+      },
+      "responded_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when response was added",
+         "ordinal_position" : 22
+      },
+      "responded_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that responded",
+         "ordinal_position" : 23
+      },
+      "published_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the item was closed and distributed",
+         "ordinal_position" : 24
+      },
+      "published_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that published the item",
+         "ordinal_position" : 25
+      }
+   },
+   "item_watchers" : {
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the Item",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "user_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User IDs of cc'ed user/role/company",
+         "ordinal_position" : 4
+      },
+      "user_type_id" : {
+         "data_type" : "string",
+         "constraints" : [
+            "1 - user",
+            "2 - company",
+            "3 - role"
+         ],
+         "notes" : "if of the distribution_list member user_type (user/role/company)",
+         "ordinal_position" : 5
+      },
+      "user_type_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "value of the user_type_id",
+         "ordinal_position" : 6
+      }
+   },
+   "items" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the Submittal.",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "spec_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the associated Spec",
+         "ordinal_position" : 4
+      },
+      "spec_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Identifier of the spec this item related to",
+         "ordinal_position" : 5
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title (name) of the item",
+         "ordinal_position" : 6
+      },
+      "type_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID for the item type",
+         "ordinal_position" : 7
+      },
+      "type_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "value of the item type_id",
+         "ordinal_position" : 8
+      },
+      "response_comment" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Response comment of the item (in addition to response id)",
+         "ordinal_position" : 9
+      },
+      "ball_in_court" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Array of Autodesk User IDs of the users that are ball in court for the item workflow UPDATE: formerly assigned_to (now we have multiple reviewers) UPDATE: Deprecated field",
+         "ordinal_position" : 10
+      },
+      "revision" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Revision of the item",
+         "ordinal_position" : 11
+      },
+      "responded_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that responded",
+         "ordinal_position" : 12
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the item",
+         "ordinal_position" : 13
+      },
+      "responded_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when response was added",
+         "ordinal_position" : 14
+      },
+      "due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Date and time for the item to be done with current state",
+         "ordinal_position" : 15
+      },
+      "required_on_job_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Date and time for the item to be done on site",
+         "ordinal_position" : 16
+      },
+      "manager" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID / Role member group ID / Company member group ID of the manager",
+         "ordinal_position" : 17
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that created the item",
+         "ordinal_position" : 18
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "when was the item created",
+         "ordinal_position" : 19
+      },
+      "state_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "State of the item",
+         "ordinal_position" : 20
+      },
+      "response_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "ID of the response, if was added.",
+         "ordinal_position" : 21
+      },
+      "response_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "value of the response_id",
+         "ordinal_position" : 22
+      },
+      "subsection" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Sub spec section",
+         "ordinal_position" : 23
+      },
+      "subcontractor" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID / Role member group ID / Company member group ID of the subcontractor",
+         "ordinal_position" : 24
+      },
+      "identifier" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier of the item. Created automatically",
+         "ordinal_position" : 25
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user the last updated the item",
+         "ordinal_position" : 26
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "last time the item was updated",
+         "ordinal_position" : 27
+      },
+      "status_id" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - Required",
+            "2 - Open",
+            "3 - Closed",
+            "4 - Void",
+            "5 - Empty",
+            "6 - Draft"
+         ],
+         "notes" : "Status ID",
+         "ordinal_position" : 28
+      },
+      "status_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "value of the status_id",
+         "ordinal_position" : 29
+      },
+      "package_title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the package the item is related to (if any)",
+         "ordinal_position" : 30
+      },
+      "package" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the associated Package",
+         "ordinal_position" : 31
+      },
+      "package_identifier" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier of the package the item is related to (if any)",
+         "ordinal_position" : 32
+      },
+      "priority_id" : {
+         "data_type" : "number",
+         "constraints" : [
+            "1 - Low",
+            "2- Normal",
+            "3 - High"
+         ],
+         "notes" : "id of the priority the item is related to (if any)",
+         "ordinal_position" : 33
+      },
+      "priority_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "value of the priority_id",
+         "ordinal_position" : 34
+      },
+      "required_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "item's required date",
+         "ordinal_position" : 35
+      },
+      "required_approval_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "item's required approval date",
+         "ordinal_position" : 36
+      },
+      "lead_time" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "item's lead time",
+         "ordinal_position" : 37
+      },
+      "sent_to_submitter" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "when the submitter received the item",
+         "ordinal_position" : 38
+      },
+      "received_from_submitter" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the submitter moved the item forward",
+         "ordinal_position" : 39
+      },
+      "submitted_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that submitted the item to the manager",
+         "ordinal_position" : 40
+      },
+      "sent_to_review" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the first review step started UPDATE: formerly sent_to_reviewer (now we have multiple reviewers)",
+         "ordinal_position" : 41
+      },
+      "sent_to_review_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that submitted the item to review",
+         "ordinal_position" : 42
+      },
+      "received_from_review" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the review finished UPDATE: formerly received_from_reviewer",
+         "ordinal_position" : 43
+      },
+      "published_date" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "When the item was closed and distributed",
+         "ordinal_position" : 44
+      },
+      "published_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that published the item",
+         "ordinal_position" : 45
+      },
+      "submitter_due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "When the responsible contractor submission is due",
+         "ordinal_position" : 46
+      },
+      "manager_due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "When the manager review is due",
+         "ordinal_position" : 47
+      },
+      "ball_in_court_users" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Array of Autodesk User IDs of the users that are ball in court for the item workflow",
+         "ordinal_position" : 48
+      },
+      "ball_in_court_roles" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Array of Role member group IDs of the roles that are ball in court for the item workflow",
+         "ordinal_position" : 49
+      },
+      "ball_in_court_companies" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Array of Company member group IDs of the companies that are ball in court for the item workflow",
+         "ordinal_position" : 50
+      },
+      "manager_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - user",
+            "2 - company",
+            "3 - role"
+         ],
+         "notes" : "Indication for manager id type",
+         "ordinal_position" : 51
+      },
+      "subcontractor_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - user",
+            "2 - company",
+            "3 - role"
+         ],
+         "notes" : "Indication for subcontractor id type",
+         "ordinal_position" : 52
+      },
+      "custom_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The custom identifier of the item.",
+         "ordinal_position" : 53
+      },
+      "custom_identifier_sort" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Same value as 'custom_identifier' but this column has db collation in order to enable sorting by the custom identifier value.",
+         "ordinal_position" : 54
+      },
+      "custom_identifier_human_readable" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Ingested custom identifier of the item. May include the item spec identifier along with the custom identifier value.",
+         "ordinal_position" : 55
+      },
+      "pending_actions_from" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Array of Autodesk User, Roles and Companies that have yet to respond",
+         "ordinal_position" : 56
+      }
+   },
+   "itemtype" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the type",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the typye created",
+         "ordinal_position" : 4
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the typye",
+         "ordinal_position" : 5
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the type last updated",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that created the type",
+         "ordinal_position" : 7
+      },
+      "value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Value of the type",
+         "ordinal_position" : 8
+      },
+      "platform_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "For default types",
+         "ordinal_position" : 9
+      },
+      "is_active" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the type active",
+         "ordinal_position" : 10
+      }
+   },
+   "packages" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the Package",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "spec_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the associated Spec",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the package",
+         "ordinal_position" : 5
+      },
+      "identifier" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Identifier of the package. Created Automatically",
+         "ordinal_position" : 6
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description for the package",
+         "ordinal_position" : 7
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the package",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the spec was created",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that created the package",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when spec was last updated",
+         "ordinal_position" : 11
+      },
+      "spec_identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Identifier of the spec this package related to",
+         "ordinal_position" : 12
+      }
+   },
+   "parameters_collections" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the task",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "parameter_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "",
+         "ordinal_position" : 4
+      },
+      "parameter_external_id" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The external_id of related parameter.",
+         "ordinal_position" : 5
+      },
+      "parameter_name" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The name of related parameter.",
+         "ordinal_position" : 6
+      },
+      "parameter_description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The description of related parameter.",
+         "ordinal_position" : 7
+      },
+      "parameter_type" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "The type of related parameter.",
+         "ordinal_position" : 8
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the parameter was detached from collection",
+         "ordinal_position" : 9
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that detached that parameter",
+         "ordinal_position" : 10
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the parameter was attached/detached to/from collection",
+         "ordinal_position" : 11
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the parameter for collection",
+         "ordinal_position" : 12
+      },
+      "deleted_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the parameter was attached/detached to/from collection",
+         "ordinal_position" : 13
+      },
+      "parameter_select_options" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Available select options for single / multi select parameter type.",
+         "ordinal_position" : 14
+      }
+   },
+   "specs" : {
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 1
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 2
+      },
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the Spec Section",
+         "ordinal_position" : 3
+      },
+      "identifier" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Spec identifier. Created by the user",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the spec",
+         "ordinal_position" : 5
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the spec was created",
+         "ordinal_position" : 6
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that created the spec",
+         "ordinal_position" : 7
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the spec was updated",
+         "ordinal_position" : 8
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the spec",
+         "ordinal_position" : 9
+      }
+   },
+   "steps" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the step",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the step",
+         "ordinal_position" : 4
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the step was updated",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that created the step",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the step was created",
+         "ordinal_position" : 7
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "not-started / in-progress / completed"
+         ],
+         "notes" : "The status of the step",
+         "ordinal_position" : 8
+      },
+      "step_number" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "The order of the step in the review workflow",
+         "ordinal_position" : 9
+      },
+      "days_to_respond" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Number of days that the reviewers have to respond",
+         "ordinal_position" : 10
+      },
+      "due_date" : {
+         "data_type" : "date: string",
+         "constraints" : [],
+         "notes" : "Date for the item to be done with current state",
+         "ordinal_position" : 11
+      },
+      "started_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the step started",
+         "ordinal_position" : 12
+      },
+      "completed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the step finished",
+         "ordinal_position" : 13
+      },
+      "item_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "The ID for the parent Item",
+         "ordinal_position" : 14
+      }
+   },
+   "tasks" : {
+      "id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID for the task",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "updated_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that last updated the task",
+         "ordinal_position" : 4
+      },
+      "updated_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the task was updated",
+         "ordinal_position" : 5
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that created the task",
+         "ordinal_position" : 6
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the task was created",
+         "ordinal_position" : 7
+      },
+      "status" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "not-started / in-progress / completed"
+         ],
+         "notes" : "The status of the task",
+         "ordinal_position" : 8
+      },
+      "assigned_to" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID / Role member group ID / Company member group ID that the task is assigned to",
+         "ordinal_position" : 9
+      },
+      "is_required" : {
+         "data_type" : "boolean",
+         "constraints" : [],
+         "notes" : "Is the task a required task in the review step",
+         "ordinal_position" : 10
+      },
+      "response_comment" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Response comment of the task (in addition to response id)",
+         "ordinal_position" : 11
+      },
+      "responded_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when response was added",
+         "ordinal_position" : 12
+      },
+      "responded_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that responded",
+         "ordinal_position" : 13
+      },
+      "started_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the task started",
+         "ordinal_position" : 14
+      },
+      "completed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time when the task finished",
+         "ordinal_position" : 15
+      },
+      "completed_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk User ID of the user that closed the task",
+         "ordinal_position" : 16
+      },
+      "response_value" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "value of the response_id",
+         "ordinal_position" : 17
+      },
+      "response_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the response, if was added.",
+         "ordinal_position" : 18
+      },
+      "step_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "ID of the parent step",
+         "ordinal_position" : 19
+      },
+      "assigned_to_type" : {
+         "data_type" : "enum: string",
+         "constraints" : [
+            "1 - user",
+            "2 - company",
+            "3 - role"
+         ],
+         "notes" : "Indication for assigned_to id type",
+         "ordinal_position" : 20
+      }
+   }
+}

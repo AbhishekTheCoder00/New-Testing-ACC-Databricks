@@ -1,0 +1,5715 @@
+{
+   "watermark" : "1773188741",
+   "changes" : [
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_values",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "created_at",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "admin",
+         "table" : "project_user_products",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "01",
+         "notes" : "The new assets permissions schema will accommodate both project-wide and per-category permissions. The resource_type and resource_id columns indicate the resource to which a permission applies (the project or a category). All existing permissions in ACC Build and BIM 360 will be present in the new permissions schema and will have a resource_type equal to project. The permission_policy_type column replaces the notion of permission levels. It is an enum that can take on the values view, edit, create, create_only, or manage. It no longer results in repeated rows. This enum corresponds to the available options on the Assets Permissions page in the web application. Note that create_only is only available in BIM 360 and manage is only available in ACC Build.",
+         "service_group" : "assets",
+         "table" : "assets_permissions",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "01",
+         "notes" : "On January 24, 2023 a change was made to a service identifier column being reported by Data Connector in the Admin schema. This change was made to bring the actual data extracted in compliance with the documentation. The service identifier for Document Management should have been documentManagement, but was being reported as doc_manager. This was fixed on the 24th, but was not communicated in our product documentation as per our standard practice and for this, we apologize.",
+         "service_group" : "admin",
+         "table" : "account_services",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "01",
+         "notes" : "On January 24, 2023 a change was made to a service identifier column being reported by Data Connector in the Admin schema. This change was made to bring the actual data extracted in compliance with the documentation. The service identifier for Document Management should have been documentManagement, but was being reported as doc_manager. This was fixed on the 24th, but was not communicated in our product documentation as per our standard practice and for this, we apologize.",
+         "service_group" : "admin",
+         "table" : "project_services",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "01",
+         "notes" : "On January 24, 2023 a change was made to a service identifier column being reported by Data Connector in the Admin schema. This change was made to bring the actual data extracted in compliance with the documentation. The service identifier for Document Management should have been documentManagement, but was being reported as doc_manager. This was fixed on the 24th, but was not communicated in our product documentation as per our standard practice and for this, we apologize.",
+         "service_group" : "admin",
+         "table" : "project_user_services",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "payment_references",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expense_properties",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budget_payment_properties",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payment_properties",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "approval_workflows",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "admin",
+         "table" : "project_users",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "03",
+         "notes" : "Data correction for column to report the proper date",
+         "service_group" : "admin",
+         "table" : "project_user_roles",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "Budget calculation changes and new columns (submitted_at, note)",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "Budget calculation changes and new columns (submitted_at, note)",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "admin_activities",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "docs_activities",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "docs_custom_attributes",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "docs_custom_attribute_constraints",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "docs_naming_standards",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "docs_permissions",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "docs_standard_attributes",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "issues_activities",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "issues_changes",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "rfis_activities",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "rfis_changes",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "sheets_activities",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "cost_activities",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "A beta release of the activities service group is available via API extracts. This is be a Beta release and is subject to change.",
+         "service_group" : "activities",
+         "table" : "cost_changes",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "04",
+         "notes" : "A recent update was made to the data extractions to be more consistent with the UI behavior. The result of this change is that nulls/empty string will be returned in cost values instead of zeros. In general, null / empty / should all be treated in the same manner",
+         "service_group" : "cost",
+         "table" : "",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "upload_urn",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "submittals",
+         "table" : "attachments",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "total_member_size",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "admin",
+         "table" : "projects",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "total_company_size",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "admin",
+         "table" : "projects",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "current_due_date",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "approval_workflows",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "DELETED",
+         "column" : "",
+         "month" : "05",
+         "notes" : "On May 12, 2023, the Progress Tracking Beta has ending and the Progress Tracking dataset is no longer be available for download from Data Connector. Progress tracking functionality is available now in the Assets tool. Learn more about why we merged Progress Tracking functionality into Assets here. More details of this change can be seen on the Autodesk Build Help Site.",
+         "service_group" : "progresstracking",
+         "table" : "",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "status",
+         "month" : "05",
+         "notes" : "4 additional statuses have been added: pending, in_progress, completed, in_review",
+         "service_group" : "issues",
+         "table" : "issues",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "compounded",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "classification",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "admin",
+         "table" : "projects",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "06",
+         "notes" : "On June 18, 2023, the RFIs schema has been updated to support multiple reviewers for an RFI",
+         "service_group" : "rfis",
+         "table" : "",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "06",
+         "notes" : "This table will return ALL data versions instead of latest versions of the table items. This is only available for project level extracts.",
+         "service_group" : "checklists",
+         "table" : "template_sections_all",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "06",
+         "notes" : "This table will return ALL data versions instead of latest versions of the table items. This is only available for project level extracts.",
+         "service_group" : "checklists",
+         "table" : "template_items_all",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "06",
+         "notes" : "This table will return ALL data versions instead of latest versions of the table items. This is only available for project level extracts.",
+         "service_group" : "checklists",
+         "table" : "template_signatures_all",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "markup_text",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "markups",
+         "table" : "markup",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "surface_type",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "markups",
+         "table" : "layer",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "base_entity_urn",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "markups",
+         "table" : "layer",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "base_entity_uid",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "markups",
+         "table" : "layer",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "placement_text",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "markups",
+         "table" : "placement",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "due_date",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "forms",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "created_at",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "forms",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_submitted_at",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "forms",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "assignee_type_id",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "forms",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "assignee_type",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "forms",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "main_contracts",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "main_contract_properties",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "manager_type",
+         "month" : "07",
+         "notes" : "On July 14, 2023, the submittalsacc schema has been updated to support multiple reviewers. This is a new enum field",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "subcontractor_type",
+         "month" : "07",
+         "notes" : "On July 14, 2023, the submittalsacc schema has been updated to support multiple reviewers. This is a new enum field",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "DEPRECATED",
+         "column" : "ball_in_court",
+         "month" : "07",
+         "notes" : "On July 14, 2023, the submittalsacc schema has been updated to support multiple reviewers. This is a deprecated field, will be replaced by ball_in_court_users",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "ball_in_court_users",
+         "month" : "07",
+         "notes" : "On July 14, 2023, the submittalsacc schema has been updated to support multiple reviewers. This is a new list field, list of users",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "ball_in_court_roles",
+         "month" : "07",
+         "notes" : "On July 14, 2023, the submittalsacc schema has been updated to support multiple reviewers. This is a new list field, list of roles",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "ball_in_court_companies",
+         "month" : "07",
+         "notes" : "On July 14, 2023, the submittalsacc schema has been updated to support multiple reviewers. This is a new list field, list of companies",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "assigned_to_type",
+         "month" : "07",
+         "notes" : "On July 14, 2023, the submittalsacc schema has been updated to support multiple reviewers. This is a new column",
+         "service_group" : "submittalsacc",
+         "table" : "tasks",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "gps_coordinates",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "issues",
+         "table" : "issues",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "materials_billed",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "materials_retention",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "next_action_candidates_users",
+         "month" : "08",
+         "notes" : "List of strings",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "next_action_candidates_roles",
+         "month" : "08",
+         "notes" : "List of strings",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "next_action_candidates_companies",
+         "month" : "08",
+         "notes" : "List of strings",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "next_action_claimed_by",
+         "month" : "08",
+         "notes" : "List of strings",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "attribute_value",
+         "month" : "08",
+         "notes" : "Quotations may be added if the attribute value contains a comma (,)",
+         "service_group" : "issues",
+         "table" : "custom_attributes",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "next_action_candidates_users",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "next_action_candidates_roles",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "next_action_candidates_companies",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "next_action_claimed_by",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "opened_at",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfis",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "location_id",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfis",
+         "watermark" : "1695408731",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_asset_status_color",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_asset_status_display_name",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_asset_status_entity_type",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_asset_status_id",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_asset_status_is_active",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_asset_status_is_missing",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_asset_status_is_valid",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_asset_status_color",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_asset_status_display_name",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_asset_status_entity_type",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_asset_status_id",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_asset_status_is_active",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_asset_status_is_missing",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_asset_status_is_valid",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_category_display_name",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_category_entity_type",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_category_id",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_category_is_active",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_category_is_missing",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_category_is_valid",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "object_before_category_path",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "custom_identifier",
+         "month" : "10",
+         "notes" : "Added support for custom identifiers",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "custom_identifier_sort",
+         "month" : "10",
+         "notes" : "Added support for custom identifiers",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "custom_identifier_human_readable",
+         "month" : "10",
+         "notes" : "Added support for custom identifiers",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "10",
+         "notes" : "Added support for custom identifiers",
+         "service_group" : "submittalsacc",
+         "table" : "custom_identifier_settings",
+         "watermark" : "1696529432",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "form_sections",
+         "watermark" : "1698700370",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_section_items",
+         "watermark" : "1699452795",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_sections",
+         "watermark" : "1699452795",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_table_columns",
+         "watermark" : "1699452795",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layouts",
+         "watermark" : "1699452795",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "layout_uid",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_forms",
+         "watermark" : "1699452795",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "DELETED",
+         "column" : "",
+         "month" : "12",
+         "notes" : "",
+         "service_group" : "issues",
+         "table" : "changesets",
+         "watermark" : "1701092668",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "assets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "assets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "categories",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_model_sync_records",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_model_sync_records",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_model_sync_records",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_permissions",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_permissions",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_permissions",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_statuses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_statuses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "asset_statuses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "category_custom_attribute_assignments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "category_custom_attribute_assignments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "category_custom_attribute_assignments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "category_status_set_assignments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "category_status_set_assignments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "category_status_set_assignments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "custom_attribute_selection_values",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "custom_attribute_selection_values",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "custom_attribute_selection_values",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "custom_attributes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "custom_attributes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "custom_attributes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "model_sync_containers",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "model_sync_containers",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "model_sync_containers",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "status_sets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "status_sets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "assets",
+         "table" : "status_sets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_section_assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_section_assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_section_assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_sections",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklist_sections",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "archived_on",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklists",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "completed_on",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklists",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklists",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklists",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "scheduled_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklists",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "started_on",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklists",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "checklists",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_item_instructions",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_item_instructions",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_items_all",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_items_all",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_sections",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_sections",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_sections_all",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_sections_all",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_signatures",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_signatures",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_signatures_all",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "template_signatures_all",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "templates",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "templates",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "templates",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "templates_versions",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "templates_versions",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "checklists",
+         "table" : "templates_versions",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "approval_workflows",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "approval_workflows",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "current_due_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "approval_workflows",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_code_segment_codes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_code_segment_codes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_code_segments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_code_segments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_payment_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_payment_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "approved_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "paid_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "submitted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "applied_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "approved_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "awarded_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "executed_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "offsite_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "onsite_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "procured_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "responded_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "returned_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "sent_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "status_changed_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_payment_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_payment_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "approved_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "paid_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "submitted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "expense_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "expense_items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "approved_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "issued_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "paid_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "received_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "main_contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "main_contracts",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "payment_references",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "paid_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "payment_references",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "cost",
+         "table" : "payment_references",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "locations",
+         "table" : "nodes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "locations",
+         "table" : "nodes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "locations",
+         "table" : "trees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "locations",
+         "table" : "trees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "assignees",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "attachments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "attachments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "attachments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "due_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "meetings",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "meetings",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "starts_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "meetings",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "meetings",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "non_member_participants",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "non_member_participants",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "non_member_participants",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "participants",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "participants",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "participants",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "topics",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "topics",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "meetingminutes",
+         "table" : "topics",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "activities",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "activities",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "activity_codes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "activity_codes",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "comments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "dependencies",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "dependencies",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "resources",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "resources",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "schedules",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "schedule",
+         "table" : "schedules",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "sheets",
+         "table" : "sets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "issuance_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "sheets",
+         "table" : "sets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "sheets",
+         "table" : "sets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "sheets",
+         "table" : "sheets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "sheets",
+         "table" : "sheets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "sheets",
+         "table" : "sheets",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "attachments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "attachments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "attachments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "comments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "comments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "comments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "published_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "received_from_reviewer",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "received_from_submitter",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "responded_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "sent_to_reviewer",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "sent_to_submitter",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "packages",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "packages",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "packages",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "specs",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "specs",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittals",
+         "table" : "specs",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "attachments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "attachments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "comments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "comments",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "custom_identifier_settings",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "published_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "received_from_review",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "received_from_submitter",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "responded_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "sent_to_review",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "sent_to_submitter",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "itemtype",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "itemtype",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "packages",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "packages",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "specs",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "specs",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "completed_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "steps",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "steps",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "started_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "steps",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "steps",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "completed_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "tasks",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "tasks",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "responded_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "tasks",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "started_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "tasks",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "submittalsacc",
+         "table" : "tasks",
+         "watermark" : "1701717685",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "deleted_by",
+         "month" : "12",
+         "notes" : "",
+         "service_group" : "issues",
+         "table" : "issues",
+         "watermark" : "1701795966",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_before_entity_created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_before_entity_updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_created_entity_created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_created_entity_updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_deleted_entity_created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_deleted_entity_deleted_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_deleted_entity_updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_patch_entity_updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_created_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "issues_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_updated_at",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "issues_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_issuance_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "sheets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_version_set_issuance_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "sheets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "target_issuance_date",
+         "month" : "12",
+         "notes" : "timestamp formatting corrected",
+         "service_group" : "activities",
+         "table" : "sheets_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_billing_period_end_date",
+         "month" : "12",
+         "notes" : "Corrected documentation from [timestamp: SQL] to [date: string]",
+         "service_group" : "activities",
+         "table" : "cost_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_billing_period_start_date",
+         "month" : "12",
+         "notes" : "Corrected documentation from [timestamp: SQL] to [date: string]",
+         "service_group" : "activities",
+         "table" : "cost_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_issuance_date",
+         "month" : "12",
+         "notes" : "Corrected documentation from [timestamp: SQL] to [date: string]",
+         "service_group" : "activities",
+         "table" : "docs_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_new_issuance_date",
+         "month" : "12",
+         "notes" : "Corrected documentation from [timestamp: SQL] to [date: string]",
+         "service_group" : "activities",
+         "table" : "docs_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_old_issuance_date",
+         "month" : "12",
+         "notes" : "Corrected documentation from [timestamp: SQL] to [date: string]",
+         "service_group" : "activities",
+         "table" : "docs_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_version_set_issuance_date",
+         "month" : "12",
+         "notes" : "Corrected documentation from [timestamp: SQL] to [date: string]",
+         "service_group" : "activities",
+         "table" : "docs_activities",
+         "watermark" : "1702494972",
+         "year" : "2023"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "packages",
+         "table" : "",
+         "watermark" : "1706631943",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "clashes",
+         "table" : "",
+         "watermark" : "1706631943",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "round_num",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "review_comments",
+         "watermark" : "1707252074",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "round_num",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "review_documents",
+         "watermark" : "1707252074",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "current_round_num",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1707252074",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "round_num",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "workflow_notes",
+         "watermark" : "1707252074",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "display_index",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_section_items",
+         "watermark" : "1707252074",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "display_index",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_sections",
+         "watermark" : "1707252074",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_activities",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_object_ball_in_court_companies",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_object_ball_in_court_roles",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_object_ball_in_court_users",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_target_ball_in_court_companies",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_target_ball_in_court_roles",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_target_ball_in_court_users",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_target_steps",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_target_tasks",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_target_transition_attachments",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "submittals_target_watchers",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfi_types",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "project_custom_attributes",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "project_custom_attributes_enums",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfi_custom_attributes",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "markup_text",
+         "month" : "03",
+         "notes" : "Semantic Update: Text content for the given markup. This is the initial text that the markup was created with, THIS MAY BE OVERRIDDEN BY TEXT ON THE PLACEMENT OF THIS MARKUP. Merge with the placement table and check placement_text to identify the text of a given placement of this markup. if placement_text is blank, then markup_text holds the current text content. NOTE: if the markup is a feature bound markup (feature_bound_type is present), the text here is inaccurate and should be ignored.",
+         "service_group" : "markups",
+         "table" : "markup",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "placement_text",
+         "month" : "03",
+         "notes" : "Semantic Update: Text content for the given markup-placement. THIS WILL OVERRIDE TEXT IN MARKUP.MARKUP_TEXT. If there is text present in this column, it is the current text of the given placement. If this field is blank, check the markup_text column by merging with the markup table to get text (if there is any for this placement). NOTE: if the markup is a feature bound markup (feature_bound_type is present), the text here is inaccurate and should be ignored.",
+         "service_group" : "markups",
+         "table" : "placement",
+         "watermark" : "1710430398",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "company_name",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "transmittals",
+         "table" : "transmittal_recipients",
+         "watermark" : "1710765628",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "create_user_company_id",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "transmittals",
+         "table" : "workflow_transmittals",
+         "watermark" : "1710765628",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "create_user_company_name",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "transmittals",
+         "table" : "workflow_transmittals",
+         "watermark" : "1710765628",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "status",
+         "month" : "03",
+         "notes" : "\"submitted\" status is now reported as \"closed\", \"draft\" is now reported as \"in_progress\"",
+         "service_group" : "forms",
+         "table" : "forms",
+         "watermark" : "1711394933",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "step_display_name",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "review_steps",
+         "watermark" : "1712243795",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "rfi_type",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfis",
+         "watermark" : "1712926111",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "checklists",
+         "table" : "checklist_sections_signatures",
+         "watermark" : "1713209433",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "is_active",
+         "month" : "05",
+         "notes" : "Column changed to always returns TRUE, regardless of the real value. Will be deprecated in the future.",
+         "service_group" : "issues",
+         "table" : "root_cause_categories",
+         "watermark" : "1714668701",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "is_active",
+         "month" : "05",
+         "notes" : "Column changed to always returns TRUE, regardless of the real value. Will be deprecated in the future.",
+         "service_group" : "issues",
+         "table" : "root_causes",
+         "watermark" : "1714668701",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "currency",
+         "month" : "05",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1715086269",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "exchange_rate",
+         "month" : "05",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1715086269",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "current_step",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1718126192",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "total_steps",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1718126192",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "schedule_change",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1718126192",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "urn",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "submittalsacc",
+         "table" : "attachments",
+         "watermark" : "1719427442",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "name",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "forms",
+         "watermark" : "1719585181",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "permissions",
+         "watermark" : "1721766926",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "viewed_at",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "transmittals",
+         "table" : "transmittal_recipients",
+         "watermark" : "1721766926",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "downloaded_at",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "transmittals",
+         "table" : "transmittal_recipients",
+         "watermark" : "1721766926",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "uid",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "assets",
+         "table" : "categories",
+         "watermark" : "1721766926",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "category_type",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "assets",
+         "table" : "categories",
+         "watermark" : "1721766926",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "category_type",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "assets",
+         "table" : "category_status_set_assignments",
+         "watermark" : "1721766926",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "assets",
+         "table" : "system_memberships",
+         "watermark" : "1721766926",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "assets",
+         "table" : "systems",
+         "watermark" : "1721766926",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_by",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_at",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_id",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_system",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "message",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_sync_time",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_by",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_at",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_id",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_system",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "message",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_sync_time",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_by",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_at",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_id",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_system",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "message",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_sync_time",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_by",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_at",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_id",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_system",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "message",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_sync_time",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "main_contract_items",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "distribution_item_curves",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "distribution_items",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "sub_distribution_items",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_after_category_id",
+         "month" : "08",
+         "notes" : "Data type fix for documentation",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1722357095",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_at",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_id",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_system",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "message",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_sync_time",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budget_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "integration_state_changed_at",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_id",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "external_system",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "message",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_sync_time",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "acc_attachments",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "package_id",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "packages",
+         "table" : "package_associations",
+         "watermark" : "1725457146",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "form_field_attachments",
+         "watermark" : "1725993657",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_section_item_attachments",
+         "watermark" : "1725993657",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfi_transitions",
+         "watermark" : "1727363823",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "proposed_revised_completion_date",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1729018055",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "revised_completion_date",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "main_contracts",
+         "watermark" : "1729018055",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "schedule_change",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "main_contracts",
+         "watermark" : "1729018055",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "source_type",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1729864636",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "schedule_change",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1732120522",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "Schema design has been updated",
+         "service_group" : "clashes",
+         "table" : "assigned_clash_group",
+         "watermark" : "1732120522",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "Schema design has been updated",
+         "service_group" : "clashes",
+         "table" : "clash_group_to_clash_id",
+         "watermark" : "1732120522",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "Schema design has been updated",
+         "service_group" : "clashes",
+         "table" : "clash_test",
+         "watermark" : "1732120522",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "Schema design has been updated",
+         "service_group" : "clashes",
+         "table" : "closed_clash_group",
+         "watermark" : "1732120522",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "DELETED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "Table has been removed from the schema",
+         "service_group" : "clashes",
+         "table" : "issue_clash_group",
+         "watermark" : "1732120522",
+         "year" : "2024"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budget_transfers",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "transferences",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "approved_at",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "status_changed_at",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "main_contract_id",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "pending_internal_budget_transfer",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "pending_internal_budget_transfer",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "pending_internal_budget_transfer_qty",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "pending_internal_budget_transfer_input_qty",
+         "month" : "01",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1735843500",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "bridged_source",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfis",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "bridged_target",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfis",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "state",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "rfis",
+         "table" : "rfi_responses",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "creator_id",
+         "month" : "02",
+         "notes" : "Documentation has been updated specify column type as string:UUID",
+         "service_group" : "cost",
+         "table" : "transferences",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "transmittals",
+         "table" : "transmittal_non_members",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_before_entity_category_id",
+         "month" : "02",
+         "notes" : "Documentation has been updated specify column type as string",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_category_id",
+         "month" : "02",
+         "notes" : "Documentation has been updated specify column type as string",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_created_entity_category_id",
+         "month" : "02",
+         "notes" : "Documentation has been updated specify column type as string",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_deleted_entity_category_id",
+         "month" : "02",
+         "notes" : "Documentation has been updated specify column type as string",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_before_category_id",
+         "month" : "02",
+         "notes" : "Documentation has been updated specify column type as string",
+         "service_group" : "activities",
+         "table" : "assets_activities",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "version_resource_option",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "packages",
+         "table" : "packages",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_submitted_by",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "forms",
+         "watermark" : "1738769525",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_spec_identifier",
+         "month" : "02",
+         "notes" : "Documentation correction",
+         "service_group" : "activities",
+         "table" : "submittals_activities",
+         "watermark" : "1739194331",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "object_type_identifier",
+         "month" : "02",
+         "notes" : "Documentation correction",
+         "service_group" : "activities",
+         "table" : "submittals_activities",
+         "watermark" : "1739194331",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "target_spec_identifier",
+         "month" : "02",
+         "notes" : "Documentation correction",
+         "service_group" : "activities",
+         "table" : "submittals_activities",
+         "watermark" : "1739194331",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "target_type_identifier",
+         "month" : "02",
+         "notes" : "Documentation correction",
+         "service_group" : "activities",
+         "table" : "submittals_activities",
+         "watermark" : "1739194331",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "approved_tax_summary",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1741267987",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "committed_tax_summary",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1741267987",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "tax_summary",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payment_items",
+         "watermark" : "1741267987",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "tax_summary",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1741267987",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "code_segment_values",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1741267987",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "activities",
+         "table" : "bridge_activities",
+         "watermark" : "1741267987",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "04",
+         "notes" : "Schema will only return BIM 360 project data.",
+         "service_group" : "issuesbim360",
+         "table" : "",
+         "watermark" : "1741976317",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "compliance_status",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1741976317",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "04",
+         "notes" : "",
+         "service_group" : "submittalsacc",
+         "table" : "item_revision",
+         "watermark" : "1741976317",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "estimated_tax_summary",
+         "month" : "05",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1746644418",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "proposed_tax_summary",
+         "month" : "05",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1746644418",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "submitted_tax_summary",
+         "month" : "05",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1746644418",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "main_contract_item_amount",
+         "month" : "05",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1746644418",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "approved_cost_payment_application",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1749601965",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "approved_budget_payment_application",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1749601965",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "column_key",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_table_columns",
+         "watermark" : "1749601965",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "column_type",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_table_columns",
+         "watermark" : "1749601965",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "expression",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_table_columns",
+         "watermark" : "1749601965",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "06",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_tabular_values",
+         "watermark" : "1749601965",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "takeoff",
+         "table" : "",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "target_package_spec_identifier",
+         "month" : "07",
+         "notes" : "Updated documentation",
+         "service_group" : "activities",
+         "table" : "submittals_activities",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "last_sign_in",
+         "month" : "07",
+         "notes" : "Updated documentation",
+         "service_group" : "admin",
+         "table" : "projects",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "last_sign_in",
+         "month" : "07",
+         "notes" : "Updated documentation",
+         "service_group" : "admin",
+         "table" : "users",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "actual_total_input_qty",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "distribution_item_curves",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "distribution_total_input_qty",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "distribution_item_curves",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "periods_input_qty",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "distribution_item_curves",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "actual_total_input_qty",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "sub_distribution_items",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "distribution_total_input_qty",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "sub_distribution_items",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "periods_input_qty",
+         "month" : "07",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "sub_distribution_items",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "",
+         "month" : "07",
+         "notes" : "Table now returns attachments information for ACC",
+         "service_group" : "issues",
+         "table" : "attachments",
+         "watermark" : "1751484544",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "created_at",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "distribution_item_curves",
+         "watermark" : "1754496411",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "updated_at",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "distribution_item_curves",
+         "watermark" : "1754496411",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "submittalsacc",
+         "table" : "item_custom_attribute_value",
+         "watermark" : "1754496411",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "submittalsacc",
+         "table" : "parameters_collections",
+         "watermark" : "1754496411",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "awarded_tax_total",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1754496411",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "pending_actions_from",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "submittalsacc",
+         "table" : "items",
+         "watermark" : "1754496411",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "role_id",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "admin",
+         "table" : "project_roles",
+         "watermark" : "1754496411",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "is_archived",
+         "month" : "08",
+         "notes" : "",
+         "service_group" : "reviews",
+         "table" : "reviews",
+         "watermark" : "1754496411",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "schedule_of_values_properties",
+         "watermark" : "1757008377",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "parent_id",
+         "month" : "09",
+         "notes" : "",
+         "service_group" : "takeoff",
+         "table" : "classifications",
+         "watermark" : "1757008377",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "date_val",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_tabular_values",
+         "watermark" : "1761069013",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "time_val",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_tabular_values",
+         "watermark" : "1761069013",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "updated_at",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_values",
+         "watermark" : "1761069013",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "updated_by",
+         "month" : "10",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_values",
+         "watermark" : "1761069013",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "estimates",
+         "table" : "",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "field_id_v2",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layout_section_items",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "field_id_v2",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_tabular_values",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "field_id_v2",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "native_form_values",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "compliance_status",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_payments",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "quantity",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "unit",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "estimated",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "proposed",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "submitted",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "approved",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "committed",
+         "month" : "11",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1762487866",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "select_value",
+         "month" : "12",
+         "notes" : "",
+         "service_group" : "submittalsacc",
+         "table" : "item_custom_attribute_value",
+         "watermark" : "1764879867",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "parameter_select_options",
+         "month" : "12",
+         "notes" : "",
+         "service_group" : "submittalsacc",
+         "table" : "parameters_collections",
+         "watermark" : "1764879867",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "locations",
+         "month" : "12",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1764879867",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "type",
+         "month" : "12",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1764879867",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "is_markup",
+         "month" : "12",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1764879867",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "12",
+         "notes" : "",
+         "service_group" : "classifications",
+         "table" : "",
+         "watermark" : "1764879867",
+         "year" : "2025"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "locations",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cdccost",
+         "table" : "budgets",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "is_markup",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cdccost",
+         "table" : "cost_items",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "select_value",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cdcsubmittalsacc",
+         "table" : "item_custom_attribute_value",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "parameter_select_options",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cdcsubmittalsacc",
+         "table" : "parameters_collections",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "compliance_status",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "change_orders",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "time_val",
+         "month" : "02",
+         "notes" : "Documentation has been updated to specify the column type as time",
+         "service_group" : "forms",
+         "table" : "native_form_tabular_values",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "forecast_adjustment_qty",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "budgets",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cdcissues",
+         "table" : "placements",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cdcissues",
+         "table" : "viewables",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "issues",
+         "table" : "placements",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "issues",
+         "table" : "viewables",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "response_due",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "contracts",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "payment_due",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "expenses",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "sequential_section_completion",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "forms",
+         "table" : "layouts",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "quantity",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "unit",
+         "month" : "02",
+         "notes" : "",
+         "service_group" : "cost",
+         "table" : "cost_items",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at_version",
+         "month" : "02",
+         "notes" : "Changed data type from string to number",
+         "service_group" : "issues",
+         "table" : "placements",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "file_version",
+         "month" : "02",
+         "notes" : "Changed data type from string to number",
+         "service_group" : "issues",
+         "table" : "viewables",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "created_at_version",
+         "month" : "02",
+         "notes" : "Changed data type from string to number",
+         "service_group" : "cdcissues",
+         "table" : "placements",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "file_version",
+         "month" : "02",
+         "notes" : "Changed data type from string to number",
+         "service_group" : "cdcissues",
+         "table" : "viewables",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "guid",
+         "month" : "02",
+         "notes" : "Changed data type to string",
+         "service_group" : "cdcissues",
+         "table" : "viewables",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "MODIFIED",
+         "column" : "hour",
+         "month" : "02",
+         "notes" : "Changed data type from string to time",
+         "service_group" : "forms",
+         "table" : "weather_hours",
+         "watermark" : "1770238801",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "path",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "admin",
+         "table" : "business_units",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "schedule",
+         "table" : "plan_commitments",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "schedule",
+         "table" : "plan_handoffs",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "schedule",
+         "table" : "plan_plans",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "schedule",
+         "table" : "plan_project_settings",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "schedule",
+         "table" : "plan_task_comments",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "schedule",
+         "table" : "plan_tasks",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cdcschedule",
+         "table" : "plan_commitments",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cdcschedule",
+         "table" : "plan_handoffs",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cdcschedule",
+         "table" : "plan_plans",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cdcschedule",
+         "table" : "plan_project_settings",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cdcschedule",
+         "table" : "plan_task_comments",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      },
+      {
+         "change_type" : "ADDED",
+         "column" : "",
+         "month" : "03",
+         "notes" : "",
+         "service_group" : "cdcschedule",
+         "table" : "plan_tasks",
+         "watermark" : "1773188741",
+         "year" : "2026"
+      }
+   ]
+}

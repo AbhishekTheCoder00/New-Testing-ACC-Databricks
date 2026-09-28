@@ -1,0 +1,109 @@
+{
+   "attachment-create" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ]
+   },
+   "attachment-delete" : {
+      "columns" : null
+   },
+   "comment-create" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_comment_body",
+         "object_comment_id",
+         "object_comment_mentions",
+         "object_comment_rfi_id",
+         "object_comment_source",
+         "object_display_name",
+         "object_id"
+      ]
+   },
+   "response-create" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ]
+   },
+   "response-update" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ]
+   },
+   "rfi-create" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ]
+   },
+   "rfi-create-with-ai" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ]
+   },
+   "rfi-update" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ],
+      "related_tables" : [
+         "rfis_changes"
+      ]
+   },
+   "rfi-view" : {
+      "columns" : [
+         "activity_id",
+         "bim360_account_id",
+         "bim360_project_id",
+         "created_by",
+         "created_at",
+         "activity_verb",
+         "object_display_name",
+         "object_id"
+      ]
+   }
+}

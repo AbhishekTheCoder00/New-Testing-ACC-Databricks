@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional //EN">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>photos: Schema Design Document</title>
+  	<style>
+    	body
+    	{ 
+        background: #ECECEA;
+      	color: #222222;
+      	font-size: 12px;
+      	font-family: Arial;
+        margin: 0px 0px 0px 0px;
+      	padding: 0px;
+    	}
+    	h1
+    	{
+    	  font-weight: bold;
+    		font-size: 22px;
+        line-height: 22pt;
+    		background-color: #99CCFF;
+    		padding: 8px 6px 8px 6px;
+    		margin: 30px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	h1:first-child
+    	{
+    		margin: 6px 0px 6px 0px;
+    	}
+    	h2
+    	{
+    	  font-weight: bold;
+    		font-size: 16px;
+    		background-color: #99CCFF;
+    		padding: 6px 6px 6px 6px;
+    		margin: 18px 0px 6px 0px;
+        border-radius: 3px;
+    	}
+    	hr
+    	{
+    	  color: #cccccc;
+    	  height: 1px;
+    	}
+    	p 
+    	{
+    		margin-top: 6px;
+    	}
+
+      #wrap
+      {
+        background-color: white;
+      	margin: 12px 12px 12px 12px;
+      	padding: 12px 18px 24px 18px;
+
+        border-radius: 3px;
+        text-align: left; 
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      
+      #content 
+      {
+    	  background-color: white;
+      	margin: 0px auto 0px;
+      	padding: 0px;
+      	line-height: 18px;
+      	min-height: 600px;	
+      }
+
+      /************************************************
+       *	Table formatting
+       ************************************************/
+      table {
+        border-collapse: collapse;
+      }
+      
+      td, th {
+        border: 1px solid #ddd;
+        padding: 2px 2px 2px 3px;
+      }
+
+      tr:nth-child(odd){background-color: #f2f2f2;}
+      /* tr:hover {background-color: #ddd;} */
+
+      th {
+        padding: 2px 3px 2px 3px;
+        text-align: left;
+        background-color: #83B93F;
+        color: white;
+      }
+      
+      .yellow_highlight {
+        background-color: #FFFF77 !important;
+      }
+
+      .red_highlight {
+        background-color: #FFAAAA !important;
+        color: #222222;
+      }
+
+      .green_highlight {
+        background-color: #C1FFC1 !important;
+        color: #222222;
+      }            
+
+      .orange_highlight {
+        background-color: #F4B084 !important;
+        color: #222222;
+      }            
+      /************************************************
+       *	Copyright  									*
+       ************************************************/
+      #copyright {
+      	background: #ccc;
+      	margin: 12px 12px 18px 12px;
+      	padding: 3px 6px 12px 6px;
+      	font-family: Verdana, Tahoma, Verdana;
+      	font-size: 12px;
+      	text-align: center;
+      
+        box-shadow: 0 1px 3px 0px rgba(0,0,0,0.3);
+      }
+      	
+      .copyright {
+      	width: 920px;
+      	margin: 0px auto 0px;
+      	padding: 15px 0px 0px 0px;
+      	/*rhp border-top: 1px solid #65ADC3; */
+      	}
+      	
+      #copyright p {
+      	color: #444;
+      	margin: 0px;	
+      	padding: 0px;
+      	}
+      	
+      #copyright a {
+      	color: #444;
+      	text-decoration: none;
+      	}
+      
+      #copyright a:hover {
+      	color: #444;
+      	text-decoration: underline;
+      	}
+     
+      #header
+      {
+     		background-color: #C4E1FF;
+     		font-weight: bold;
+      }
+
+      .message_highlight_note {
+  		   border-radius: 5px;
+  		   padding: 20px 24px 20px;
+  		   margin-top: 18px;
+  		   margin-bottom: 12px;
+  		   margin-left: auto;
+  		   margin-right: auto;
+  		   width: 400px;
+  		   text-align: left;
+  		   background-color: #FFFFBF;
+  		   box-shadow: 0 2px 4px 0 rgba(0,0,0,.3)
+	     }      
+  	</style>
+
+  </head>
+  <body>
+
+  <div id="wrap">
+  <div id="content">
+
+<h1>photos Schema Description</h1>
+<b>Documentation Updated: </b>2024-09-10<br/>
+<ul><li><a href="#photo_tags">photo_tags</a></li>
+<li><a href="#photos">photos</a></li>
+<li><a href="#referencer_participants">referencer_participants</a></li>
+<li><a href="#referencer_photos">referencer_photos</a></li>
+<br/><li><a href="../README.html">&lt;&lt; Return to Top Level Index</a></li></ul>
+<h2><a name="photo_tags">photo_tags</a></h2>Photo tags data<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>number</td><td></td><td>ID of the photo tag</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>seq_id</td><td>number</td><td></td><td>Used for sync token, the order in which columns were updated.</td></tr>
+<tr><td>5</td><td>project_id</td><td>string</td><td>Max Length: 36</td><td>The Project UID this tag applies to.</td></tr>
+<tr><td>6</td><td>photo_id</td><td>string</td><td>Max Length: 36</td><td>The Photo UID this tag applies to.</td></tr>
+<tr><td>7</td><td>tag_name</td><td>string</td><td>Max Length: 64</td><td>String that represents the tag. (EX: "stairs", "drywall", etc)</td></tr>
+<tr><td>8</td><td>tag_type</td><td>string</td><td>Max Length: 255</td><td>Type of tag, "user", "ml" (autotag), etc</td></tr>
+<tr><td>9</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The datetime the tag was created on the server.</td></tr>
+<tr><td>10</td><td>creator_id</td><td>string</td><td>Max Length: 8000</td><td>The UID of the user who created the tag.</td></tr>
+<tr><td>11</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>The datetime the row was deleted, if applicable.</td></tr>
+<tr><td>12</td><td>deleter_id</td><td>string</td><td>Max Length: 8000</td><td>The UID of the user who deleted the photo, if deleted.</td></tr>
+<tr><td>13</td><td>model_version</td><td>number</td><td></td><td>Model version for the photo</td></tr>
+</tbody></table><h2><a name="photos">photos</a></h2>All the photo models (Original table name is gg_photos)<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>number</td><td></td><td>ID of the photo</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>title</td><td>string</td><td>Max Length: 8000</td><td>The title of the photo, which can be changed to a custom string</td></tr>
+<tr><td>5</td><td>size</td><td>number</td><td></td><td>N/A</td></tr>
+<tr><td>6</td><td>status</td><td>string</td><td>Max Length: 255</td><td>N/A</td></tr>
+<tr><td>7</td><td>annotation</td><td>string</td><td>Max Length: 36</td><td>N/A</td></tr>
+<tr><td>8</td><td>punch</td><td>string</td><td>Max Length: 36</td><td>N/A</td></tr>
+<tr><td>9</td><td>creator_id</td><td>string</td><td>Max Length: 8000</td><td>The UID of the user who created the photo</td></tr>
+<tr><td>10</td><td>deleter_id</td><td>string</td><td>Max Length: 8000</td><td>The UID of the user who deleted the photo, if deleted.</td></tr>
+<tr><td>11</td><td>updater_id</td><td>string</td><td>Max Length: 8000</td><td>The UID of the user who most recently updated the photo.</td></tr>
+<tr><td>12</td><td>lat</td><td>number</td><td></td><td>Latitude of the photo, if applicable.</td></tr>
+<tr><td>13</td><td>lng</td><td>number</td><td></td><td>Longitude of the photo, if applicable.</td></tr>
+<tr><td>14</td><td>uid</td><td>string</td><td>Max Length: 36</td><td>Photo UID</td></tr>
+<tr><td>15</td><td>description</td><td>string</td><td>Max Length: 512</td><td>N/A</td></tr>
+<tr><td>16</td><td>image_type</td><td>string</td><td>Max Length: 255</td><td>N/A</td></tr>
+<tr><td>17</td><td>type</td><td>string</td><td>Max Length: 8000</td><td>N/A</td></tr>
+<tr><td>18</td><td>taken_on</td><td>timestamp: SQL</td><td></td><td>The datetime the photo was taken at, parsed from the photo's metadata, if available.</td></tr>
+<tr><td>19</td><td>locked_at</td><td>timestamp: SQL</td><td></td><td>N/A</td></tr>
+<tr><td>20</td><td>is_public</td><td>boolean</td><td></td><td>Whether the photo is public to all users on a project, or uses permissions.</td></tr>
+<tr><td>21</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The datetime the photo was uploaded to the server.</td></tr>
+<tr><td>22</td><td>user_created_at</td><td>timestamp: SQL</td><td></td><td>The datetime the photo was added to the project locally (on mobile devices, before uploading to the cloud).</td></tr>
+<tr><td>23</td><td>updated_on</td><td>timestamp: SQL</td><td></td><td>The datetime the row was last updated.</td></tr>
+<tr><td>24</td><td>deleted_at</td><td>timestamp: SQL</td><td></td><td>The datetime the row was deleted, if applicable.</td></tr>
+<tr><td>25</td><td>project</td><td>string</td><td>Max Length: 36</td><td>The Project UID this tag applies to.</td></tr>
+<tr><td>26</td><td>seq_id</td><td>number</td><td></td><td>Used for sync token, the order in which columns were updated.</td></tr>
+<tr><td>27</td><td>sheet</td><td>string</td><td>Max Length: 36</td><td>N/A</td></tr>
+</tbody></table><h2><a name="referencer_participants">referencer_participants</a></h2>Users/Groups associated to a Photo referencer<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>number</td><td></td><td>ID of the referencer participant</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>project_id</td><td>string</td><td>Max Length: 36</td><td>The Project UID this row applies to.</td></tr>
+<tr><td>5</td><td>referencer_urn</td><td>string</td><td>Max Length: 250</td><td>Unique URN of the resource referencing the photo</td></tr>
+<tr><td>6</td><td>participant_id</td><td>string</td><td>Max Length: 36</td><td>The UID of the entity (user, group, role, etc...) referencing the photo</td></tr>
+<tr><td>7</td><td>participant_type</td><td>string</td><td>Max Length: 36</td><td>The type of the entity referencing the photo (for debugging purposes)</td></tr>
+<tr><td>8</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The datetime the row was created on the server.</td></tr>
+</tbody></table><h2><a name="referencer_photos">referencer_photos</a></h2>Photo Referencers such as RFI, Issues<table border="1"><tbody><colgroup><col /><col /><col /><col /><col /></colgroup><tr id="header"><th>ordinal_position</th><th>column_name</th><th>data_type</th><th>constraints</th><th>notes</th></tr>
+<tr><td>1</td><td>id</td><td>number</td><td></td><td>ID of the referencer photo</td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">2</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_account_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Account ID. </td></tr>
+<tr><td class="highlight-yellow" data-highlight-colour="yellow">3</td><td class="highlight-yellow" data-highlight-colour="yellow">bim360_project_id</td><td class="highlight-yellow" data-highlight-colour="yellow">string: UUID</td><td class="highlight-yellow" data-highlight-colour="yellow"></td><td class="highlight-yellow" data-highlight-colour="yellow">BIM 360 HQ Project ID. </td></tr>
+<tr><td>4</td><td>project_id</td><td>string</td><td>Max Length: 36</td><td>The Project UID this row applies to.</td></tr>
+<tr><td>5</td><td>referencer_urn</td><td>string</td><td>Max Length: 255</td><td>Unique URN of the resource referencing the photo</td></tr>
+<tr><td>6</td><td>photo_id</td><td>string</td><td>Max Length: 36</td><td>The Photo UID this row applies to.</td></tr>
+<tr><td>7</td><td>created_at</td><td>timestamp: SQL</td><td></td><td>The datetime the row was created on the server.</td></tr>
+<tr><td>8</td><td>edge_urn</td><td>string</td><td>Max Length: 255</td><td>This column was created to account for Form's complex visibility rules that depend on the state of the Form. Instead of having the Form as the Referencer, the Form Template becomes the Referencer, and the Form URN becomes the edge that moves between various Form Template URNs (for example, each Form Template will have multiple URNs that correspond to the various states that the Form can be in: DRAFT, PUBLISHED, etc..).</td></tr>
+</tbody></table>
+  </div>
+  </div>
+
+    <div id="copyright">
+      <div class="copyright">
+    	  <p>&copy; Copyright 2026 Autodesk Inc. | 
+        <a target="_blank" href="https://construction.autodesk.com/">Autodesk Forma</a> | 
+        <a target="_blank" href="https://www.autodesk.com/company">About Autodesk</a> </p>
+      </div>
+    </div>
+    
+  </body>
+</html>

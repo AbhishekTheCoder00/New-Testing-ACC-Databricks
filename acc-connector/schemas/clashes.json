@@ -1,0 +1,254 @@
+{
+   "assigned_clash_group" : {
+      "clash_group_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique ID of the assigned clash group",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "issue_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Issue Id associated with the clash clash group",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Name of the issue",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string: null",
+         "constraints" : [],
+         "notes" : "Description of the purpose of the issue",
+         "ordinal_position" : 6
+      },
+      "status" : {
+         "data_type" : "string: null",
+         "constraints" : [
+            "open",
+            "work_completed",
+            "ready_to_inspect",
+            "not_approved",
+            "in_dispute",
+            "closed",
+            "void",
+            "answered",
+            "draft",
+            "pending",
+            "in_progress",
+            "completed",
+            "in_review"
+         ],
+         "notes" : "Unique identifier of the current status of the issue",
+         "ordinal_position" : 7
+      },
+      "clash_test_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id of the clash test",
+         "ordinal_position" : 8
+      },
+      "model_set_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "A coordination space ID uniquely identifies combinations of models in a clash group, like 'scope 1' for models A & B, and 'scope 2' for models A & C.",
+         "ordinal_position" : 9
+      },
+      "created_at_model_set_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "A coordination space version number uniquely identifies varying model combinations in a clash group. For instance, 'scope version 1' could represent models A v1 & B v1, while 'scope version 2' may denote models A v1 & B v2.",
+         "ordinal_position" : 10
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the clash group was marked as an issue",
+         "ordinal_position" : 11
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who marked the clash group as an issue.",
+         "ordinal_position" : 12
+      }
+   },
+   "clash_group_to_clash_id" : {
+      "clash_group_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of the issue clash group",
+         "ordinal_position" : 1
+      },
+      "clash_id" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "Id of the clash associated with the clash group, corresponding with the clash ID field in the clash result resources available via the API (see API documentation for more details).",
+         "ordinal_position" : 2
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 3
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 4
+      }
+   },
+   "clash_test" : {
+      "clash_test_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Id of the clash test",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "model_set_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "A coordination space ID uniquely identifies combinations of models in a clash test, like 'scope 1' for models A & B, and 'scope 2' for models A & C.",
+         "ordinal_position" : 4
+      },
+      "model_set_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "A coordination space version ID uniquely identifies varying model combinations in a clash test. For instance, 'scope version 1' could represent models A v1 & B v1, while 'scope version 2' may denote models A v1 & B v2.",
+         "ordinal_position" : 5
+      },
+      "root_folder_urn" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Unique Resource Name of the clash test root folder",
+         "ordinal_position" : 6
+      },
+      "started_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the clash job started (UTC)",
+         "ordinal_position" : 7
+      },
+      "completed_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the clash job finished (UTC)",
+         "ordinal_position" : 8
+      },
+      "status" : {
+         "data_type" : "string",
+         "constraints" : [
+            "Pending",
+            "Processing",
+            "Successful",
+            "Failed"
+         ],
+         "notes" : "The status of the clash test; Pending, Processing, Successful, Failed",
+         "ordinal_position" : 9
+      },
+      "backend_type" : {
+         "data_type" : "number",
+         "constraints" : [
+            "0 (V1)",
+            "1 (V2)"
+         ],
+         "notes" : "The type of the coordination space; Projects created before November 2022 will be 0 = V1, after will be 1 = V2.  Refer to Coordination Space Versions in Model Coordination help files for further information.",
+         "ordinal_position" : 10
+      }
+   },
+   "closed_clash_group" : {
+      "clash_group_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique ID of the clash group classified as not-an-issue",
+         "ordinal_position" : 1
+      },
+      "bim360_account_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Account ID.",
+         "ordinal_position" : 2
+      },
+      "bim360_project_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "BIM 360 HQ Project ID.",
+         "ordinal_position" : 3
+      },
+      "reason" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Reason why the clash group was marked as not-an-issue",
+         "ordinal_position" : 4
+      },
+      "title" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Title of the closed clash group classified as not-an-issue",
+         "ordinal_position" : 5
+      },
+      "description" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Description of the closed clash group",
+         "ordinal_position" : 6
+      },
+      "clash_test_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "Unique id of the clash test",
+         "ordinal_position" : 7
+      },
+      "model_set_id" : {
+         "data_type" : "string: UUID",
+         "constraints" : [],
+         "notes" : "A coordination space ID uniquely identifies combinations of models in a clash group classified as not-an-issue, like 'scope 1' for models A & B, and 'scope 2' for models A & C.",
+         "ordinal_position" : 8
+      },
+      "created_at_model_set_version" : {
+         "data_type" : "number",
+         "constraints" : [],
+         "notes" : "A coordination space version number uniquely identifies varying model combinations in a classified as not-an-issue. For instance, 'scope version 1' could represent models A v1 & B v1, while 'scope version 2' may denote models A v1 & B v2.",
+         "ordinal_position" : 9
+      },
+      "created_at" : {
+         "data_type" : "timestamp: SQL",
+         "constraints" : [],
+         "notes" : "Date and time the clash group was marked as not-an-issue",
+         "ordinal_position" : 10
+      },
+      "created_by" : {
+         "data_type" : "string",
+         "constraints" : [],
+         "notes" : "Autodesk ID of the user who marked the clash group as not-an-issue.",
+         "ordinal_position" : 11
+      }
+   }
+}
