@@ -8,11 +8,30 @@ Priority (per the chosen model):
 
 SECRET_KEY is intentionally NOT stored in the DB — it is the root key that
 encrypts stored OAuth tokens, so it must live outside the database.
+
+Databricks Apps exception: the platform injects the app's own service principal
+as DATABRICKS_CLIENT_ID/SECRET, which would shadow every user's Databricks OAuth
+app. Inside an app (DATABRICKS_APP_NAME set) those two names are read from
+CONNECTOR_DATABRICKS_CLIENT_ID/SECRET instead, then from the DB row as usual.
 """
 import functools
 import os
 
 from backend.repositories import state_store as db
+
+# Names the Databricks Apps runtime injects, mapped to the env var that may
+# override them for the connector. Outside an app, the plain name is used.
+_DATABRICKS_APP_SHADOWED = {
+    'DATABRICKS_CLIENT_ID':     'CONNECTOR_DATABRICKS_CLIENT_ID',
+    'DATABRICKS_CLIENT_SECRET': 'CONNECTOR_DATABRICKS_CLIENT_SECRET',
+}
+
+
+def _env_name(name: str) -> str:
+    """The env var that may override config ``name`` on this host."""
+    if name in _DATABRICKS_APP_SHADOWED and os.getenv('DATABRICKS_APP_NAME'):
+        return _DATABRICKS_APP_SHADOWED[name]
+    return name
 
 
 def _session_user_id() -> str | None:
@@ -36,7 +55,7 @@ def get_config(name: str, default: str = '', user_id: str | None = None) -> str:
     ``user_id`` is optional — when omitted it is resolved from the Flask
     session's ``user_id`` (set at ACC sign-in time).
     """
-    v = os.getenv(name)
+    v = os.getenv(_env_name(name))
     if v:
         return v
     resolved = user_id or _session_user_id()

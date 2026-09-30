@@ -127,6 +127,28 @@ taken while planning Phase 1 and reviewed with the project owner.
   and 3 (robot on project, Data Connector authorisation) need the SSA token and run at step 3,
   per new connection, before bootstrap. Both specs are satisfied.
 
+### Databricks Apps hosting — hybrid (added 2026-09-30)
+
+- **The control plane is deployed twice from one codebase: EC2 and a Databricks App.**
+  A Databricks App admits only users signed in to the hosting Databricks account with
+  `CAN_USE`, so external customer hub admins stay on EC2 (`/portal`, `ENABLE_U2M=false`),
+  and internal users use the Databricks App (`/` wizard plus `/portal`, `ENABLE_U2M=true`).
+  Exactly one deployment runs U2M, because every process rehydrates the daily CDC timers.
+  Scheduled M2M CDC stays on EC2 cron; the app leaves `INTERNAL_SCHEDULER_TOKEN` unset, so
+  its tick endpoint fails closed.
+- **Both deployments share state: RDS PostgreSQL via `CONN_STRING` and the `aws`
+  SecretStore.** App local disk is ephemeral, so SQLite and the `local` SecretStore would
+  lose run state and SSA private keys (a stranded robot is lost quota). Both backends already
+  exist, so no persistence code changed. Lakebase was rejected for now: its OAuth password
+  expires hourly and the fixed-DSN pool in `database.py` cannot refresh it, and EC2 would
+  need to mint Lakebase tokens. The app authenticates to Secrets Manager with an IAM user's
+  keys held as Databricks secrets. `SECRET_KEY`, `SECRET_STORE_PREFIX` and `APP_ENV` must be
+  identical on both hosts.
+- **Inside a Databricks App, `DATABRICKS_CLIENT_ID/SECRET` are the platform's, not ours.**
+  `config.get_config` reads those two names from `CONNECTOR_DATABRICKS_CLIENT_ID/SECRET`
+  when `DATABRICKS_APP_NAME` is set, then falls back to the per-user DB row, so the app's
+  service principal never shadows a user's Databricks OAuth app. EC2 behaviour is unchanged.
+
 ### Referenced documents
 
 - `acc-connector/docs/pipeline.md` : the sync pipeline design as built — volume layouts,

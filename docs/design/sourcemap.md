@@ -207,6 +207,8 @@ These run inside the customer's Databricks workspace and must not import from `b
 | `acc-connector/deploy/nginx-acc-connector.conf` | nginx reverse-proxy config fronting gunicorn. |
 | `acc-connector/start.bat`, `acc-connector/stop.bat` | Windows local dev helpers. `start.bat` requires `.env`, frees port 8000, launches `python app.py` in a new window; `stop.bat` kills the listener and closes the window. |
 | `acc-connector/startup.txt` | The gunicorn command line used by the hosting platform. |
+| `acc-connector/app.yaml` | Databricks Apps manifest for the internal deployment of the hybrid model (EC2 keeps external hub admins). Starts gunicorn via `databricks_gunicorn.conf.py`; plain `value` for non-secrets, `valueFrom` resource keys for every secret. Shares `SECRET_KEY`, `CONN_STRING` (RDS) and the AWS SecretStore prefix with EC2. |
+| `acc-connector/databricks_gunicorn.conf.py` | gunicorn settings for Databricks Apps only: binds `0.0.0.0:$DATABRICKS_APP_PORT`, one worker (in-process timers/locks), `graceful_timeout` under the platform's 15 s SIGTERM window. Deliberately not `gunicorn.conf.py`, which gunicorn would auto-load on EC2. |
 | `.github/workflows/acc-connector-ci.yml` | CI/CD: `py_compile` over eight core modules, then `scripts/smoke_check.py`, then optional dev/staging EC2 deploys gated on `vars.ENABLE_DEPLOY`. |
 
 ### Tests — `acc-connector/tests/`
@@ -214,6 +216,7 @@ These run inside the customer's Databricks workspace and must not import from `b
 | Source File | Purpose |
 |---|---|
 | `acc-connector/tests/test_acc_auth.py` | Unit tests for ACC U2M token refresh. |
+| `acc-connector/tests/test_config.py` | Config precedence on both hosts: env beats the DB row on EC2, while inside a Databricks App the injected `DATABRICKS_CLIENT_ID/SECRET` never shadow a user's OAuth app (only `CONNECTOR_*` may). Also pins the Databricks gunicorn port binding, single worker and sub-15 s graceful timeout. |
 | `acc-connector/tests/test_databricks_auth.py` | Unit tests for Databricks U2M token refresh. |
 | `acc-connector/tests/test_sync_reconcile.py` | Tests for reconciling sync runs orphaned against real Databricks runs. |
 | `acc-connector/tests/test_schema_init.py` | Runs `init_db()` against a temp SQLite file and asserts every FR-05 §6.1 uniqueness constraint actually fires (one tenant per hub, one robot per hub, no robot shared across hubs, one connection per quadruple), that the U2M tables are untouched, that no table has a column able to hold a secret value, and that the `aps_apps` seed is insert-only. |
