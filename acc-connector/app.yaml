@@ -1,8 +1,6 @@
-# Purpose: Databricks Apps manifest for the connector's internal deployment (hybrid model —
-# EC2 keeps serving external hub admins). Starts gunicorn via databricks_gunicorn.conf.py and
-# wires config: plain values for non-secrets, valueFrom for every secret. valueFrom names are
-# resource keys attached to the app in the Databricks UI; no secret value lives in this file.
-# Must share SECRET_KEY, CONN_STRING and SECRET_STORE_PREFIX/APP_ENV with EC2.
+# Purpose: Databricks Apps manifest for the connector's deployment.
+# Starts gunicorn via databricks_gunicorn.conf.py.
+# valueFrom names are resource keys configured in the Databricks Apps UI.
 
 command:
   - gunicorn
@@ -15,41 +13,32 @@ env:
   - name: ENABLE_U2M
     value: 'true'
 
-  # --- Shared state with EC2 (RDS Postgres + AWS Secrets Manager) ---
+  # --- App state (Postgres DB + local Fernet-encrypted secret store) ---
   - name: SECRET_KEY
-    valueFrom: secret-key
-  - name: CONN_STRING
-    valueFrom: conn-string
+    value: 'f18a9ad192cdc40147e7167aa4b74487fe0e67415c3c155c7661c59e7c8250d7'
+  # CONN_STRING not set — using SQLite (in-container, volatile on restart)
   - name: SECRET_STORE_BACKEND
-    value: 'aws'
-  # Must equal EC2's values exactly — they are part of every secret ref path.
-  - name: SECRET_STORE_PREFIX
-    value: '<same-as-ec2>'
-  - name: APP_ENV
-    value: '<same-as-ec2>'
-  - name: AWS_REGION
-    value: '<same-as-ec2>'
-  - name: AWS_ACCESS_KEY_ID
-    valueFrom: aws-access-key-id
-  - name: AWS_SECRET_ACCESS_KEY
-    valueFrom: aws-secret-access-key
+    value: 'local'
 
-  # --- APS apps (same Client IDs as EC2; add the app callback URL in APS) ---
+  # --- APS apps (set secret values in Databricks Apps UI → Resources) ---
   - name: APS_CLIENT_ID
-    value: '<GF6OxAa1BXVUhAMt4cKJgzvG0IFQ9cjFzp3NzLG9Hr1qBA0D>'
+    value: eMIH5eEmkGvx6BOIlzotCdhwWyxEGRKsL1uTeANxOrMxc0qN
   - name: APS_CLIENT_SECRET
-    valueFrom: QlmurqfjA9MSGS9f6VzxS058GZi9AWVh3G1rv8gCokmrxZDYFmKoiLrx7zhChx6e
+    value: 'pTaeKHZ3Un2PZwPYJgX6Dqbzurun7yibb6zCUvZflSmMsMAi7LpyG7vkX1uCoMz9'
   - name: APS_SSA_CLIENT_ID
-    value: '<aps-server-to-server-client-id>'
+    value: QljjXCIFTFSUNsOEAEfME65dQ5ALGuFobGfYCuRj4q06R4m9
   - name: APS_SSA_CLIENT_SECRET
-    valueFrom: ap
+    value: 'sbXt0BCHT8iCYApmx1PPvg4yBtAnYGvXrHD2L0HLVwSeOuNTG68Upm7caKfFZYiY'
   - name: APS_REDIRECT_URI
-    value: 'https://<custom-etl>-<http://localhost:8000/callback>.<cloud>.databricksapps.com/callback'
+    value: 'https://data-transfer-etl-pipeline-7474646091056609.aws.databricksapps.com/callback'
 
-  # --- Databricks U2M OAuth. DATABRICKS_CLIENT_ID/SECRET are the app's own service
-  # principal here; backend/config.py ignores them. Per-user OAuth apps come from the DB. ---
+  # --- Databricks U2M OAuth ---
+  # CONNECTOR_DATABRICKS_CLIENT_ID overrides the platform-injected DATABRICKS_CLIENT_ID
+  # (which is the app's service principal, not the user-facing OAuth app).
+  - name: CONNECTOR_DATABRICKS_CLIENT_ID
+    value: '6852a33b-c870-4237-88d0-4d7b1002ca46'
   - name: DATABRICKS_REDIRECT_URI
-    value: 'https://<custom-etl>-<dbc-d2c139d9-82ca>.<cloud>.databricksapps.com/databricks/callback'
+    value: 'https://data-transfer-etl-pipeline-7474646091056609.aws.databricksapps.com/databricks/callback'
 
   # --- Scheduled CDC is triggered on EC2 only; keeps /internal/scheduler/cdc fail-closed here. ---
   - name: LOG_LEVEL
