@@ -253,6 +253,9 @@ def upload_notebooks(dbx: DatabricksClient, progress) -> str:
         for nb_name in NOTEBOOK_NAMES:
             nb_file = NOTEBOOKS_DIR / f'{nb_name}.py'
             if not nb_file.exists():
+                # Databricks Apps deploys workspace NOTEBOOK objects without .py extension
+                nb_file = NOTEBOOKS_DIR / nb_name
+            if not nb_file.exists():
                 raise FileNotFoundError(f'Notebook file not found: {nb_file}')
             content_b64 = base64.b64encode(nb_file.read_bytes()).decode()
             dbx.import_notebook(f'{notebook_folder}/{nb_name}', content_b64)
@@ -261,13 +264,22 @@ def upload_notebooks(dbx: DatabricksClient, progress) -> str:
         shared_dir = NOTEBOOKS_DIR / 'shared'
         if shared_dir.is_dir():
             dbx.mkdirs(f'{notebook_folder}/shared')
-            for shared_file in sorted(shared_dir.glob('*.py')):
+            # Databricks Apps deploys workspace NOTEBOOK objects without .py
+            # extension, so glob('*.py') alone misses them. Collect both and
+            # deduplicate by stem so each helper is uploaded exactly once.
+            shared_files: dict[str, Path] = {}
+            for shared_file in shared_dir.glob('*.py'):
+                shared_files[shared_file.stem] = shared_file
+            for shared_file in shared_dir.iterdir():
+                if shared_file.is_file() and shared_file.stem not in shared_files:
+                    shared_files[shared_file.stem] = shared_file
+            for stem, shared_file in sorted(shared_files.items()):
                 content_b64 = base64.b64encode(shared_file.read_bytes()).decode()
                 dbx.import_notebook(
-                    f'{notebook_folder}/shared/{shared_file.stem}', content_b64,
+                    f'{notebook_folder}/shared/{stem}', content_b64,
                 )
                 logger.info('Uploaded shared notebook: %s/shared/%s',
-                            notebook_folder, shared_file.stem)
+                            notebook_folder, stem)
 
         progress(9, f'Notebooks uploaded to {notebook_folder}')
         return notebook_folder
