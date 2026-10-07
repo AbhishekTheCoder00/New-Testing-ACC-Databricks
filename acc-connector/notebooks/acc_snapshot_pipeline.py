@@ -1,4 +1,3 @@
-# Databricks notebook source
 # ACC Pipeline A — Snapshot-only service groups (10 groups).
 #
 # Uses create_auto_cdc_from_snapshot_flow() with SCD Type 1 (latest row per PK).
@@ -9,9 +8,14 @@
 #   legacy — acc.dc_snapshot_path or .../data_connector/<project>/<run>/*.csv
 #   v2     — .../raw/snapshots/{service_group}/*.csv
 
-# MAGIC %run ./shared/service_groups_config
+import os
 
-# MAGIC %run ./shared/acc_pipeline_common
+_shared_dir = '/Workspace/Users/rohit.kumar@cctech.co.in/acc/v1/shared'
+for _mod_name in ('service_groups_config', 'acc_pipeline_common'):
+    _path = os.path.join(_shared_dir, f'{_mod_name}.py')
+    with open(_path) as _f:
+        _source = _f.read()
+    exec(compile(_source, _path, 'exec'), globals())
 
 import dlt
 from pyspark.sql import functions as F
