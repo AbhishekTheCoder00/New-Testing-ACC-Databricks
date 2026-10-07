@@ -1,4 +1,3 @@
-# Databricks notebook source
 # ACC Pipeline B — Delta CDC service groups (10 official cdc* groups).
 #
 # Legacy layout (acc.dc_cdc_path = latest timestamp folder each sync):
@@ -9,9 +8,14 @@
 # v2 layout (raw/deltas/{group}/*/{csv}):
 #   ONCE bootstrap + ongoing Auto Loader on stable dated subfolders.
 
-# MAGIC %run ./shared/service_groups_config
+import os
 
-# MAGIC %run ./shared/acc_pipeline_common
+_shared_dir = '/Workspace/Users/rohit.kumar@cctech.co.in/acc/v1/shared'
+for _mod_name in ('service_groups_config', 'acc_pipeline_common'):
+    _path = os.path.join(_shared_dir, f'{_mod_name}.py')
+    with open(_path) as _f:
+        _source = _f.read()
+    exec(compile(_source, _path, 'exec'), globals())
 
 import dlt
 from pyspark.sql import functions as F
