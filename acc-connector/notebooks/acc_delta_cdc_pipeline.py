@@ -1,3 +1,4 @@
+%python
 # ACC Pipeline B — Delta CDC service groups (10 official cdc* groups).
 #
 # Legacy layout (acc.dc_cdc_path = latest timestamp folder each sync):
@@ -15,7 +16,7 @@ for _mod_name in ('service_groups_config', 'acc_pipeline_common'):
     _path = os.path.join(_shared_dir, f'{_mod_name}.py')
     with open(_path) as _f:
         _source = _f.read()
-        globals()['__file__'] = _path  # SDP exec() does not set __file__; needed by _pk_audit_module()
+        globals()['__file__'] = _path  # SDP exec() does not set __file__; needed by _pk_audit_module()  # <-- FIX ADDED
     exec(compile(_source, _path, 'exec'), globals())
 
 import dlt
