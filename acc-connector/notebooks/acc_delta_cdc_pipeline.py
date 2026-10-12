@@ -1,5 +1,4 @@
 # ACC Pipeline B — Delta CDC service groups (10 official cdc* groups).
-#
 # Legacy layout (acc.dc_cdc_path = latest timestamp folder each sync):
 #   One create_auto_cdc_flow per table — readStream on project CDC root
 #   (.../data_connector_cdc/{project_id}/) with recursiveFileLookup + pathGlobFilter.
