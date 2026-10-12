@@ -36,7 +36,7 @@ env:
   # CONNECTOR_DATABRICKS_CLIENT_ID overrides the platform-injected DATABRICKS_CLIENT_ID
   # (which is the app's service principal, not the user-facing OAuth app).
   - name: CONNECTOR_DATABRICKS_CLIENT_ID
-    value: '6852a33b-c870-4237-88d0-4d7b1002ca46'
+    value: '281ed64b-82de-4280-acf3-4537b139cc6f'
   - name: DATABRICKS_REDIRECT_URI
     value: 'https://data-transfer-etl-pipeline-7474646091056609.aws.databricksapps.com/databricks/callback'
 
