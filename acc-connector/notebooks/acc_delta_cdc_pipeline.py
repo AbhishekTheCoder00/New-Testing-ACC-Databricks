@@ -1,4 +1,3 @@
-%python
 # ACC Pipeline B — Delta CDC service groups (10 official cdc* groups).
 #
 # Legacy layout (acc.dc_cdc_path = latest timestamp folder each sync):
