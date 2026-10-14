@@ -1,3 +1,4 @@
+# Databricks notebook source
 # ACC Pipeline A — Snapshot-only service groups (10 groups).
 #
 # Uses create_auto_cdc_from_snapshot_flow() with SCD Type 1 (latest row per PK).
@@ -8,14 +9,48 @@
 #   legacy — acc.dc_snapshot_path or .../data_connector/<project>/<run>/*.csv
 #   v2     — .../raw/snapshots/{service_group}/*.csv
 
-import os
+import os, sys, types
 
-_shared_dir = '/Workspace/Users/rohit.kumar@cctech.co.in/acc/v1/shared'
-for _mod_name in ('service_groups_config', 'acc_pipeline_common'):
-    _path = os.path.join(_shared_dir, f'{_mod_name}.py')
-    with open(_path) as _f:
-        _source = _f.read()
-    exec(compile(_source, _path, 'exec'), globals())
+
+def _acc_shared_dir() -> str:
+    """/Workspace/.../acc/v1/shared — the folder bootstrap uploads beside this notebook."""
+    conf_dir = spark.conf.get('acc.shared_lib_path', '')
+    if conf_dir:
+        return conf_dir
+    # Pipelines define no __file__, but the code object carries the notebook path.
+    nb_path = sys._getframe().f_code.co_filename
+    if nb_path.startswith(('/Users/', '/Repos/')):
+        nb_path = '/Workspace' + nb_path
+    if nb_path.startswith('/Workspace/'):
+        return os.path.join(os.path.dirname(nb_path), 'shared')
+    user = spark.sql('SELECT current_user()').first()[0]
+    return f'/Workspace/Users/{user}/acc/v1/shared'
+
+
+def _acc_read_shared(name: str) -> str:
+    """Source of one shared helper. Bootstrap uploads them as notebooks (no .py)."""
+    base = os.path.join(_shared_dir, name)
+    for path in (base + '.py', base):
+        if os.path.isfile(path):
+            with open(path, encoding='utf-8') as f:
+                return f.read()
+    from databricks.sdk import WorkspaceClient
+    from databricks.sdk.service.workspace import ExportFormat
+    ws_path = base[len('/Workspace'):] if base.startswith('/Workspace/') else base
+    with WorkspaceClient().workspace.download(ws_path, format=ExportFormat.SOURCE) as f:
+        return f.read().decode('utf-8')
+
+
+# Pipelines ignore %run; exec into this namespace to get the same semantics
+# (private helpers visible, init_config() globals shared with this notebook).
+_shared_dir = _acc_shared_dir()
+for _mod in ('service_groups_config', 'acc_pipeline_common'):
+    exec(compile(_acc_read_shared(_mod), f'{_shared_dir}/{_mod}', 'exec'), globals())
+# acc_pipeline_common lazy-loads pk_audit_logic.py beside __file__; preload it instead.
+_pk_audit_mod = types.ModuleType('pk_audit_logic')
+exec(compile(_acc_read_shared('pk_audit_logic'), f'{_shared_dir}/pk_audit_logic', 'exec'),
+     _pk_audit_mod.__dict__)
+
 
 import dlt
 from pyspark.sql import functions as F
@@ -158,3 +193,4 @@ else:
 
 _sweep_heartbeat(_processed_keys)
 emit_summary()
+ 

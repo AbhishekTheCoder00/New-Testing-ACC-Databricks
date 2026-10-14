@@ -11,7 +11,11 @@ from backend.repositories import state_store as db
 
 logger = logging.getLogger(__name__)
 
-DBX_OAUTH_SCOPE = os.getenv('DATABRICKS_OAUTH_SCOPE', 'all-apis offline_access')
+DBX_OAUTH_SCOPE = os.getenv(
+    'DATABRICKS_OAUTH_SCOPE',
+    'sql unity-catalog files jobs pipelines workspace clusters '
+    'iam.current-user:read offline_access',
+)
 TOKEN_REFRESH_BUFFER_SEC = 60   # rotate if token expires within 60 seconds
 
 _oidc_endpoint_cache: dict[str, tuple[str, str]] = {}
