@@ -30,15 +30,19 @@ env:
   - name: APS_SSA_CLIENT_SECRET
     value: 'sbXt0BCHT8iCYApmx1PPvg4yBtAnYGvXrHD2L0HLVwSeOuNTG68Upm7caKfFZYiY'
   - name: APS_REDIRECT_URI
-    value: 'https://formabricks-7474646091056609.aws.databricksapps.com/callback'
+    value: 'https://data-transfer-etl-pipeline-7474646091056609.aws.databricksapps.com/databricks/callback'
 
   # --- Databricks U2M OAuth ---
   # CONNECTOR_DATABRICKS_CLIENT_ID overrides the platform-injected DATABRICKS_CLIENT_ID
   # (which is the app's service principal, not the user-facing OAuth app).
   - name: CONNECTOR_DATABRICKS_CLIENT_ID
-    value: ''
+    value: '6852a33b-c870-4237-88d0-4d7b1002ca46'
+  - name: CONNECTOR_DATABRICKS_CLIENT_SECRET
+    valueFrom: doseaa2af8cb605413b13f63f1897eda5cbe
   - name: DATABRICKS_REDIRECT_URI
-    value: 'https://formabricks-7474646091056609.aws.databricksapps.com/databricks/callback'
+    value: 'https://data-transfer-etl-pipeline-7474646091056609.aws.databricksapps.com/databricks/callback'
+  - name: DATABRICKS_OAUTH_SCOPE
+    value: "all-apis offline_access"
 
   # --- Scheduled CDC is triggered on EC2 only; keeps /internal/scheduler/cdc fail-closed here. ---
   - name: LOG_LEVEL
