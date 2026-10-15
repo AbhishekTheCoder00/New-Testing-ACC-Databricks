@@ -30,7 +30,7 @@ env:
   - name: APS_SSA_CLIENT_SECRET
     value: 'sbXt0BCHT8iCYApmx1PPvg4yBtAnYGvXrHD2L0HLVwSeOuNTG68Upm7caKfFZYiY'
   - name: APS_REDIRECT_URI
-    value: 'https://data-transfer-etl-pipeline-7474646091056609.aws.databricksapps.com/databricks/callback'
+    value: 'https://data-transfer-etl-pipeline-7474646091056609.aws.databricksapps.com/callback'
 
   # --- Databricks U2M OAuth ---
   # CONNECTOR_DATABRICKS_CLIENT_ID overrides the platform-injected DATABRICKS_CLIENT_ID
