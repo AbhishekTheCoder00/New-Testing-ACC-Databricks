@@ -12,8 +12,12 @@ env:
   # --- Hybrid split: U2M timers run here only; EC2 sets ENABLE_U2M=false. ---
   - name: ENABLE_U2M
     value: 'true'
-
-  # --- App state (Postgres DB + local Fernet-encrypted secret store) ---
+  - name: ENABLE_NOTEBOOK_DOWNLOAD
+    value: 'true'
+  - name: SYNC_TEST_SUBSET
+    value: 'true'
+    
+    # --- App state (Postgres DB + local Fernet-encrypted secret store) ---
   - name: SECRET_KEY
     value: 'f18a9ad192cdc40147e7167aa4b74487fe0e67415c3c155c7661c59e7c8250d7'
   # CONN_STRING not set — using SQLite (in-container, volatile on restart)
