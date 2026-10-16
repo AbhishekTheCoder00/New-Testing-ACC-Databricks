@@ -11,7 +11,7 @@ command:
 env:
   # --- Hybrid split: U2M timers run here only; EC2 sets ENABLE_U2M=false. ---
   - name: ENABLE_U2M
-    value: 'true'
+    value: 'false'
   - name: ENABLE_NOTEBOOK_DOWNLOAD
     value: 'true'
   - name: SYNC_TEST_SUBSET
