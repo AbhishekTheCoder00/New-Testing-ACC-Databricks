@@ -24,7 +24,7 @@ env:
   - name: SECRET_STORE_BACKEND
     value: 'local'
   - name: SECRET_STORE_PREFIX
-    value: 'forma-connector'
+    value: 'forma-dbx-app-'
   - name: APP_ENV
     value: 'dev'
   - name: SECRET_STORE_DIR
