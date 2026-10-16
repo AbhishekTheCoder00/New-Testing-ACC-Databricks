@@ -23,6 +23,14 @@ env:
   # CONN_STRING not set — using SQLite (in-container, volatile on restart)
   - name: SECRET_STORE_BACKEND
     value: 'local'
+  - name: SECRET_STORE_PREFIX
+    value: 'forma-connector'
+  - name: APP_ENV
+    value: 'dev'
+  - name: SECRET_STORE_DIR
+    value: './secrets/store '
+  - name: HUB_ADMIN_ENFORCEMENT
+    value: 'permissive'
 
   # --- APS apps (set secret values in Databricks Apps UI → Resources) ---
   - name: APS_CLIENT_ID
