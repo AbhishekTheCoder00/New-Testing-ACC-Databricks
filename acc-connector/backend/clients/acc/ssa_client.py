@@ -165,7 +165,7 @@ def robot_name_for_hub(hub_id: str) -> str:
     """Stable, unique-enough robot name. APS derives the invite email from it, so it ends
     up in front of the hub admin — keep it readable and tied to the hub."""
     slug = re.sub(r'[^a-z0-9]', '', (hub_id or '').lower().removeprefix('b.'))[:12]
-    return f'{SSA_ROBOT_NAME_PREFIX}{slug or "hub"}'
+    return f'{SSA_ROBOT_NAME_PREFIX}{slug or "hub"}dbx'
 
 
 def create_service_account(admin_token: str, *, hub_id: str, name: str | None = None) -> ServiceAccount:
