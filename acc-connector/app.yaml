@@ -29,8 +29,7 @@ env:
     value: 'dev'
   - name: SECRET_STORE_DIR
     value: './secrets/store '
-  - name: HUB_ADMIN_ENFORCEMENT
-    value: 'permissive'
+
 
   # --- APS apps (set secret values in Databricks Apps UI → Resources) ---
   - name: APS_CLIENT_ID
