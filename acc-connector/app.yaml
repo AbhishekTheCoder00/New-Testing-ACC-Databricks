@@ -21,8 +21,6 @@ env:
   - name: SECRET_KEY
     value: 'f18a9ad192cdc40147e7167aa4b74487fe0e67415c3c155c7661c59e7c8250d7'
   # CONN_STRING not set — using SQLite (in-container, volatile on restart)
-  - name: SSA_ROBOT_NAME_PREFIX
-    value: 'forma-dbx-app-'
   - name: SECRET_STORE_BACKEND
     value: 'local'
   - name: SECRET_STORE_PREFIX
